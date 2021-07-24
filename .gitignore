@@ -1,0 +1,8 @@
+node_modules
+*.log
+dist
+docs/.vuepress/dist
+docx
+.history
+.DS_Store
+.vscode
