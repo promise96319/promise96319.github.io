@@ -53,7 +53,7 @@ module.exports = {
         smoothScroll: true
     },
     markdown: {
-      lineNumbers: true
+      lineNumbers: false
     },
     plugins: ['@vuepress/back-to-top'],
 }
