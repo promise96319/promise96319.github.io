@@ -1,15 +1,13 @@
 #!/usr/bin/env sh
 
-set -e
+# npm run build
 
-npm run build
+cp -rf ./docs/.vuepress/dist/* ../promise.github.io/
 
-cd docs/.vuepress/dist
+cd ../promise.github.io
 
-git init
-git config user.name 'qinguanghui'
-git config user.email '1248975357@qq.com'
-git add -A
-git commit -m 'deploy'
+git status
+git add .
+git commit -m "deploy"
+git push
 
-cd -
