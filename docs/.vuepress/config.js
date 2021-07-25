@@ -13,6 +13,7 @@ module.exports = {
     //     }
     //   }
     // },
+    // theme: '@vuepress/theme-vue',
     themeConfig: {
         logo: '/logo.png',
         // repo: 'ustbhuangyi/vue-analysis',
@@ -21,6 +22,7 @@ module.exports = {
         // editLinkText: '在 GitHub 上编辑此页',
         // displayAllHeaders: true,
         lastUpdated: '上次更新',
+     
         nav: [
             {
                 text: 'Vue源码解析',
@@ -35,7 +37,9 @@ module.exports = {
                 link: '/webpack/'
             },
         ],
-        displayAllHeaders: true,
+        displayAllHeaders: false,
+        sidebarDepth: 2,
+       
         sidebar: {
           '/vue/': [
             '组成与设计.md',
@@ -43,7 +47,10 @@ module.exports = {
             '响应式原理上篇.md',
             '响应式原理中篇.md',
           ],
-        }
+        },
+        nextLinks: true,
+        prevLinks: true,
+        smoothScroll: true
     },
     markdown: {
       lineNumbers: true

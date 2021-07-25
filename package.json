@@ -1,7 +1,7 @@
 {
-  "name": "vue-source-code-analysis",
+  "name": "frontend-blog",
   "version": "1.0.0",
-  "description": "Vue源码深度解析系列",
+  "description": "frontend-blog",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -10,6 +10,8 @@
     "sh": "sh build/deploy.sh"
   },
   "devDependencies": {
+    "@vuepress/theme-default": "^1.8.2",
+    "@vuepress/theme-vue": "^1.8.2",
     "vuepress": "^1.8.2"
   }
 }

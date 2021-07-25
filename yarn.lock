@@ -1208,7 +1208,7 @@
     toml "^3.0.0"
     upath "^1.1.0"
 
-"@vuepress/theme-default@1.8.2":
+"@vuepress/theme-default@1.8.2", "@vuepress/theme-default@^1.8.2":
   version "1.8.2"
   resolved "https://registry.nlark.com/@vuepress/theme-default/download/@vuepress/theme-default-1.8.2.tgz#7f474036c752c1f9801b83f68f5c70c092b182b4"
   integrity sha1-f0dANsdSwfmAG4P2j1xwwJKxgrQ=
@@ -1222,6 +1222,13 @@
     stylus-loader "^3.0.2"
     vuepress-plugin-container "^2.0.2"
     vuepress-plugin-smooth-scroll "^0.0.3"
+
+"@vuepress/theme-vue@^1.8.2":
+  version "1.8.2"
+  resolved "https://registry.nlark.com/@vuepress/theme-vue/download/@vuepress/theme-vue-1.8.2.tgz#7cf253588bed9199fdd051c77bfc2304b18f9c42"
+  integrity sha1-fPJTWIvtkZn90FHHe/wjBLGPnEI=
+  dependencies:
+    "@vuepress/theme-default" "1.8.2"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"

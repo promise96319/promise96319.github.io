@@ -2,7 +2,7 @@
 
 # npm run build
 
-cp -rf ./docs/.vuepress/dist/* ../promise.github.io/
+# cp -rf ./docs/.vuepress/dist/* ../promise.github.io/
 
 cd ../promise.github.io
 
