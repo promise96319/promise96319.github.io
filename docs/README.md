@@ -12,11 +12,22 @@ features:
   details: 码字中...
 - title: Webpack源码解析
   details: 码字中...
-footer: MIT Licensed | Copyright © 2018-present Evan You
+# footer: 鄂ICP备20002086号-1
 ---
+
+<div class="footer">
+  <a href="https://beian.miit.gov.cn/">
+    鄂ICP备20002086号-1
+  </a>
+</div>
 
 <style>
 .description {
   display: none;
+}
+
+.footer a {
+  color: #4e6e8e;
+  font-weight: 400;
 }
 </style>
