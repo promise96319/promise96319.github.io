@@ -2,9 +2,18 @@ module.exports = {
     // base: '/silence/',
     // dest: 'dist',
     title: '秦光辉',
-    // head: [
-    //    ['link', { rel: 'icon', href: `/assets/logo.png` }]
-    // ],
+    head: [
+        // 百度统计
+        'script', {},`
+            var _hmt = _hmt || [];
+            (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?41a9a03811977ee15c69366a880d1296";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+            })();
+            `
+    ],
     // serviceWorker: false,
     // configureWebpack: {
     //   resolve: {
@@ -22,7 +31,6 @@ module.exports = {
         // editLinkText: '在 GitHub 上编辑此页',
         // displayAllHeaders: true,
         lastUpdated: '上次更新',
-     
         nav: [
             {
                 text: 'Vue源码解析',
