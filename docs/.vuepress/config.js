@@ -4,7 +4,7 @@ module.exports = {
     title: '秦光辉',
     head: [
         // 百度统计
-        'script', {},`
+        ['script', {},`
             var _hmt = _hmt || [];
             (function() {
             var hm = document.createElement("script");
@@ -12,7 +12,7 @@ module.exports = {
             var s = document.getElementsByTagName("script")[0]; 
             s.parentNode.insertBefore(hm, s);
             })();
-            `
+            `]
     ],
     // serviceWorker: false,
     // configureWebpack: {
@@ -54,6 +54,7 @@ module.exports = {
             '选项合并.md',
             '响应式原理上篇.md',
             '响应式原理中篇.md',
+            '响应式原理下篇.md',
           ],
         },
         nextLinks: true,
