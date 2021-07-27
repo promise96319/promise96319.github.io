@@ -44,6 +44,10 @@ module.exports = {
                 text: 'Webpack',
                 link: '/webpack/'
             },
+            {
+                text: '关于我',
+                link: '/about/'
+            }
         ],
         displayAllHeaders: false,
         sidebarDepth: 2,
@@ -55,7 +59,9 @@ module.exports = {
             '响应式原理上篇.md',
             '响应式原理中篇.md',
             '响应式原理下篇.md',
+            '阅读资料.md',
           ],
+          '/about/': []
         },
         nextLinks: true,
         prevLinks: true,
