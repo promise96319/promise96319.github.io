@@ -37,6 +37,10 @@ module.exports = {
                 link: '/vue/'
             },
             {
+                text: 'js核心知识点',
+                link: '/javascript/'
+            },
+            {
                 text: 'React',
                 link: '/react/'
             },
@@ -60,6 +64,9 @@ module.exports = {
             '响应式原理中篇.md',
             '响应式原理下篇.md',
             '阅读资料.md',
+          ],
+          '/javascript/': [
+            '事件循环机制.md'
           ],
           '/about/': []
         },
