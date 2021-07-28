@@ -12,3 +12,7 @@
 如果你对前端也感兴趣，欢迎一起交流~
 
 ![公众号](./official_account.png)
+
+### 最近活跃网站
+- [知乎](https://www.zhihu.com/people/qin-guang-hui-4)
+- [掘金](https://juejin.cn/user/3685218708627544)
