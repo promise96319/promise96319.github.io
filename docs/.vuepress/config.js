@@ -2,7 +2,14 @@ module.exports = {
     // base: '/silence/',
     // dest: 'dist',
     title: '秦光辉',
+    description: '一个专注于前端开发的博客，逐行分析Vue源码，深入了解webpack和Node相关框架，攻克各个javascript核心知识点，致力于成为一名合格的前端开发者',
     head: [
+        [
+            'meta',
+            {
+
+            }
+        ],
         // 百度统计
         ['script', {},`
             var _hmt = _hmt || [];
