@@ -72,6 +72,9 @@ module.exports = {
             '响应式原理下篇.md',
             '编译原理上篇.md',
             '编译原理中篇.md',
+            '编译原理下篇.md',
+            '手写简版Vuex.md',
+            '手写简版VueRouter.md',
             '阅读资料.md',
           ],
           '/javascript/': [
