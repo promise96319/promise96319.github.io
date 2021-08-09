@@ -56,6 +56,14 @@ module.exports = {
                 link: '/webpack/'
             },
             {
+                text: '算法',
+                link: '/algorithms/'
+            },
+            {
+                text: '前端资源',
+                link: '/resources/'
+            },
+            {
                 text: '关于我',
                 link: '/about/'
             }
@@ -79,6 +87,13 @@ module.exports = {
           ],
           '/javascript/': [
             '事件循环机制.md'
+          ],
+          '/algorithms/': [
+            '动态规划.md'
+          ],
+          '/resources/': [
+            '网络协议.md',
+            '算法.md'
           ],
           '/about/': []
         },
