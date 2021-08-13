@@ -1,17 +1,17 @@
 module.exports = {
-    // base: '/silence/',
-    // dest: 'dist',
-    title: '秦光辉',
-    description: '一个专注于前端开发的博客，逐行分析Vue源码，深入了解webpack和Node相关框架，攻克各个javascript核心知识点，致力于成为一名合格的前端开发者',
-    head: [
-        [
-            'meta',
-            {
+  // base: '/silence/',
+  // dest: 'dist',
+  title: '秦光辉',
+  description: '一个专注于前端开发的博客，逐行分析Vue源码，深入了解webpack和Node相关框架，攻克各个javascript核心知识点，致力于成为一名合格的前端开发者',
+  head: [
+    [
+      'meta',
+      {
 
-            }
-        ],
-        // 百度统计
-        ['script', {},`
+      }
+    ],
+    // 百度统计
+    ['script', {}, `
             var _hmt = _hmt || [];
             (function() {
             var hm = document.createElement("script");
@@ -20,89 +20,109 @@ module.exports = {
             s.parentNode.insertBefore(hm, s);
             })();
             `]
+  ],
+  // serviceWorker: false,
+  // configureWebpack: {
+  //   resolve: {
+  //     alias: {
+  //       '@image': '/docs/.vuepress/public'
+  //     }
+  //   }
+  // },
+  // theme: '@vuepress/theme-vue',
+  themeConfig: {
+    logo: '/logo.png',
+    // repo: 'ustbhuangyi/vue-analysis',
+    // editLinks: true,
+    // docsDir: 'docs',
+    // editLinkText: '在 GitHub 上编辑此页',
+    // displayAllHeaders: true,
+    lastUpdated: '上次更新',
+    nav: [
+      {
+        text: 'Vue源码解析',
+        link: '/vue/'
+      },
+      {
+        text: 'js核心知识点',
+        link: '/javascript/'
+      },
+      {
+        text: 'React',
+        link: '/react/'
+      },
+      {
+        text: 'Webpack',
+        link: '/webpack/'
+      },
+      {
+        text: '算法',
+        items: [
+          {
+            text: '算法',
+            link: '/algorithms/'
+          },
+          {
+            text: '数据结构',
+            link: '/data-structures/'
+          },
+        ]
+      },
+      {
+        text: '前端资源',
+        link: '/resources/'
+      },
+      {
+        text: '关于我',
+        link: '/about/'
+      }
     ],
-    // serviceWorker: false,
-    // configureWebpack: {
-    //   resolve: {
-    //     alias: {
-    //       '@image': '/docs/.vuepress/public'
-    //     }
-    //   }
-    // },
-    // theme: '@vuepress/theme-vue',
-    themeConfig: {
-        logo: '/logo.png',
-        // repo: 'ustbhuangyi/vue-analysis',
-        // editLinks: true,
-        // docsDir: 'docs',
-        // editLinkText: '在 GitHub 上编辑此页',
-        // displayAllHeaders: true,
-        lastUpdated: '上次更新',
-        nav: [
-            {
-                text: 'Vue源码解析',
-                link: '/vue/'
-            },
-            {
-                text: 'js核心知识点',
-                link: '/javascript/'
-            },
-            {
-                text: 'React',
-                link: '/react/'
-            },
-            {
-                text: 'Webpack',
-                link: '/webpack/'
-            },
-            {
-                text: '算法',
-                link: '/algorithms/'
-            },
-            {
-                text: '前端资源',
-                link: '/resources/'
-            },
-            {
-                text: '关于我',
-                link: '/about/'
-            }
-        ],
-        displayAllHeaders: false,
-        sidebarDepth: 2,
-       
-        sidebar: {
-          '/vue/': [
-            '组成与设计.md',
-            '选项合并.md',
-            '响应式原理上篇.md',
-            '响应式原理中篇.md',
-            '响应式原理下篇.md',
-            '编译原理上篇.md',
-            '编译原理中篇.md',
-            '编译原理下篇.md',
-            '手写简版Vuex.md',
-            '手写简版VueRouter.md',
-            '阅读资料.md',
-          ],
-          '/javascript/': [
-            '事件循环机制.md'
-          ],
-          '/algorithms/': [
-            '动态规划.md'
-          ],
-          '/resources/': [
-            '网络协议.md',
-            '算法.md'
-          ],
-          '/about/': []
-        },
-        nextLinks: true,
-        prevLinks: true,
-        smoothScroll: true
+    displayAllHeaders: false,
+    sidebarDepth: 2,
+
+    sidebar: {
+      '/vue/': [
+        '组成与设计.md',
+        '选项合并.md',
+        '响应式原理上篇.md',
+        '响应式原理中篇.md',
+        '响应式原理下篇.md',
+        '编译原理上篇.md',
+        '编译原理中篇.md',
+        '编译原理下篇.md',
+        '手写简版Vuex.md',
+        '手写简版VueRouter.md',
+        '阅读资料.md',
+      ],
+      '/javascript/': [
+        '事件循环机制.md',
+        '手写Promise.md',
+      ],
+      '/algorithms/': [
+        '动态规划.md',
+        '回溯法.md',
+      ],
+      '/data-structures/': [
+        '红黑树.md',
+        '平衡二叉树.md',
+        '二叉查找树.md',
+        '堆.md',
+        '哈希表.md',
+        '字典树.md'
+      ],
+      '/resources/': [
+        '网络协议.md',
+        '算法.md',
+        '前端博客.md'
+      ],
+      '/about/': []
     },
-    markdown: {
-      lineNumbers: false
-    },
-    plugins: ['@vuepress/back-to-top'],
+    nextLinks: true,
+    prevLinks: true,
+    smoothScroll: true
+  },
+  markdown: {
+    lineNumbers: false
+  },
+  plugins: ['@vuepress/back-to-top'],
 }

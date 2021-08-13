@@ -7,14 +7,14 @@
 ## 实现思路
 
 1. `vuex`是通过`Vue.use`使用的，所以需要实现`install`方法：
-  - `install` 里需要在`Vue`全局挂载`$store`方法，因此可以用`Vue.mixin`全局混入配置。
+   - `install` 里需要在`Vue`全局挂载`$store`方法，因此可以用`Vue.mixin`全局混入配置。
 2. 通过`$store.state`可以访问状态，状态改变时，需要更新视图。所以`state`需要设置为响应式，这样在视图中使用`state`的时候会进行依赖收集，绑定`state`和相应`Watcher`的关系。之后`state`改变就会触发`Watcher`更新。
-  -  一种方法是通过实例化`Vue`，将`state`作为`data`进行响应式处理。
-  - 一种方式是用`Vue.observable`将`state`对象设置为响应式。
+   -  一种方法是通过实例化`Vue`，将`state`作为`data`进行响应式处理。
+   - 一种方式是用`Vue.observable`将`state`对象设置为响应式。
 
 3. 触发更新：
-  - `commit`处理同步，找到`mutations`里的对应函数，然后执行函数更新`state`。
-  - `dispatch`处理异步，找到`actions`里的对应函数，然后执行函数更新`state`。
+   - `commit`处理同步，找到`mutations`里的对应函数，然后执行函数更新`state`。
+   - `dispatch`处理异步，找到`actions`里的对应函数，然后执行函数更新`state`。
 
 4. `getters`具备计算属性，可以通过`Vue`中的`computed`来进行处理（可能这也是`Vuex`用实例化方式处理`state`响应式的原因）。
 5. `modules`的实现是根据`store`配置递归建立相应的`module`，并且建立`module`之间的父子关系。再根据`namespace`来分割各个模块，使得`commit/dispatch`的时候需要指定模块的`namespace`。
@@ -103,5 +103,5 @@ export default {
 
 #### Q:为什么要commit/dispatch两种形式来处理，都使用dispatch不行吗？
 
-- 一种可能的原因是单一职责，`commit`主要处理同步任务，触发状态更新；`dispatch`主要处理异步任务
-- 另一种原因是方便`devtools`追踪状态变化。参考[这里的评论](https://juejin.cn/post/6844904054108192776)。
+   - 一种可能的原因是单一职责，`commit`主要处理同步任务，触发状态更新；`dispatch`主要处理异步任务
+   - 另一种原因是方便`devtools`追踪状态变化。参考[这里的评论](https://juejin.cn/post/6844904054108192776)。
