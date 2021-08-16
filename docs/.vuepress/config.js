@@ -56,6 +56,10 @@ module.exports = {
         link: '/webpack/'
       },
       {
+        text: 'Node',
+        link: '/node/'
+      },
+      {
         text: '算法',
         items: [
           {
@@ -113,6 +117,9 @@ module.exports = {
         '字典树.md',
         '并查集.md',
         '布隆过滤器.md',
+      ],
+      '/node/': [
+        '手写简版express.md'
       ],
       '/resources/': [
         '网络协议.md',
