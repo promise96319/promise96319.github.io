@@ -103,12 +103,16 @@ module.exports = {
         '回溯法.md',
       ],
       '/data-structures/': [
+        '树状数组.md',
+        '线段树.md',
         '红黑树.md',
         '平衡二叉树.md',
         '二叉查找树.md',
         '堆.md',
         '哈希表.md',
-        '字典树.md'
+        '字典树.md',
+        '并查集.md',
+        '布隆过滤器.md',
       ],
       '/resources/': [
         '网络协议.md',
