@@ -70,7 +70,19 @@ module.exports = {
             text: '数据结构',
             link: '/data-structures/'
           },
+          {
+            text: '设计模式',
+            link: '/design-pattern/'
+          }
         ]
+      },
+      {
+        text: '网络',
+        link: '/network/'
+      },
+      {
+        text: '计算机',
+        link: '/computer/'
       },
       {
         text: '前端资源',
@@ -118,8 +130,17 @@ module.exports = {
         '并查集.md',
         '布隆过滤器.md',
       ],
+      '/design-pattern/': [
+        // '单例模式.md'
+      ],
       '/node/': [
         '手写简版express.md'
+      ],
+      '/network/': [
+
+      ],
+      '/computer/': [
+        '进程与线程.md'
       ],
       '/resources/': [
         '网络协议.md',
