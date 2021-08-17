@@ -134,7 +134,8 @@ module.exports = {
         // '单例模式.md'
       ],
       '/node/': [
-        '手写简版express.md'
+        '手写简版express.md',
+        'compose.md',
       ],
       '/network/': [
 
