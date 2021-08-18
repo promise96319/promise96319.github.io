@@ -113,6 +113,7 @@ module.exports = {
       '/javascript/': [
         '事件循环机制.md',
         '手写Promise.md',
+        'co库.md'
       ],
       '/algorithms/': [
         '动态规划.md',
