@@ -1,6 +1,6 @@
 # 手写简版redux
 
-[实现代码](https://codesandbox.io/s/runtime-night-b014h)
+[实现代码](https://codesandbox.io/s/shou-xie-jian-ban-redux-k3p7z)
 
 ## createStore
 
