@@ -110,6 +110,9 @@ module.exports = {
         '手写简版VueRouter.md',
         '阅读资料.md',
       ],
+      '/react/': [
+        '手写简版redux.md'
+      ],
       '/javascript/': [
         '事件循环机制.md',
         '手写Promise.md',
