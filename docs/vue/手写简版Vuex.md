@@ -80,6 +80,8 @@ class Store {
 }
 
 const install = (Vue) => {
+  // 类似于单例模式
+  if (_Vue === Vue) return
   _Vue = Vue
   Vue.mixin({
     beforeCreate () {

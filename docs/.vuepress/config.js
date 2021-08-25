@@ -136,7 +136,10 @@ module.exports = {
         '布隆过滤器.md',
       ],
       '/design-pattern/': [
-        // '单例模式.md'
+        '创建型模式.md',
+        '结构型模式.md',
+        '行为型模式.md',
+        '阅读资料.md',
       ],
       '/node/': [
         '手写简版express.md',
