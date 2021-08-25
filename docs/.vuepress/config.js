@@ -44,7 +44,7 @@ module.exports = {
         link: '/vue/'
       },
       {
-        text: 'js核心知识点',
+        text: 'js知识点',
         link: '/javascript/'
       },
       {
@@ -80,10 +80,10 @@ module.exports = {
         text: '网络',
         link: '/network/'
       },
-      {
-        text: '计算机',
-        link: '/computer/'
-      },
+      // {
+      //   text: '计算机',
+      //   link: '/computer/'
+      // },
       {
         text: '前端资源',
         link: '/resources/'
@@ -111,7 +111,8 @@ module.exports = {
         '阅读资料.md',
       ],
       '/react/': [
-        '手写简版redux.md'
+        '手写简版redux.md',
+        '手写简版react-redux.md',
       ],
       '/javascript/': [
         '事件循环机制.md',
@@ -156,7 +157,7 @@ module.exports = {
         '算法.md',
         '前端博客.md'
       ],
-      '/about/': []
+      '/about/': [],
     },
     nextLinks: true,
     prevLinks: true,
