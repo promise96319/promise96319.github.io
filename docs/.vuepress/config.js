@@ -113,6 +113,8 @@ module.exports = {
       '/react/': [
         '手写简版redux.md',
         '手写简版react-redux.md',
+        'react源码调试.md',
+        '阅读资料',
       ],
       '/javascript/': [
         '事件循环机制.md',
