@@ -1,8 +1,8 @@
 ---
 home: true
 heroImage: ./logo.png
-heroText: 秦光辉
-actionText: 开始学习
+# heroText: 秦光辉
+actionText: 笔记
 actionLink: /vue/
 # navbar: false
 features:
