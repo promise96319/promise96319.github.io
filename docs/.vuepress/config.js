@@ -111,9 +111,10 @@ module.exports = {
         '阅读资料.md',
       ],
       '/react/': [
+        '浏览器一帧里做了什么.md',
+        'react源码调试.md',
         '手写简版redux.md',
         '手写简版react-redux.md',
-        'react源码调试.md',
         '阅读资料',
       ],
       '/javascript/': [

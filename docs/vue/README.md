@@ -1,5 +1,7 @@
 # Vue源码解析
 
+## 目录
+
 - [Vue设计思路](./组成与设计.md)
 - [选项合并策略](./选项合并.md)
 - [从零构建一个响应式系统](./响应式原理上篇.md)
@@ -11,3 +13,6 @@
 - [手写简版Vuex](./手写简版Vuex.md)
 - [手写简版VueRouter](./手写简版VueRouter.md)
 - [阅读资料](./阅读资料)
+
+## 一些问题
+- [Why remove time slicing from vue3?](https://github.com/vuejs/rfcs/issues/89)
