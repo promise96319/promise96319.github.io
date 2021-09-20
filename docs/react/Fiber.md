@@ -88,7 +88,7 @@ function FiberNode(
 
 在`React`中最多会同时存在两颗`Fiber`树，当前屏幕中已经显示的`Fiber`树在`React`源码中通常以变量`current`表示。而当界面需要更新时，在正在内存中正在构建的`Fiber`树，在源码中以`workInProgress`表示。它们之间可以通过`alternate`变量来访问。具体代码在`react-reconciler/src/ReactFiber.new.js`的`createWorkInProgress`中：
 
-```
+```javascript
 workInProgress.alternate = current
 current.alternate = workInProgress
 ```

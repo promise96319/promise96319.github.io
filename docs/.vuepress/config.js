@@ -112,12 +112,14 @@ module.exports = {
       ],
       '/react/': [
         'react源码起始篇.md',
+        'Lanes模型.md',
+        '任务调度.md',
         '浏览器一帧里做了什么.md',
         'Fiber.md',
         'react源码调试.md',
         '手写简版redux.md',
         '手写简版react-redux.md',
-        '阅读资料',
+        '阅读资料.md',
       ],
       '/javascript/': [
         '事件循环机制.md',
