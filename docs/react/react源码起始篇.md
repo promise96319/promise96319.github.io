@@ -181,7 +181,7 @@ export function createElement(type, config, children) {
     }
   }
 
-  // 2. 处理 children，形成数组形式
+  // 2. 处理 children，如果 children 长度大于1，形成数组形式
   const childrenLength = arguments.length - 2;
   if (childrenLength === 1) {
     props.children = children;
@@ -214,7 +214,7 @@ export function createElement(type, config, children) {
 }
 ```
 
-`type`表示的是`jsx`编译后的第一个参数，可能为普通字符串，也可能是一个变量。第二个参数`config`则是编译后节点上的属性。第三个及之后的参数统一转换为数组形式，表示该节点的`chidlren`节点。最终，经过`props,children`的处理后，会返回一个`ReactElement`对象。
+`type`表示的是`jsx`编译后的第一个参数，可能为普通字符串，也可能是一个变量。第二个参数`config`则是编译后节点上的属性。第三个及之后的参数表示该节点的`children`节点，如果子节点数目大于1，转换为数组形式。最终，经过`props,children`的处理后，会返回一个`ReactElement`对象。
 
 ## render
 
