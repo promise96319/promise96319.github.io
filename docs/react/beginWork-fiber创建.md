@@ -1,4 +1,4 @@
-# beginWork - fiber 的创建
+# beginWork - fiber的创建
 
 ## 开始
 
