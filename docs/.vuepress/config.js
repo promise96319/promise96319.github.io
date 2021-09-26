@@ -116,7 +116,7 @@ module.exports = {
         'Fiber.md',
         '浏览器一帧里做了什么.md',
         '任务调度.md',
-        'beginWork.md',
+        'beginWork-fiber创建.md',
         'react源码调试.md',
         '手写简版redux.md',
         '手写简版react-redux.md',
