@@ -118,6 +118,7 @@ module.exports = {
         '任务调度.md',
         'UpdateQueue.md',
         'beginWork-fiber创建.md',
+        'beginWork-fiber更新.md',
         'react源码调试.md',
         '手写简版redux.md',
         '手写简版react-redux.md',
