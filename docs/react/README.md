@@ -5,6 +5,7 @@
 - [Fiber](./Fiber.md)
 - [浏览器一帧里做了什么](./浏览器一帧里做了什么.md)
 - [任务调度](./任务调度.md)
+- [Update状态更新](./UpdateQueue.md)
 - [beginWork-fiber的创建](./beginWork-fiber创建.md)
 - [react源码调试](./react源码调试.md)
 - [手写简版redux](./手写简版redux.md)
