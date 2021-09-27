@@ -121,6 +121,7 @@ module.exports = {
         'beginWork-fiber更新.md',
         'completeWork.md',
         'hooks实现.md',
+        'commitWork.md',
         'react源码调试.md',
         '手写简版redux.md',
         '手写简版react-redux.md',

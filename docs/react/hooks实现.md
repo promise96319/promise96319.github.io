@@ -318,7 +318,7 @@ function mountEffectImpl(fiberFlags, hookFlags, create, deps): void {
 
 `mountWorkInProgressHook`在`useState`中已经讲过，其主要作用是创建一个`hook`，并将该`hook`与其他`hook`形成链表存放到`fiber.memoized`属性上。
 
-`currentlyRenderingFiber.flags |= fiberFlags`这里表示如果使用了`useEffect`这个`hook`，那么`fiber.flags`上回增加`PassiveEffect`和`PassiveStaticEffect`这两个标识符。
+`currentlyRenderingFiber.flags |= fiberFlags`这里表示如果使用了`useEffect`这个`hook`，那么`fiber.flags`上会增加`Passive`和`PassiveStatic`这两个标识符。
 
 接下来是`pushEffect`方法，首先会创建一个`effect`：
 
@@ -337,7 +337,7 @@ const effect: Effect = {
 };
 ```
 
-该`effect`的`tag`为`HookHasEffect | HookPassive`，随后将这个`effect`与其他的`effect`形成链表结构存放到`fiber.updateQueue`中：
+该`effect`的`tag`为`HasEffect | Passive`，随后将这个`effect`与其他的`effect`形成链表结构存放到`fiber.updateQueue`中：
 
 ```javascript
 let componentUpdateQueue: null | FunctionComponentUpdateQueue = (currentlyRenderingFiber.updateQueue: any);
@@ -372,7 +372,7 @@ if (componentUpdateQueue === null) {
 const hook = updateWorkInProgressHook()
 ```
 
-随后会判断依赖`deps`有没有发生变化。如果没有发生变化，那么`pushEffect`的时候，`effect.tags`不包含`HookHasEffect`。反之，则会包含。
+随后会判断依赖`deps`有没有发生变化。如果没有发生变化，那么`pushEffect`的时候，`effect.tags`不包含`HasEffect`。反之，则会包含。
 
 ```javascript
 hook.memoizedState = pushEffect(hookFlags, create, destroy, nextDeps);
@@ -383,14 +383,14 @@ hook.memoizedState = pushEffect(hookFlags, create, destroy, nextDeps);
 ### mount 阶段
 
 `useLayoutEffect`的`mount`阶段与`useEffect`几乎一致，主要的区别有两点：
-- `fiber`的`flags`为`UpdateEffect | LayoutStaticEffect`。
-- `effect`的`tag`为`HookHasEffect | HookLayout`。
+- `fiber`的`flags`为`Update | LayoutStatic`。
+- `effect`的`tag`为`HasEffect | Layout`。
 
 ### rerender和update阶段
 
 与`useEffect`一致，主要的区别在于：
 - `fiber`的`flags`为`UpdateEffect`。
-- `effect`的`tag`为`HookHasEffect | HookLayout`。
+- `effect`的`tag`为`HasEffect | Layout`。
 
 ## useMemo
 
