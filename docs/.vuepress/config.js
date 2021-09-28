@@ -129,6 +129,9 @@ module.exports = {
         '手写简版react-redux.md',
         '阅读资料.md',
       ],
+      '/webpack/': [
+        'webpack源码调试.md'
+      ],
       '/javascript/': [
         '事件循环机制.md',
         '../react/浏览器一帧里做了什么.md',
