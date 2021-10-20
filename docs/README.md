@@ -6,12 +6,12 @@ actionText: 笔记
 actionLink: /vue/
 # navbar: false
 features:
-- title: Vue源码解析
-  details: 逐行分析Vue源码，深入了解Vue底层原理。
+- title: Vue2源码解析
+  details: 逐行分析Vue2源码，深入了解Vue2底层原理。
 - title: React源码解析
   details: React源码解析
-- title: Webpack源码解析
-  details: Webpack源码解析
+- title: Webpack源码阅读笔记
+  details: Webpack源码阅读笔记
 # footer: 鄂ICP备20002086号-1
 ---
 

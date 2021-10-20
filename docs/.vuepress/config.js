@@ -133,6 +133,7 @@ module.exports = {
         '整体流程.md',
         'make阶段.md',
         'factorizeModule.md',
+        'addModule.md',
         'Tapable.md',
         'webpack源码调试.md'
       ],

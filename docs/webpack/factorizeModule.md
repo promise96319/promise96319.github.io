@@ -1,6 +1,6 @@
 # factorizeModule
 
-`make`阶段第一步做的是就是根据`dependency`进行`factorizeModule`，创建成相应的`module`。
+`make`阶段第一步做的事是通过`factorizeModule`将`dependency`创建成相应的`module`。
 
 ## _factorizeModule方法
 
