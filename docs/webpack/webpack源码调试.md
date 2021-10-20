@@ -37,7 +37,7 @@ Debugger listening on ws://127.0.0.1:9229/8d04b555-653d-45b0-9d19-00f63aed08b1
 For help, see: https://nodejs.org/en/docs/inspector
 ```
 
-## 开始调试
+## chrome调试
 
 访问`ws://127.0.0.1:9229/8d04b555-653d-45b0-9d19-00f63aed08b1`网址并打开`chrome`控制台:
 
@@ -46,6 +46,29 @@ For help, see: https://nodejs.org/en/docs/inspector
 会出现`node`的`logo`，点击该`logo`，即可开始打断点调试：
 
 ![img](./imgs/inspect/chrome-inspect-02.jpg)
+
+## vscode调试
+如果想在`vscode`中调试，手写需要按`chrome`调试的方法完整操作一遍。然后在`vscode`中下载`chrome`调试插件：`Debugger for Chrome`。下载完成后点击插件提供的运行按钮，选择`node`环境。在`.vscode/`目录下会生成一个`launch.json`文件，将文件替换成一下内容：
+
+```javascript
+{
+  "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "pwa-node",
+        "request": "launch",
+        "name": "Debug webpack",
+        "skipFiles": [
+          "<node_internals>/**"
+        ],
+        "program": "${workspaceFolder}/index.js"
+      }
+    ]
+}
+```
+
+最终就可以在`vscode`中调试了：
+![img](imgs/inspect/chrome-vscode-debugger.png)
 
 ## 参考文章
 

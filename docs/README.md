@@ -9,9 +9,9 @@ features:
 - title: Vue源码解析
   details: 逐行分析Vue源码，深入了解Vue底层原理。
 - title: React源码解析
-  details: 码字中...
+  details: React源码解析
 - title: Webpack源码解析
-  details: 码字中...
+  details: Webpack源码解析
 # footer: 鄂ICP备20002086号-1
 ---
 

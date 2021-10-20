@@ -130,6 +130,10 @@ module.exports = {
         '阅读资料.md',
       ],
       '/webpack/': [
+        '整体流程.md',
+        'make阶段.md',
+        'factorizeModule.md',
+        'Tapable.md',
         'webpack源码调试.md'
       ],
       '/javascript/': [
