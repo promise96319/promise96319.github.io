@@ -135,6 +135,7 @@ module.exports = {
         'factorizeModule.md',
         'addModule.md',
         'buildModule.md',
+        'import().md',
         'Tapable.md',
         'webpack源码调试.md'
       ],
