@@ -4,5 +4,6 @@
 - [make阶段](./make阶段.md)
 - [factorizeModule](./factorizeModule.md)
 - [addModule](./addModule.md)
+- [buildModule](./buildModule.md)
 - [Tapable](./Tapable.md)
 - [Webpack源码调试](./webpack源码调试.md)
