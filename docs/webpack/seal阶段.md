@@ -445,7 +445,7 @@ return resultEntry;
 
 `seal`阶段大概可以分为三个阶段：
 
-第一个阶段为`chunk`关系建立，此时会编译所有的`module`，并形成`module`和`chunk`之间的关系。
+第一个阶段为`chunk`关系建立，此时会遍历所有的`module`，并形成`module`和`chunk`之间的关系。
 
 第二个阶段为`chunk`的优化阶段，该阶段会对生成的`chunk`进行处理优化，如清除空的`chunk`、重复的`chunk`、对`chunk`进行分包等等。
 

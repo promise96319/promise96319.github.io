@@ -137,6 +137,7 @@ module.exports = {
         'buildModule.md',
         'import().md',
         'seal阶段.md',
+        'emit阶段.md',
         'Tapable.md',
         'webpack源码调试.md'
       ],

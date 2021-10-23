@@ -6,6 +6,7 @@
 - [addModule](./addModule.md)
 - [buildModule](./buildModule.md)
 - [seal阶段](./seal阶段.md)
+- [emit阶段](./emit阶段.md)
 - [import()分包原理](./import().md)
 - [Tapable](./Tapable.md)
 - [Webpack源码调试](./webpack源码调试.md)
