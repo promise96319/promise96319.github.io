@@ -270,6 +270,6 @@ var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
 3. 在生成`chunks`的时候会去遍历`blocks`，单独生成`chunks`。
 4. 生成的代码执行时
    1. 初始化一些参数，比如`webpackJsonpCallback`以及`chunkLoadingGlobal`等等。
-   2. 执行`__webapck_require__.e`判断模块是否已经加载，如果未加载会创建一个`promise`。
-   3. 调用`__webapck_require__.l`创建`script`标签加载`chunk`。
+   2. 执行`__webpack_require__.e`判断模块是否已经加载，如果未加载会创建一个`promise`。
+   3. 调用`__webpack_require__.l`创建`script`标签加载`chunk`。
    4. 执行`chunk`代码时调用`push`方法将引用到的模块传给`webpackJsonpCallback`。然后将该模块记录到`__webpack_modules__`中。随后执行`__webpack_require__`加载该模块。

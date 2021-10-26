@@ -138,6 +138,7 @@ module.exports = {
         'import().md',
         'seal阶段.md',
         'emit阶段.md',
+        'TreeShaking原理.md',
         'Tapable.md',
         'webpack源码调试.md'
       ],
