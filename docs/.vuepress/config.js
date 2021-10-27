@@ -140,6 +140,7 @@ module.exports = {
         'import().md',
         'TreeShaking原理.md',
         'SplitChunksPlugin.md',
+        'watch实现.md',
         'Tapable.md',
         'webpack源码调试.md'
       ],

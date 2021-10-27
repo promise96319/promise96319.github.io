@@ -101,7 +101,7 @@ while (this.hooks.optimizeChunks.call(this.chunks, this.chunkGroups)) {
 假设有两个入口文件`index1.js`和`index2.js`，他们同时引入了`moduleA.js`文件，`webpack`的配置如下：
 
 ```javascript
-// webpack.config.json
+// webpack.config.js
 {
   splitChunks: {
     chunks: 'all',
