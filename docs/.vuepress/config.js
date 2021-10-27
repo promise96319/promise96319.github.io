@@ -135,10 +135,11 @@ module.exports = {
         'factorizeModule.md',
         'addModule.md',
         'buildModule.md',
-        'import().md',
         'seal阶段.md',
         'emit阶段.md',
+        'import().md',
         'TreeShaking原理.md',
+        'SplitChunksPlugin.md',
         'Tapable.md',
         'webpack源码调试.md'
       ],
