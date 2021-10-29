@@ -108,6 +108,7 @@ module.exports = {
         '编译原理下篇.md',
         '手写简版Vuex.md',
         '手写简版VueRouter.md',
+        '../webpack/vue-loader实现.md',
         '阅读资料.md',
       ],
       '/react/': [
@@ -141,6 +142,7 @@ module.exports = {
         'TreeShaking原理.md',
         'SplitChunksPlugin.md',
         'watch实现.md',
+        'vue-loader实现.md',
         'Tapable.md',
         'webpack源码调试.md'
       ],
