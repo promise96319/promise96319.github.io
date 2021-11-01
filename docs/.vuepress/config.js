@@ -143,6 +143,7 @@ module.exports = {
         'SplitChunksPlugin.md',
         'watch实现.md',
         'vue-loader实现.md',
+        '热更新实现原理.md',
         'Tapable.md',
         'webpack源码调试.md'
       ],

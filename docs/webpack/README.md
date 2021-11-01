@@ -12,5 +12,6 @@
 - [SplitChunksPlugin 原理](./SplitChunksPlugin.md)
 - [watch 实现](./watch实现.md)
 - [vue-loader 实现](./vue-loader实现.md)
+- [热更新实现原理](./热更新实现原理.md)
 - [Tapable](./Tapable.md)
 - [Webpack源码调试](./webpack源码调试.md)
