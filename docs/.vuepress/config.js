@@ -131,7 +131,7 @@ module.exports = {
         '阅读资料.md',
       ],
       '/webpack/': [
-        '整体流程.md',
+        '流程开始.md',
         'make阶段.md',
         'factorizeModule.md',
         'addModule.md',
