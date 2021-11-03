@@ -1,5 +1,29 @@
 # 手写简版Vuex
 
+## 简单使用
+```javascript
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+const store =  new Vuex.Store({
+  modules: {
+    user,
+    app,
+    // ...
+  },
+  getters
+})
+
+new Vue({
+  el: '#app',
+  store,
+  components: { App },
+  render: (h) => h(App)
+})
+```
+
 ## 实现效果
 
 [vuex 实现效果预览](https://codesandbox.io/s/polished-dust-r04fj?file=/src/vuex/index.js)
@@ -36,6 +60,7 @@ class Store {
     // 通过 computed 来实现 getters
     Object.entries(getters).map(([getterName, getter]) => {
       computed[getterName] = () => {
+        // 封装一层，添加 this.state 作为参数
         return getter(this.state)
       }
       // 访问 getters 的 key 就是访问 computed 的 key
@@ -86,6 +111,7 @@ const install = (Vue) => {
   Vue.mixin({
     beforeCreate () {
       const options = this.$options
+      // 注入 $store 变量
       if (options.store) {
         this.$store = options.store
       } else if (options.parent && options.parent.$store) {
@@ -104,6 +130,5 @@ export default {
 ## 问题
 
 #### Q:为什么要commit/dispatch两种形式来处理，都使用dispatch不行吗？
-
    - 一种可能的原因是单一职责，`commit`主要处理同步任务，触发状态更新；`dispatch`主要处理异步任务
    - 另一种原因是方便`devtools`追踪状态变化。参考[这里的评论](https://juejin.cn/post/6844904054108192776)。

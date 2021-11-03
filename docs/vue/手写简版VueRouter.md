@@ -1,5 +1,34 @@
 # 手写简版VueRouter
 
+## 简单使用
+```javascript
+import Router from 'vue-router'
+
+export const routes = [
+  {
+    path: '/home',
+    name: 'Home',
+    component: Home
+  },
+]
+
+const router = new Router({
+  routes: routes,
+  mode: 'history',
+  base: '/dashboard',
+})
+
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  render: (h) => h(App)
+})
+
+// 模板
+<router-view></router-view>
+```
+
 ## 实现效果
 [简版VueRouter效果](https://codesandbox.io/s/shouxiejianbanvuerouter-7mmxc?file=/src/main.js)
 
@@ -24,6 +53,8 @@ export default {
     }
   },
   render(h) {
+    // _route 改变时，触发更新
+    // 匹配到的 route
     const route = this._route;
     const props = this.$options.propsData;
     let component;
@@ -38,6 +69,7 @@ export default {
         component = route.component;
       }
     }
+    // 渲染匹配到的 component
     return h(component);
   }
 };
@@ -54,7 +86,7 @@ const install = (Vue) => {
   _Vue = Vue;
   Vue.mixin({
     beforeCreate() {
-      // 注入 $router 变量
+      // 全局注入 $router 变量
       const options = this.$options;
       if (options.router) {
         this.$router = options.router;
@@ -66,7 +98,7 @@ const install = (Vue) => {
       Vue.util.defineReactive(this, "_route", this.$router.currentRoute);
     }
   });
-  // 注册 router-view 组件
+  // 全局注册 router-view 组件
   Vue.component("RouterView", RouterView);
 };
 
@@ -85,6 +117,7 @@ class History {
 
   // path or name
   push(location, cb) {
+    // 路径改变，去用户定义的 routes 中匹配对应的 route
     const route = this.router.match(location);
     history.pushState({ time: Date.now() }, null, route.path);
     cb && cb(route);
@@ -106,6 +139,7 @@ class VueRouter {
     return new Route(matched);
   }
 
+  // 记录所有的 Vue 实例
   init(app) {
     this.app = app;
     this.apps.push(app);
@@ -115,7 +149,7 @@ class VueRouter {
     this.history.push(location, (route) => {
       // 当前route
       this.currentRoute = route;
-      // 更新所有实例当前的route
+      // 更新所有实例当前的 _route 变量
       this.apps.forEach((app) => {
         app._route = route;
       });
@@ -132,4 +166,10 @@ export default VueRouter;
 
 #### Q:单页面为什么能有像多页面跳转的效果？
 
-就如同实现思路中所提到的一样，实际上Vue是通过判断当前的路径，然后匹配到当前的路由，然后通过router-view组件呈现当前匹配到的路由对应的组件。跳转的本质是匹配到不同的组件而已。当然，这里实现得比较简单，具体的逻辑可以看看源码是如何实现的。
+就如同实现思路中所提到的一样，实际上Vue是通过判断当前的路径，然后匹配到当前的路由，最后通过router-view组件呈现当前匹配到的路由对应的组件。跳转的本质是匹配到不同的组件而已。当然，这里实现得比较简单，具体的逻辑可以看看源码是如何实现的。
+
+#### Q:vue-router大致是如何实现的？
+1. 当push的时候，通过history.pushState api向浏览器添加一条历史记录，此时没有任何跳转。
+2. 然后对新push的值进行解析，并且与用户自定义的routes配置进行匹配，最终会得到相应的路径和匹配到的component。
+3. 匹配完后，将每个Vue实例的_route属性更改为匹配到的route。
+4. 在router-view组件内部监听_route属性，当发生变化时，看自身配置是否与route匹配。如果匹配，直接渲染匹配到的component。
