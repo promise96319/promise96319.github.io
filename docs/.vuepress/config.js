@@ -151,7 +151,8 @@ module.exports = {
         '事件循环机制.md',
         '../react/浏览器一帧里做了什么.md',
         '手写Promise.md',
-        'co库.md'
+        'co库.md',
+        'js继承',
       ],
       '/algorithms/': [
         '动态规划.md',
