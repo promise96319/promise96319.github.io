@@ -98,7 +98,7 @@ export function createFiberRoot(
 
 其中多出来的`workInProgressFiber`是后续`render`时才会创建。
 
-执行完`createRoot`函数后，我们已经能够获取到`ReactDomRoot`的实例了，接着就是开始执行`render`函数了。
+执行完`createRoot`函数后，我们已经能够获取到`ReactDomRoot`的实例了，接下来就是执行`render`函数了。
 
 ```javascript
 ReactDOM.createRoot(root).render(<App />)
@@ -106,9 +106,9 @@ ReactDOM.createRoot(root).render(<App />)
 
 ## jsx
 
-在`React`中，`JSX`在编译时会被`Babel`编译为`React.createElement`方法。这就是为什么在每个使用了`jsx`的文件中，都必须显示的引入`React`的原因，否则在运行的时候会无法找到`React`。
+在`React`中，`JSX`语法在编译时会被`Babel`编译为`React.createElement`方法。这就是为什么在每个使用了`jsx`语法的文件中，必须显示的引入`React`的原因，否则在运行的时候会无法找到`React.createElement`方法。
 
-`JSX`并不是只能被编译为`React.createElement`方法，你可以通过[@babel/plugin-transform-react-jsx(opens new window)](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx)插件显式告诉`Babel`编译时需要将`JSX`编译为什么函数的调用（默认为`React.createElement`）。
+`JSX`并不是只能被编译为`React.createElement`方法，你可以通过[@babel/plugin-transform-react-jsx(opens new window)](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx)插件显式告诉`Babel`编译时需要将`JSX`编译为其他函数的调用（默认为`React.createElement`）。
 
 #### 标签名为小写时
 
@@ -152,9 +152,9 @@ React.createElement(
 );
 ```
 
-**注意此时第一个参数为变量，这一点尤为重要，因为函数式组件，类组件，lazy组件等的编译都与这个相关。**
+**注意此时第一个参数为变量，这一点尤为重要，因为函数式组件，类组件，lazy组件等组件的渲染过程都与这个变量相关。**
 
-`jsx`的编译结果可以通过[这里](https://babeljs.io/repl#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.6&spec=false&loose=false&code_lz=DwQQDmAEDGA2CGBnRA5eBbApgXgEQDsB7AJ3XlgFoAXeAc1wD5pD8rNXgB6cMBoA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=env%2Creact&prettier=true&targets=&version=7.15.6&externalPlugins=&assumptions=%7B%7D)实时预览调试。
+`jsx`的编译结果可以通过[这里](https://babeljs.io/repl#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.6&spec=false&loose=false&code_lz=DwQQDmAEDGA2CGBnRA5eBbApgXgEQDsB7AJ3XlgFoAXeAc1wD5pD8rNXgB6cMBoA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=env%2Creact&prettier=true&targets=&version=7.15.6&externalPlugins=&assumptions=%7B%7D)进行预览调试。
 
 ## createElement
 
@@ -218,7 +218,7 @@ export function createElement(type, config, children) {
 
 ## render
 
-接下来就是正式的`render`阶段了。找到`ReactDOMRoot.js`文件：
+接下来是正式的`render`阶段。找到`ReactDOMRoot.js`文件：
 
 ```javascript
 ReactDOMRoot.prototype.render = function (children: ReactNodeList): void {
@@ -227,7 +227,7 @@ ReactDOMRoot.prototype.render = function (children: ReactNodeList): void {
 };
 ```
 
-`render`函数很简单，第一个是找到`FiberRoot`，然后调用`updateContainer`方法处理传入的`children`（也就是`<App/>`通过编译后的`ReactElement`节点）。
+`render`函数很简单，第一个是找到`FiberRoot`，然后调用`updateContainer`方法处理传入的`children`（也就是`<App/>`编译后对应的`ReactElement`节点）。
 
 ## updateContainer
 
@@ -275,11 +275,11 @@ export function updateContainer(
 
 第二步中，`requestEventTime`获取当前的时间，通常使用`preformance.now()`获取，用于表示该任务执行的起始时间。该时间会在优先级调度中用到，用于判断任务是否过期。
 
-第三步中，`requestUpdateLane`获取本次更新的`lane`，不同的`lane`对应于不同的优先级。具体`lane`的描述在`lane`模型章节中有描述。
+第三步中，`requestUpdateLane`获取本次更新的`lane`，不同的`lane`对应于不同的优先级。具体`lane`的描述在`lane`模型章节中提到。
 
 第四步和第五步主要是创建一个`update`，然后将该`update`放到`updateQueue`中，用于表示本次更新的内容。
 
-第六步就要开始正式的调度过程了，也就是正式的任务调度和渲染环节。`class`组件中的`setState/forceUpdate`方法最后都会执行该函数进行调度，因此十分重要。
+第六步就要开始正式的调度过程，也就是正式的任务调度和渲染环节。`class`组件中的`setState/forceUpdate`方法最后都会执行该函数进行调度，因此十分重要。
 
 ## scheduleUpdateOnFiber
 
@@ -298,8 +298,8 @@ export function scheduleUpdateOnFiber(
   // 当向上寻找fiber 最终找到 rootFiber 时，会返回对应的 fiberRoot
   const root = markUpdateLaneFromFiberToRoot(fiber, lane);
 
-  // 更新 fiber root 上 pendingLanes，加入了当前 lane
-  // 计算 lane 所在位置，并将 eventTime 放到 eventTimes 里
+  // 更新 fiber root 上 pendingLanes，加入当前 lane
+  // 计算 lane 所在位置（32条lane中的第几级），并将 eventTime 放到 eventTimes 里
   // eventTime 表示创建这个 update 的时间。也是 lane 对应的时间。
   markRootUpdated(root, lane, eventTime);
 
@@ -332,7 +332,7 @@ function ensureRootIsScheduled(root: FiberRoot, currentTime: number) {
   // 如果老任务一直被打断，但是老任务时间到了，就会将其置为过期，这样下次就可以以最高优先级进行更新了。
   markStarvedLanesAsExpired(root, currentTime);
 
-  // 3. 根据优先级来判断下一个执行的 lane
+  // 3. 根据优先级来判断下一个应该执行的 lane（选取优先级最高的 lane）
   const nextLanes = getNextLanes(
     root,
     root === workInProgressRoot ? workInProgressRootRenderLanes : NoLanes,

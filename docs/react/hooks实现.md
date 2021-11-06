@@ -4,7 +4,7 @@
 
 ```javascript
 nextChildren = renderWithHooks(
-	current,
+  current,
   workInProgress,
   Component,
   nextProps,
@@ -24,7 +24,7 @@ let children = Component(props, secondArg);
 ReactCurrentDispatcher.current = ContextOnlyDispatcher;
 ```
 
-首先会根据`current.memoizedState`来判断当前是`mount`阶段还是`update`阶段，从而决定使用`HooksDispatcherOnMount`还是`HooksDispatcherOnUpdate`。然后执行`Component`，在执行的过程中，如果我们只用了`hook`，那么就会执行相应的`hook`。最后将`ReactCurrentDispatcher.current`置空。下面看一下`hooks`的实现。
+首先会根据`current.memoizedState`来判断当前是`mount`阶段还是`update`阶段，从而决定使用`HooksDispatcherOnMount`还是`HooksDispatcherOnUpdate`。然后执行`Component`，在执行的过程中，如果我们使用了`hook`，那么就会执行相应的`hook`方法。最后将`ReactCurrentDispatcher.current`置空。下面看一下`hooks`的实现。
 
 ## useState
 
@@ -39,7 +39,7 @@ export function useState<S>(
 }
 ```
 
-第一步是`resolveDispatcher`获取当前的`dispatcher`。在函数执行前已经通过`mount/update`将当前的`diaptcher`存放到全局了，所以这里可以获取到。
+第一步是`resolveDispatcher`获取当前的`dispatcher`。在`renderWithHooks`函数执行前已经通过判断`mount/update`将当前的`dispatcher`存放到全局，所以这里可以获取到。
 
 ### mount 阶段
 
@@ -49,7 +49,6 @@ export function useState<S>(
 const HooksDispatcherOnMount: Dispatcher = {
   useState: mountState,
 }
-
 
 function mountState<S>(
   initialState: (() => S) | S,
@@ -85,37 +84,37 @@ function mountState<S>(
 第一步执行的是`mountWorkInProgressHook`，该函数首先会创建一个`hook`，用于存放对应`hook`的状态：
 
 ```javascript
-  const hook: Hook = {
-    // 记录该 hook 的 state
-    memoizedState: null,
-    // base state
-    baseState: null,
-    // base queue
-    baseQueue: null,
-    // 更新queue
-    queue: null,
-    // 指向下一个 hook
-    next: null,
-  };
+const hook: Hook = {
+  // 记录该 hook 的 state
+  memoizedState: null,
+  // base state
+  baseState: null,
+  // base queue
+  baseQueue: null,
+  // 更新queue
+  queue: null,
+  // 指向下一个 hook
+  next: null,
+};
 ```
 
 随后将`hook`形成链表结构，并将该链表存放到`fiber.memoizedState`当中：
 
 ```javascript
-  if (workInProgressHook === null) {
-    // currentlyRenderingFiber 表示的是当前正在执行的的 函数 fiber。
-    currentlyRenderingFiber.memoizedState = workInProgressHook = hook;
-  } else {
-    // 遇到的 hooks 形成链表形式。
-    workInProgressHook = workInProgressHook.next = hook;
-  }
+if (workInProgressHook === null) {
+  // currentlyRenderingFiber 表示的是当前正在执行的的 函数 fiber。
+  currentlyRenderingFiber.memoizedState = workInProgressHook = hook;
+} else {
+  // 遇到的 hooks 形成链表形式。
+  workInProgressHook = workInProgressHook.next = hook;
+}
 ```
 
 这样后续就可以通过链表来访问每一个使用到的`hook`的状态了。
 
 #### dispatchAction
 
-在拿到`hook`后会初始化`memoizedState`，并将相应的`memoizedState`和`dispatch`函数返回。当调用`dispatch`函数时，实际出发的是`dispatchAction`函数，首先会创建一个`update`:
+在拿到`hook`后会初始化`memoizedState`，并将相应的`memoizedState`和`dispatch`函数返回。当调用`dispatch`函数时，实际触发的是`dispatchAction`函数，首先会创建一个`update`:
 
 ```javascript
 const eventTime = requestEventTime();
@@ -132,7 +131,7 @@ const update: Update<S, A> = {
 };
 ```
 
-如果当前正在处理这个`fiber`，此时出发了`dispatch`，那么会执行如下分支：
+如果当前正在处理这个`fiber`，触发了`dispatch`，那么会执行如下分支：
 
 ```javascript
 if (
@@ -156,30 +155,30 @@ if (
 此时会将`update`形成循环链表，存放到`queue.pending`当中，并将`didScheduleRenderPhaseUpdateDuringThisPass`标记为`true`，这个标记在`renderWithHooks`中有用到：
 
 ```javascript
-  if (didScheduleRenderPhaseUpdateDuringThisPass) {
-    let numberOfReRenders: number = 0;
-    do {
-      didScheduleRenderPhaseUpdateDuringThisPass = false;
-      invariant(
-        numberOfReRenders < RE_RENDER_LIMIT,
-        'Too many re-renders. React limits the number of renders to prevent ' +
-        'an infinite loop.',
-      );
+if (didScheduleRenderPhaseUpdateDuringThisPass) {
+  let numberOfReRenders: number = 0;
+  do {
+    didScheduleRenderPhaseUpdateDuringThisPass = false;
+    invariant(
+      numberOfReRenders < RE_RENDER_LIMIT,
+      'Too many re-renders. React limits the number of renders to prevent ' +
+      'an infinite loop.',
+    );
 
-      numberOfReRenders += 1;
+    numberOfReRenders += 1;
 
-      currentHook = null;
-      workInProgressHook = null;
-      workInProgress.updateQueue = null;
+    currentHook = null;
+    workInProgressHook = null;
+    workInProgress.updateQueue = null;
 
 
-      ReactCurrentDispatcher.current = __DEV__
-        ? HooksDispatcherOnRerenderInDEV
-        : HooksDispatcherOnRerender;
+    ReactCurrentDispatcher.current = __DEV__
+      ? HooksDispatcherOnRerenderInDEV
+      : HooksDispatcherOnRerender;
 
-      children = Component(props, secondArg);
-    } while (didScheduleRenderPhaseUpdateDuringThisPass);
-  }
+    children = Component(props, secondArg);
+  } while (didScheduleRenderPhaseUpdateDuringThisPass);
+}
 ```
 
 如果为`true`的话，在函数组件执行完成后，会将`dispatcher`改为`HooksDispatcherOnRerender`并再次执行`Component`函数。并且这个重新渲染的次数不能大于最大次数`RE_RENDER_LIMIT`。
@@ -192,7 +191,7 @@ const root = scheduleUpdateOnFiber(fiber, lane, eventTime);
 
 ### rerender 阶段
 
-在`mount`阶段我们提到了`didScheduleRenderPhaseUpdateDuringThisPass`字段为`true`时，会立即触发`rerender`，此时使用的是`HooksDispatcherOnRerender`，因此`useState`对应于`rerenderState`也是`rerenderReducer`函数
+在`mount`阶段我们提到了`didScheduleRenderPhaseUpdateDuringThisPass`字段为`true`时，如果当前函数执行完毕，此时会立即触发`rerender`，使用的是`HooksDispatcherOnRerender`，因此`useState`对应于`rerenderState`也是`rerenderReducer`函数。
 
 #### updateWorkInProgressHook
 
@@ -278,13 +277,13 @@ queue.lastRenderedState = newState;
 
 ### update 阶段
 
-`update`阶段调用的是`updateReducer`，与`rerender`不同的是，该阶段循环执行`update`的时候会判断`updateLane`是否在`renderLanes`中:
+`update`阶段调用的是`updateReducer`，与`rerender`不同的是，循环执行`update`队列时，会判断`updateLane`是否在`renderLanes`中:
 
 ```javascript
 if (!isSubsetOfLanes(renderLanes, updateLane)) {}
 ```
 
-这个阶段的更新于`UpdateQueue`章节中`class`组件的`processUpdate`方法内的更新类似，这里不再赘述。
+这个阶段的更新与`UpdateQueue`章节中`class`组件的`processUpdate`方法更新类似，这里不再赘述。
 
 ## useReducer
 
@@ -316,7 +315,7 @@ function mountEffectImpl(fiberFlags, hookFlags, create, deps): void {
 }
 ```
 
-`mountWorkInProgressHook`在`useState`中已经讲过，其主要作用是创建一个`hook`，并将该`hook`与其他`hook`形成链表存放到`fiber.memoized`属性上。
+`mountWorkInProgressHook`在`useState`中已经讲过，其主要作用是创建一个`hook`，并将该`hook`与其他`hook`形成链表存放到`fiber.memoizedState`属性上。
 
 `currentlyRenderingFiber.flags |= fiberFlags`这里表示如果使用了`useEffect`这个`hook`，那么`fiber.flags`上会增加`Passive`和`PassiveStatic`这两个标识符。
 
@@ -362,7 +361,7 @@ if (componentUpdateQueue === null) {
 }
 ```
 
-这里`fiber.updateQueue.lastEffect`指向的就是新添加的`effect`。
+这里`fiber.updateQueue.lastEffect`指向的是新添加的`effect`。
 
 ### rerender和update阶段
 
@@ -466,7 +465,7 @@ if (lastFullyObservedContext === context) {
 }
 ```
 
-否则的话，会创建一个`contextItem`，形成链表并存放到`fiber.dependences.firstContext`上：
+否则的话，会创建一个`contextItem`，形成链表并存放到`fiber.dependencies.firstContext`上：
 
 ```javascript
 const contextItem = {
@@ -557,7 +556,7 @@ function startTransition(setPending, callback) {
 }
 ```
 
-首先会设置更新优先级，这样在`setPending`的时候，会进行`requestUpdateLane`，可以拿到对应的`lane`。随后将`ReactCurrentBatchConfig.transition`置为`1`，在`requestUpdateLane`会返回`transition lane`。因此内部`setPending(false)`第一个`transition lane`的更新。同样`callback`内部定义的更新也将会是一个`transition lane`的更新。这样在`transition`更新的时候，`setPending(false)`会执行。
+首先会设置更新时的优先级，这样在`setPending`的时候，会进行`requestUpdateLane`，拿到对应的`lane`。随后将`ReactCurrentBatchConfig.transition`置为`1`，在`requestUpdateLane`会返回`transition lane`。因此`try`内部`setPending(false)`是一个`transition lane`的更新。同样`callback`内部定义的更新也将会是一个`transition lane`的更新。这样在`transition`更新的时候，`setPending(false)`会执行。
 
 ### rerender和update阶段
 

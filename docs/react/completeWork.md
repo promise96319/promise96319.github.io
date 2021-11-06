@@ -57,24 +57,24 @@ if (current !== null && workInProgress.stateNode != null) {
 如果老`fiber`存在且`stateNode`存在，说明已经复用了`fiber`且具备真实节点。这个时候只需要更新属性即可：
 
 ```javascript
- updateHostComponent = function (//...) {
-  	// ...
-   
- 		// 类似结构：['name', '张三', 'id', 333, 'style', { color: 'red' }]
-    const updatePayload = prepareUpdate(
-      instance,
-      type,
-      oldProps,
-      newProps,
-      rootContainerInstance,
-      currentHostContext,
-    );
-    workInProgress.updateQueue = (updatePayload: any);
-		// 标记为 Update
-    if (updatePayload) {
-      markUpdate(workInProgress);
-    }
-  };
+updateHostComponent = function (//...) {
+  // ...
+  
+  // 类似结构：['name', '张三', 'id', 333, 'style', { color: 'red' }]
+  const updatePayload = prepareUpdate(
+    instance,
+    type,
+    oldProps,
+    newProps,
+    rootContainerInstance,
+    currentHostContext,
+  );
+  workInProgress.updateQueue = (updatePayload: any);
+  // 标记为 Update
+  if (updatePayload) {
+    markUpdate(workInProgress);
+  }
+};
 ```
 
 这个更新的过程正如`UpdateQueue`章节中提到的，主要是通过`prepareUpdate`方法对比节点的新旧`props`，最后将改变了的属性记录成数组形式。其中偶数`index`为键，奇数`index`为值。结构类似如下：
@@ -95,6 +95,7 @@ const instance = createInstance(
   currentHostContext,
   workInProgress,
 );
+
 export function createInstance(
   type: string,
   props: Props,
@@ -127,4 +128,4 @@ appendAllChildren(instance, workInProgress, false, false);
 workInProgress.stateNode = instance
 ```
 
-`appendAllChildren`方法会将能渲染的子节点全部添加到当前创建的节点`instance`上，这样一次向上进行`completeWork`时，就会形成一棵具有真实节点的树。
+`appendAllChildren`方法会将能渲染的子节点全部添加到当前创建的节点`instance`上，这样依次向上进行`completeWork`时，就会形成一棵具有真实节点树。

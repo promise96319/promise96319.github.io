@@ -93,7 +93,7 @@ export const createStore = (reducer, enhancer) => {
 }
 ```
 
-接下来实现`applyMiddlewar`方法：
+接下来实现`applyMiddleware`方法：
 
 ```javascript
 export const applyMiddleware = (...middlewares) => {

@@ -18,7 +18,7 @@ function FiberNode(
   mode: TypeOfMode,
 ) {
   // ====== 节点相关 =====
-  // react 中的一套标签
+  // react 中的一套自己定义的标签
   this.tag = tag;
   // 节点的 key 值
   this.key = key;
@@ -28,6 +28,7 @@ function FiberNode(
   this.type = null;
   // 对于 普通标签，如 div，存储着对应的真实节点
   // 对于 class 组件，存储着对应的 实例
+  // 对于 RootFiber，指向的是 FiberRoot
   this.stateNode = null;
 
   // ====== fiber 结构相关 =====
@@ -64,7 +65,7 @@ function FiberNode(
   this.flags = NoFlags;
   // 子fiber 对应的操作
   this.subtreeFlags = NoFlags;
-  // 存储哪些老的 子fiber 需要删除
+  // 存储哪些 老fiber 下的 子fiber 需要删除
   this.deletions = null;
 
   // ====== 调度相关 =====
@@ -86,7 +87,7 @@ function FiberNode(
 
 ## 双缓存
 
-在`React`中最多会同时存在两颗`Fiber`树，当前屏幕中已经显示的`Fiber`树在`React`源码中通常以变量`current`表示。而当界面需要更新时，在正在内存中正在构建的`Fiber`树，在源码中以`workInProgress`表示。它们之间可以通过`alternate`变量来访问。具体代码在`react-reconciler/src/ReactFiber.new.js`的`createWorkInProgress`中：
+在`React`中最多会同时存在两颗`Fiber`树，当前屏幕中已经显示的`Fiber`树在`React`源码中通常以变量`current`表示。当界面更新时，会在内存中构建另一颗`Fiber`树，在源码中以`workInProgress`表示。它们之间可以通过`alternate`变量来访问。具体代码在`react-reconciler/src/ReactFiber.new.js`的`createWorkInProgress`中：
 
 ```javascript
 workInProgress.alternate = current

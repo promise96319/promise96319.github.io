@@ -4,14 +4,14 @@
 
 `React`在提升用户交互体验时，较为重要的一点是优先响应用户交互触发的更新任务，其余不那么重要的任务要做出让步，我们把用户交互触发的任务称为**高优先级任务**，不那么重要的任务称为**低优先级任务**。
 
-React的Concurrent模式下，不同优先级任务的存在会导致一种现象：高优先级的任务可以打断低优先级任务的执行。另外，倘若低优先级任务一直被高优先级任务打断，那么低优先级任务就会过期，会被强制执行掉。这就是涉及到两个问题：**高优先级任务插队**和**饥饿问题**。
+`React`的`Concurrent`模式下，不同优先级任务的存在会导致一种现象：高优先级的任务可以打断低优先级任务的执行。另外，倘若低优先级任务一直被高优先级任务打断，那么低优先级任务就会过期(应该在某个时间执行但是被打断了)，会被强制执行。这就是涉及到两个问题：**高优先级任务插队**和**饥饿问题**。
 
-`React`中通过引`Laness`模型来解决优先级相关的问题，`Lanes`模型相对于传统的`Expiration Times`模型主要有两大优势：
+`React`通过引`Lanes`模型来解决优先级相关的问题，`Lanes`模型相对于传统的`Expiration Times`模型主要有两大优势：
 
-1. `Lanes`将任务优先级的概念（“A任务优先级是否高于任务B？”）与任务批处理（“A任务是否属于这组任务？”）分离开来。（增加了”批“的概念）
+1. `Lanes`将任务优先级的概念（“A任务优先级是否高于任务B？”）与任务批处理（“A任务是否属于这组任务？”）分离开来。（增加了”批“的概念）。
 2. `Lanes`可以用单个32位二进制数据表示许多不同的任务线程。
 
-详细的`Lanes`模型提出过程可以通过[Initial Lanes implementation](https://github.com/facebook/react/pull/18796)这篇文章查看。
+详细的`Lanes`模型提出过程可以查看[Initial Lanes implementation](https://github.com/facebook/react/pull/18796)这篇文章。
 
 ## Lanes
 
@@ -89,7 +89,7 @@ export function requestUpdateLane(fiber: Fiber): Lane {
     return (SyncLane: Lane);
   }
 
-  // 如果使用了 useTransition 等 hook，那么这里会设置为 isTransition 为 true
+  // 如果使用了 useTransition 等 hook，那么这里会设置 isTransition 为 true
   const isTransition = requestCurrentTransition() !== NoTransition;
   if (isTransition) {
     // 返回当前的 transition lane
@@ -230,7 +230,7 @@ export function getEventPriority(domEventName: DOMEventName): * {
 
 ## Lanes运算
 
-`Lanes`直接的运算都是通过二进制运算的，如：
+`Lanes`之间都是通过二进制运算的，如：
 
 ```javascript
 // 合并两条 lanes
@@ -252,4 +252,4 @@ export function getHighestPriorityLane(lanes: Lanes): Lane {
 }
 ```
 
-`lanes & -lanes`相当于获取二进制数中最后一个为`1`的位的值，如`11100100`中最后一个`1`是`100`，因此计算出来的值就是`4`。
+`lanes & -lanes`可以简单理解为：获取二进制数中最后一个为`1`的位的值，如`11100100`中最后一个`1`是`100`，因此计算出来的值就是`4`。

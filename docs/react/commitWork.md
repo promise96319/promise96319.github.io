@@ -1,6 +1,6 @@
 # commitWork 阶段
 
-通常来讲，如果`beginWork`和`completeWork`阶段均正常执行，那么所有的`fiber`被处理完后，会进入`commit`阶段：
+`beginWork`和`completeWork`阶段都正常结束后，此时所有的`fiber`和真实节点创建完成，进入到`commit`阶段：
 
 ```javascript
 const finishedWork: Fiber = (root.current.alternate: any);
@@ -36,43 +36,43 @@ function commitRoot(root) {
 `commit`第一步会执行`flushPassiveEffects`方法：
 
 ```javascript
-  do {
-    flushPassiveEffects();
-  } while (rootWithPendingPassiveEffects !== null);
+do {
+  flushPassiveEffects();
+} while (rootWithPendingPassiveEffects !== null);
 ```
 
 那么什么时候`rootWithPendingPassiveEffects !== null`成立呢？在`commitRootImpl`方法后半段会进行赋值：
 
 ```javascript
-  if (rootDoesHavePassiveEffects) {
-    rootDoesHavePassiveEffects = false;
-    rootWithPendingPassiveEffects = root;
-    pendingPassiveEffectsLanes = lanes;
-  }
+if (rootDoesHavePassiveEffects) {
+  rootDoesHavePassiveEffects = false;
+  rootWithPendingPassiveEffects = root;
+  pendingPassiveEffectsLanes = lanes;
+}
 ```
 
 如果`rootDoesHavePassiveEffects`成立，那么会将`root`赋值给`rootWithPendingPassiveEffects`。那么下一轮`commit`时，`rootWithPendingPassiveEffects !== null` 就会成立了。还是在这个函数中，再看看`rootDoesHavePassiveEffects`变量：
 
 ```javascript
-  if (
-    (finishedWork.subtreeFlags & PassiveMask) !== NoFlags ||
-    (finishedWork.flags & PassiveMask) !== NoFlags
-  ) {
-    if (!rootDoesHavePassiveEffects) {
-      rootDoesHavePassiveEffects = true;
-      scheduleCallback(NormalSchedulerPriority, () => {
-        flushPassiveEffects();
-        return null;
-      });
-    }
+if (
+  (finishedWork.subtreeFlags & PassiveMask) !== NoFlags ||
+  (finishedWork.flags & PassiveMask) !== NoFlags
+) {
+  if (!rootDoesHavePassiveEffects) {
+    rootDoesHavePassiveEffects = true;
+    scheduleCallback(NormalSchedulerPriority, () => {
+      flushPassiveEffects();
+      return null;
+    });
   }
+}
 ```
 
 如果`flags/subtreeFlags`中存在`PassiveMask`，即`Passive|ChildDeletion`，那么`rootDoesHavePassiveEffects`为`true`。也就是说如果使用了`useEffect`或者是节点有删除的情况，那么就会执行`flushPassiveEffects`方法：
 
 ```javascript
 export function flushPassiveEffects(): boolean {
-  // 如果 rootWithPendingPassiveEffects 存在，说明使用了 useEffect
+  // 如果 rootWithPendingPassiveEffects 存在，说明使用了 useEffect 或者有子节点被删除
   if (rootWithPendingPassiveEffects !== null) {
     const renderPriority = lanesToEventPriority(pendingPassiveEffectsLanes);
     const priority = lowerEventPriority(DefaultEventPriority, renderPriority);
@@ -157,20 +157,20 @@ function commitPassiveUnmountInsideDeletedTreeOnFiber(
 `commitHookEffectListUnmount`方法会循环执行`fiber`上的`effects`(如果使用了`useEffect/useLayoutEffect`等，会创建`effect`，并形成链表挂载到`fiber.updateQueue.effects.lastEffect`上)：
 
 ```javascript
-   const firstEffect = lastEffect.next;
-    // 找到第一个 effect
-    let effect = firstEffect;
-    do {
-      // 如果 tag 包含 flags
-      if ((effect.tag & flags) === flags) {
-        const destroy = effect.destroy;
-        effect.destroy = undefined;
-        if (destroy !== undefined) {
-          safelyCallDestroy(finishedWork, nearestMountedAncestor, destroy);
-        }
-      }
-      effect = effect.next;
-    } while (effect !== firstEffect);
+const firstEffect = lastEffect.next;
+// 找到第一个 effect
+let effect = firstEffect;
+do {
+  // 如果 tag 包含 flags
+  if ((effect.tag & flags) === flags) {
+    const destroy = effect.destroy;
+    effect.destroy = undefined;
+    if (destroy !== undefined) {
+      safelyCallDestroy(finishedWork, nearestMountedAncestor, destroy);
+    }
+  }
+  effect = effect.next;
+} while (effect !== firstEffect);
 ```
 
 由于这里的`tag`为`HookPassive`，因此只有`useEffect`里的`destroy`方法才会被执行，而`useLayoutEffect`里的`destroy`不会被执行。
@@ -299,7 +299,8 @@ do {
     const create = effect.create;
     effect.destroy = create();
     effect = effect.next;
-  } while (effect !== firstEffect);
+  }
+} while (effect !== firstEffect);
 ```
 
 ## 变量重置
@@ -332,35 +333,35 @@ if (root === workInProgressRoot) {
 重置完成后判断是否具有`PassiveMask`（最开始的`flushPassiveEffects`与这里的判断有关）。如果之前`rootDoesHavePassiveEffects`为`false`，表示`effect`还未被记录，此时需要调用一次`flushPassiveEffects`方法。
 
 ```javascript
-  if (
-    (finishedWork.subtreeFlags & PassiveMask) !== NoFlags ||
-    (finishedWork.flags & PassiveMask) !== NoFlags
-  ) {
-    if (!rootDoesHavePassiveEffects) {
-      rootDoesHavePassiveEffects = true;
-      scheduleCallback(NormalSchedulerPriority, () => {
-        flushPassiveEffects();
-        return null;
-      });
-    }
+if (
+  (finishedWork.subtreeFlags & PassiveMask) !== NoFlags ||
+  (finishedWork.flags & PassiveMask) !== NoFlags
+) {
+  if (!rootDoesHavePassiveEffects) {
+    rootDoesHavePassiveEffects = true;
+    scheduleCallback(NormalSchedulerPriority, () => {
+      flushPassiveEffects();
+      return null;
+    });
   }
+}
 ```
 
-这里执行`flushPassiveEffects`时，会先遍历执行`destroy`，由于第一次创建没有`destroy`，所以不会执行。然后会遍历执行`create`，并且生成`destroy`。
+执行`flushPassiveEffects`时，会先遍历执行`destroy`，由于第一次创建没有`destroy`，所以不会执行。然后会遍历执行`create`，并且生成`destroy`。
 
 ## beforeMutation 阶段
 
 ### commitBeforeMutationEffects
 
 ```javascript
-  const subtreeHasEffects =
-    (finishedWork.subtreeFlags &
-      (BeforeMutationMask | MutationMask | LayoutMask | PassiveMask)) !==
-    NoFlags;
-  const rootHasEffect =
-    (finishedWork.flags &
-      (BeforeMutationMask | MutationMask | LayoutMask | PassiveMask)) !==
-    NoFlags;
+const subtreeHasEffects =
+  (finishedWork.subtreeFlags &
+    (BeforeMutationMask | MutationMask | LayoutMask | PassiveMask)) !==
+  NoFlags;
+const rootHasEffect =
+  (finishedWork.flags &
+    (BeforeMutationMask | MutationMask | LayoutMask | PassiveMask)) !==
+  NoFlags;
 ```
 
 如果`subtreeHasEffects`或`rootHasEffect`存在，说明有更新。首先会进入`beforeMutation`阶段，调用`commitBeforeMutationEffects`方法：
@@ -590,24 +591,24 @@ function isHostParent(fiber: Fiber): boolean {
 第二步通过父`fiber`获取真实节点：
 
 ```javascript
-  const parentStateNode = parentFiber.stateNode;
-  // 找到真实父节点
-  switch (parentFiber.tag) {
-    case HostComponent:
-      parent = parentStateNode;
-      isContainer = false;
-      break;
-    case HostRoot:
-      // 注意这里是添加到根节点上去了。
-      parent = parentStateNode.containerInfo;
-      isContainer = true;
-      break;
-    case HostPortal:
-      // 注意这里是添加到根节点上去了。
-      parent = parentStateNode.containerInfo;
-      isContainer = true;
-      break;
-  }
+const parentStateNode = parentFiber.stateNode;
+// 找到真实父节点
+switch (parentFiber.tag) {
+  case HostComponent:
+    parent = parentStateNode;
+    isContainer = false;
+    break;
+  case HostRoot:
+    // 注意这里是添加到根节点上去了。
+    parent = parentStateNode.containerInfo;
+    isContainer = true;
+    break;
+  case HostPortal:
+    // 注意这里是添加到根节点上去了。
+    parent = parentStateNode.containerInfo;
+    isContainer = true;
+    break;
+}
 ```
 
 第三步获取兄弟结点：
@@ -780,7 +781,7 @@ root.current = finishedWork;
 ensureRootIsScheduled(root, now());
 ```
 
-如果还有未完成的更新，即优先级不够的更新，那么再这里会被继续调度进行更新。
+如果还有未完成的更新，即优先级不够的更新，那么这里会被继续调度进行更新。
 
 如果当前更新中包含`useEffect`，并且`lanes`中含有同步`lane`，那么需要立即执行`flushPassiveEffect`：
 
