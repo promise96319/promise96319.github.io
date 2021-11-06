@@ -6,9 +6,9 @@
 const express = require('express')
 const app = new express()
 app.use((req, res, next) => {
-	console.log('middleware start')
+  console.log('middleware start')
   next()
-	console.log('middleware end')
+  console.log('middleware end')
 })
 app.get('/', (req, res, next) => {
   console.log('home page')
@@ -36,7 +36,7 @@ const http = require('http')
 class Express {
   listen(...args) {
     const server = http.createServer((req, res) => {
-      // handle 是发送请求时触发的事件，后续会实现具体要求
+      // handle 是发送请求时触发的事件，后续会进行实现
       this.handle(req, res)
     })
     server.listen(...args)
@@ -113,7 +113,7 @@ handle({}, {}, () => {
 // middleware1 end
 ```
 
-整个中间件机制浓缩后的核心代码只有几行！
+整个中间件机制的核心代码只有几行！
 
 ## Layer类
 
@@ -182,29 +182,29 @@ class Express {
 `use`方法与`methods`类似，也是收集回调函数的过程。这里将传递的参数简单分为了3种形式：
 
 ```javascript
-  use(middlewares) {
-    let path = '/'
-    let fns = []
-    if (typeof middlewares === 'function') {
-      // 1. 形式1：app.use(middleware)
-      fns = [middlewares]
-    } else if (Array.isArray(middlewares)) {
-      // 2. 形式2：app.use([middleware])
-      fns = middlewares
-    } else {
-      // 3. app.use(path, [middleware])
-      path = 形式3：middlewares
-      fns = Array.isArray(arguments[1]) ? arguments[1] : [arguments[1]]
-    }
-    if (!fns || fns.length === 0) {
-      throw new TypeError('app.use() requires a middleware function')
-    }
-
-    fns.forEach((middleware) => {
-      const layer = new Layer(path, undefined, middleware)
-      this.stack.push(layer)
-    })
+use(middlewares) {
+  let path = '/'
+  let fns = []
+  if (typeof middlewares === 'function') {
+    // 1. 形式1：app.use(middleware)
+    fns = [middlewares]
+  } else if (Array.isArray(middlewares)) {
+    // 2. 形式2：app.use([middleware])
+    fns = middlewares
+  } else {
+    // 3. app.use(path, [middleware])
+    path = 形式3：middlewares
+    fns = Array.isArray(arguments[1]) ? arguments[1] : [arguments[1]]
   }
+  if (!fns || fns.length === 0) {
+    throw new TypeError('app.use() requires a middleware function')
+  }
+
+  fns.forEach((middleware) => {
+    const layer = new Layer(path, undefined, middleware)
+    this.stack.push(layer)
+  })
+}
 ```
 
 ## handle 方法
@@ -212,28 +212,28 @@ class Express {
 前面通过`methods`和中间件已经将回调都收集到`stack`当中了，接下来就是用户请求的时候，去`stack`中匹配相应路径，然后按中间件的形式执行回调函数。
 
 ```javascript
-  // 请求时，匹配url，然后找到对应的方法
-  handle(req, res, out) {
-    let idx = 0
-    const stack = this.stack
-    next()
-    function next(err) {
-      // 从 stack 里匹配对应的执行函数
-      let match = false
-      let layer = null
-      while (idx < stack.length) {
-        layer = stack[idx]
-        idx += 1
-        // 这里简单匹配路径
-        match = layer.match(req.url || '/', req.method)
-        if (match) break
-      }
-      if (!match) {
-        return out && out()
-      }
-      layer.handleMethod(req, res, next)
+// 请求时，匹配url，然后找到对应的方法
+handle(req, res, out) {
+  let idx = 0
+  const stack = this.stack
+  next()
+  function next(err) {
+    // 从 stack 里匹配对应的执行函数
+    let match = false
+    let layer = null
+    while (idx < stack.length) {
+      layer = stack[idx]
+      idx += 1
+      // 这里简单匹配路径
+      match = layer.match(req.url || '/', req.method)
+      if (match) break
     }
+    if (!match) {
+      return out && out()
+    }
+    layer.handleMethod(req, res, next)
   }
+}
 ```
 
 ## 完整代码
