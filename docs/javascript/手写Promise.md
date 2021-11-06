@@ -186,22 +186,22 @@ const resolvePromise = (
   - 如果没有实现`then`方法，那么为普通值，`resolve`该值。
 
 ```javascript
-  static resolve(value) {
-    if (value instanceof MyPromise) {
-      return value
-    }
-    return new MyPromise((resolve, reject) => {
-      // 如果 value 有 then 函数，执行该函数
-      if (value && value.then && typeof value.then === 'function') {
-        microTask(() => {
-          value.then(resolve, reject)
-        })
-        return
-      }
-      // 否则直接返回
-      resolve(value)
-    })
+static resolve(value) {
+  if (value instanceof MyPromise) {
+    return value
   }
+  return new MyPromise((resolve, reject) => {
+    // 如果 value 有 then 函数，执行该函数
+    if (value && value.then && typeof value.then === 'function') {
+      microTask(() => {
+        value.then(resolve, reject)
+      })
+      return
+    }
+    // 否则直接返回
+    resolve(value)
+  })
+}
 ```
 
 ## 静态方法reject
@@ -209,11 +209,11 @@ const resolvePromise = (
 返回一个状态即将变为`rejected`的`promise`。
 
 ```javascript
- static reject(err) {
-    return new MyPromise((_, reject) => {
-      reject(err)
-    })
-  }
+static reject(err) {
+  return new MyPromise((_, reject) => {
+    reject(err)
+  })
+}
 ```
 
 ## catch
@@ -221,9 +221,9 @@ const resolvePromise = (
 使用`then`方法来实现：
 
 ```javascript
-  catch(rejectCallback) {
-    this.then(null, rejectCallback)
-  }
+catch(rejectCallback) {
+  this.then(null, rejectCallback)
+}
 ```
 
 ## finally
@@ -231,18 +231,18 @@ const resolvePromise = (
 `finally`不接受传值，并且需要将上一个`then`的值原封不动的传给该`promise`。
 
 ```javascript
-  finally(callback) {
-    // 将 then 返回的 promise 返回。
-    return this.then((value) => {
-      // 需要将 value 值传到下一个 then 中。
-      // 这里返回结果实现了then方法，因此下一个then取到的是value值
-      return MyPromise.resolve(callback()).then(() => value)
-    }, (err) => {
-      return MyPromise.reject(callback()).then(() => {
-        throw err
-      })
+finally(callback) {
+  // 将 then 返回的 promise 返回。
+  return this.then((value) => {
+    // 需要将 value 值传到下一个 then 中。
+    // 这里返回结果实现了then方法，因此下一个then取到的是value值
+    return MyPromise.resolve(callback()).then(() => value)
+  }, (err) => {
+    return MyPromise.reject(callback()).then(() => {
+      throw err
     })
-  }
+  })
+}
 ```
 
 ## 静态方法all
@@ -250,31 +250,31 @@ const resolvePromise = (
 `promises`数组里所有`promise`状态变为`fulfilled`的时候，返回的`promise`状态才会变为`fulfilled`:
 
 ```javascript
-  static all(promises) {
-    return new MyPromise((resolve, reject) => {
-      let resolvedLength = 0
-      // 总共的结果
-      let results = []
-      if (promises.length === 0) {
-        return resolve(results)
-      }
+static all(promises) {
+  return new MyPromise((resolve, reject) => {
+    let resolvedLength = 0
+    // 总共的结果
+    let results = []
+    if (promises.length === 0) {
+      return resolve(results)
+    }
 
-      promises.forEach((promise, index) => {
-        // promise 可能为普通值
-        MyPromise.resolve(promise).then((res) => {
-          results[index] = res
-          resolvedLength += 1
-          if (resolvedLength === promises.length) {
-            // 说明都处理完毕了
-            resolve(results)
-          }
-        }, (err) => {
-          // 只要一个报错，那么就会reject
-          reject(err)
-        })
+    promises.forEach((promise, index) => {
+      // promise 可能为普通值
+      MyPromise.resolve(promise).then((res) => {
+        results[index] = res
+        resolvedLength += 1
+        if (resolvedLength === promises.length) {
+          // 说明都处理完毕了
+          resolve(results)
+        }
+      }, (err) => {
+        // 只要一个报错，那么就会reject
+        reject(err)
       })
     })
-  }
+  })
+}
 ```
 
 ## 静态方法race
@@ -282,18 +282,18 @@ const resolvePromise = (
 只要有一个`promise`的状态改变，那么返回的`promise`状态就会改变：
 
 ```javascript
-  static race(promises) {
-    return new MyPromise((resolve, reject) => {
-      if (promises.length === 0) {
-        // 一直处于 pending 状态
-        return
-      }
-      promises.forEach((promise) => {
-        // 不用担心下次resolve，因为已经实现了 resolve 只会执行一次
-        MyPromise.resolve(promise).then(resolve, reject)
-      })
+static race(promises) {
+  return new MyPromise((resolve, reject) => {
+    if (promises.length === 0) {
+      // 一直处于 pending 状态
+      return
+    }
+    promises.forEach((promise) => {
+      // 不用担心下次resolve，因为已经实现了 resolve 只会执行一次
+      MyPromise.resolve(promise).then(resolve, reject)
     })
-  }
+  })
+}
 ```
 
 ## 静态方法any
@@ -301,28 +301,28 @@ const resolvePromise = (
 只要有一个`promise`状态为`fulfilled`，那么返回的`promise`状态就为`fulfilled`，否则为`rejected`。
 
 ```javascript
- static any(promises) {
-    return new MyPromise((resolve, reject) => {
-      let rejectedLength = 0
-      // 只要有一个resolve
-      let errors = []
-      if (promises.length === 0) {
-        return reject(errors)
-      }
+static any(promises) {
+  return new MyPromise((resolve, reject) => {
+    let rejectedLength = 0
+    // 只要有一个resolve
+    let errors = []
+    if (promises.length === 0) {
+      return reject(errors)
+    }
 
-      promises.forEach((promise, index) => {
-        // promise 可能为普通值
-        MyPromise.resolve(promise).then(resolve, (err) => {
-          // 记录reject个数
-          rejectedLength += 1
-          [index] = err
-          if (rejectedLength === promises.length) {
-            reject(errors)
-          }
-        })
+    promises.forEach((promise, index) => {
+      // promise 可能为普通值
+      MyPromise.resolve(promise).then(resolve, (err) => {
+        // 记录reject个数
+        rejectedLength += 1
+        errors[index] = err
+        if (rejectedLength === promises.length) {
+          reject(errors)
+        }
       })
     })
-  }
+  })
+}
 ```
 
 ## 静态方法allSettled
@@ -330,32 +330,32 @@ const resolvePromise = (
 不管`promise`状态是怎样，只有所有`promise`状态都不为`pending`的时候，返回的`promise`状态才会改变为`fulfilled`。
 
 ```javascript
-  static allSettled(promises) {
-    return new MyPromise((resolve, reject) => {
-      let handleLength = 0
-      let results = []
-      if (promises.length === 0) {
-        // 一直处于 pending 状态
-        return resolve(results)
-      }
+static allSettled(promises) {
+  return new MyPromise((resolve, reject) => {
+    let handleLength = 0
+    let results = []
+    if (promises.length === 0) {
+      // 一直处于 pending 状态
+      return resolve(results)
+    }
 
-      const handleValue = (value, index) => {
-        results[index] = value
-        handleLength += 1
-        if (handleLength === promises.length) {
-          resolve(results)
-        }
+    const handleValue = (value, index) => {
+      results[index] = value
+      handleLength += 1
+      if (handleLength === promises.length) {
+        resolve(results)
       }
+    }
 
-      promises.forEach((promise, index) => {
-        MyPromise.resolve(promise).then((value) => {
-          handleValue(value, index)
-        }, (err) => {
-          handleValue(err, index)
-        })
+    promises.forEach((promise, index) => {
+      MyPromise.resolve(promise).then((value) => {
+        handleValue(value, index)
+      }, (err) => {
+        handleValue(err, index)
       })
     })
-  }
+  })
+}
 ```
 
 ## 完整代码
