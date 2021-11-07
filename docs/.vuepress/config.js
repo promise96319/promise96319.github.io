@@ -148,7 +148,8 @@ module.exports = {
         'vue-loader实现.md',
         '热更新实现原理.md',
         'Tapable.md',
-        'webpack源码调试.md'
+        'webpack源码调试.md',
+        'webpack官方文档.md'
       ],
       '/javascript/': [
         '事件循环机制.md',
