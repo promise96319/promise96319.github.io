@@ -257,6 +257,7 @@ var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
       installedChunks[chunkIds[i]] = 0;
     }
   }
+}
 ```
 
 该函数主要将加载完的模块代码放到`__webpack_modules__`对象当中。这样调用`resolve`后，再次执行`__webpack_require__`时就能找到对应的模块了。
@@ -268,7 +269,7 @@ var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
 1. `ast`解析时分析为调用的`import()`方法。
 2. 进行`walkStatement`时，触发`hooks.importCall`钩子，建立`Async`的`Dependency`存放到`blocks`属性当中。
 3. 在生成`chunks`的时候会去遍历`blocks`，单独生成`chunks`。
-4. 生成的代码执行时
+4. 生成的代码执行时：
    1. 初始化一些参数，比如`webpackJsonpCallback`以及`chunkLoadingGlobal`等等。
    2. 执行`__webpack_require__.e`判断模块是否已经加载，如果未加载会创建一个`promise`。
    3. 调用`__webpack_require__.l`创建`script`标签加载`chunk`。

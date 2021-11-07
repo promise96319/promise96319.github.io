@@ -187,8 +187,8 @@ module.exports = {
       ],
       '/network/': [
         '运输层.md',
-        '应用层.md',
-        '缓存.md',
+        // '应用层.md',
+        // '缓存.md',
       ],
       '/computer/': [
       ],

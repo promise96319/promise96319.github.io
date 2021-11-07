@@ -65,7 +65,7 @@ class VueLoaderPlugin {
 }
 ```
 
-该插件的主要作用是添加了一个`pitcher`的`loader`。该`loader`通过`resourceQuery`判断`query`是否存在，也就是文件请求路径是否带有查询参数。如果有查询参数，还需要解析`query`判断查询参数中是否有`vue`。因此，`pitcher loader`是在文件请求路径查询参数中包含`vue`时才会匹配，后续会被用到。
+该插件的主要作用是添加了一个`pitcher`的`loader`。该`loader`通过`resourceQuery`判断`query`是否存在，也就是文件请求路径是否带有查询参数。如果有查询参数，还需要解析`query`判断查询参数中是否有`vue`。因此，`pitcher loader`是在文件请求路径查询参数中包含`vue`时才会匹配。
 
 ## 解析 loaders
 
@@ -129,7 +129,7 @@ module.exports = function (source) {
 }
 ```
 
-在首次加载时，没有查询参数，所有会进入到第四步，根据不同的`type`将解析出来的代码按照模块的形式引入，如：
+在首次加载时，没有查询参数，所以会进入到第四步，根据不同的`type`将解析出来的代码按照模块的形式引入，如：
 
 ```javascript
 // type 为 template
@@ -151,14 +151,14 @@ export * from "./component.vue?vue&type=script&lang=js&"'
 
 ```javascript
 if (query.type === `template`) {
-    const request = genRequest([
-      ...cacheLoader,
-      ...postLoaders,
-      templateLoaderPath + `??vue-loader-options`,
-      ...preLoaders
-    ])
-    return `export * from ${request}`
-  }
+  const request = genRequest([
+    ...cacheLoader,
+    ...postLoaders,
+    templateLoaderPath + `??vue-loader-options`,
+    ...preLoaders
+  ])
+  return `export * from ${request}`
+}
 ```
 
 该函数同样是根据不同的`type`对引用路径做不同的处理。比如`template`在加载时，由于还需要解析`template`内的代码，所以加入了`templateLoader`：
@@ -295,7 +295,7 @@ injectHook(options, 'beforeDestroy', function() {
 
 ### api.reload
 
-当前模块发生变化时，如果该`component`已经被`record`了，那么会执行`api.realod`方法：
+当前自身模块发生变化时，如果该`component`已经被`record`了，那么会执行`api.reload`方法：
 
 ```javascript
 // 继承新的 options
@@ -312,11 +312,11 @@ record.instances.slice().forEach(function (instance) {
 }
 ```
 
-该函数会替换原来记录的组件构造函数，并遍历更新。
+该函数会替换原来记录的组件构造函数，并遍历相关实例进行更新。
 
 ### api.rerender
 
-随后通过`genTemplateHotReloadCode`方法：
+最后执行`genTemplateHotReloadCode`方法：
 
 ```javascript
 const genTemplateHotReloadCode = (id, request) => {

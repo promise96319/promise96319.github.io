@@ -1,6 +1,6 @@
 # seal 阶段
 
-在将模块源码编译解析后，将进入`seal`阶段，执行`compilation.seal`方法。该阶段的主要目的是建立`module`和`chunk`的关系，并且将`chunk`内的代码进行拼接整合，形成可以执行的代码块。
+在模块源码编译解析后，进入到`seal`阶段，执行`compilation.seal`方法。该阶段的主要目的是建立`module`和`chunk`的关系，并且将`chunk`内的代码进行拼接整合，形成可以执行的代码块。
 
 ## chunk
 
@@ -16,7 +16,6 @@ webpack 会根据模块依赖图的内容组织分包 —— Chunk 对象，默�
 
 - `ChunkGraphModule`用于记录`module`与外界的关系，其中`chunks`参数记录了`module`关联的`chunk`。
 - `ChunkGraphChunk`用于记录`chunk`与外界的关系，其中`modules`参数记录了`chunk`关联的`modules`。
-
 - `Entrypoint`继承自`ChunkGroup`，用于组织`chunks`。记录了`chunks`以及`chunkGroup`的父子关系。
 
 在`seal`函数的前半段，主要集中于建立入口`module`的`chunk`关系。
@@ -451,4 +450,4 @@ return resultEntry;
 
 第三个阶段为生成代码阶段，该阶段会对`chunks`以及`chunk`下的`modules`进行遍历，根据`module.build`解析的代码生成新的代码片段。
 
-其中生成代码的过程主要是通过`sourceDependency`对`module.build`中解析出来的`module.dependencies`和`module.blocks`进行代码生成。首先会根据`dependency`获取相应的生成模板`template`。其次调用`template.apply`方法将`dependency`替换成新的代码块。最后通过`addToSource`方法将所有`dependency`替换后的代码以及源码形成数组形式。
+其中生成代码的过程主要是通过`sourceDependency`对`module.build`中解析出来的`module.dependencies`和`module.blocks`进行代码生成。首先会根据`dependency`获取相应的生成模板`template`。其次调用`template.apply`方法将`dependency`替换成新的代码块。最后使用`addToSource`方法将所有`dependency`替换后的代码以及源码形成数组形式。

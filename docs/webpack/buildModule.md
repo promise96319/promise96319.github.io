@@ -30,7 +30,7 @@ this.buildInfo = {
 };
 ```
 
-首先会定义一些参数，最后调用`doBuild`方法开始正式的打包。
+首先会定义一些参数，最后调用`doBuild`方法开始正式打包。
 
 ## loaderContext
 
@@ -106,7 +106,7 @@ function iteratePitchingLoaders(options, loaderContext, callback) {
 }
 ```
 
-`loader`的执行的过程有点与事件冒泡类似，它包括`pitch阶段`，`代码读取`，`loader执行`三个阶段（具体可以参考[这篇文章](https://zhuanlan.zhihu.com/p/375626250)）。`pitch阶段`会通过`iteratePitchingLoaders`方法遍历`loaders`，执行`loader`的`pitch`函数。待执行完成后会读取文件代码，然后通过`iterateNormalLoaders`方法反向遍历`loaders`执行`loader`。
+`loader`的执行过程与事件冒泡有点类似，它包括`pitch阶段`，`代码读取`，`loader执行`三个阶段（具体可以参考[这篇文章](https://zhuanlan.zhihu.com/p/375626250)）。`pitch阶段`会通过`iteratePitchingLoaders`方法遍历`loaders`，执行`loader`的`pitch`函数。待执行完成后会读取文件代码，然后通过`iterateNormalLoaders`方法反向遍历`loaders`执行`loader`。
 
 `iteratePitchingLoaders`中通过`pitchExecuted`属性标识`loader`是否被`pitch`。如果为`true`，那么会执行下一个`loader`的`pitch`函数。否则的话会通过`loadLoader`函数加载`loader`。
 
@@ -128,7 +128,7 @@ function handleResult(loader, module, callback) {
 }
 ```
 
-实质上就是加载`loader`模块，随后将加载的`loader`模块、`pitch`函数等赋值到`loader`对象上。最后执行`loadLoader`回调，这里讨论的是`iteratePitchingLoaders`中`loadLoader`的回调：
+加载`loader`模块后将加载的`loader`模块、`pitch`函数等赋值到`loader`对象上。最后执行`loadLoader`回调，这里讨论的是`iteratePitchingLoaders`中`loadLoader`的回调：
 
 ```javascript
 var fn = currentLoaderObject.pitch;
@@ -403,37 +403,37 @@ parser.hooks.import.tap(
 添加完`dependency`后，开始定义变量：
 
 ```javascript
-	for (const specifier of statement.specifiers) {
-			const name = specifier.local.name;
-			switch (specifier.type) {
-				case "ImportDefaultSpecifier":
-					if (
-						!this.hooks.importSpecifier.call(statement, source, "default", name)
-					) {
-						this.defineVariable(name);
-					}
-					break;
-				case "ImportSpecifier":
-					if (
-						!this.hooks.importSpecifier.call(
-							statement,
-							source,
-							specifier.imported.name,
-							name
-						)
-					) {
-						this.defineVariable(name);
-					}
-					break;
-				case "ImportNamespaceSpecifier":
-					if (!this.hooks.importSpecifier.call(statement, source, null, name)) {
-						this.defineVariable(name);
-					}
-					break;
-				default:
-					this.defineVariable(name);
-			}
-		}
+for (const specifier of statement.specifiers) {
+  const name = specifier.local.name;
+  switch (specifier.type) {
+    case "ImportDefaultSpecifier":
+      if (
+        !this.hooks.importSpecifier.call(statement, source, "default", name)
+      ) {
+        this.defineVariable(name);
+      }
+      break;
+    case "ImportSpecifier":
+      if (
+        !this.hooks.importSpecifier.call(
+          statement,
+          source,
+          specifier.imported.name,
+          name
+        )
+      ) {
+        this.defineVariable(name);
+      }
+      break;
+    case "ImportNamespaceSpecifier":
+      if (!this.hooks.importSpecifier.call(statement, source, null, name)) {
+        this.defineVariable(name);
+      }
+      break;
+    default:
+      this.defineVariable(name);
+  }
+}
 ```
 
 ### ExportNamedDeclaration
@@ -574,16 +574,20 @@ for (const item of sortedDependencies) {
 
 ## 总结
 
-`buildModule`阶段的主要任务是将形成的`module`进行打包，这个过程包含：
+`buildModule`阶段主要任务是将生成的`module`进行打包，这个过程包含：
 
 首先，创建`loaderContext`，形成`loader`的执行上下文。通过`runLoaders`执行该文件匹配到的`loaders`。
 
 `loader`的执行过程又包含`pitch`阶段，源码读取阶段，`loader`执行阶段。
 
-- `pitch`阶段会调用`loadLoader`加载`loader`模块，然后调用`pitch`函数。可以通过`pitch`函数提前返回源码内容中断后续`loader`的调用。
-- 源码读取阶段会直接读取对应文件的源码内容。
-- `loader`执行阶段会依次从后向前执行`loader`函数，每次执行的结果都会作为下一个`loader`函数的参数传入。
+  - `pitch`阶段会调用`loadLoader`加载`loader`模块，然后调用`pitch`函数。可以通过`pitch`函数提前返回源码内容中断后续`loader`的调用。
+  
+  - 源码读取阶段会直接读取对应文件的源码内容。
+  
+  - `loader`执行阶段会依次从后向前执行`loader`函数，每次都会将执行结果作为下一个`loader`函数的参数传入。
 
-其次，`loaders`执行完成后会拿到加载后的源码内容。此时会通过`acorn`库对源码内容进行解析，形成`ast`。然后通过`hooks.program`和`walkStatements`对`ast`树进行分析，如变量定义，模块依赖等等。最后得到源码被分析完成的模块。
+其次，`loaders`执行完成后拿到加载后的源码内容，通过`acorn`库对源码内容进行解析，形成`ast`。
 
-最后，根据模块的依赖进行遍历，递归创建子模块。
+然后通过`hooks.program`和`walkStatements`对`ast`树进行分析，如变量定义、语法分析替换、模块依赖等等。
+
+最后，根据模块的依赖（`import xxx from xxx`）进行遍历，递归创建子模块。

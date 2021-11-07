@@ -1,10 +1,10 @@
 # addModule
 
-`make`阶段第二步做的事是通过`addModule`将创建好的`module`添加到`moduleGraph`当中。
+`make`阶段第二步做的事是通过`addModule`将创建好的`module`添加到`moduleGraph`当中，构建起`dependency`和`module`之间的关系。
 
 ## _addModule
 
-`_addModule`方法比较简单，主要是将`module`缓存并记录到`compilation.modules`和`_modules`当中。
+`_addModule`将`module`缓存并记录到`compilation.modules`和`_modules`当中。
 
 ```javascript
 _addModule(module, callback) {
@@ -80,11 +80,11 @@ class ModuleGraphConnection {
 
 ```javascript
 class ModuleGraphDependency {
-	constructor() {
-		this.connection = undefined;
-		this.parentModule = undefined;
-		this.parentBlock = undefined;
-	}
+  constructor() {
+    this.connection = undefined;
+    this.parentModule = undefined;
+    this.parentBlock = undefined;
+  }
 }
 ```
 
@@ -94,25 +94,25 @@ class ModuleGraphDependency {
 
 ```javascript
 class ModuleGraphModule {
-	constructor() {
-		// connections 集合
-		this.incomingConnections = new SortableSet();
-		// connections 集合
-		this.outgoingConnections = undefined;
-		// 指向 父module
-		this.issuer = undefined;
-		this.optimizationBailout = [];
-		this.exports = new ExportsInfo();
-		this.preOrderIndex = null;
-		this.postOrderIndex = null;
-		this.depth = null;
-		this.profile = undefined;
-		this.async = false;
-	}
+  constructor() {
+    // connections 集合
+    this.incomingConnections = new SortableSet();
+    // connections 集合
+    this.outgoingConnections = undefined;
+    // 指向 父 module
+    this.issuer = undefined;
+    this.optimizationBailout = [];
+    this.exports = new ExportsInfo();
+    this.preOrderIndex = null;
+    this.postOrderIndex = null;
+    this.depth = null;
+    this.profile = undefined;
+    this.async = false;
+  }
 }
 ```
 
-**其中，通过outgoingConnections可以判断该module引用了哪些外部module。而通过incomingConnectoins可以判断该模块被哪些外部模块引用。**
+**其中，通过outgoingConnections可以判断该module引用了哪些外部module。而通过incomingConnections可以判断该模块被哪些外部模块引用。**
 
 ## ModuleGraph
 
@@ -143,13 +143,13 @@ setResolvedModule(originModule, dependency, module) {
   
   // 获取/创建 moduleGraphDependency
   const mgd = this._getModuleGraphDependency(dependency);
-  // 赋值connnectioin
+  // 赋值connection
   mgd.connection = connection;
   
   // 获取当前 module 的 incomingConnections
   const connections = this._getModuleGraphModule(module).incomingConnections;
-  // 记录 connnection，这样如果同一个模块被多个模块引用
-  // 那么就有多个connection，也就能够找到引用该模块的父模块
+  // 记录 connection，如果同一个模块被多个模块引用
+  // 那么就有多个 connection，也就能够找到引用该模块的父模块
   connections.add(connection);
   
   // 获取父模块的 mgm
@@ -157,7 +157,7 @@ setResolvedModule(originModule, dependency, module) {
   if (mgm.outgoingConnections === undefined) {
     mgm.outgoingConnections = new Set();
   }
-  // 在父模块中记录当前模块，这样父模块就知道引用了哪些子模块了。
+  // 在父模块中记录当前模块，这样父模块就知道引用了哪些子模块。
   mgm.outgoingConnections.add(connection);
 }
 ```
@@ -173,4 +173,4 @@ setIssuerIfUnset(module, issuer) {
 
 ## 总结
 
-`addModule`阶段比较简单，主要是记录当前的`module`并缓存起来。另外会建立`dependency`、`module`、`父module`三者之间的关系，所有关系均可从`moduleGraph`中取出。
+`addModule`主要任务是记录当前的`module`并缓存起来。另外会建立`dependency`、`module`、`父module`三者之间的关系，所有关系均可从`moduleGraph`中取出。

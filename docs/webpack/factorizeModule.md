@@ -19,7 +19,7 @@ _factorizeModule({ factory }) {
 }
 ```
 
-该方法实际上调用的是`factory`方法。`factory`方法是一个工厂函数，用于创建`module`。这里主要以`NormalModuleFactory`为例。找到`webpack/lib/NormalModuleFactory.js`文件中`create`方法的定义，该方法最终会走到`hooks.factorize`:
+该方法实际上调用的是`factory`方法。`factory`方法是一个工厂函数，用于创建`module`。这里以`NormalModuleFactory`为例。找到`webpack/lib/NormalModuleFactory.js`文件中`create`方法的定义，该方法最终会走到`hooks.factorize`:
 
 ```javascript
 this.hooks.factorize.callAsync(resolveData, (err, module) => {})
@@ -49,7 +49,7 @@ getResolver(type, resolveOptions) {
 }
 ```
 
-`resolverFactory`是在`compiler`对象初始化时就已经实例化了的。找到`webpack/lib/ResolverFactory.js`，调用`get`方法时如果缓存中没有`resolver`，就会调用`_create`方法创建一个`resolver`。
+`resolverFactory`在`compiler`对象初始化时就已经实例化。找到`webpack/lib/ResolverFactory.js`，调用`get`方法时如果缓存中没有`resolver`，就会调用`_create`方法创建一个`resolver`。
 
 ```javascript
 _create(type, resolveOptionsWithDepType) {
@@ -134,11 +134,11 @@ if (alias.length > 0) {
 
 ## resolver.resolve
 
-获取完`resolver`后就会调用`resolver.resolve`解析`dependency`，包括文件引用路径解析（比如是绝对路径还是相对路径还是模块，有哪些参数等等），文件路径查找，文件描述文件读取，文件别名替换等等操作。
+获取完`resolver`后会调用`resolver.resolve`解析`dependency`，包括文件引用路径解析（比如是绝对路径还是相对路径还是模块，有哪些参数等等），文件路径查找，文件描述文件读取，文件别名替换等等操作。
 
 ## loader 匹配
 
-解析完当前`dependency`之后会进入回调函数，这里调用的是`continueCallback`方法。
+解析完当前`dependency`之后进入到回调函数，这里调用的是`continueCallback`方法。
 
 ```javascript
 const result = this.ruleSet.exec({
@@ -214,10 +214,10 @@ this.hooks.factorize.tapAsync(
 
 ## 总结
 
-`factorizeModule`主要调用的是`xxxModuleFactory.create`方法将`dependency`转化成`module`。
+`factorizeModule`调用`xxxModuleFactory.create`方法将`dependency`转化成`module`。
 
 在这个过程中会实例化`resolver`，通过不同的`resolver`对`dependency`进行解析，包括文件路径，文件描述，文件别名等等进行解析。
 
-解析完成后还会通过配置的`loader`匹配规则进行匹配，如果与该`dependency`匹配成功，那么会通过`loaderResolver`解析`loader`的文件路径，存放到`createData.loaders`当中。
+解析完成后与配置的`loader`匹配规则进行匹配。如果与该`dependency`匹配成功，那么会使用`loaderResolver`解析`loader`文件路径，存放到`createData.loaders`当中。
 
-最后根据解析好的`careateData`创建一个`module`。
+最后根据解析好的`createData`创建一个`module`。

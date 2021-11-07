@@ -7,7 +7,7 @@
 ```javascript
 // webpack.config.js 中配置
 {
-	watch: true
+  watch: true
 }
 
 // 获取直接运行命令
@@ -56,7 +56,6 @@ watch(watchOptions, handler) {
 ```javascript
 class Watching {
   constructor(compiler, watchOptions, handler) {
-
     process.nextTick(() => {
       if (this._initial) this._invalidate();
     });

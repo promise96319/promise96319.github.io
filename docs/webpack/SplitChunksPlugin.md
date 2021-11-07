@@ -6,7 +6,7 @@
 
 ## 默认cacheGroups
 
-在`webpack/lib/webpack.js`文件中，`createCompiler`时调用了`applyWebpackOptionsDefaults`函数，该函数会为`cacheGroups`设置两个默认值，这两个默认值就是`webpack`的默认分包原则，其中`defaultVendors`是应用于`node_modules`：
+在`webpack/lib/webpack.js`文件中，`createCompiler`时调用`applyWebpackOptionsDefaults`函数。该函数会为`cacheGroups`设置两个默认值，这两个默认值对应`webpack`的两个默认分包原则。其中`defaultVendors`是应用于`node_modules`：
 
 ```javascript
 F(cacheGroups, "default", () => ({
@@ -33,7 +33,7 @@ while (this.hooks.optimizeChunks.call(this.chunks, this.chunkGroups)) {
 }
 ```
 
-此时会触发几个插件：
+`hooks.optimizeChunks`钩子触发以下几个插件：
 
 - `RemoveEmptyChunksPlugin`：
 
@@ -85,7 +85,7 @@ compilation.hooks.optimizeChunks.tap(
 )
 ```
 
-该插件回到函数会在`hooks.optimizeChunks`钩子触发时执行：
+该插件回调函数会在`hooks.optimizeChunks`钩子触发时执行：
 
 ```javascript
 // Compilation.js 文件中触发
@@ -94,7 +94,7 @@ while (this.hooks.optimizeChunks.call(this.chunks, this.chunkGroups)) {
 }
 ```
 
-此时已经构建好了`modules`和`chunks`之间的关系，但是还没有为`chunks`生成代码。
+此时已经构建好了`modules`和`chunks`之间的关系，但是还没有为`chunks`生成具体的代码。
 
 ## 举例
 
@@ -134,7 +134,7 @@ for (const module of compilation.modules) {
 }
 ```
 
-随后遍历所有的`cacheGroups`，进行下一步处理：
+并且遍历所有的`cacheGroups`，进行下一步处理：
 
 ```javascript
 // 1. 获取 module 关联的 chunks
@@ -214,7 +214,7 @@ for (const [key, info] of chunksInfoMap) {
 
 ## 生成新chunk
 
-随后遍历`chunksInfoMap`，生成新的`chunk`：
+遍历`chunksInfoMap`，生成新的`chunk`：
 
 ```javascript
 while (chunksInfoMap.size > 0) {
@@ -238,7 +238,7 @@ while (chunksInfoMap.size > 0) {
 }
 ```
 
-首先会通过`compareEntries`方法对比优先级，看哪个`cacheGroup`对应的`chunk`先生成。经过一系列的处理后，最后会生成一个空`chunk`：
+首先会通过`compareEntries`方法对比优先级，看哪个`cacheGroup`对应的`chunk`优先生成。经过一系列的处理后，最后会生成一个空`chunk`：
 
 ```javascript
 if (newChunk === undefined) {
@@ -267,7 +267,7 @@ split(newChunk) {
 }
 ```
 
-随后开始对`newChunk`进行处理，其中比较重要的是`modules`和`usedChunks`的处理：
+对`newChunk`进行处理，其中比较重要的是`modules`和`usedChunks`的处理：
 
 ```javascript
 // usedChunks 里面需要移除所有已经分包出去的 modules
@@ -331,6 +331,6 @@ const results = deterministicGroupingForModules({
 
 `SplitChunksPlugin`主要用于提取公共代码，拆分或合并代码等，其核心原理如下：
 
-1. 通过`cacheGroups`匹配`modules`，然后又通过`module`获取在哪些`chunk`里被使用，生成`chunksInfoMap`。
-2. 遍历`chunksInfoMap`，生成新的`chunk`，并断开`module`和原有的`chunks`的关系，将新`chunk`加入到原有`chunks`的`chunkGroups`当中。
-3. 对生成的`chunks`进行处理，例如过大就会进行再次分包。
+1. 通过`cacheGroups`匹配`modules`，生成`chunksInfoMap`。确定每个`cacheGroups`对应哪些`modules`，以及这些`modules`所在的`chunks`。
+2. 遍历`chunksInfoMap`，根据`cacheGroups`里的`modules`生成新`chunk`。断开这些`modules`和原有的`chunks`的关系，将新`chunk`加入到原有`chunks`的`chunkGroups`当中。
+3. 对分包后的`chunks`再次进行处理，如果体积过大就会进行再次分包。

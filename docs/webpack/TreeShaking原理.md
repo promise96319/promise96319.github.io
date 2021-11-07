@@ -69,7 +69,7 @@ parser.hooks.exportExpression.tap(
   "HarmonyExportDependencyParserPlugin",
   (statement, expr) => {
     const dep = new HarmonyExportExpressionDependency(）
-                                                      parser.state.current.addDependency(dep);
+    parser.state.current.addDependency(dep);
     return true;
   }
 );
@@ -194,8 +194,6 @@ getExportInfo(name) {
 
 这样就在`exportsInfo`里可以通过`_exports`属性访问所有的导出变量信息。这里省略了`exportInfo`信息的一些要素。
 
-
-
 ## FlagDependencyUsagePlugin标记使用
 
 在`seal`阶段时，已经创建好了所有`module`，在生成`chunk`之前会先触发`hooks.optimizeDependencies`钩子：
@@ -221,7 +219,7 @@ while (queue.length) {
 }
 ```
 
-会从入口开水遍历`module`，真正的执行者为`processModule`方法：
+从入口开始遍历`module`，真正的执行者为`processModule`方法：
 
 ```javascript
 const processModule = (module, runtime, forceSideEffects) => {
@@ -236,7 +234,7 @@ const processModule = (module, runtime, forceSideEffects) => {
       // 1. 获取 dependency 对应的 module
       const { module } = connection;
 
-      // 2. 根据当前 depndency 分析引用了哪些变量
+      // 2. 根据当前 dependency 分析引用了哪些变量
       const referencedExports =
             compilation.getDependencyReferencedExports(dep, runtime);
       if (
@@ -390,7 +388,7 @@ setResolvedModule(originModule, dependency, module) {
 }
 ```
 
-这里又通过`dependency.getCondition`来确认最终`conditional`是否为为`true`。对于`HarmonyImportSideEffectDependency`，`getCondition`最终返回的是一个函数，因此为`true`。但是`HarmonyImportSpecifierDependency`不一样，最终会返回`false`。因此，实际上标记时是根据`HarmonyImportSpecifierDependency`来进行标记的。所以，当只导入了变量，但是没有使用时，同样会标记为未使用。
+这里又通过`dependency.getCondition`来确认最终`conditional`是否为为`true`。对于`HarmonyImportSideEffectDependency`，`getCondition`最终返回的是一个函数，因此为`true`。但是`HarmonyImportSpecifierDependency`不一样，最终会返回`false`。因此，实际上标记时是根据`HarmonyImportSpecifierDependency`来进行标记的。所以，当只导入了变量，但是没有使用时，标记同样为未使用。
 
 （但是在递归创建`module`的时候，使用的是`HarmonyImportSideEffectDependency`，而不是`HarmonyImportSpecifierDependency`）。
 

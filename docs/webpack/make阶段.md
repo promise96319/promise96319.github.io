@@ -2,7 +2,7 @@
 
 ## hooks.make
 
-在《整体流程》篇中提到，`make`阶段是正式的编译过程，此时会调用`hooks.make`钩子：
+在《整体流程》篇中提到，`make`阶段正式的编译过程，此时会调用`hooks.make`钩子：
 
 ```javascript
 this.hooks.make.callAsync(compilation, err => {})
@@ -13,7 +13,7 @@ this.hooks.make.callAsync(compilation, err => {})
 ```javascript
 compiler.hooks.make.tapAsync("EntryPlugin", (compilation, callback) => {
   const { entry, options, context } = this;
-	// 创建 EntryDepnendency
+	// 创建 EntryDependency
   const dep = EntryPlugin.createDependency(entry, options);
   // 添加 entry 入口
   compilation.addEntry(context, dep, options, err => {
@@ -22,7 +22,7 @@ compiler.hooks.make.tapAsync("EntryPlugin", (compilation, callback) => {
 });
 ```
 
-可以看出，最终会调用`compilation.addEntry`方法开始从入口进行编译。在`webpack/lib/Compilation.js`文件中找到`addEntry`方法，会用一连串调用，调用栈如下：
+该插件最终会调用`compilation.addEntry`方法开始从入口进行编译。在`webpack/lib/Compilation.js`文件中找到`addEntry`方法，会用一连串调用，调用栈如下：
 
 ```javascript
 addEntry => _addEntryItem => addModuleTree => handleModuleCreation => factorizeModule => ...
