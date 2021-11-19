@@ -156,7 +156,8 @@ module.exports = {
         '../react/浏览器一帧里做了什么.md',
         '手写Promise.md',
         'co库.md',
-        'js继承',
+        'js继承.md',
+        'js方法实现.md'
       ],
       '/algorithms/': [
         '动态规划.md',

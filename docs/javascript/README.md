@@ -7,3 +7,4 @@
 - [手写Promise](./手写Promise.md)
 - [co库](./co库.md)
 - [js继承](./js继承.md)
+- [js方法实现](./js方法实现.md)
