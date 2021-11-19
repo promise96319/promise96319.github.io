@@ -173,3 +173,10 @@ export default VueRouter;
 2. 然后对新push的值进行解析，并且与用户自定义的routes配置进行匹配，最终会得到相应的路径和匹配到的component。
 3. 匹配完后，将每个Vue实例的_route属性更改为匹配到的route。
 4. 在router-view组件内部监听_route属性，当发生变化时，看自身配置是否与route匹配。如果匹配，直接渲染匹配到的component。
+
+#### Q:hash和history的区别？
+1. 调用 push 时，首先会改变当前的 url
+   1. 如果 history api 可以使用，那么就使用 pushState/replaceState 改变。
+   2. 如果是 hash 模式，且 history 不可使用，那么使用 location.hash 改变。
+2. 解析 url，匹配路由，更改当前的匹配组件，router-view监听路由变化重新渲染。
+3. 对于浏览器的前进/后退按钮，会监听 hashchange/popState 事件。
