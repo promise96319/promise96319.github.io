@@ -163,6 +163,8 @@ module.exports = {
         '动态规划.md',
         '回溯法.md',
         '排序汇总',
+        '数组.md',
+        '字符串.md',
       ],
       '/data-structures/': [
         '树状数组.md',
