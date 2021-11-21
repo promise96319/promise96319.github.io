@@ -94,12 +94,20 @@ console.log(person.say)
 
 ## bind实现
 ```javascript
-Function.prototype.myBind = function (context) {
-  const args1 = Array.prototype.slice.call(arguments, 1)
-  return (...args2) => {
-    context.fn = this
+Function.prototype.myBind = function (context = window, ...args1) {
+  const _this = this
+  return function F(...args2) {
+    // 如果是构造函数
+    if (this instanceof Function) {
+      return new F(...args1, ...args2)
+    }
+
+    const fn = Symbol()
+    context[fn] = _this
     // bind参数 + 追加参数
-    return context.fn(...args1, ...args2)
+    const result = context[fn](...args1, ...args2)
+    delete context[fn]
+    return result
   }
 }
 
@@ -111,58 +119,198 @@ function add(c, d) {
 const target = add.myBind({ a: 1, b: 2 }, 3)
 console.log(target(4, 5)) // 1 + 2 + 3 + 4 = 10
 console.log(add(4)) // NaN
-
 ```
 
-## 节流
+## call实现
 ```javascript
+Function.prototype.myCall = function (context = window, ...args) {
+  if (this === Function.prototype) {
+    return undefined
+  }
+
+  const fn = Symbol()
+  context[fn] = this
+  const result = context[fn](...args)
+  delete context[fn]
+
+  return result
+}
+
+function add(c, d) {
+  return this.a + this.b + c + d
+}
+
+// const result = add.call({ a: 1, b: 2 }, 3, 4)
+const result = add.myCall({ a: 1, b: 2 }, 3, 4)
+console.log(result)
 ```
 
-## 节流
+## apply实现
 ```javascript
+Function.prototype.myApply = function (context = window, args) {
+  if (this === Function.prototype) {
+    return undefined
+  }
+
+  const fn = Symbol()
+  context[fn] = this
+  const result = context[fn](...args)
+  delete context[fn]
+
+  return result
+}
+
+function add(c, d) {
+  return this.a + this.b + c + d
+}
+
+// const result = add.apply({ a: 1, b: 2 }, [3, 4])
+const result = add.myApply({ a: 1, b: 2 }, [3, 4])
+console.log(result)
 ```
-## 节流
+## EventEmitter实现
 ```javascript
+class EventEmitter {
+  constructor() {
+    this.events = Object.create(null)
+  }
+
+  on(type, listener) {
+    const listeners = this.events[type]
+    if (listeners) {
+      this.events[type].push(listener)
+    } else {
+      this.events[type] = [listener]
+    }
+  }
+
+  off(type, listener) {
+    const listeners = this.events[type]
+    if (!listeners) {
+      return
+    }
+    this.events[type] = listeners.filter(l => l !== listener && l.origin !== listener)
+
+  }
+
+  once(type, listener) {
+    const fn = (...args) => {
+      listener(...args)
+      this.off(type, listener)
+    }
+    fn.origin = listener
+    this.on(type, fn)
+  }
+
+  emit(type, ...args) {
+    (this.events[type] || []).forEach((listener) => {
+      listener(...args)
+    })
+  }
+}
+
+const event = new EventEmitter()
+const fn1 = () => console.log(1)
+const fn2 = () => console.log(2)
+const fn3 = () => console.log(3)
+
+event.once('click', fn3)
+event.emit('click')
+console.log('==============')
+event.emit('click')
+event.emit('click')
+console.log('==============')
+event.on('click', fn1)
+event.on('click', fn2)
+event.emit('click')
+console.log('==============')
+event.off('click', fn1)
+event.emit('click')
 ```
 
-## 节流
+## flat实现
 ```javascript
+Array.prototype.myFlat = function (depth = 1) {
+  // 输入：当前数组
+  // 输出：一层扁平化处理
+  // 边界条件：不是数组 or 层级不够
+  const flat = (arr, level) => {
+    if (!Array.isArray(arr)) {
+      return [arr]
+    }
+
+    if (level >= depth) {
+      return arr
+    }
+
+    return arr.reduce((prev, cur) => {
+      return prev.concat(flat(cur, level + 1))
+    }, [])
+  }
+
+  return flat(this, 0)
+}
+
+const arr = [1, 2, [3, 4, [5, 6]], 7]
+// const result = arr.flat(Infinity)
+const result = arr.myFlat(1)
+console.log('result ==> ', result);
 ```
 
-## 节流
+## map实现
 ```javascript
+Array.prototype.myMap = function (fn) {
+  return this.reduce((prev, cur, index, arr) => {
+    // 注意：使用 concat 会对数组扁平化处理
+    return prev.push(fn(cur, index, arr))
+  }, [])
+}
+
+const arr = [1, 2, 3]
+// const result = arr.map(x => x + 1)
+const result = arr.myMap(x => x + 1)
+console.log(result)
 ```
 
-## 节流
+## instanceOf实现
 ```javascript
-```
-## 节流
-```javascript
-```
+function myInstanceOf(instance, constructor) {
+  let proto = instance.__proto__
+  if (!proto) {
+    return false
+  }
+  if (proto === constructor.prototype) {
+    return true
+  }
+  return myInstanceOf(proto, constructor)
+}
 
-## 节流
-```javascript
-```
+function a() { }
+const b = {}
 
-## 节流
-```javascript
+console.log(a instanceof Function)
+console.log(b instanceof Function)
+console.log(myInstanceOf(a, Function))
+console.log(myInstanceOf(b, Function))
 ```
+## 数组乱序
+```javascript
+// function disorder(arr) {
+//   return arr.sort(() => Math.random() - 0.5)
+// }
 
-## 节流
-```javascript
-```
-## 节流
-```javascript
-```
+function disorder(arr) {
+  let i = 0
+  while (i < arr.length - 1) {
+    const randomIndex = Math.floor(Math.random() * arr.length)
+    [arr[i], arr[randomIndex]] = [arr[randomIndex], arr[i]]
+    i++
+  }
+  return arr
+}
 
-## 节流
-```javascript
-```
-
-## 节流
-```javascript
-```
-
-## 节流
-```javascript
-```
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(disorder(arr))
+console.log(disorder(arr))
+console.log(disorder(arr))
+``
