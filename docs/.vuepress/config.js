@@ -149,6 +149,7 @@ module.exports = {
         '热更新实现原理.md',
         'Tapable.md',
         'webpack源码调试.md',
+        'webpack优化.md',
         'webpack官方文档.md'
       ],
       '/javascript/': [
@@ -165,6 +166,7 @@ module.exports = {
         '排序汇总',
         '数组.md',
         '字符串.md',
+        '二叉树.md'
       ],
       '/data-structures/': [
         '树状数组.md',
