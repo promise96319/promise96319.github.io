@@ -1,6 +1,7 @@
 # js 方法实现
 
 ## 防抖 debounce
+延后一段时间执行，这段时间内触发了任何事件，都会重新开启一个延迟任务。
 ```javascript
 const debounce = (fn, delay) => {
   let timer = null
@@ -24,6 +25,7 @@ wrappedFn()
 ```
 
 ## 节流 throttle
+隔一段时间执行一次，如果在这段时间里又触发了事件，那么不会去执行该事件。
 ```javascript
 const throttle = (fn, delay) => {
   let prev
