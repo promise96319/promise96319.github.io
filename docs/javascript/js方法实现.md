@@ -26,17 +26,16 @@ wrappedFn()
 ## 节流 throttle
 ```javascript
 const throttle = (fn, delay) => {
-  let timer = null
-  return function () {
+  let prev
+
+  return function (args) {
     const _this = this
-    const args = arguments
-    if (timer) {
-      return
-    }
-    timer = setTimeout(() => {
+    let now = Date.now()
+
+    if (!prev || now > prev + delay) {
+      prev = now
       fn.apply(_this, args)
-      timer = null
-    }, delay)
+    }
   }
 }
 
