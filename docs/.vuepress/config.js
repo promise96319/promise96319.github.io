@@ -190,6 +190,7 @@ module.exports = {
         '手写简版express.md',
         'compose.md',
         '进程与线程.md',
+        '资料.md'
       ],
       '/network/': [
         '运输层.md',
