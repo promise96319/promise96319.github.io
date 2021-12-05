@@ -158,7 +158,8 @@ module.exports = {
         '手写Promise.md',
         'co库.md',
         'js继承.md',
-        'js方法实现.md'
+        'js方法实现.md',
+        'es6.md'
       ],
       '/algorithms/': [
         '动态规划.md',

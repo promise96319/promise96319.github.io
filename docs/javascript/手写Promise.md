@@ -508,7 +508,7 @@ class MyPromise {
   }
 
   catch(rejectCallback) {
-    this.then(null, rejectCallback)
+    return this.then(null, rejectCallback)
   }
 
   // finally 后还可以继续执行，并且将值原封不动的传给后者
