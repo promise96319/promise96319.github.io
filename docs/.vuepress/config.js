@@ -41,7 +41,16 @@ module.exports = {
     nav: [
       {
         text: 'Vue源码解析',
-        link: '/vue/'
+        items: [
+          {
+            text: 'Vue源码解析',
+            link: '/vue/'
+          },
+          {
+            text: 'Vue3.2源码',
+            link: '/vue3/'
+          },
+        ]
       },
       {
         text: 'js知识点',
@@ -88,6 +97,10 @@ module.exports = {
         text: '前端资源',
         link: '/resources/'
       },
+      // {
+      //   text: 'linux',
+      //   link: '/linux/'
+      // },
       {
         text: '关于我',
         link: '/about/'
@@ -113,6 +126,9 @@ module.exports = {
         '手写简版VueRouter.md',
         '../webpack/vue-loader实现.md',
         '阅读资料.md',
+      ],
+      '/vue3/': [
+        '源码调试.md',
       ],
       '/react/': [
         'react源码起始篇.md',
@@ -195,8 +211,8 @@ module.exports = {
       ],
       '/network/': [
         '运输层.md',
-        // '应用层.md',
-        // '缓存.md',
+        '应用层.md',
+        '缓存.md',
       ],
       '/computer/': [
       ],
@@ -204,6 +220,11 @@ module.exports = {
         '网络协议.md',
         '算法.md',
         '前端博客.md'
+      ],
+      '/linux/': [
+        'bash.md',
+        'ssh.md',
+        'vim.md',
       ],
       '/about/': [],
     },
