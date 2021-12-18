@@ -76,6 +76,10 @@ module.exports = {
             link: '/algorithms/'
           },
           {
+            text: 'leetcode',
+            link: '/leetcode/'
+          },
+          {
             text: '数据结构',
             link: '/data-structures/'
           },
@@ -184,6 +188,10 @@ module.exports = {
         '数组.md',
         '字符串.md',
         '二叉树.md'
+      ],
+      '/leetcode/': [
+        '1-20.md',
+        '21-40.md',
       ],
       '/data-structures/': [
         '树状数组.md',
