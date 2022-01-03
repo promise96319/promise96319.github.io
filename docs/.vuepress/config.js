@@ -106,9 +106,13 @@ module.exports = {
       //   link: '/linux/'
       // },
       {
-        text: '关于我',
-        link: '/about/'
+        text: '其他知识点',
+        link: 'knowledge-points'
       }
+      // {
+      //   text: '关于我',
+      //   link: '/about/'
+      // }
     ],
     displayAllHeaders: false,
     sidebarDepth: 2,
@@ -235,6 +239,7 @@ module.exports = {
         'vim.md',
       ],
       '/about/': [],
+      '/knowledge-points/': []
     },
     nextLinks: true,
     prevLinks: true,
