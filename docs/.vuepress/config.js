@@ -105,10 +105,10 @@ module.exports = {
       //   text: 'linux',
       //   link: '/linux/'
       // },
-      {
-        text: '其他知识点',
-        link: 'knowledge-points'
-      }
+      // {
+      //   text: '其他知识点',
+      //   link: 'knowledge-points'
+      // }
       // {
       //   text: '关于我',
       //   link: '/about/'
@@ -139,6 +139,7 @@ module.exports = {
         '源码调试.md',
       ],
       '/react/': [
+        'react源码调试.md',
         'react源码起始篇.md',
         'Lanes模型.md',
         'Fiber.md',
@@ -152,12 +153,12 @@ module.exports = {
         'commitWork.md',
         'Suspense实现.md',
         '事件系统.md',
-        'react源码调试.md',
         '手写简版redux.md',
         '手写简版react-redux.md',
         '阅读资料.md',
       ],
       '/webpack/': [
+        'webpack源码调试.md',
         '流程开始.md',
         'make阶段.md',
         'factorizeModule.md',
@@ -172,7 +173,6 @@ module.exports = {
         'vue-loader实现.md',
         '热更新实现原理.md',
         'Tapable.md',
-        'webpack源码调试.md',
         'webpack优化.md',
         'webpack官方文档.md'
       ],

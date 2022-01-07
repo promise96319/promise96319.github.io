@@ -68,7 +68,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 ```
 
 最终就可以在`vscode`中调试了：
-![img](imgs/inspect/chrome-vscode-debugger.png)
+![img](./imgs/inspect/chrome-vscode-debugger.png)
 
 ## 参考文章
 
