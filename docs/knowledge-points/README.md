@@ -43,9 +43,14 @@
         - 通常已经提供了相关的preset，只需要整合即可。如 @babel/preset-env、@babel/preset-react、@babel/preset-typescript等
         - es6和es2015+的关系：https://es6.ruanyifeng.com/#docs/intro 目前大部分浏览器已经兼容es6大部分语法了。
     - generate 代码
+  - 搞两个 babel 的插件学习一下
+
 
 - lodash 学习
 
 - vite / go 语言
 
 - node / express / koa / egg / graphql / mysql / mongodb / redis / docker
+
+- （支付宝技术体验） umi4 => 新功能点
+- （支付宝技术体验） npm 包优化 npm => yarn => cnpm => pnpm => 阿里npm

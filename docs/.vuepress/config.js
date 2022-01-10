@@ -62,7 +62,16 @@ module.exports = {
       },
       {
         text: 'Webpack',
-        link: '/webpack/'
+        items: [
+          {
+            text: 'Webpack',
+            link: '/webpack/'
+          },
+          {
+            text: 'Rollup',
+            link: '/rollup/'
+          },
+        ]
       },
       {
         text: 'Node',
@@ -175,6 +184,10 @@ module.exports = {
         'Tapable.md',
         'webpack优化.md',
         'webpack官方文档.md'
+      ],
+      '/rollup/': [
+        '源码调试.md',
+        'todo.md',
       ],
       '/javascript/': [
         '事件循环机制.md',
