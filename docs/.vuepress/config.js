@@ -71,6 +71,10 @@ module.exports = {
             text: 'Rollup',
             link: '/rollup/'
           },
+          {
+            text: 'Vite',
+            link: '/vite/'
+          },
         ]
       },
       {
@@ -189,6 +193,9 @@ module.exports = {
         '源码调试.md',
         'todo.md',
       ],
+      '/vite/': [
+        '源码调试.md',
+      ],
       '/javascript/': [
         '事件循环机制.md',
         '../react/浏览器一帧里做了什么.md',
@@ -252,7 +259,9 @@ module.exports = {
         'vim.md',
       ],
       '/about/': [],
-      '/knowledge-points/': []
+      '/knowledge-points/': [],
+      // 静态资源
+      '/static/': []
     },
     nextLinks: true,
     prevLinks: true,
