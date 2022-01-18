@@ -29,7 +29,6 @@
   - 基于 react-refresh： https://github.com/pmmmwh/react-refresh-webpack-plugin
   - react 提供的热更新：https://www.npmjs.com/package/react-refresh
 
-
 - babel 学习（完成）
   - 介绍：https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md
   - plugin 开发：https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md
@@ -55,5 +54,25 @@
 - （支付宝技术体验） umi4 => 新功能点
 - （支付宝技术体验） npm 包优化 npm => yarn => cnpm => pnpm => 阿里npm
 
+- preact 打包体积小？
 
-## preact
+
+## todo
+
+- vite 学习
+  - yaml 学习
+  - npm-run-all 包
+    - https://segmentfault.com/a/1190000017282417
+    - run-s 顺序，run-p 并行，run
+  - git hooks
+  - json5 包
+    - 支持类似于对象的写法！
+    - https://zhuanlan.zhihu.com/p/108119490
+  - api extractor
+    - ts types 整理和 文档
+    - https://zhuanlan.zhihu.com/p/434565485
+  - cac 包
+    - 与commander类似，提供相关命令
+  - chokidar 包
+    - 处理文件
+    - https://www.npmjs.com/package/chokidar
