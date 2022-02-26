@@ -118,6 +118,10 @@ module.exports = {
         text: '前端资源',
         link: '/resources/'
       },
+      {
+        text: '工具',
+        link: '/tools/'
+      },
       // {
       //   text: 'linux',
       //   link: '/linux/'
@@ -266,7 +270,10 @@ module.exports = {
       '/about/': [],
       '/knowledge-points/': [],
       // 静态资源
-      '/static/': []
+      '/static/': [],
+      '/tools/': [
+        'img-library.md'
+      ],
     },
     nextLinks: true,
     prevLinks: true,
