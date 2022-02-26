@@ -35,3 +35,19 @@
 - v8 + 浏览器
 
 ## 算法思想
+
+## 衍生
+
+- svelte
+  - [原理](https://jishuin.proginn.com/p/763bfbd702c9)
+  - []
+
+## todo
+1. 构建工具
+  - react-refresh
+  - babel
+  - rollup
+  - vite & esbuild
+
+2. 环境（库模板）
+  - 

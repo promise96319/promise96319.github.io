@@ -4,6 +4,7 @@ dist
 docs/.vuepress/dist
 docs/test
 docs/面试
+person
 docx
 .history
 .DS_Store

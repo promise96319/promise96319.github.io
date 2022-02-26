@@ -75,6 +75,10 @@ module.exports = {
             text: 'Vite',
             link: '/vite/'
           },
+          {
+            text: 'Babel',
+            link: '/babel/'
+          }
         ]
       },
       {
@@ -196,6 +200,7 @@ module.exports = {
       '/vite/': [
         '源码调试.md',
       ],
+      '/babel/': [],
       '/javascript/': [
         '事件循环机制.md',
         '../react/浏览器一帧里做了什么.md',
