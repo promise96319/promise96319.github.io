@@ -26,3 +26,11 @@
 然后在阿里云或其他平台设置域名解析路径：
 
 ![PicGo domain](https://imgs.qinguanghui.com/tools/picgo-domain.png)
+
+## 5. 访问图片
+通过 `PicGo` 上传图片后，在 `github` 仓库即可看到对应的图片：
+![PicGo github demo](https://imgs.qinguanghui.com/tools/picgo-github-demo.png)
+
+此时即可通过 `【域名】【路径】`的方式访问上传后的图片（一般上传后需要等几十秒钟才会生效）。
+
+当然也可以在 `PicGo` 软件中设置『上传后自动复制链接』，方便后续操作。

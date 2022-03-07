@@ -86,6 +86,10 @@ module.exports = {
         link: '/node/'
       },
       {
+        text: '技术概览',
+        link: '/trend/'
+      },
+      {
         text: '算法',
         items: [
           {
@@ -122,6 +126,10 @@ module.exports = {
         text: '工具',
         link: '/tools/'
       },
+      {
+        text: '项目问题',
+        link: '/project/'
+      }
       // {
       //   text: 'linux',
       //   link: '/linux/'
@@ -250,6 +258,9 @@ module.exports = {
         '进程与线程.md',
         '资料.md'
       ],
+      '/trend/': [
+        'bundleless.md'
+      ],
       '/network/': [
         '运输层.md',
         '应用层.md',
@@ -274,6 +285,9 @@ module.exports = {
       '/tools/': [
         'img-library.md'
       ],
+      '/project/': [
+        'css-background-img.md'
+      ]
     },
     nextLinks: true,
     prevLinks: true,
