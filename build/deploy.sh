@@ -6,7 +6,7 @@ npm run build
 echo 复制文件...
 cp -rf ./docs/.vuepress/dist/* ../promise.github.io/
 
-cd ../promise.github.io
+cd ../promise96319.github.io
 
 echo 提交代码...
 git status
