@@ -8,3 +8,7 @@
 
 ## webpack 打包慢，热更新失效问题
   - 
+
+## 热更新
+  - react refresh
+    - Dan的介绍 https://github.com/facebook/react/issues/16604
