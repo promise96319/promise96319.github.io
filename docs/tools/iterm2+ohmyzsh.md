@@ -43,6 +43,14 @@ source ~/.zshrc
 
 ## 配置主题
 [主题列表](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes)
+```bash
+# 例如
+ZSH_THEME=robbyrussell
+```
 
 ## 配置插件
 [插件列表](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins)
+```bash
+# 例如
+plugins=(nvm git yarn z zsh-syntax-highlighting zsh-autosuggestions)
+```

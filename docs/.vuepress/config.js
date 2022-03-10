@@ -283,7 +283,8 @@ module.exports = {
       // 静态资源
       '/static/': [],
       '/tools/': [
-        'img-library.md'
+        'img-library.md',
+        'iterm2+ohmyzsh.md',
       ],
       '/project/': [
         'css-background-img.md'
