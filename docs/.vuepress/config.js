@@ -168,6 +168,7 @@ module.exports = {
         '源码调试.md',
       ],
       '/react/': [
+        'react源码调试(非打包版).md',
         'react源码调试.md',
         'react源码起始篇.md',
         'Lanes模型.md',
@@ -299,3 +300,4 @@ module.exports = {
   },
   plugins: ['@vuepress/back-to-top'],
 }
+
