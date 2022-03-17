@@ -286,6 +286,7 @@ module.exports = {
       '/tools/': [
         'img-library.md',
         'iterm2+ohmyzsh.md',
+        'jinkins.md',
       ],
       '/project/': [
         'css-background-img.md'

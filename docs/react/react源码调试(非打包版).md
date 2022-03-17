@@ -127,8 +127,11 @@ import * as ReactDOM from './src/client/ReactDOM'
 export default ReactDOM
 ```
 
-## 调试
+## `chrome` 调试
 最后正常启动 `webpack` 项目，在 `chrome` 的 `source` 目录中就可以调试源代码了。
+
+## `vscode` 调试
+详情参见 `vscode` 的 [debug 插件](https://github.com/microsoft/vscode-js-debug)。仅需点击运行的命令链接即可在 `vscode` 中调试。
 
 ## 参考
 - [react-source-code-debug](https://github.com/neroneroffy/react-source-code-debug/blob/master/docs/setUpDebugEnv.md)
