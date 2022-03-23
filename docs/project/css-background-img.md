@@ -141,3 +141,91 @@ $icomoon-arrow-down: '\e900' !default;
   }
 }
 ```
+
+
+## 方案3：背景图片
+字体图标虽然能完成效果，但是在组件库中都是使用 `svg` 来渲染图标，并且引入 `font` 后还需要处理 `font` 引入相关的逻辑。因此采用第三种方案，背景图片的方式。[参考地址](https://www.zhangxinxu.com/wordpress/2018/08/css-svg-background-image-base64-encode/)
+
+回到问题当中，可以使用背景图片来设置图片，但是无法切换颜色，那么我们需要寻找方案来解决切换颜色。既然是 `svg` 图片，那么可以通过 `fill` 属性动态设置颜色。如下所示:
+
+```scss
+$color: red;
+$arrow-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='#{$color}' viewBox='0 0 32 32'%3E%3Cpath d='M7.75 11.522a1 1 0 0 1 1.312-.089l.102.089 6.833 6.835 6.837-6.835a1 1 0 0 1 1.312-.089l.102.089a1 1 0 0 1 .09 1.312l-.09.102-7.542 7.542a1 1 0 0 1-1.312.09l-.102-.09-7.542-7.542a.999.999 0 0 1 0-1.414z'/%3E%3C/svg%3E") !default;
+```
+
+这里将 `$color` 插入到 `svg` 当中，从而能达到控制图片颜色的效果。[查看兼容性](https://caniuse.com/?search=CSS%20property%3A%20background%3A%20SVG%20image%20as%20background)
+
+但是这里又存在一个问题，部分浏览器上无法识别 `#000` 等 `#` 号开头的颜色，需要经过转移后才能识别，但是在我们的色板中都是 `hex` 类型的颜色。这个时候就需要将其进行转义，最好是能将 `#` 号去除掉。
+
+查看 `sass` 文档，我们发现它有 `string` 相关的方法，如下：
+```scss
+@use 'sass:string';
+@debug string.slice('xxx', 1);
+```
+但是在 `scss` 中却没有这个方法，无法将 `#` 号去除掉，因此我们需要另想他法。
+
+既然浏览器无法识别 背景图片 `svg` 中的 `#` 号，那么它能否识别 `rgb` 呢？测试发现是可行的。那么我们需要将 `hex` 转换为 `rgb` 形式。第一想法是直接使用 `rgb` 函数，但是测试后发现没用，使用 `rgba` 函数，发现在 `a` 为 `1` 时同样不适用，如：
+
+```scss
+// 最终在 svg 里还是 hex 形式
+$color: rgba($qtd-color-primary, 1);
+
+// 最终在 svg 里是 rgb 形式
+$color: rgba($qtd-color-primary, 0.99);
+```
+
+虽然将 `a` 设为 `0.99` 能基本上达到效果，但是还是不够完美。继续查看文档发现，颜色函数除了 `rgb` 还有 `red/green/blue` 函数，分别能取到 `hex` 的红绿蓝的 `rgb` 值。[查看文档](https://www.sass.hk/skill/sass25.html)
+
+那么我们可以根据这三个函数封装一个 `hex` 到 `rgb` 的函数，因此最终的代码如下：
+
+``` scss
+// hex 转换为 rgb
+@function hexToRgb($hex) {
+  $red: red($hex);
+  $green: green($hex);
+  $blue: blue($hex);
+  @return 'rgb(' + $red + ',' + $green + ',' + $blue + ')'
+};
+
+// 根据颜色生成 svg 图片
+@function arrow-down($color) {
+  @return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='#{hexToRgb($color)}' viewBox='0 0 32 32'%3E%3Cpath d='M7.75 11.522a1 1 0 0 1 1.312-.089l.102.089 6.833 6.835 6.837-6.835a1 1 0 0 1 1.312-.089l.102.089a1 1 0 0 1 .09 1.312l-.09.102-7.542 7.542a1 1 0 0 1-1.312.09l-.102-.09-7.542-7.542a.999.999 0 0 1 0-1.414z'/%3E%3C/svg%3E")
+};
+
+@function double-arrow-down($color) {
+  @return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='#{hexToRgb($color)}' viewBox='0 0 32 32'%3E%3Cpath d='M24.147 16.537l.102.09a1 1 0 0 1 .09 1.312l-.09.102-7.542 7.542a1 1 0 0 1-1.312.09l-.102-.09-7.542-7.542a1 1 0 1 1 1.312-1.504l.102.09L16 23.462l6.835-6.835a1 1 0 0 1 1.312-.09zm0-8l.102.089a1 1 0 0 1 .09 1.312l-.09.102-7.542 7.542a1 1 0 0 1-1.312.09l-.102-.09-7.542-7.542a.999.999 0 0 1 1.312-1.503l.102.089L16 15.461l6.835-6.835a1 1 0 0 1 1.312-.089z'/%3E%3C/svg%3E")
+};
+
+// svg 图片
+$svg-arrow-down: arrow-down($qtc-color-text-secondary) !default;
+$svg-arrow-down-hover: arrow-down($qtc-color-primary) !default;
+$svg-double-arrow-down: double-arrow-down($qtc-color-text-secondary) !default;
+$svg-double-arrow-down-hover: double-arrow-down($qtc-color-primary) !default;
+
+// 图片的样式
+@mixin BackgroundImage($image) {
+  background-image: $image;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.#{$datepicker} {
+  &-prev-month-btn {
+    &::after {
+      transform: rotate(90deg);
+      @include BackgroundImage($svg-arrow-down);
+    }
+    // hover 时切换图片
+    &:hover::after {
+      @include BackgroundImage($svg-arrow-down-hover);
+    }
+  }
+}
+```
+
+
+
+
+
+
