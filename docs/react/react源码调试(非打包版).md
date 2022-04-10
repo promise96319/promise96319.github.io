@@ -70,7 +70,7 @@ module.exports = {
     port: 8080,
   },
   // 设置 sourcemap，用于关联源代码。
-  devtool: 'inline-cheap-module-source-map',
+  devtool: 'source-map',
   hot: true,
   mode: 'development'
 }
