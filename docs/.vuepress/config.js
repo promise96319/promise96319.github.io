@@ -289,7 +289,8 @@ module.exports = {
         'jinkins.md',
       ],
       '/project/': [
-        'css-background-img.md'
+        'css-background-img.md',
+        'drawer.md',
       ]
     },
     nextLinks: true,
