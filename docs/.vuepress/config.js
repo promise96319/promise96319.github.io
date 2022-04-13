@@ -291,6 +291,7 @@ module.exports = {
       '/project/': [
         'css-background-img.md',
         'drawer.md',
+        'space.md'
       ]
     },
     nextLinks: true,
