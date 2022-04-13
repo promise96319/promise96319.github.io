@@ -129,6 +129,10 @@ module.exports = {
       {
         text: '项目问题',
         link: '/project/'
+      },
+      {
+        text: 'studying',
+        link: '/studying/'
       }
       // {
       //   text: 'linux',
