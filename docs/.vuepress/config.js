@@ -297,6 +297,9 @@ module.exports = {
         'drawer.md',
         'space.md',
         'css-media.md'
+      ],
+      '/studying/': [
+        'typescript.md'
       ]
     },
     nextLinks: true,
