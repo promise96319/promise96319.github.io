@@ -10,6 +10,6 @@
 
 ## rollup / vite / esbuild / ruby
 
-## jiti / unbuild / tsup
+## jiti / unbuild / tspu
 
 ## vue3 / nuxt3
