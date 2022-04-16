@@ -23,29 +23,16 @@ export default defineConfig({
   lastUpdated: true,
   themeConfig: {
     logo: '/logo.png',
-    repo: 'promise96319/blog',
+    repo: 'promise96319',
     lastUpdated: '最近更新',
     nav: navbar,
     sidebar,
-
-    //   '/project/': [
-    //     'css-background-img.md',
-    //     'drawer.md',
-    //     'space.md',
-    //     'css-media.md'
-    //   ],
-    //   '/studying/': [
-    //     'typescript.md'
-    //   ]
-    // },
     nextLinks: true,
     prevLinks: true,
     editLinkText: '编辑',
-    // smoothScroll: true
   },
   markdown: {
     lineNumbers: true,
     toc: { includeLevel: [1, 2] },
   },
-  // plugins: ['@vuepress/back-to-top'],
 })

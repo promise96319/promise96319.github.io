@@ -89,7 +89,7 @@ const webpack = [
       { text: 'buildModule', link: '/webpack/buildModule' },
       { text: 'seal阶段', link: '/webpack/seal阶段' },
       { text: 'emit阶段', link: '/webpack/emit阶段' },
-      { text: 'import()', link: '/webpack/import()' },
+      { text: 'import', link: '/webpack/import' },
       { text: 'TreeShaking原理', link: '/webpack/TreeShaking原理' },
       { text: 'SplitChunksPlugin', link: '/webpack/SplitChunksPlugin' },
       { text: 'watch实现', link: '/webpack/watch实现' },
@@ -146,10 +146,10 @@ const node = [
     text: '知识点',
     link: '/node/index',
     children: [
-      { text: '手写简版express', link: '手写简版express' },
-      { text: 'compose', link: 'compose' },
-      { text: '进程与线程', link: '进程与线程' },
-      { text: '资料', link: '资料' },
+      { text: '手写简版express', link: '/node/手写简版express' },
+      { text: 'compose', link: '/node/compose' },
+      { text: '进程与线程', link: '/node/进程与线程' },
+      { text: '资料', link: '/node/资料' },
     ],
   },
 ]
@@ -253,7 +253,7 @@ const tools = [
   {
     children: [
       { link: '/tools/img-library', text: 'img-library' },
-      { link: '/tools/iterm2+ohmyzsh', text: 'iterm2+ohmyzsh' },
+      { link: '/tools/iterm2-ohmyzsh', text: 'iterm2+ohmyzsh' },
       { link: '/tools/jinkins', text: 'jinkins' },
     ],
     link: '/tools/index',

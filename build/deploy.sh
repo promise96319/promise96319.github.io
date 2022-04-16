@@ -4,7 +4,7 @@ echo 开始打包...
 npm run build
 
 echo 复制文件...
-cp -rf ./docs/.vuepress/dist/* ../promise96319.github.io/
+cp -rf ./docs/.vitepress/dist/* ../promise96319.github.io/
 
 cd ../promise96319.github.io
 
