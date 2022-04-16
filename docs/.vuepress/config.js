@@ -1,43 +1,23 @@
 module.exports = {
-  // base: '/silence/',
-  // dest: 'dist',
   title: '秦光辉',
   description: '一个专注于前端开发的博客，逐行分析Vue源码，深入了解webpack和Node相关框架，攻克各个javascript核心知识点，致力于成为一名优秀的前端开发者',
   head: [
-    [
-      'meta',
-      {
-
-      }
-    ],
+    ['meta',{}],
     // 百度统计
     ['script', {}, `
-            var _hmt = _hmt || [];
-            (function() {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?41a9a03811977ee15c69366a880d1296";
-            var s = document.getElementsByTagName("script")[0]; 
-            s.parentNode.insertBefore(hm, s);
-            })();
-            `]
+      var _hmt = _hmt || [];
+      (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?41a9a03811977ee15c69366a880d1296";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+      })();
+    `]
   ],
-  // serviceWorker: false,
-  // configureWebpack: {
-  //   resolve: {
-  //     alias: {
-  //       '@image': '/docs/.vuepress/public'
-  //     }
-  //   }
-  // },
-  // theme: '@vuepress/theme-vue',
   themeConfig: {
     logo: '/logo.png',
-    // repo: 'ustbhuangyi/vue-analysis',
-    // editLinks: true,
-    // docsDir: 'docs',
-    // editLinkText: '在 GitHub 上编辑此页',
-    // displayAllHeaders: true,
-    lastUpdated: '上次更新',
+    repo: 'promise96319/blog',
+    lastUpdated: '最近更新',
     nav: [
       {
         text: 'Vue源码解析',
@@ -114,10 +94,6 @@ module.exports = {
         text: '网络',
         link: '/network/'
       },
-      // {
-      //   text: '计算机',
-      //   link: '/computer/'
-      // },
       {
         text: '前端资源',
         link: '/resources/'
@@ -172,7 +148,7 @@ module.exports = {
         '源码调试.md',
       ],
       '/react/': [
-        'react源码调试(非打包版).md',
+        'react源码调试-next.md',
         'react源码调试.md',
         'react源码起始篇.md',
         'Lanes模型.md',

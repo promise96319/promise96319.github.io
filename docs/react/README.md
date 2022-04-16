@@ -1,5 +1,7 @@
 # React
 
+- [react源码调试](./react源码调试-next.md)
+- [react源码调试](./react源码调试.md)
 - [react源码起始篇](./react源码起始篇.md)
 - [Lanes模型](./Lanes模型.md)
 - [Fiber](./Fiber.md)
@@ -13,6 +15,5 @@
 - [commitWork阶段](./commitWork.md)
 - [Suspense实现](./Suspense实现.md)
 - [事件系统](./事件系统.md)
-- [react源码调试](./react源码调试.md)
 - [手写简版redux](./手写简版redux.md)
 - [手写简版react-redux](./手写简版react-redux.md)
