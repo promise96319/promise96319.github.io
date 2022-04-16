@@ -4,7 +4,9 @@
 ### Partial
 将属性变为可选。
 ``` typescript
-type Partial<T> = { [P in keyof T]?: T[P] };
+type Partial<T> = { 
+  [P in keyof T]?: T[P] 
+};
 ```
 
 ### Required
@@ -36,12 +38,10 @@ type Record<K extends keyof any, T> = {
 type Exclude<T, U> = T extends U ? never : T;
 ```
 
-### Pick
-选取部分属性
+### Extract
+选取，求交集
 ```typescript
-type Pick<T, K extends keyof T> = {
-  [P in K]: T[P]
-}
+type Extract<T, K> = T extends K ? T : never;
 ```
 
 ### Omit
@@ -51,19 +51,54 @@ type Omit<T, K extends keyof T> = Pick<T, Exclude<T, K>>
 ```
 
 ### Pick
+选取部分属性
 ```typescript
+type Pick<T, K extends keyof T> = {
+  [P in K]: T[P]
+}
 ```
 
-### Pick
+### NonNullable
+排除 `null` 和 `undefined`
 ```typescript
+type NonNullable<T> = T extends null | undefined ? never : T;
 ```
 
-### Pick
+### Parameters
+参数类型
 ```typescript
+type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
 ```
 
+### ReturnType
+函数返回值类型
+```typescript
+type ReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : any;
+```
 
+### ConstructorParameters
+构造函数参数类型
+```typescript
+type ConstructorParameters<T extends abstract new (...args: any) => any> = T extends abstract new (...args: infer P) => any ? P : never;
+```
 
+### InstanceType
+类的实例类型
+```typescript
+type InstanceType<T extends abstract new (...args: any) => any> = T extends abstract new (...args: any) => infer R ? R : any;
+```
+
+### 内置
+```typescript
+// 全部大写
+type Uppercase<S extends string> = intrinsic;
+// 全部小写
+type Lowercase<S extends string> = intrinsic;
+// 第一个字母大写
+type Capitalize<S extends string> = intrinsic;
+// 第一个字母小写
+type Uncapitalize<S extends string> = intrinsic;
+```
 
 ## Module
 

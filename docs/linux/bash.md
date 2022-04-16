@@ -25,3 +25,67 @@
 | \                                     | \                        |
 | ctrl + t                              | 交换当前字母和上一个字母 |
 | option + t                            | 交换当前单词和上一个单词 |
+
+
+### 别名
+```bash
+# 极简命令
+# 基于 @antfu/ni 库，npm/yarn/pnpm 
+# npm run dev
+alias b="nr build"
+alias d="nr dev"
+# npm install
+alias i="ni"
+# npm install -D
+alias id="ni -D"
+# http-server 起服务
+alias s="serve"
+# npm run test
+alias t="nr test"
+# npm uninstall
+alias u="nun"
+# 打开 vscode
+alias .="code ."
+```
+
+### .bash_profile
+```bash
+# 基于 @antfu/ni 库，npm/yarn/pnpm 
+# npm run build
+alias b="nr build"
+# npm run dev
+alias d="nr dev"
+# npm install
+alias i="ni"
+# npm install -D
+alias id="ni -D"
+# http-server 起本地 web 服务
+alias s="http-server -c-1"
+# npm run test
+alias t="nr test"
+# npm uninstall
+alias u="nun"
+# vscode
+alias .="code ."
+
+# git
+alias ga="git add ."
+alias gcm="git commit -m"
+alias gs="git status"
+alias gb="git branch -a"
+alias gt="git log --graph --oneline --all"
+alias gcb="git checkout -b"
+alias gf="git fetch"
+alias gm="git merge"
+alias gp="git push"
+alias gpl="git pull"
+alias gitu="git config user.name promise96319"
+alias gite="git config user.email 1248975357@qq.com"
+alias gcz="git add . && git status && git cz"
+alias gl="git log"
+
+# npm 
+alias npmqt="npm config set registry http://ued.qingteng.cn:81"
+alias npmtb="npm config set registry https://registry.npm.taobao.org"
+alias npmjs="npm config set registry https://registry.npmjs.org/"
+```
