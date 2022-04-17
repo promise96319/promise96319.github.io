@@ -19,7 +19,6 @@ test('transform', () => {
   const name = 'studying'
   const arr = [
     'typescript.md',
-    //
   ]
   const result = transform(name, arr)
   expect(result).toMatchInlineSnapshot(`
