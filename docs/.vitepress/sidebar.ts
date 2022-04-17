@@ -24,7 +24,7 @@ const vue = [
 
 const leetcode = [
   {
-    text: '/leetcode/',
+    text: 'leetcode',
     link: '/leetcode/index',
     children: [
       {
@@ -54,7 +54,7 @@ const react = [
     text: '原理',
     link: '/react/index',
     children: [
-      { text: 'react源码调试-next', link: '/react/react源码调试-next' },
+      { text: 'react源码调试环境构建', link: '/react/react源码调试-next' },
       { text: 'react源码调试', link: '/react/react源码调试' },
       { text: 'react源码起始篇', link: '/react/react源码起始篇' },
       { text: 'Lanes模型', link: '/react/Lanes模型' },
@@ -127,11 +127,11 @@ const babel = []
 
 const js = [
   {
-    text: '知识点',
+    text: 'js',
     link: '/javascript/index',
     children: [
       { text: '事件循环机制', link: '/javascript/事件循环机制' },
-      { text: '../react/浏览器一帧里做了什么', link: '/javascript/../react/浏览器一帧里做了什么' },
+      // { text: '../react/浏览器一帧里做了什么', link: '/javascript/../react/浏览器一帧里做了什么' },
       { text: '手写Promise', link: '/javascript/手写Promise' },
       { text: 'co库', link: '/javascript/co库' },
       { text: 'js继承', link: '/javascript/js继承' },
@@ -143,7 +143,7 @@ const js = [
 
 const node = [
   {
-    text: '知识点',
+    text: 'node',
     link: '/node/index',
     children: [
       { text: '手写简版express', link: '/node/手写简版express' },
@@ -156,7 +156,7 @@ const node = [
 
 const algorithms = [
   {
-    text: '知识点',
+    text: '算法',
     link: '/node/index',
     children: [
       { text: '动态规划', link: '/algorithms/动态规划' },
@@ -263,14 +263,14 @@ const tools = [
 
 const project = [
   {
+    text: '@qt/design',
+    link: '/project/index',
     children: [
       { link: '/project/css-background-img', text: 'css-background-img' },
       { link: '/project/drawer', text: 'drawer' },
       { link: '/project/space', text: 'space' },
       { link: '/project/css-media', text: 'css-media' },
     ],
-    link: '/project/index',
-    text: '项目问题',
   },
 ]
 
@@ -292,7 +292,7 @@ export const sidebar = {
   '/rollup/': rollup,
   '/vite/': vite,
   '/babel/': babel,
-  '/js/': js,
+  '/javascript/': js,
   '/node/': node,
   '/algorithms/': algorithms,
   '/leetcode/': leetcode,

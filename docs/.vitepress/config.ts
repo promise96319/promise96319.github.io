@@ -32,7 +32,6 @@ export default defineConfig({
     editLinkText: '编辑',
   },
   markdown: {
-    lineNumbers: true,
     toc: { includeLevel: [1, 2] },
   },
 })

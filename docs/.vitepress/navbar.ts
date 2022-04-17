@@ -18,7 +18,7 @@ export const navbar = [
     ],
   },
   {
-    text: 'js/css',
+    text: 'js',
     items: [
       { text: 'ES6', link: '/javascript/' },
       { text: 'Node', link: '/node/' },
