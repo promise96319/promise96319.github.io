@@ -100,6 +100,14 @@ type Capitalize<S extends string> = intrinsic;
 type Uncapitalize<S extends string> = intrinsic;
 ```
 
+## 类型判断 
+### Equals
+```typescript
+type Equals<X, Y> =
+  (<T>() => T extends X ? 1 : 2) extends
+  (<T>() => T extends Y ? 1 : 2) ? true : false;
+```
+
 ## Module
 
 - 只有使用了 `import/export` 语法的才会视为 `module`
