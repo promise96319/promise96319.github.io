@@ -27,14 +27,9 @@ const leetcode = [
     text: 'leetcode',
     link: '/leetcode/index',
     children: [
-      {
-        link: '/leetcode/1-20',
-        text: '1-20',
-      },
-      {
-        link: '/leetcode/21-40',
-        text: '21-40',
-      },
+      { link: '/leetcode/leetcode', text: '汇总' },
+      { link: '/leetcode/1-20', text: '1-20' },
+      { link: '/leetcode/21-40', text: '21-40' },
     ],
   },
 ]
