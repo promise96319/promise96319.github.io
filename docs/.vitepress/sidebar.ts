@@ -1,3 +1,14 @@
+const articles = [
+  {
+    text: '文章',
+    link: '/articles/index',
+    children: [
+      { text: 'React 并发原理', link: 'articles/react-concurrency' },
+      { text: 'todo', link: 'articles/todo' },
+    ],
+  },
+]
+
 const vue = [
   {
     text: '原理',
@@ -280,6 +291,7 @@ const studying = [
 ]
 
 export const sidebar = {
+  'articles': articles,
   '/vue/': vue,
   '/vue3/': vue3,
   '/react/': react,

@@ -32,6 +32,6 @@ export default defineConfig({
     editLinkText: '编辑',
   },
   markdown: {
-    toc: { includeLevel: [1, 2] },
+    toc: { includeLevel: [1, 2, 3] },
   },
 })

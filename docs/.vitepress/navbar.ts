@@ -1,6 +1,10 @@
 
 export const navbar = [
   {
+    text: '文章',
+    link: '/articles/index',
+  },
+  {
     text: '前端框架',
     items: [
       { text: 'Vue v2 源码解析', link: '/vue/' },
