@@ -28,8 +28,7 @@ jobs:
         uses: chabad360/hugo-gh-pages@master
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          site: qinguanghui.com
-          email: 1248975357@qq.com
+          cname: qinguanghui.com
           siteDir: /docs/.vitepress/dist
           branch: master
 
