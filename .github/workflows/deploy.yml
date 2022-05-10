@@ -4,7 +4,7 @@ on:
   push:
   pull_request:
     branches: 
-      - vitepress
+      - master
 
 jobs: 
   build-and-deploy:
@@ -31,7 +31,7 @@ jobs:
         with:
           email: 1248975357@qq.com
           build_dir: ./docs/.vitepress/dist
-          branch: vitepress
+          branch: master
 
 
 
