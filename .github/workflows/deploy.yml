@@ -21,18 +21,15 @@ jobs:
       - name: Install packages
         run: npm i
 
-      - name: Build static site
+      - name: Build  site
         run: npm run build
 
-      - name: Deploy to github pages
-        uses: Cecilapp/GitHub-Pages-deploy@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to github pages
+        uses: chabad360/hugo-gh-pages@master
         with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          site: qinguanghui.com
           email: 1248975357@qq.com
-          build_dir: ./docs/.vitepress/dist
+          siteDir: /docs/.vitepress/dist
           branch: master
 
-
-
-  
