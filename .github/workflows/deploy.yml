@@ -25,10 +25,8 @@ jobs:
         run: npm run build
 
       - name: Publish to github pages
-        uses: chabad360/hugo-gh-pages@master
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          cname: qinguanghui.com
-          siteDir: /docs/.vitepress/dist
-          branch: master
+          branch: gh-pages
+          folder: docs/.vitepress/dist
 
