@@ -7,30 +7,32 @@ on:
       - vitepress
 
 jobs: 
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout a new repository
         uses: actions/checkout@v3
+
       - name: Node environment
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-      - run: npm i
-      - run: npm run build
 
-  deployment:
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
+      - name: Install packages
+        run: npm i
+
+      - name: Build static site
+        run: npm run build
+
       - name: Deploy to github pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           email: 1248975357@qq.com
-          build_dir: docs/.vitepress/dist
+          build_dir: ./docs/.vitepress/dist
           branch: vitepress
+
 
 
   
