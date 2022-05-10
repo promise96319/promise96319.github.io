@@ -1,6 +1,10 @@
 
 export const navbar = [
   {
+    text: '日常',
+    link: '/daily/index',
+  },
+  {
     text: '文章',
     link: '/articles/index',
   },
@@ -26,6 +30,7 @@ export const navbar = [
     items: [
       { text: 'ES6', link: '/javascript/' },
       { text: 'Node', link: '/node/' },
+      { text: 'Typescript', link: '/typescript/' },
     ],
   },
   {
@@ -47,12 +52,8 @@ export const navbar = [
     ],
   },
   {
-    text: '技术点',
-    items: [
-      { text: 'studying', link: '/studying/' },
-      { text: '项目问题', link: '/project/' },
-      { text: '技术概览', link: '/trend/' },
-    ],
+    text: '项目',
+    link: '/project/',
   },
 
   // {

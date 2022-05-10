@@ -1,5 +1,5 @@
 {
-  "name": "frontend-blog",
+  "name": "blog",
   "version": "2.0.0",
   "description": "frontend-blog",
   "main": "index.js",
@@ -8,7 +8,6 @@
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
     "test": "vitest",
-    "sh": "sh build/deploy.sh",
     "generate": "jiti scripts/generate.ts"
   },
   "devDependencies": {

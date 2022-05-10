@@ -1,3 +1,17 @@
+const daily = [
+  {
+    text: '2022',
+    link: '/daily/index',
+    children: [
+      { text: '5月', link: '/daily/2022/05' },
+      { text: '6月', link: '/daily/2022/06' },
+      { text: '7月', link: '/daily/2022/07' },
+      { text: '8月', link: '/daily/2022/08' },
+      { text: '9月', link: '/daily/2022/09' },
+    ],
+  },
+]
+
 const articles = [
   {
     text: '文章',
@@ -280,18 +294,20 @@ const project = [
   },
 ]
 
-const studying = [
+const typescript = [
   {
+    text: 'typescript',
+    link: '/typescript/index',
     children: [
-      { link: '/studying/typescript', text: 'typescript' },
+      { link: '/typescript/utility-types', text: 'Utility Types' },
     ],
-    link: '/studying/index',
-    text: 'studying',
+
   },
 ]
 
 export const sidebar = {
-  'articles': articles,
+  '/articles/': articles,
+  '/daily/': daily,
   '/vue/': vue,
   '/vue3/': vue3,
   '/react/': react,
@@ -300,6 +316,7 @@ export const sidebar = {
   '/vite/': vite,
   '/babel/': babel,
   '/javascript/': js,
+  '/typescript/': typescript,
   '/node/': node,
   '/algorithms/': algorithms,
   '/leetcode/': leetcode,
@@ -312,5 +329,4 @@ export const sidebar = {
   '/linux/': linux,
   '/tools/': tools,
   '/project/': project,
-  '/studying/': studying,
 }
