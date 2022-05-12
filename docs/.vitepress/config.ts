@@ -30,6 +30,11 @@ export default defineConfig({
     nextLinks: true,
     prevLinks: true,
     editLinkText: '编辑',
+    algolia: {
+      appId: 'ME3PPTXK7S',
+      apiKey: '3ff6e86abc1d6b6def15d19bca7c8067',
+      indexName: 'qinguanghui',
+    },
   },
   markdown: {
     toc: { includeLevel: [1, 2, 3] },
