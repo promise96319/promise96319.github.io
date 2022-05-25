@@ -5,5 +5,7 @@
 - vite
 - vue3
 
-## A
-## B
+## xstate
+
+## jiti-scss
+将 scss 文件转换为 css 文件
