@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,a as t}from"./app.943409a9.js";const w='{"title":"\u56DE\u6EAF\u6CD5","description":"","frontmatter":{},"headers":[],"relativePath":"algorithms/\u56DE\u6EAF\u6CD5.md","lastUpdated":1655262835000}',p={},o=t("",4),e=[o];function c(u,l,i,k,r,d){return a(),s("div",null,e)}var f=n(p,[["render",c]]);export{w as __pageData,f as default};
