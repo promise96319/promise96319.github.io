@@ -293,6 +293,13 @@ const project = [
       { link: '/project/css-media', text: 'css-media' },
     ],
   },
+  {
+    text: 'semi design',
+    link: '/project/index',
+    children: [
+      { link: '/project/semi-design', text: 'semi-design' },
+    ],
+  },
 ]
 
 const typescript = [
