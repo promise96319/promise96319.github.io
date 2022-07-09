@@ -1,1 +1,0 @@
-import{_ as e,c as r,o as a,a as t}from"./app.b8bf9e70.js";const d='{"title":"\u8D44\u6599","description":"","frontmatter":{},"headers":[],"relativePath":"babel/resource.md","lastUpdated":1657369769000}',l={},s=t("",2),o=[s];function n(i,b,p,c,_,h){return a(),r("div",null,o)}var f=e(l,[["render",n]]);export{d as __pageData,f as default};
