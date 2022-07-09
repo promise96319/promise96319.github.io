@@ -1,4 +1,4 @@
-# jinkins
+# jenkins
 自动化部署流程
 
 ## 部署网页
@@ -11,7 +11,7 @@
 ## 连接 gitlab
 1. 使用 `ssh-keygen` 命令生成秘钥对：
   - 将公钥设置到 `gitlab` 中。
-  - 将私钥设置到 `jinkins` 的 `系统管理 > Manage credentials`中。
+  - 将私钥设置到 `jenkins` 的 `系统管理 > Manage credentials`中。
 2. 在 `源码管理` 阶段设置对应的仓库、`credentials`、以及分支等。
 ![](https://imgs.qinguanghui.com/jinkins/gitlab.png)
 

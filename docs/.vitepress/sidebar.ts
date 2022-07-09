@@ -283,7 +283,7 @@ const tools = [
     children: [
       { link: '/tools/img-library', text: 'img library' },
       { link: '/tools/iterm2-ohmyzsh', text: 'iterm2 + ohmyzsh' },
-      { link: '/tools/jinkins', text: 'jinkins' },
+      { link: '/tools/jenkins', text: 'jenkins' },
       { link: '/tools/github-workflow', text: 'github workflow' },
     ],
     link: '/tools/index',
