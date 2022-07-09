@@ -1,1 +1,0 @@
-import{_ as e,c as o,o as t,a as d}from"./app.d5a482e8.js";const f='{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"project/semi-design.md","lastUpdated":1657366488000}',c={},a=d("",9),n=[a];function r(s,p,i,_,g,l){return t(),o("div",null,n)}var u=e(c,[["render",r]]);export{f as __pageData,u as default};
