@@ -143,7 +143,16 @@ const vite = [
   },
 ]
 
-const babel = []
+const babel = [
+  {
+    text: 'Babel',
+    link: 'babel/index',
+    children: [
+      { text: '基础知识', link: '/babel/babel' },
+      { text: '资料', link: '/babel/resource' },
+    ],
+  },
+]
 
 const js = [
   {
