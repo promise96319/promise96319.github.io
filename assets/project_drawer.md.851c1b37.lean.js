@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,a as t}from"./app.cb1b5bc1.js";const h='{"title":"Drawer \u5D4C\u5957\u504F\u79FB","description":"","frontmatter":{},"headers":[],"relativePath":"project/drawer.md","lastUpdated":1657370879000}',p={},o=t("",7),e=[o];function c(l,u,k,i,r,d){return a(),s("div",null,e)}var y=n(p,[["render",c]]);export{h as __pageData,y as default};
