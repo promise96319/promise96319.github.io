@@ -300,6 +300,7 @@ const project = [
       { link: '/project/drawer', text: 'drawer' },
       { link: '/project/space', text: 'space' },
       { link: '/project/css-media', text: 'css-media' },
+      { link: '/project/prefix-cls', text: '组件库前缀' },
     ],
   },
   {
