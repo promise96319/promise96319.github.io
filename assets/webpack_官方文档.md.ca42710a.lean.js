@@ -1,1 +1,0 @@
-import{_ as e,c as a,o as l,a as r}from"./app.cb1b5bc1.js";const m='{"title":"webpack","description":"","frontmatter":{},"headers":[],"relativePath":"webpack/\u5B98\u65B9\u6587\u6863.md","lastUpdated":1657370879000}',o={},t=r("",2),i=[t];function s(n,c,d,_,p,h){return l(),a("div",null,i)}var f=e(o,[["render",s]]);export{m as __pageData,f as default};
