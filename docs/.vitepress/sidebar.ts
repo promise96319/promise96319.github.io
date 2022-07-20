@@ -179,6 +179,8 @@ const node = [
       { text: 'compose', link: '/node/compose' },
       { text: '进程与线程', link: '/node/进程与线程' },
       { text: '资料', link: '/node/资料' },
+      { text: 'cjs', link: '/node/cjs' },
+      { text: 'esm', link: '/node/esm' },
     ],
   },
 ]
