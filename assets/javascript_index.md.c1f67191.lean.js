@@ -1,0 +1,1 @@
+import{_ as a,c as e,o as t,a as i}from"./app.5a50ffee.js";const m='{"title":"javascript \u6838\u5FC3\u77E5\u8BC6\u70B9","description":"","frontmatter":{},"headers":[],"relativePath":"javascript/index.md","lastUpdated":1658277141000}',r={},s=i("",3),l=[s];function c(o,_,h,d,n,p){return t(),e("div",null,l)}var j=a(r,[["render",c]]);export{m as __pageData,j as default};
