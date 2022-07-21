@@ -181,6 +181,8 @@ const node = [
       { text: '资料', link: '/node/资料' },
       { text: 'cjs', link: '/node/cjs' },
       { text: 'esm', link: '/node/esm' },
+      { text: 'module', link: '/node/module' },
+      { text: 'package', link: '/node/package' },
     ],
   },
 ]
