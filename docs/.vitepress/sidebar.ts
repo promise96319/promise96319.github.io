@@ -138,7 +138,7 @@ const vite = [
     text: '原理',
     link: '/vite/index',
     children: [
-      { text: '源码调试', link: '/vite/vite源码调试' },
+      { text: '源码调试', link: '/vite/源码调试' },
     ],
   },
 ]
@@ -305,6 +305,7 @@ const project = [
       { link: '/project/space', text: 'space' },
       { link: '/project/css-media', text: 'css-media' },
       { link: '/project/prefix-cls', text: '组件库前缀' },
+      { link: '/project/virtual-list', text: '虚拟滚动' },
     ],
   },
   {
