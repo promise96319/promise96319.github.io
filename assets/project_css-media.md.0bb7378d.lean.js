@@ -1,1 +1,0 @@
-import{_ as n,c as a,o as s,a as t}from"./app.0eb009c8.js";const m='{"title":"\u54CD\u5E94\u5F0F\u68C0\u6D4B","description":"","frontmatter":{},"headers":[],"relativePath":"project/css-media.md","lastUpdated":1658362942000}',e={},o=t("",4),c=[o];function p(i,l,r,u,d,_){return s(),a("div",null,c)}var h=n(e,[["render",p]]);export{m as __pageData,h as default};

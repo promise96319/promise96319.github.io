@@ -1,0 +1,1 @@
+import{_ as a,c as e,o as t,a as l}from"./app.28de33c1.js";const p='{"title":"\u6570\u636E\u7ED3\u6784","description":"","frontmatter":{},"headers":[],"relativePath":"data-structures/index.md","lastUpdated":1658793576000}',i={},r=l("",2),h=[r];function _(s,o,c,d,n,f){return t(),e("div",null,h)}var u=a(i,[["render",_]]);export{p as __pageData,u as default};
