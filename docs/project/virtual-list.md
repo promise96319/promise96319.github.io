@@ -93,6 +93,9 @@ renderList = (start: number, end: number) => {
 };
 ```
 
+## 效果
+![动态行高虚拟列表](./assets/virtual-list.gif)
+
 ## 问题
 
 ### `tree` 组件使用虚拟滚动时，收起展开怎么实现动画效果？
@@ -103,10 +106,10 @@ renderList = (start: number, end: number) => {
   - 其中 `rangeNodes` 需要计算最小动画的范围，因为展开的子节点有可能数据量也非常大，可以通过 `height/itemHeight` 计算应该展示动画的节点数。
 - 如果是展开时，此时为新增数据：
   - 在上一次数据 `prevData` 上，找到需要展开的节点，在后面添加一个占位节点，记做 `transitionData`，用于后续渲染子节点并做动画。
-  - 在渲染时，通过 `transitionData` 来渲染，当遇到占位节点时，用 `rangeNodes` 渲染需要展开的内容。这个时候可以通过 `rc-motion` 来实现展开动画。
+  - 在渲染时，通过 `transitionData` 来渲染，当遇到占位节点时，用 `rangeNodes` 渲染需要展开的内容。这个时候可以通过 [rc-motion](https://github.dev/react-component/motion/blob/master/src/CSSMotion.tsx) 来实现展开动画。
   - `rc-motion` 展开动画结束后，产生 `onAppearEnd` 回调，在回调里将 `transitionData` 设置为 `data` 用最新的数据重新渲染。
 - 如果是收起，此时为删减数据：
-  - 此时逻辑与展开时大体一致，通过最先数据 `data` 添加占位节点，实现收起动画，收起完毕后，刷新数据。
+  - 此时逻辑与展开时大体一致，通过最新数据 `data` 添加占位节点，实现收起动画，收起完毕后，刷新数据。
 
 因此，整体的思路大致是：在直接更新数据前，会计算需要展开收起的数据，用这些数据做动画，做完了动画将数据更新重新渲染（相当于做动画渲染的节点动画完成后会被移除，用最新的数据替代）。
 
@@ -116,6 +119,9 @@ renderList = (start: number, end: number) => {
 - `show` 阶段：根据计算的动画数据，做展开动画。动画结束后，回到 `done` 阶段。
 - `prepareHide` 阶段：准备收起的阶段。由于 `rc-motion` 渲染节点时，需要 `visible` 从 `true` 到 `false` 的一个转变才能做动画，即先展开后隐藏。展开时不需要动画效果。展开完成后通过 `onAppearEnd` 进入到 `hide` 阶段。
 - `hide` 阶段：将 `visible` 置为 `false`，动画完成后回到 `done` 阶段。 
+
+实现效果：
+![虚拟滚动可展开动画](./assets/virtual-list-expand.gif)
 
 核心逻辑实现：
 ```ts
@@ -250,11 +256,15 @@ renderMotionTreeNode = (node: TreeNodeData) => {
 
 ```
 
+
+
 ### 滚动到某一行
 
 
-## 知识点
-[CSS overflow-anchor属性与滚动锚定](https://www.zhangxinxu.com/wordpress/2020/08/css-overflow-anchor/)
+
+
+## 其他
+- [CSS overflow-anchor属性与滚动锚定](https://www.zhangxinxu.com/wordpress/2020/08/css-overflow-anchor/)
 
 
 
