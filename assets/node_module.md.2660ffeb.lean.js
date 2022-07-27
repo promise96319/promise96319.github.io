@@ -1,1 +1,0 @@
-import{_ as e,c as o,o as d,a as c}from"./app.28de33c1.js";const m='{"title":"node:module","description":"","frontmatter":{},"headers":[{"level":2,"title":"api","slug":"api"}],"relativePath":"node/module.md","lastUpdated":1658793576000}',a={},i=c("",3),t=[i];function l(r,s,n,_,u,p){return d(),o("div",null,t)}var f=e(a,[["render",l]]);export{m as __pageData,f as default};
