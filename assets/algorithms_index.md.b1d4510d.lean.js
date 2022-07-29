@@ -1,1 +1,0 @@
-import{_ as l,c as i,o as a,a as e}from"./app.f27e6278.js";const m='{"title":"\u7B97\u6CD5","description":"","frontmatter":{},"headers":[],"relativePath":"algorithms/index.md","lastUpdated":1659052813000}',t={},r=e("",2),_=[r];function h(o,s,n,c,d,f){return a(),i("div",null,_)}var p=l(t,[["render",h]]);export{m as __pageData,p as default};
