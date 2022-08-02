@@ -1,9 +1,9 @@
 # 2022 todo list
 
 ## 前端
-- ts 学习，泛型学习。
+- ts 学习，泛型学习（完成）。
 - vue3 源码分析，优劣分析。
-- react 源码分析，react热更新原理。
+- react 源码分析（完成），react热更新原理。
 - 小程序实现。
 
 ## 构建
@@ -13,6 +13,7 @@
 - esbuild 使用
 - rollup/webpack/vite/esbuild对比
 - go/rust/ruby => 衍生
+
 ## 方向
 - 组件库
 - cli
@@ -118,3 +119,9 @@
   - chokidar 包
     - 处理文件
     - https://www.npmjs.com/package/chokidar
+
+
+- 日常 todo
+  - 正则学习
+  - rollup 源码 => vite 源码 => unplugin 源码
+  - auto import 文档
