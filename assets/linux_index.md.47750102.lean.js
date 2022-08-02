@@ -1,0 +1,1 @@
+import{_ as a,c as e,o as t,a as i}from"./app.f27e6278.js";const m='{"title":"linux","description":"","frontmatter":{},"headers":[],"relativePath":"linux/index.md","lastUpdated":1659404118000}',s={},r=i("",2),_=[r];function l(n,o,h,c,d,u){return t(),e("div",null,_)}var p=a(s,[["render",l]]);export{m as __pageData,p as default};
