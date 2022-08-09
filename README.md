@@ -124,4 +124,8 @@
 - 日常 todo
   - 正则学习
   - rollup 源码 => vite 源码 => unplugin 源码
-  - auto import 文档
+  - auto-import 文档
+  - auto-import 类型定义，查看时需要跳转两次
+  - auto-import-scss-variables：自动引入 scss 文件中的变量。
+    - 背景：定义了一些全局变量，项目中使用时都会用到这些变量，每个地方都要去引用。
+    - 解决：根据变量名称去自动找到对应的 scss 文件，然后进行自动引入。

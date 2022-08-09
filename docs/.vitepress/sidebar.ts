@@ -127,7 +127,10 @@ const rollup = [
     text: '原理',
     link: '/rollup/index',
     children: [
-      { text: '源码调试', link: '/rollup/rollup源码调试' },
+      { text: '源码调试', link: '/rollup/源码调试' },
+      { text: 'scope-hoist', link: '/rollup/scope-hoist' },
+      { text: 'split-code', link: '/rollup/split-code' },
+      { text: 'tree-shaking', link: '/rollup/tree-shaking' },
       { text: 'todo', link: '/rollup/todo' },
     ],
   },
