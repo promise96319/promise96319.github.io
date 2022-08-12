@@ -1,1 +1,0 @@
-import{_ as e,c as r,o as t,a as l}from"./app.e6e38190.js";const g='{"title":"\u524D\u7AEF\u535A\u5BA2","description":"","frontmatter":{},"headers":[],"relativePath":"resources/\u524D\u7AEF\u535A\u5BA2.md","lastUpdated":1660086839000}',a={},n=l("",2),o=[n];function i(s,p,h,u,_,c){return t(),r("div",null,o)}var b=e(a,[["render",i]]);export{g as __pageData,b as default};

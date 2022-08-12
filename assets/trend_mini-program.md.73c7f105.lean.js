@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as r}from"./app.e6e38190.js";const m='{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"trend/mini-program.md","lastUpdated":1660271823000}',a={};function o(n,s,c,i,p,d){return r(),e("div")}var f=t(a,[["render",o]]);export{m as __pageData,f as default};

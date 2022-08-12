@@ -1,0 +1,1 @@
+import{_ as e,c as l,o as i,a as o}from"./app.e6e38190.js";const m='{"title":"Rollup","description":"","frontmatter":{},"headers":[],"relativePath":"rollup/index.md","lastUpdated":1660271823000}',t={},r=o("",2),a=[r];function p(s,n,u,d,c,_){return i(),l("div",null,a)}var f=e(t,[["render",p]]);export{m as __pageData,f as default};
