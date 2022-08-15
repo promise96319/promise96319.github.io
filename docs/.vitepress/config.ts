@@ -4,7 +4,7 @@ import { sidebar } from './sidebar'
 
 export default defineConfig({
   title: 'promise96319',
-  description: '专注于前端开发，关注新技术，坚持学习。',
+  description: '前端开发',
   lang: 'zh-CN',
   head: [
     ['meta', { charset: 'utf-8' }],
@@ -23,20 +23,22 @@ export default defineConfig({
   lastUpdated: true,
   themeConfig: {
     logo: '/logo.png',
-    repo: 'promise96319',
-    lastUpdated: '最近更新',
     nav: navbar,
     sidebar,
-    nextLinks: true,
-    prevLinks: true,
-    editLinkText: '编辑',
+
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/promise96319' },
+    ],
+
+    editLink: {
+      pattern: 'https://github.com/promise96319/promise96319.github.io/tree/master/docs/:path',
+      text: 'Suggest changes to this page',
+    },
+
     algolia: {
       appId: 'ME3PPTXK7S',
       apiKey: '3ff6e86abc1d6b6def15d19bca7c8067',
       indexName: 'qinguanghui',
     },
-  },
-  markdown: {
-    toc: { includeLevel: [1, 2, 3] },
   },
 })

@@ -2,7 +2,7 @@ const daily = [
   {
     text: '2022',
     link: '/daily/index',
-    children: [
+    items: [
       { text: '5月', link: '/daily/2022/05' },
       { text: '6月', link: '/daily/2022/06' },
       { text: '7月', link: '/daily/2022/07' },
@@ -16,7 +16,7 @@ const articles = [
   {
     text: '文章',
     link: '/articles/index',
-    children: [
+    items: [
       { text: 'React 并发原理', link: 'articles/react-concurrency' },
       { text: 'todo', link: 'articles/todo' },
     ],
@@ -27,7 +27,7 @@ const vue = [
   {
     text: '原理',
     link: '/vue/index',
-    children: [
+    items: [
       { text: '组成与设计', link: '/vue/组成与设计' },
       { text: '选项合并', link: '/vue/选项合并' },
       { text: '响应式原理上篇', link: '/vue/响应式原理上篇' },
@@ -51,7 +51,7 @@ const leetcode = [
   {
     text: 'leetcode',
     link: '/leetcode/index',
-    children: [
+    items: [
       { link: '/leetcode/leetcode', text: '汇总' },
       { link: '/leetcode/1-20', text: '1-20' },
       { link: '/leetcode/21-40', text: '21-40' },
@@ -63,7 +63,7 @@ const vue3 = [
   {
     text: '原理',
     link: '/vue3/index',
-    children: [
+    items: [
       { text: '源码调试', link: '/vue3/源码调试' },
     ],
   },
@@ -73,7 +73,7 @@ const react = [
   {
     text: '原理',
     link: '/react/index',
-    children: [
+    items: [
       { text: 'react源码调试环境构建', link: '/react/react源码调试-next' },
       { text: 'react源码调试', link: '/react/react源码调试' },
       { text: 'react源码起始篇', link: '/react/react源码起始篇' },
@@ -100,7 +100,7 @@ const webpack = [
   {
     text: '原理',
     link: '/webpack/index',
-    children: [
+    items: [
       { text: 'webpack源码调试', link: '/webpack/webpack源码调试' },
       { text: '流程开始', link: '/webpack/流程开始' },
       { text: 'make阶段', link: '/webpack/make阶段' },
@@ -126,7 +126,7 @@ const rollup = [
   {
     text: '原理',
     link: '/rollup/index',
-    children: [
+    items: [
       { text: '源码调试', link: '/rollup/源码调试' },
       { text: 'scope-hoist', link: '/rollup/scope-hoist' },
       { text: 'split-code', link: '/rollup/split-code' },
@@ -140,7 +140,7 @@ const vite = [
   {
     text: '原理',
     link: '/vite/index',
-    children: [
+    items: [
       { text: '源码调试', link: '/vite/源码调试' },
     ],
   },
@@ -150,7 +150,7 @@ const babel = [
   {
     text: 'Babel',
     link: 'babel/index',
-    children: [
+    items: [
       { text: '基础知识', link: '/babel/babel' },
       { text: '资料', link: '/babel/resource' },
     ],
@@ -161,7 +161,7 @@ const js = [
   {
     text: 'js',
     link: '/javascript/index',
-    children: [
+    items: [
       { text: '事件循环机制', link: '/javascript/事件循环机制' },
       // { text: '../react/浏览器一帧里做了什么', link: '/javascript/../react/浏览器一帧里做了什么' },
       { text: '手写Promise', link: '/javascript/手写Promise' },
@@ -177,7 +177,7 @@ const node = [
   {
     text: 'node',
     link: '/node/index',
-    children: [
+    items: [
       { text: '手写简版express', link: '/node/手写简版express' },
       { text: 'compose', link: '/node/compose' },
       { text: '进程与线程', link: '/node/进程与线程' },
@@ -194,7 +194,7 @@ const algorithms = [
   {
     text: '算法',
     link: '/node/index',
-    children: [
+    items: [
       { text: '动态规划', link: '/algorithms/动态规划' },
       { text: '回溯法', link: '/algorithms/回溯法' },
       { text: '排序汇总', link: '/algorithms/排序汇总' },
@@ -207,7 +207,7 @@ const algorithms = [
 
 const dataStructure = [
   {
-    children: [
+    items: [
       { link: '/data-structures/树状数组', text: '树状数组' },
       { link: '/data-structures/线段树', text: '线段树' },
       { link: '/data-structures/红黑树', text: '红黑树' },
@@ -226,7 +226,7 @@ const dataStructure = [
 
 const designPattern = [
   {
-    children: [
+    items: [
       { link: '/design-pattern/创建型模式', text: '创建型模式' },
       { link: '/design-pattern/结构型模式', text: '结构型模式' },
       { link: '/design-pattern/行为型模式', text: '行为型模式' },
@@ -239,7 +239,7 @@ const designPattern = [
 
 const trend = [
   {
-    children: [
+    items: [
       { link: '/trend/bundle', text: 'bundleless' },
     ],
     link: '/trend/index',
@@ -249,7 +249,7 @@ const trend = [
 
 const network = [
   {
-    children: [
+    items: [
       { link: '/network/运输层', text: '运输层' },
       { link: '/network/应用层', text: '应用层' },
       { link: '/network/缓存', text: '缓存' },
@@ -263,7 +263,7 @@ const computer = []
 
 const resources = [
   {
-    children: [
+    items: [
       { link: '/resources/网络协议', text: '网络协议' },
       { link: '/resources/算法', text: '算法' },
       { link: '/resources/前端博客', text: '前端博客' },
@@ -275,7 +275,7 @@ const resources = [
 
 const linux = [
   {
-    children: [
+    items: [
       { link: '/linux/bash', text: 'bash' },
       { link: '/linux/ssh', text: 'ssh' },
       { link: '/linux/vim', text: 'vim' },
@@ -287,7 +287,7 @@ const linux = [
 
 const tools = [
   {
-    children: [
+    items: [
       { link: '/tools/img-library', text: 'img library' },
       { link: '/tools/iterm2-ohmyzsh', text: 'iterm2 + ohmyzsh' },
       { link: '/tools/jenkins', text: 'jenkins' },
@@ -302,7 +302,7 @@ const project = [
   {
     text: '@qt/design',
     link: '/project/index',
-    children: [
+    items: [
       { link: '/project/css-background-img', text: 'css-background-img' },
       { link: '/project/drawer', text: 'drawer' },
       { link: '/project/space', text: 'space' },
@@ -314,7 +314,7 @@ const project = [
   {
     text: 'semi design',
     link: '/project/index',
-    children: [
+    items: [
       { link: '/project/semi-design', text: 'semi-design' },
     ],
   },
@@ -324,7 +324,7 @@ const typescript = [
   {
     text: 'typescript',
     link: '/typescript/index',
-    children: [
+    items: [
       { link: '/typescript/utility-types', text: 'Utility Types' },
     ],
 
