@@ -1,3 +1,3 @@
 {
-  "extends": "@qgh/eslint-config-ts"
+  "extends": "@qgh/eslint-config"
 }

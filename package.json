@@ -11,6 +11,7 @@
     "generate": "jiti scripts/generate.ts"
   },
   "devDependencies": {
+    "@qgh/eslint-config": "^0.0.3",
     "@qgh/eslint-config-ts": "^0.0.3",
     "@types/node": "^17.0.24",
     "eslint": "^8.13.0",

@@ -15,7 +15,6 @@ const { Layout } = DefaultTheme
   </Layout>
 </template>
 
-
 <style>
 .footer {
   padding: 32px;
