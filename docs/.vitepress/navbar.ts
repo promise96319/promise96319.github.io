@@ -1,9 +1,6 @@
 
 export const navbar = [
-  {
-    text: '日常',
-    link: '/daily/index',
-  },
+
   {
     text: '文章',
     link: '/articles/index',
@@ -55,9 +52,12 @@ export const navbar = [
     text: '项目',
     link: '/project/',
   },
-
+  {
+    text: '日常',
+    link: '/daily/index',
+  },
   // {
   //   text: '关于我',
-  //   link: '/about/'
-  // }
+  //   link: '/about/',
+  // },
 ]

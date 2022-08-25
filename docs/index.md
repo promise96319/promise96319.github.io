@@ -6,9 +6,8 @@ titleTemplate: 前端学习笔记
 hero:
   text: 前端学习笔记
   tagline: 心如花木，向阳而生。
-  image:
-    src: /logo.png
-    alt: promise96319
+  # image:
+  #   src: /logo.png
   actions:
     - theme: brand
       text: 文章
@@ -32,3 +31,11 @@ features:
   - title: 经验总结
     details: 记录平时遇到的一些问题及解决方法。
 ---
+
+<style>
+ @media (min-width: 960px) {
+  .image-src {
+    max-width: 256px !important;
+  }
+ }
+</style>

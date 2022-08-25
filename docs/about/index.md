@@ -6,45 +6,43 @@
 - **出生年月**：1994.09
 - **教育背景**：西安交通大学本科学历
 - **所学专业**：能源与动力工程
-- **工作经验**：2年前端开发 + 1年iOS开发
-- **技术博客**：[https://www.qinguanghui.com/vue/](https://www.qinguanghui.com/vue/)
+- **工作经验**：3年前端开发
+- **技术博客**：[https://www.qinguanghui.com/articles/](https://www.qinguanghui.com/vue/)
 - **期望职位**：前端开发工程师
 - **期望城市**：湖北省武汉市
 - **邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱**：1248975357@qq.com
-- **电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话**：13547013546
+- **电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话**：13125142026
 - **微&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信**：z36180
 
 ## 个人优势
 
-- 熟悉 Vue2，研究过其实现原理和细节，并具备大量项目实战经验。[Vue源码笔记](https://www.qinguanghui.com/vue/)
-- 了解 Webpack、React，并对其源码有过研究。[React源码笔记](https://www.qinguanghui.com/react/)[Webpack源码笔记](https://www.qinguanghui.com/webpack/)
-- 熟悉 HTML/CSS/JS，对前端组件化和模块化开发有丰富的实战经验。
-- 熟悉 ES6 语法，JS 风格指南以及常见设计模式，追求开发风格统一的代码。
+- 熟悉 Vue2/React，研究过其实现原理和细节，并具备大量项目实战经验。[Vue源码笔记](https://www.qinguanghui.com/vue/)、[React源码笔记](https://www.qinguanghui.com/react/)
+- 了解 Webpack/Rollup/Vite，并对其源码有过研究。[Webpack源码笔记](https://www.qinguanghui.com/webpack/)
 - 熟悉常见网络协议知识、浏览器原理知识、算法与数据结构等。
 - 独立从零完成过多个前端项目，具备较强的自学能力和解决问题的能力。
 - 态度勤恳，做事认真负责，遇到困难具有主动专研解决的精神。
 
 ## 工作经历
 
+### 北京升鑫网络科技有限公司（青藤云安全）（2021年12月 ~ 至今）
+
+- 负责公司内部组件库的开发与维护。
+
+
 ### 北京思拓合众科技有限公司（武汉分公司）（2020年7月 ~ 2021年9月）
 
 - 主导前端项目开发，包括运营工具后台、浏览器插件、新知魔方小程序、私信系统等。
 - 充分理解产品需求并进行项目排期，协调产品、设计和开发人员，把控产品研发进度。
 
-### 无（2019年4月 ~ 2020年7月）
-
-- 负责公司报表系统前端开发，并维护小程序，管理系统等项目(兼职)。
-- 与朋友一起开发 iOS App，参与产品调研、设计、开发、上线及运营等过程。
 
 ### 上海有略科技有限公司（2018年6月 ~ 2019年4月）
 
 - 独立负责微信小程序项目及其后台管理系统的搭建、开发、上线，并根据产品需求快速迭代。
 - 负责公司移动端官网开发，高度还原设计稿，并同时维护多个前端项目。
 
-### 东方汽轮机有限公司（2017年6月 ~ 2018年4月）
-- 从事汽轮机转子研发设计工作。
-
 ## 项目经验 
+
+### [组件库开发]()
 
 ### [新知魔方运营工具](https://www.xinzhimofang.com/dashboard/)
 
