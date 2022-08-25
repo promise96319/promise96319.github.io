@@ -1,5 +1,22 @@
 # Tree Shaking 和 按需加载
 
+## Tree Shaking
+  - 将 `Webpack Tree Shaking`
+
+## 组件库按需加载
+### ES module
+  - 组件库导出需要有 `es` 模块。如 `dist/es/组件内容`
+  - 外部引入时，需要可以指向 `es`，通过 `package.json` 里的 `module` 字段制定。
+  - `package.json` 中需要指定 `sideEffects`，标识副作用。
+  - 项目中使用时，需要保证编译后都是 `es` 模块。比如 `tsconfig.json` 里的 `module`、`@babel/preset-env` 里的 `module` 属性， 都有可能更改模块形式。
+  - 例如：`lodash` => `lodash-es`
+
+### babel-plugin-import
+将 `import { Button } from 'xxx'` 改写为 `import { Button } from 'xxx/button'`
+  - 类型可以不考虑，因为经过 `ts-loader` 后，类型被剔除了。
+  - 对于不规则的组件名称，需要通过 `customName` 方法来自定义相应的引入路径。  
+  - 例如：`loadash` 引入路径转换
+
 ## side effects
   - package.json side effects
     - 引入外部模块 `import 'test'` 会查找外部模块的 `package.json` 看是否有 `sideEffects`。

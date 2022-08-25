@@ -18,6 +18,7 @@ const articles = [
     link: '/articles/index',
     items: [
       { text: 'React 并发原理', link: 'articles/react-concurrency' },
+      { text: '组件库按需加载', link: 'articles/tree-shaking' },
       { text: 'todo', link: 'articles/todo' },
     ],
   },

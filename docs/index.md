@@ -4,32 +4,31 @@ title: promise96319
 titleTemplate: 前端学习笔记
 
 hero:
-  # name: ss
-  # text: promise96319
-  tagline: 前端学习笔记
-  # image:
-  #   src: /logo.png
-  #   alt: promise96319
+  text: 前端学习笔记
+  tagline: 心如花木，向阳而生。
+  image:
+    src: /logo.png
+    alt: promise96319
   actions:
-    # - theme: brand
-    #   text: Get Started
-    #   link: /guide/
-    # - theme: alt
-    #   text: Features
-    #   link: /guide/features
-    # - theme: alt
-    #   text: Why Vitest?
-    #   link: /guide/why
-    # - theme: alt
-    #   text: View on GitHub
-    #   link: https://github.com/vitest-dev/vitest
+    - theme: brand
+      text: 文章
+      link: /articles/
+    - theme: alt
+      text: Vue 源码
+      link: /vue/
+    - theme: alt
+      text: React 源码
+      link: /react/
+    - theme: alt
+      text: Webpack 源码
+      link: /webpack/
 
 # navbar: false
 features:
-- title: 前端框架
-  details: 学习前端框架代码：Vue、React。
-- title: 构建工具
-  details: 学习构建工具： Webpack、Rollup、Gulp、Rollup、Esbuild、Babel 等。
-- title: 开源贡献
-  details: 学习开源项目，思考解决遇到的问题。
+  - title: 前端框架
+    details: 学习前端框架代码：Vue、React、Svelte 等。
+  - title: 构建工具
+    details: 学习构建工具： Webpack、Rollup、Vite、Esbuild、Babel 等。
+  - title: 经验总结
+    details: 记录平时遇到的一些问题及解决方法。
 ---
