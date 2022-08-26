@@ -1,0 +1,40 @@
+{
+  "defaultColorSchemes": [],
+  "customColorSchemes": [
+    [
+      { "fill": "#f79256", "stroke": "#000" },
+      { "fill": "#fbd1a2", "stroke": "#000" },
+      { "fill": "#7dcfb6", "stroke": "#000" },
+      { "fill": "#ffa5ab", "stroke": "#000" },
+      { "fill": "#b8c0ff", "stroke": "#000" },
+      { "fill": "#00b2ca", "stroke": "#000" },
+      { "fill": "#bee9e8", "stroke": "#000" },
+      { "fill": "#cfe1b9", "stroke": "#000" },
+      { "fill": "#fefae0", "stroke": "#000" },
+      { "fill": "#bbd0ff", "stroke": "#000" },
+      { "fill": "#f5cac3", "stroke": "#000" },
+      { "fill": "#f28482", "stroke": "#000" }
+    ],
+    [
+      { "fill": "#1d4e89", "stroke": "#fff" },
+      { "fill": "#f94144", "stroke": "#fff" },
+      { "fill": "#979dac", "stroke": "#fff" },
+      { "fill": "#4a4e69", "stroke": "#fff" }
+    ]
+  ],
+  "presetColors": [
+    "f79256",
+    "fbd1a2",
+    "7dcfb6",
+    "00b2ca",
+    "1d4e89",
+    "ffa5ab",
+    "f28482",
+    "b8c0ff",
+    "000000",
+    "4a4e69",
+    "979dac",
+    "ffffff"
+  ],
+  "defaultFonts": ["Input Mono", "Source Code Pro", "Helvetica"]
+}

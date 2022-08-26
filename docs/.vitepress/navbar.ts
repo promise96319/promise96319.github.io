@@ -46,6 +46,7 @@ export const navbar = [
     items: [
       { text: '工具', link: '/tools/' },
       { text: '资料', link: '/resources/' },
+      { text: '配置', link: '/config/' },
     ],
   },
   {

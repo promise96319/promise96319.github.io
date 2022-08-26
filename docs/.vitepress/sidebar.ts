@@ -299,6 +299,13 @@ const tools = [
   },
 ]
 
+const config = [
+  {
+    link: '/config/index',
+    text: '配置',
+  },
+]
+
 const project = [
   {
     text: '@qt/design',
@@ -355,5 +362,6 @@ export const sidebar = {
   '/resources/': resources,
   '/linux/': linux,
   '/tools/': tools,
+  '/config/': config,
   '/project/': project,
 }
