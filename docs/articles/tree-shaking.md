@@ -1,7 +1,11 @@
-# Tree Shaking 和 按需加载
+# Tree Shaking 原理和组件库按需加载实践
+![tree shaking](./tree-shaking.svg)
 
-## Tree Shaking
-  - 将 `Webpack Tree Shaking`
+## Tree Shaking 是什么
+
+## Tree Shaking 原理
+
+  - 将 `Webpack Tree Shaking` 
 
 ## 组件库按需加载
 ### ES module
