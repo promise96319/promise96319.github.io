@@ -99,6 +99,13 @@ const react = [
 
 const webpack = [
   {
+    text: '理论',
+    link: '/webpack/guide',
+    items: [
+      { text: '指南', link: '/webpack/guide' },
+    ],
+  },
+  {
     text: '原理',
     link: '/webpack/index',
     items: [
