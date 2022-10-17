@@ -8,6 +8,7 @@ const daily = [
       { text: '7月', link: '/daily/2022/07' },
       { text: '8月', link: '/daily/2022/08' },
       { text: '9月', link: '/daily/2022/09' },
+      { text: '10月', link: '/daily/2022/10' },
     ],
   },
 ]
