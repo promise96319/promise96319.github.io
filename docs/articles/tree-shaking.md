@@ -38,3 +38,5 @@
 - [package.json 别名](https://github.com/jht6/blogs/issues/63)
 - [side effects](https://blog.csdn.net/u012961419/article/details/107094056)
 - [webpack mark-the-file-as-side-effect-free](https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free)
+
+- [Root.Title tree shaking 失效](https://blog.logrocket.com/tree-shaking-and-code-splitting-in-webpack/)

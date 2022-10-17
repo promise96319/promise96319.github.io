@@ -1,5 +1,10 @@
 # webpack 源码调试
 
+::: Tip
+https://webpack.docschina.org/contribute/debugging/
+:::
+
+
 ## 安装webpack/webpack-cli
 
 ```javascript
