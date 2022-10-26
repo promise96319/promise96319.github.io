@@ -28,6 +28,11 @@
     - 导出了但是没有使用：`export { xx } from 'xxx'` 会查找自身 `package.json` 看是否有 `sideEffects`。
     - 如果导出被使用或者有 `sideEffects` 的文件会被计算分析。
 
+
+## todo
+  - commonjs 是如何也支持 tree shaking 的？
+  
+
 ## 参考
 - [lodash-es](https://www.npmjs.com/package/lodash-es)
 - [webpack tree shaking](https://webpack.js.org/guides/tree-shaking/)

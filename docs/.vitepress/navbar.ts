@@ -57,8 +57,8 @@ export const navbar = [
     text: '日常',
     link: '/daily/index',
   },
-  // {
-  //   text: '关于我',
-  //   link: '/about/',
-  // },
+  {
+    text: '关于我',
+    link: '/about/',
+  },
 ]
