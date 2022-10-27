@@ -1,6 +1,4 @@
-
 export const navbar = [
-
   {
     text: '文章',
     link: '/articles/index',

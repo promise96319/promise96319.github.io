@@ -1,7 +1,6 @@
 const daily = [
   {
     text: '2022',
-    link: '/daily/index',
     items: [
       { text: '5月', link: '/daily/2022/05' },
       { text: '6月', link: '/daily/2022/06' },
@@ -16,11 +15,10 @@ const daily = [
 const articles = [
   {
     text: '文章',
-    link: '/articles/index',
     items: [
-      { text: 'React 并发原理', link: 'articles/react-concurrency' },
-      { text: '组件库按需加载', link: 'articles/tree-shaking' },
-      { text: 'todo', link: 'articles/todo' },
+      { text: 'React 并发原理', link: '/articles/react-concurrency' },
+      { text: '组件库按需加载', link: '/articles/tree-shaking' },
+      { text: 'todo', link: '/articles/todo' },
     ],
   },
 ]
@@ -28,7 +26,6 @@ const articles = [
 const vue = [
   {
     text: '原理',
-    link: '/vue/index',
     items: [
       { text: '组成与设计', link: '/vue/组成与设计' },
       { text: '选项合并', link: '/vue/选项合并' },
@@ -52,7 +49,6 @@ const vue = [
 const leetcode = [
   {
     text: 'leetcode',
-    link: '/leetcode/index',
     items: [
       { link: '/leetcode/leetcode', text: '汇总' },
       { link: '/leetcode/1-20', text: '1-20' },
@@ -64,7 +60,6 @@ const leetcode = [
 const vue3 = [
   {
     text: '原理',
-    link: '/vue3/index',
     items: [
       { text: '源码调试', link: '/vue3/源码调试' },
     ],
@@ -74,7 +69,6 @@ const vue3 = [
 const react = [
   {
     text: '原理',
-    link: '/react/index',
     items: [
       { text: 'react源码调试环境构建', link: '/react/react源码调试-next' },
       { text: 'react源码调试', link: '/react/react源码调试' },
@@ -101,7 +95,6 @@ const react = [
 const webpack = [
   {
     text: '理论',
-    link: '/webpack/guide',
     items: [
       { text: '指南', link: '/webpack/guide' },
     ],
@@ -134,7 +127,6 @@ const webpack = [
 const rollup = [
   {
     text: '原理',
-    link: '/rollup/index',
     items: [
       { text: '源码调试', link: '/rollup/源码调试' },
       { text: 'scope-hoist', link: '/rollup/scope-hoist' },
@@ -148,7 +140,6 @@ const rollup = [
 const vite = [
   {
     text: '原理',
-    link: '/vite/index',
     items: [
       { text: '源码调试', link: '/vite/源码调试' },
     ],
@@ -158,7 +149,6 @@ const vite = [
 const babel = [
   {
     text: 'Babel',
-    link: 'babel/index',
     items: [
       { text: '基础知识', link: '/babel/babel' },
       { text: '资料', link: '/babel/resource' },
@@ -169,7 +159,6 @@ const babel = [
 const js = [
   {
     text: 'js',
-    link: '/javascript/index',
     items: [
       { text: '事件循环机制', link: '/javascript/事件循环机制' },
       // { text: '../react/浏览器一帧里做了什么', link: '/javascript/../react/浏览器一帧里做了什么' },
@@ -185,7 +174,6 @@ const js = [
 const node = [
   {
     text: 'node',
-    link: '/node/index',
     items: [
       { text: '手写简版express', link: '/node/手写简版express' },
       { text: 'compose', link: '/node/compose' },
@@ -202,7 +190,6 @@ const node = [
 const algorithms = [
   {
     text: '算法',
-    link: '/node/index',
     items: [
       { text: '动态规划', link: '/algorithms/动态规划' },
       { text: '回溯法', link: '/algorithms/回溯法' },
@@ -216,6 +203,7 @@ const algorithms = [
 
 const dataStructure = [
   {
+    text: '数据结构',
     items: [
       { link: '/data-structures/树状数组', text: '树状数组' },
       { link: '/data-structures/线段树', text: '线段树' },
@@ -228,43 +216,38 @@ const dataStructure = [
       { link: '/data-structures/并查集', text: '并查集' },
       { link: '/data-structures/布隆过滤器', text: '布隆过滤器' },
     ],
-    link: '/data-structures/index',
-    text: '数据结构',
   },
 ]
 
 const designPattern = [
   {
+    text: '设计模式',
     items: [
       { link: '/design-pattern/创建型模式', text: '创建型模式' },
       { link: '/design-pattern/结构型模式', text: '结构型模式' },
       { link: '/design-pattern/行为型模式', text: '行为型模式' },
       { link: '/design-pattern/阅读资料', text: '阅读资料' },
     ],
-    link: '/design-pattern/index',
-    text: '设计模式',
   },
 ]
 
 const trend = [
   {
+    text: '新技术',
     items: [
       { link: '/trend/bundle', text: 'bundleless' },
     ],
-    link: '/trend/index',
-    text: '新技术',
   },
 ]
 
 const network = [
   {
+    text: '网络',
     items: [
       { link: '/network/运输层', text: '运输层' },
       { link: '/network/应用层', text: '应用层' },
       { link: '/network/缓存', text: '缓存' },
     ],
-    link: '/network/index',
-    text: '网络',
   },
 ]
 
@@ -272,52 +255,48 @@ const computer = []
 
 const resources = [
   {
+    text: '资源',
     items: [
       { link: '/resources/网络协议', text: '网络协议' },
       { link: '/resources/算法', text: '算法' },
       { link: '/resources/前端博客', text: '前端博客' },
     ],
-    link: '/resources/index',
-    text: '资源',
   },
 ]
 
 const linux = [
   {
+    text: 'linux',
     items: [
       { link: '/linux/bash', text: 'bash' },
       { link: '/linux/ssh', text: 'ssh' },
       { link: '/linux/vim', text: 'vim' },
     ],
-    link: '/linux/index',
-    text: 'linux',
   },
 ]
 
 const tools = [
   {
+    text: '工具',
     items: [
       { link: '/tools/img-library', text: 'img library' },
       { link: '/tools/iterm2-ohmyzsh', text: 'iterm2 + ohmyzsh' },
       { link: '/tools/jenkins', text: 'jenkins' },
       { link: '/tools/github-workflow', text: 'github workflow' },
     ],
-    link: '/tools/index',
-    text: '工具',
   },
 ]
 
 const config = [
   {
-    link: '/config/index',
     text: '配置',
+    items: [],
   },
 ]
 
 const project = [
   {
     text: '@qt/design',
-    link: '/project/index',
     items: [
       { link: '/project/css-background-img', text: 'css-background-img' },
       { link: '/project/drawer', text: 'drawer' },
@@ -329,7 +308,6 @@ const project = [
   },
   {
     text: 'semi design',
-    link: '/project/index',
     items: [
       { link: '/project/semi-design', text: 'semi-design' },
     ],
@@ -339,7 +317,6 @@ const project = [
 const typescript = [
   {
     text: 'typescript',
-    link: '/typescript/index',
     items: [
       { link: '/typescript/utility-types', text: 'Utility Types' },
     ],
