@@ -304,6 +304,7 @@ const project = [
       { link: '/project/css-media', text: 'css-media' },
       { link: '/project/prefix-cls', text: '组件库前缀' },
       { link: '/project/virtual-list', text: '虚拟滚动' },
+      { link: '/project/auto-import', text: '自动引入' },
     ],
   },
   {
