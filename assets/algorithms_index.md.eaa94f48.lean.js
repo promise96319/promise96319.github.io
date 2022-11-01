@@ -1,0 +1,1 @@
+import{_ as l,c as i,o as a,a as e}from"./app.a771c87a.js";const u=JSON.parse('{"title":"\u7B97\u6CD5","description":"","frontmatter":{},"headers":[],"relativePath":"algorithms/index.md","lastUpdated":1667265507000}'),t={name:"algorithms/index.md"},r=e("",2),_=[r];function h(s,o,n,d,c,m){return a(),i("div",null,_)}var p=l(t,[["render",h]]);export{u as __pageData,p as default};

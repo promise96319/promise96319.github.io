@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as a}from"./app.19a8260b.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"trend/mini-program.md","lastUpdated":1666873481000}'),r={name:"trend/mini-program.md"};function n(o,s,c,i,p,d){return a(),t("div")}var f=e(r,[["render",n]]);export{_ as __pageData,f as default};
