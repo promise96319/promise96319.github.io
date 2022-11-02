@@ -1,10 +1,5 @@
 # webpack 源码调试
 
-::: Tip
-https://webpack.docschina.org/contribute/debugging/
-:::
-
-
 ## 安装webpack/webpack-cli
 
 ```javascript
@@ -74,6 +69,15 @@ For help, see: https://nodejs.org/en/docs/inspector
 
 最终就可以在`vscode`中调试了：
 ![img](./imgs/inspect/chrome-vscode-debugger.png)
+
+## 小技巧
+::: tip 调试文档
+debug: https://webpack.docschina.org/contribute/debugging/
+setup: https://github.com/webpack/webpack/blob/main/_SETUP.md
+:::
+
+- `webpack/examples/` 目录下有各种功能的 `demo`，通过 `yarn & yarn link & yarn link webpack` 建立软连接，然后再 `/examples/xxxx` 目录下运行 `webpack` 即可测试相关功能。
+
 
 ## 参考文章
 
