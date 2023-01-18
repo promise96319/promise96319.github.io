@@ -150,3 +150,9 @@
   - algorithm/data structure
   - miniprogram/native app
 
+## todo
+- react repl => sandpack react
+- interface to typescript => github
+- mini compiler 
+- react keep alive
+- rust
