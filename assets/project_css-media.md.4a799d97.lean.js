@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,a as e}from"./app.da177e40.js";const _=JSON.parse('{"title":"响应式检测","description":"","frontmatter":{},"headers":[],"relativePath":"project/css-media.md","lastUpdated":1677324754000}'),o={name:"project/css-media.md"},l=e("",4),t=[l];function p(c,r,i,d,y,D){return n(),a("div",null,t)}const A=s(o,[["render",p]]);export{_ as __pageData,A as default};

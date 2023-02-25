@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as a}from"./app.da177e40.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"trend/native.md","lastUpdated":1677323371000}'),n={name:"trend/native.md"};function r(o,s,c,d,i,p){return a(),t("div")}const f=e(n,[["render",r]]);export{m as __pageData,f as default};
