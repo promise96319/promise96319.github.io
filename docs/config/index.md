@@ -1,4 +1,1 @@
-# 配置
-
-## Draw.io
-<<< @/config/draw-io.json
+# 个人开发配置

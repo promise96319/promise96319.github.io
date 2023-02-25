@@ -58,7 +58,6 @@ wrappedFn()
 ```javascript
 const myNew = function (constructor) {
   const obj = {}
-  // const obj = Object.create(null)
 
   const args = Array.prototype.slice.call(arguments, 1)
   const result = constructor.apply(obj, args)
@@ -73,17 +72,12 @@ const myNew = function (constructor) {
 
 function Person(name) {
   this.name = name
-  // return {
-  //   name: 'other name',
-  //   say: 'other say'
-  // }
 }
 
 Person.prototype.say = () => {
   console.log('hello world')
 }
 
-// const person = new Person('name')
 const person = myNew(Person, 'name')
 console.log(person.name)
 console.log(person.say)
@@ -116,7 +110,6 @@ function add(c, d) {
   return this.a + this.b + c + d
 }
 
-// const target = add.bind({ a: 1, b: 2 }, 3)
 const target = add.myBind({ a: 1, b: 2 }, 3)
 console.log(target(4, 5)) // 1 + 2 + 3 + 4 = 10
 console.log(add(4)) // NaN
@@ -141,7 +134,6 @@ function add(c, d) {
   return this.a + this.b + c + d
 }
 
-// const result = add.call({ a: 1, b: 2 }, 3, 4)
 const result = add.myCall({ a: 1, b: 2 }, 3, 4)
 console.log(result)
 ```
@@ -165,7 +157,6 @@ function add(c, d) {
   return this.a + this.b + c + d
 }
 
-// const result = add.apply({ a: 1, b: 2 }, [3, 4])
 const result = add.myApply({ a: 1, b: 2 }, [3, 4])
 console.log(result)
 ```

@@ -2,7 +2,7 @@
 
 [bash教程](https://wangdoc.com/bash/index.html)
 
-### 快捷命令
+## 快捷命令
 
 | 快捷命令                              | 描述                     |
 | ------------------------------------- | ------------------------ |
@@ -27,28 +27,7 @@
 | option + t                            | 交换当前单词和上一个单词 |
 
 
-### 别名
-```bash
-# 极简命令
-# 基于 @antfu/ni 库，npm/yarn/pnpm 
-# npm run dev
-alias b="nr build"
-alias d="nr dev"
-# npm install
-alias i="ni"
-# npm install -D
-alias id="ni -D"
-# http-server 起服务
-alias s="serve"
-# npm run test
-alias t="nr test"
-# npm uninstall
-alias u="nun"
-# 打开 vscode
-alias .="code ."
-```
-
-### .bash_profile
+## 别名配置 .bash_profile
 ```bash
 # 基于 @antfu/ni 库，npm/yarn/pnpm 
 # npm run build

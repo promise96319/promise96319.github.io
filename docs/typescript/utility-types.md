@@ -1,4 +1,4 @@
-#  Utility Types
+#  内置类型
 
 ## Partial
 将属性变为可选。

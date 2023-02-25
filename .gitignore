@@ -1,13 +1,11 @@
 node_modules
-*.log
 dist
 docs/.vuepress/dist
 docs/test
 docs/面试
-person
-docx
+
+*.log
 .history
 .DS_Store
 .vscode
 test
-头图

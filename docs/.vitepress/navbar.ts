@@ -4,24 +4,24 @@ export const navbar = [
     link: '/articles/index',
   },
   {
-    text: '前端框架',
+    text: '框架系列',
     items: [
-      { text: 'Vue v2 源码解析', link: '/vue/' },
+      { text: 'Vue v2 源码', link: '/vue/' },
       { text: 'Vue v3 源码', link: '/vue3/' },
       { text: 'React v17 源码', link: '/react/' },
     ],
   },
   {
-    text: '构建工具',
+    text: '基建系列',
     items: [
-      { text: 'Webpack', link: '/webpack/' },
-      { text: 'Rollup', link: '/rollup/' },
-      { text: 'Vite', link: '/vite/' },
-      { text: 'Babel', link: '/babel/' },
+      { text: 'Webpack 系列', link: '/webpack/' },
+      { text: 'Rollup 系列', link: '/rollup/' },
+      { text: 'Vite 系列', link: '/vite/' },
+      { text: 'Babel 系列', link: '/babel/' },
     ],
   },
   {
-    text: 'js',
+    text: 'JS 系列',
     items: [
       { text: 'ES6', link: '/javascript/' },
       { text: 'Node', link: '/node/' },
@@ -29,31 +29,23 @@ export const navbar = [
     ],
   },
   {
-    text: '基础',
+    text: '计算机基础',
     items: [
       { text: '算法', link: '/algorithms/' },
       { text: '数据结构', link: '/data-structures/' },
       { text: '设计模式', link: '/design-pattern/' },
-      { text: 'LeetCode', link: '/leetcode/' },
       { text: '网络', link: '/network/' },
-      { text: 'linux', link: '/linux/' },
+      { text: 'LeetCode', link: '/leetcode/' },
     ],
   },
   {
-    text: '资源',
+    text: '开发',
     items: [
       { text: '工具', link: '/tools/' },
-      { text: '资料', link: '/resources/' },
       { text: '配置', link: '/config/' },
+      { text: '资料', link: '/resources/' },
+      { text: '项目', link: '/project/' },
     ],
-  },
-  {
-    text: '项目',
-    link: '/project/',
-  },
-  {
-    text: '日常',
-    link: '/daily/index',
   },
   // {
   //   text: '关于我',

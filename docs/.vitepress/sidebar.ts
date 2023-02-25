@@ -1,17 +1,3 @@
-const daily = [
-  {
-    text: '2022',
-    items: [
-      { text: '5月', link: '/daily/2022/05' },
-      { text: '6月', link: '/daily/2022/06' },
-      { text: '7月', link: '/daily/2022/07' },
-      { text: '8月', link: '/daily/2022/08' },
-      { text: '9月', link: '/daily/2022/09' },
-      { text: '10月', link: '/daily/2022/10' },
-    ],
-  },
-]
-
 const articles = [
   {
     text: '文章',
@@ -23,9 +9,20 @@ const articles = [
   },
 ]
 
+// 框架系列
+const vue3 = [
+  {
+    text: 'Vue3原理',
+    items: [
+      { text: '源码调试', link: '/vue3/源码调试' },
+    ],
+  },
+]
+
 const vue = [
   {
-    text: '原理',
+    text: 'Vue2原理',
+    collapsed: false,
     items: [
       { text: '组成与设计', link: '/vue/组成与设计' },
       { text: '选项合并', link: '/vue/选项合并' },
@@ -42,26 +39,6 @@ const vue = [
       { text: '手写简版VueRouter', link: '/vue/手写简版VueRouter' },
       // { text: 'vue-loader实现', link: '/vue/../webpack/vue-loader实现.md' },
       { text: '阅读资料', link: '/vue/阅读资料.md' },
-    ],
-  },
-]
-
-const leetcode = [
-  {
-    text: 'leetcode',
-    items: [
-      { link: '/leetcode/leetcode', text: '汇总' },
-      { link: '/leetcode/1-20', text: '1-20' },
-      { link: '/leetcode/21-40', text: '21-40' },
-    ],
-  },
-]
-
-const vue3 = [
-  {
-    text: '原理',
-    items: [
-      { text: '源码调试', link: '/vue3/源码调试' },
     ],
   },
 ]
@@ -90,8 +67,15 @@ const react = [
       { text: '阅读资料', link: '/react/阅读资料' },
     ],
   },
+  {
+    text: '知识点',
+    items: [
+      { text: '不同版本React事件机制', link: '/react/note/event-change' },
+    ]
+  }
 ]
 
+// 基建系列
 const webpack = [
   {
     text: '理论',
@@ -156,17 +140,20 @@ const babel = [
   },
 ]
 
+// JS系列
 const js = [
   {
-    text: 'js',
+    text: 'ES6',
     items: [
       { text: '事件循环机制', link: '/javascript/事件循环机制' },
-      // { text: '../react/浏览器一帧里做了什么', link: '/javascript/../react/浏览器一帧里做了什么' },
+      { text: '浏览器一帧里做了什么', link: '/javascript/../react/浏览器一帧里做了什么' },
       { text: '手写Promise', link: '/javascript/手写Promise' },
       { text: 'co库', link: '/javascript/co库' },
       { text: 'js继承', link: '/javascript/js继承' },
       { text: 'js方法实现', link: '/javascript/js方法实现' },
       { text: 'es6', link: '/javascript/es6' },
+      { text: '元素位置获取', link: '/javascript/元素位置获取' },
+      { text: 'Input宽度问题', link: '/javascript/Input宽度问题' },
     ],
   },
 ]
@@ -187,6 +174,16 @@ const node = [
   },
 ]
 
+const typescript = [
+  {
+    text: 'typescript',
+    items: [
+      { link: '/typescript/utility-types', text: '内置类型' },
+    ],
+  },
+]
+
+// 计算机基础
 const algorithms = [
   {
     text: '算法',
@@ -199,6 +196,10 @@ const algorithms = [
       { text: '二叉树', link: '/algorithms/二叉树' },
     ],
   },
+  {
+    text: '阅读资料',
+    link: '/algorithms/阅读资料',
+  }
 ]
 
 const dataStructure = [
@@ -231,15 +232,6 @@ const designPattern = [
   },
 ]
 
-const trend = [
-  {
-    text: '新技术',
-    items: [
-      { link: '/trend/bundle', text: 'bundleless' },
-    ],
-  },
-]
-
 const network = [
   {
     text: '网络',
@@ -249,28 +241,39 @@ const network = [
       { link: '/network/缓存', text: '缓存' },
     ],
   },
+  {
+    text: '阅读资料',
+    link: "/network/阅读资料"
+  }
 ]
 
-const computer = []
+const leetcode = [
+  {
+    text: 'leetcode',
+    items: [
+      { link: '/leetcode/leetcode', text: '汇总' },
+      { link: '/leetcode/1-20', text: '1-20' },
+      { link: '/leetcode/21-40', text: '21-40' },
+    ],
+  },
+]
+
+
+const trend = [
+  {
+    text: '新技术',
+    items: [
+      { link: '/trend/bundle', text: 'bundleless' },
+    ],
+  },
+]
 
 const resources = [
   {
     text: '资源',
     items: [
-      { link: '/resources/网络协议', text: '网络协议' },
-      { link: '/resources/算法', text: '算法' },
       { link: '/resources/前端博客', text: '前端博客' },
-    ],
-  },
-]
-
-const linux = [
-  {
-    text: 'linux',
-    items: [
-      { link: '/linux/bash', text: 'bash' },
-      { link: '/linux/ssh', text: 'ssh' },
-      { link: '/linux/vim', text: 'vim' },
+      { link: '/resources/知识点', text: '知识点' },
     ],
   },
 ]
@@ -289,8 +292,12 @@ const tools = [
 
 const config = [
   {
-    text: '配置',
-    items: [],
+    text: '个人配置',
+    items: [
+      { link: '/config/draw-io', text: 'draw.io' },
+      { link: '/config/bash', text: 'bash' },
+      { link: '/config/vim', text: 'vim' },
+    ],
   },
 ]
 
@@ -305,6 +312,7 @@ const project = [
       { link: '/project/prefix-cls', text: '组件库前缀' },
       { link: '/project/virtual-list', text: '虚拟滚动' },
       { link: '/project/auto-import', text: '自动引入' },
+      { link: '/project/ellipsis-text', text: '省略文本' },
     ],
   },
   {
@@ -315,19 +323,9 @@ const project = [
   },
 ]
 
-const typescript = [
-  {
-    text: 'typescript',
-    items: [
-      { link: '/typescript/utility-types', text: 'Utility Types' },
-    ],
-
-  },
-]
 
 export const sidebar = {
   '/articles/': articles,
-  '/daily/': daily,
   '/vue/': vue,
   '/vue3/': vue3,
   '/react/': react,
@@ -344,9 +342,7 @@ export const sidebar = {
   '/design-pattern/': designPattern,
   '/trend/': trend,
   '/network/': network,
-  '/computer/': computer,
   '/resources/': resources,
-  '/linux/': linux,
   '/tools/': tools,
   '/config/': config,
   '/project/': project,
