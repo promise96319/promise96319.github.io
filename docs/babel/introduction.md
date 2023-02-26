@@ -1,26 +1,4 @@
 
-### transform
-
-transform 阶段将 parse 阶段得到的 AST 进行转换，此时会遍历 AST，然后通过 visitor 对 AST 进行修改，返回新的 AST。
-
-![image-20230219203806010](babel-introduction.assets/image-20230219203806010.png)
-
-babel 将遍历的过程封装成了 @babel/traverse 库，专门用于遍历 AST。比如：
-```js
-import { parse } from '@babel/parser'
-import traverse from '@babel/traverse'
-
-const source = 'const a = 1'
-const ast = parse(source)
-
-traverse(ast, {
-  enter(path, state) {
-    if (path.node.type === 'VariableDeclaration')
-      path.node.kind = 'var'
-  },
-})
-```
-
 在遍历的过程中，参数 path 中记录着节点相关的信息：
 
 ```js
