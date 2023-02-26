@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,a as l}from"./app.788a9091.js";const C=JSON.parse('{"title":"Drawer 嵌套偏移","description":"","frontmatter":{},"headers":[],"relativePath":"project/drawer.md","lastUpdated":1677397522000}'),p={name:"project/drawer.md"},o=l("",7),e=[o];function t(r,c,F,y,D,i){return n(),a("div",null,e)}const d=s(p,[["render",t]]);export{C as __pageData,d as default};

@@ -1,1 +1,0 @@
-import{_ as e,c as a,o as r,a as t}from"./app.788a9091.js";const f=JSON.parse('{"title":"阅读资料","description":"","frontmatter":{},"headers":[],"relativePath":"babel/resource.md","lastUpdated":1677396047000}'),s={name:"babel/resource.md"},l=t("",2),o=[l];function n(i,b,_,c,h,d){return r(),a("div",null,o)}const p=e(s,[["render",n]]);export{f as __pageData,p as default};
