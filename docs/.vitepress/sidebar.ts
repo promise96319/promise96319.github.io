@@ -132,12 +132,20 @@ const vite = [
 
 const babel = [
   {
-    text: 'Babel',
+    text: '入门',
+    collapse: false,
     items: [
-      { text: '基础知识', link: '/babel/babel' },
-      { text: '资料', link: '/babel/resource' },
+      { text: '概览', link: '/babel/guide/overview' },
+      { text: '插件开发', link: '/babel/guide/plugin' },
     ],
   },
+  { 
+    text: '实际问题', 
+  collapse: false,
+  items: [
+    { text: '项目产物兼容性问题', link: '/babel/problems/invalid-polyfill' },
+  ] },
+  { text: '阅读资料', link: '/babel/resource' },
 ]
 
 // JS系列
