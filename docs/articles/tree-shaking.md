@@ -1,5 +1,5 @@
-# Tree Shaking 原理和组件库按需加载实践
-![tree shaking](./tree-shaking.svg)
+# 按需加载
+![tree shaking](./assets/tree-shaking.svg)
 
 ## 背景
 ``` js

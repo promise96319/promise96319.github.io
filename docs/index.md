@@ -27,7 +27,7 @@ features:
   - title: 基建系列
     details: 学习前端基础构建工具： Webpack、Rollup、Vite、Esbuild、Babel 等。
   - title: 开源贡献
-    details: Deep into github.
+    details: Github.
 ---
 
 <style>
