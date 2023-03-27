@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,a as l}from"./app.026f8370.js";const C=JSON.parse('{"title":"回溯法","description":"","frontmatter":{},"headers":[],"relativePath":"algorithms/回溯法.md","lastUpdated":1679906492000}'),o={name:"algorithms/回溯法.md"},p=l("",4),e=[p];function t(c,r,y,F,D,i){return a(),n("div",null,e)}const u=s(o,[["render",t]]);export{C as __pageData,u as default};
