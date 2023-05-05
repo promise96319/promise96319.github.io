@@ -7,6 +7,15 @@ const articles = [
   },
 ]
 
+const ai = [
+  {
+    text: 'AI',
+    items: [
+      { text: 'ChatGPT Register', link: '/ai/chatgpt-register' },
+    ],
+  },
+]
+
 // 框架系列
 const vue3 = [
   {
@@ -69,8 +78,8 @@ const react = [
     text: '知识点',
     items: [
       { text: '不同版本React事件机制', link: '/react/note/event-change' },
-    ]
-  }
+    ],
+  },
 ]
 
 // 基建系列
@@ -137,12 +146,13 @@ const babel = [
       { text: '插件开发', link: '/babel/guide/plugin' },
     ],
   },
-  { 
-    text: '实际问题', 
-  collapse: false,
-  items: [
-    { text: '项目产物兼容性问题', link: '/babel/problems/invalid-polyfill' },
-  ] },
+  {
+    text: '实际问题',
+    collapse: false,
+    items: [
+      { text: '项目产物兼容性问题', link: '/babel/problems/invalid-polyfill' },
+    ],
+  },
   { text: '阅读资料', link: '/babel/resource' },
 ]
 
@@ -205,7 +215,7 @@ const algorithms = [
   {
     text: '阅读资料',
     link: '/algorithms/阅读资料',
-  }
+  },
 ]
 
 const dataStructure = [
@@ -249,8 +259,8 @@ const network = [
   },
   {
     text: '阅读资料',
-    link: "/network/阅读资料"
-  }
+    link: '/network/阅读资料',
+  },
 ]
 
 const leetcode = [
@@ -263,7 +273,6 @@ const leetcode = [
     ],
   },
 ]
-
 
 const trend = [
   {
@@ -329,9 +338,9 @@ const project = [
   },
 ]
 
-
 export const sidebar = {
   '/articles/': articles,
+  '/ai/': ai,
   '/vue/': vue,
   '/vue3/': vue3,
   '/react/': react,

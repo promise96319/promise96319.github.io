@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "ES2020",
+    "module": "esnext",
+    "target": "esnext",
     "outDir": "dist",
-    "lib": [
-      "ES2020"
-    ],
+    "lib": ["ES2020"],
     "sourceMap": true,
     "rootDir": "docs",
     "strict": true
   },
-  "include": ["docs/**/*"]
+  "include": ["docs", "type/shims-vue.d.ts"],
+  "exclude": ["dist", "cache"]
 }

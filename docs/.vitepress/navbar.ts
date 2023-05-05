@@ -4,6 +4,10 @@ export const navbar = [
     link: '/articles/index',
   },
   {
+    text: 'AI',
+    link: '/ai/index',
+  },
+  {
     text: '框架系列',
     items: [
       { text: 'Vue v2 源码', link: '/vue/' },

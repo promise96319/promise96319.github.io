@@ -11,6 +11,7 @@ specifiers:
   typescript: ^4.9.5
   vitepress: 1.0.0-alpha.47
   vitest: ^0.28.5
+  vue: ^3.2.47
 
 devDependencies:
   '@antfu/eslint-config': registry.npmmirror.com/@antfu/eslint-config/0.35.3_7kw3g6rralp5ps6mg3uyzz6azm
@@ -23,6 +24,7 @@ devDependencies:
   typescript: registry.npmmirror.com/typescript/4.9.5
   vitepress: registry.npmmirror.com/vitepress/1.0.0-alpha.47_@types+node@18.14.1
   vitest: registry.npmmirror.com/vitest/0.28.5
+  vue: registry.npmmirror.com/vue/3.2.47
 
 packages:
 
