@@ -1,1 +1,0 @@
-import{_ as e,o as a,c as l,a as r}from"./app.f42e61e3.js";const m=JSON.parse('{"title":"webpack","description":"","frontmatter":{},"headers":[],"relativePath":"webpack/官方文档.md","lastUpdated":1684811674000}'),o={name:"webpack/官方文档.md"},t=r("",2),i=[t];function s(n,c,d,_,p,h){return a(),l("div",null,i)}const b=e(o,[["render",s]]);export{m as __pageData,b as default};
