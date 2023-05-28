@@ -26,13 +26,41 @@
 | ctrl + t                              | 交换当前字母和上一个字母 |
 | option + t                            | 交换当前单词和上一个单词 |
 
-
 ## 别名配置 .bash_profile
+
 ```bash
+# git
+alias ga="git add ."
+alias gcm="git commit -m"
+alias gc="git checkout"
+alias gcb="git checkout -b"
+alias gs="git status"
+alias gb="git branch -a"
+alias gt="git log --graph --oneline --all"
+alias gcb="git checkout -b"
+alias gd="git diff"
+alias gf="git fetch"
+alias gm="git merge"
+alias gp="git push"
+alias gpl="git pull"
+alias gpt="git push --tags"
+alias gitu="git config user.name promise96319"
+alias gite="git config user.email 1248975357@qq.com"
+alias gcz="git add . && git status && git cz"
+alias clone="git clone"
+alias gm="git merge"
+alias gl="git log --graph --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short"
+alias glr="git log --reverse --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short"
+alias gcp="git cherry-pick"
+alias gcpc="git cherry-pick --continue"
+alias gcpa="git cherry-pick --abort"
+alias gbg="git bisect good"
+alias gbb="git bisect bad"
+
+
 # 基于 @antfu/ni 库，npm/yarn/pnpm 
-# npm run build
-alias b="nr build"
 # npm run dev
+alias b="nr build"
 alias d="nr dev"
 # npm install
 alias i="ni"
@@ -45,26 +73,13 @@ alias t="nr test"
 # npm uninstall
 alias u="nun"
 # vscode
-alias .="code ."
-
+alias c="code ."
 # git
-alias ga="git add ."
-alias gcm="git commit -m"
-alias gs="git status"
-alias gb="git branch -a"
-alias gt="git log --graph --oneline --all"
-alias gcb="git checkout -b"
-alias gf="git fetch"
-alias gm="git merge"
-alias gp="git push"
-alias gpl="git pull"
-alias gitu="git config user.name promise96319"
-alias gite="git config user.email 1248975357@qq.com"
-alias gcz="git add . && git status && git cz"
-alias gl="git log"
+alias g="git"
 
-# npm 
-alias npmqt="npm config set registry http://ued.qingteng.cn:81"
-alias npmtb="npm config set registry https://registry.npm.taobao.org"
-alias npmjs="npm config set registry https://registry.npmjs.org/"
+# directory navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 ```
