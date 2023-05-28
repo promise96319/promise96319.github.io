@@ -1,0 +1,1 @@
+import{_ as e,o as a,c as s,a as t}from"./app.9fd1379c.js";const f=JSON.parse('{"title":"Vim 配置主题","description":"","frontmatter":{},"headers":[],"relativePath":"config/vim.md","lastUpdated":1685269996000}'),n={name:"config/vim.md"},o=t("",4),i=[o];function c(r,l,p,d,_,m){return a(),s("div",null,i)}const v=e(n,[["render",c]]);export{f as __pageData,v as default};

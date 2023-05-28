@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as r,a}from"./app.9fd1379c.js";const g=JSON.parse('{"title":"阅读资料","description":"","frontmatter":{},"headers":[],"relativePath":"design-pattern/阅读资料.md","lastUpdated":1685269996000}'),n={name:"design-pattern/阅读资料.md"},o=a("",2),s=[o];function i(_,c,l,d,p,h){return t(),r("div",null,s)}const u=e(n,[["render",i]]);export{g as __pageData,u as default};
