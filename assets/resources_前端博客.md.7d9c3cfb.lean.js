@@ -1,1 +1,0 @@
-import{_ as e,o as r,c as t,a as l}from"./app.9fd1379c.js";const g=JSON.parse('{"title":"前端博客","description":"","frontmatter":{},"headers":[],"relativePath":"resources/前端博客.md","lastUpdated":1685269996000}'),a={name:"resources/前端博客.md"},i=l("",2),n=[i];function o(s,h,u,_,c,p){return r(),t("div",null,n)}const b=e(a,[["render",o]]);export{g as __pageData,b as default};
