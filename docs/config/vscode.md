@@ -31,6 +31,7 @@
 - Carbon Product Icons
 - Iconify IntelliSense
 - Goto definition alias
+- Material Icon Theme
 
 ## 配置
 
@@ -67,7 +68,7 @@
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.find.addExtraSpaceOnTop": false,
     // 需要自己下载对应的图标
-    "editor.fontFamily": "Input Mono, Fira Code, monospace",
+    // "editor.fontFamily": "Input Mono Thin, Fira Code, monospace",
     "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
     "editor.fontSize": 13,
     "editor.glyphMargin": true,
@@ -493,3 +494,7 @@
     "markdownTablePrettify.extendedLanguages": []
 }
 ```
+
+## 其他
+
+- [Input Mono 字体下载地址](<https://input.djr.com/preview/?size=14&language=javascript&theme=monokai&family=InputMono&width=300&weight=300&line-height=1.8&a=ss&g=ss&i=topserif&l=topserif&zero=slash&asterisk=0&braces=straight&preset=default&customize=please>)
