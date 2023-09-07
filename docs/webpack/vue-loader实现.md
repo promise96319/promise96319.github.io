@@ -119,13 +119,13 @@ module.exports = function (source) {
 ```javascript
 {
   script: {
-  	type: 'script'
+   type: 'script'
     // ...
   },
-	styles: [],
-	template: {},
-	customBlocks: [],
-	errors: []
+ styles: [],
+ template: {},
+ customBlocks: [],
+ errors: []
 }
 ```
 
@@ -361,8 +361,6 @@ exports.rerender = tryWrap(function (id, options) {
 2. 通过`loader-runner`对`.vue`文件解析。通过`component-compiler-utils`包将`.vue`文件解析为对象形式，然后根据不同的`type`（`script/template`等等），生成不同的查询参数，添加到`.vue`文件后。
 3. 当下一次`build`时，遇到前面处理后带参数的`.vue`文件，会匹配到`VueLoaderPlugin`插件中添加的`pitcher loader`。首先会执行`pitcher loader`的`pitch`方法，该方法根据参数中不同的`type`为文件添加不同的`loader`进行处理。如`template`会添加`templateLoader`，`css`添加`css-loader`等。相当于根据路径的`type`为路径包装了一层。添加完成后，会移除`pitcher loader`。
 4. 在下一次进入到`vue-loader`时，由于存在`type`，此时进入到`selectBlock`环节。根据不同的`type`对相应代码做不同的处理即可。
-
-
 
 `vue-loader`热更新实现原理：
 

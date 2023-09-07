@@ -6,7 +6,8 @@
 
 // @lc code=start
 function lengthOfLongestSubstring(s: string): number {
-  if (s.length <= 1) return s.length
+  if (s.length <= 1)
+    return s.length
 
   let max = 0
   let current: string = s[0]

@@ -1,6 +1,7 @@
 # Github workflow
 
 ## 部署 vitepress
+
 ```yaml
 # 任务名称
 name: Deploy blog
@@ -45,14 +46,19 @@ jobs:
 ```
 
 ## Github actions
+
 可以在 `actions` 市场里查找一些已有的 actions 来简化部署流程。
+
 - [Github actions 市场](https://github.com/marketplace?category=deployment&query=github+pages+sort%3Apopularity-desc&type=actions&verification=)
 
 ## 设置 token
+
 触发事件时需要设置 `github token`，并且 `token` 需要有 `workflow` 权限。
+
 - [设置推送的token](https://github.com/settings/tokens/674290866)
 
 ## 设置域名
-部署后，默认 `xxx.github.io` 项目的 `gh-pages` 分支对应于根项目，其他仓库的 `gh-pages` 分支部署后为 `xxx.github.io/repository_name/` 路径。因此只需要设置 `xxx.github.io` 的域名映射即可。 
-- [域名设置](https://docs.github.com/cn/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)
 
+部署后，默认 `xxx.github.io` 项目的 `gh-pages` 分支对应于根项目，其他仓库的 `gh-pages` 分支部署后为 `xxx.github.io/repository_name/` 路径。因此只需要设置 `xxx.github.io` 的域名映射即可。
+
+- [域名设置](https://docs.github.com/cn/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)

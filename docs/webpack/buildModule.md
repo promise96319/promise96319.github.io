@@ -88,21 +88,21 @@ exports.runLoaders = function runLoaders(options, callback) {
 
 ```javascript
 function iteratePitchingLoaders(options, loaderContext, callback) {
-	// 1. loaders 执行完了开始处理资源
-	if (loaderContext.loaderIndex >= loaderContext.loaders.length)
-		return processResource(options, loaderContext, callback);
+ // 1. loaders 执行完了开始处理资源
+ if (loaderContext.loaderIndex >= loaderContext.loaders.length)
+  return processResource(options, loaderContext, callback);
 
   // 2. 获取 loader
-	var currentLoaderObject = loaderContext.loaders[loaderContext.loaderIndex];
+ var currentLoaderObject = loaderContext.loaders[loaderContext.loaderIndex];
 
-	// 3. 判断 loader 是否 pitch，如果 pitch 执行过，那么执行下一个 loader 的 pitch
-	if (currentLoaderObject.pitchExecuted) {
-		loaderContext.loaderIndex++;
-		return iteratePitchingLoaders(options, loaderContext, callback);
-	}
+ // 3. 判断 loader 是否 pitch，如果 pitch 执行过，那么执行下一个 loader 的 pitch
+ if (currentLoaderObject.pitchExecuted) {
+  loaderContext.loaderIndex++;
+  return iteratePitchingLoaders(options, loaderContext, callback);
+ }
 
-	// 4. 加载 loader
-	loadLoader(currentLoaderObject, function (err) {});
+ // 4. 加载 loader
+ loadLoader(currentLoaderObject, function (err) {});
 }
 ```
 
@@ -300,7 +300,7 @@ parse(source, state) {
   });
 
   // ...
-	
+ 
   // 2. 转换
   if (this.hooks.program.call(ast, comments) === undefined) {
     this.detectMode(ast.body);
@@ -580,11 +580,11 @@ for (const item of sortedDependencies) {
 
 `loader`的执行过程又包含`pitch`阶段，源码读取阶段，`loader`执行阶段。
 
-  - `pitch`阶段会调用`loadLoader`加载`loader`模块，然后调用`pitch`函数。可以通过`pitch`函数提前返回源码内容中断后续`loader`的调用。
+- `pitch`阶段会调用`loadLoader`加载`loader`模块，然后调用`pitch`函数。可以通过`pitch`函数提前返回源码内容中断后续`loader`的调用。
   
-  - 源码读取阶段会直接读取对应文件的源码内容。
+- 源码读取阶段会直接读取对应文件的源码内容。
   
-  - `loader`执行阶段会依次从后向前执行`loader`函数，每次都会将执行结果作为下一个`loader`函数的参数传入。
+- `loader`执行阶段会依次从后向前执行`loader`函数，每次都会将执行结果作为下一个`loader`函数的参数传入。
 
 其次，`loaders`执行完成后拿到加载后的源码内容，通过`acorn`库对源码内容进行解析，形成`ast`。
 

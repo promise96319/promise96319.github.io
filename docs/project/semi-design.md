@@ -2,11 +2,12 @@ Semi Design
 
 [Semi Design - UI组件库如何分层设计，使其具备适配多种mvvm框架能力](https://bytedance.feishu.cn/wiki/wikcnOVYexosCS1Rmvb5qCsWT1f)
 
-
 ### 问题
+
 不同的框架需要封装不同的组件，比如 `antd(react)` 需要使用到 `react` 版的 `rc-table`，如果需要在 vue 使用 `antd` ，那么需要重新写 `vue` 版的 `antd`，同时还需要写 `vue` 版的 `rc-table`。如果还需要放到 svelte 版本，那么所有基础组件内容都得重写一遍。
 
 ### 解决
+
 `semi design` 通过 `Foundation/Adapter` 实现了组件逻辑上的复用，而不限于框架层面。其实就是适配器模式。
 
 对于一个组件来讲，不同的框架，他们不同的地方主要在DOM结构的编写、状态的定义与修改上，其他内容都是共用的。

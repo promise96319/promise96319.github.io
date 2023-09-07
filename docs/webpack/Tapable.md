@@ -9,7 +9,6 @@
 - **Bail** - 按顺序执行回调。如果回调函数执行后有返回值，那么将不会执行下一个回调函数。
 - **Loop** - 按顺序执行回调。如何某个回调函数返回一个非`undefined`的值，那么将会从第一个回调函数重新执行，直到所有的回调函数都返回`undefined`。
 
-
 - **Sync** - 只能使用`hook.tap()`监听。
 - **AsyncSeries** - 能被`hook.tap()/tapAsync()/tapPromise()`监听。**按顺序执行异步回调**。
 - **AsyncParallel** - 能被`hook.tap()/tapAsync()/tapPromise()`监听。**并列执行异步回调**。

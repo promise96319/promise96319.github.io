@@ -7,8 +7,10 @@
 // @lc code=start
 function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
   const totalNums = nums1.length + nums2.length
-  if (totalNums === 0) return 0
-  if (totalNums === 1) return nums1[0] === undefined ? nums2[0] : nums1[0]
+  if (totalNums === 0)
+    return 0
+  if (totalNums === 1)
+    return nums1[0] === undefined ? nums2[0] : nums1[0]
   let i = -1
   let j = -1
   const isOdd = totalNums % 2 === 1

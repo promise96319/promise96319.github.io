@@ -26,8 +26,8 @@
 | ctrl + t                              | 交换当前字母和上一个字母 |
 | option + t                            | 交换当前单词和上一个单词 |
 
-
 ## 别名配置 .bash_profile
+
 ```bash
 # 基于 @antfu/ni 库，npm/yarn/pnpm 
 # npm run build

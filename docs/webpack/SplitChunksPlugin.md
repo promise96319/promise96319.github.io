@@ -129,7 +129,7 @@ for (const module of compilation.modules) {
   for (const cacheGroupSource of cacheGroups) {
     const cacheGroup = this._getCacheGroup(cacheGroupSource);
 
-  	// ...
+   // ...
   }
 }
 ```
@@ -151,7 +151,7 @@ for (const chunkCombination of combs) {
   if (count < cacheGroup.minChunks) continue;
   const { chunks: selectedChunks, key: selectedChunksKey } =
         getSelectedChunks(chunkCombination, cacheGroup.chunksFilter);
-	// 3. 将结果记录到chunksInfoMap中
+ // 3. 将结果记录到chunksInfoMap中
   addModuleToChunksInfoMap(
     cacheGroup,
     cacheGroupIndex,
@@ -321,7 +321,7 @@ for (const [key, info] of chunksInfoMap) {
 ```javascript
 // 将 chunk 再次细分
 const results = deterministicGroupingForModules({
-	// ...
+ // ...
 })
 ```
 

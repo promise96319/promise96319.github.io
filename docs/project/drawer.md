@@ -1,6 +1,7 @@
 # Drawer 嵌套偏移
 
 1. 通过 `Context` 将父 `Drawer` 的偏移传递给子 `Drawer`。
+
 ```typescript
 type ParrentDrawer = Drawer | null;
 const DrawerContext = React.createContext<ParrentDrawer>(null);
@@ -25,6 +26,7 @@ render() {
 ```
 
 2. 子 `Drawer` 在显示时，触发父 `Drawer` 偏移，如`pushDistance`。
+
 ```typescript
 componentDidMount() {
   if (this.parentDrawer && this.props.visible) {
@@ -47,7 +49,9 @@ componentWillUnmount() {
   }
 }
 ```
+
 3. 父 `Drawer` 开始偏移
+
 ``` typescript
 updateWidth = (isPush: boolean, childDisplayWidth: number) => {
   const { pushDistance = 0 } = this.props;

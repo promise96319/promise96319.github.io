@@ -4,7 +4,7 @@
 
 ```javascript
 function performUnitOfWork(unitOfWork: Fiber): void {
-	// ...
+ // ...
   if (next === null) {
     // 如果没有 next child，那么开始 complete.
     // 创建可真实节点
@@ -39,18 +39,18 @@ const rootContainerInstance = getRootHostContainer();
 
 ```javascript
 if (current !== null && workInProgress.stateNode != null) {
-	// 如果真实节点存在，那么进行更新
-	updateHostComponent(
-		current,
-		workInProgress,
-		type,
-		newProps,
-		rootContainerInstance,
-	);
+ // 如果真实节点存在，那么进行更新
+ updateHostComponent(
+  current,
+  workInProgress,
+  type,
+  newProps,
+  rootContainerInstance,
+ );
 
-	if (current.ref !== workInProgress.ref) {
-		markRef(workInProgress);
-	}
+ if (current.ref !== workInProgress.ref) {
+  markRef(workInProgress);
+ }
 }
 ```
 

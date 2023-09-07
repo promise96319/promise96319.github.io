@@ -82,7 +82,7 @@ compilation.hooks.renderManifest.tap(
 asyncLib.forEach(
   manifest,
   (fileManifest, callback) => {
-		// 1. 解析 chunk 的文件等信息
+  // 1. 解析 chunk 的文件等信息
     if ("filename" in fileManifest) {
       file = fileManifest.filename;
       assetInfo = fileManifest.info;
@@ -101,7 +101,7 @@ asyncLib.forEach(
       : pathAndInfo.info;
     }
 
-		// 2. 生成 chunk 代码
+  // 2. 生成 chunk 代码
     source = fileManifest.render();
 
     // 3. 输出文件
@@ -135,7 +135,7 @@ const chunkModules = Template.renderChunkModules(
 调用`Template.renderChunkModules`函数遍历`chunk`中的所有`module`，然后将这些`module`形成键值对结构代码（实际上是一行一行代码组成的数组结构，但是执行时是对象结构），存放到`__webpack_modules__`变量当中。例如：
 
 ```javascript
-/******/ 	var __webpack_modules__ = ({
+/******/  var __webpack_modules__ = ({
 
 /***/ "./src/moduleA.js":
 /*!************************!*\
@@ -146,7 +146,7 @@ const chunkModules = Template.renderChunkModules(
 eval("/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"A\": () => (/* binding */ A)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nconsole.log(react__WEBPACK_IMPORTED_MODULE_0__)\n\nfunction A() {\n  console.log('==> module A');\n}\n\n//# sourceURL=webpack://study-webpack/./src/moduleA.js?");
 
 /***/ })
-/******/ 	});
+/******/  });
 ```
 
 键为`module`的引用路径，值为`seal`后的代码。
@@ -173,16 +173,16 @@ if (runtimeModules.length > 0) {
 在`seal`阶段生成代码构成中，会分析`runtimeRequirements`，也就是模块在转换代码时，依赖了哪些运行时的代码。比如`import`最后会替换成`__webpack_require__`函数，定义`__esModule`时需要`__webpack_require__.r`，这个时候就需要在拼接的代码中添加这些函数的定义。例如：
 
 ```javascript
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
+/******/  /* webpack/runtime/make namespace object */
+/******/  (() => {
+/******/   // define __esModule on exports
+/******/   __webpack_require__.r = (exports) => {
+/******/    if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/     Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/    }
+/******/    Object.defineProperty(exports, '__esModule', { value: true });
+/******/   };
+/******/  })();
 ```
 
 通过这两部分就可以组成能够正常运行的完整代码了。完后通过`emitFile`方法记录生成的代码和对应的文件信息。

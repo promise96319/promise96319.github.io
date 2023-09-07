@@ -7,6 +7,7 @@
 ```javascript
 prepareToReadContext(workInProgress, renderLanes);
 ```
+
 第一步是判断`context`是否有更新，如果有的话那么标记`didReceiveUpdate`为`true`。接着获取`instance`:
 
 ```javascript
@@ -189,7 +190,7 @@ export function createContext<T>(defaultValue: T): ReactContext<T> {
 
 ```javascript
 {
-	 $$typeof: REACT_PROVIDER_TYPE,
+  $$typeof: REACT_PROVIDER_TYPE,
    _context: context,
 }
 ```
@@ -198,18 +199,18 @@ export function createContext<T>(defaultValue: T): ReactContext<T> {
 
 ```javascript
 if (is(oldValue, newValue)) {
-	 if (
-		 oldProps.children === newProps.children &&
-		 !hasLegacyContextChanged()
-		) {
-			return bailoutOnAlreadyFinishedWork(
-				current,
+  if (
+   oldProps.children === newProps.children &&
+   !hasLegacyContextChanged()
+  ) {
+   return bailoutOnAlreadyFinishedWork(
+    current,
         workInProgress,
         renderLanes,
       );
     }
 } else {
-	// context 改变了，寻找 consumer 、 classComponent 并标记 更新
+ // context 改变了，寻找 consumer 、 classComponent 并标记 更新
   propagateContextChange(workInProgress, context, renderLanes);
 }
 ```
@@ -231,8 +232,8 @@ list.lanes = mergeLanes(list.lanes, renderLanes);
 
 ```javascript
 else if (fiber.tag === ContextProvider) {
-	// 遇到下一个 Provider 停止向下递归
-	nextFiber = fiber.type === workInProgress.type ? null : fiber.child;
+ // 遇到下一个 Provider 停止向下递归
+ nextFiber = fiber.type === workInProgress.type ? null : fiber.child;
 } 
 ```
 
@@ -263,15 +264,15 @@ const newValue = readContext(context);
 
 ```javascript
 const contextItem = {
-	context: ((context: any): ReactContext<mixed>),
-	memoizedValue: value,
-	next: null,
+ context: ((context: any): ReactContext<mixed>),
+ memoizedValue: value,
+ next: null,
 }
    
 lastContextDependency = contextItem;
 currentlyRenderingFiber.dependencies = {
-	lanes: NoLanes,
-	firstContext: contextItem,
+ lanes: NoLanes,
+ firstContext: contextItem,
 };
 ```
 
@@ -385,12 +386,12 @@ export function memo<Props>(
 
 ```javascript
 const child = createFiberFromTypeAndProps(
-	Component.type,
-	null,
-	nextProps,
-	workInProgress,
-	workInProgress.mode,
-	renderLanes,
+ Component.type,
+ null,
+ nextProps,
+ workInProgress,
+ workInProgress.mode,
+ renderLanes,
 );
 ```
 
@@ -514,7 +515,7 @@ export function lazy<T>(
     _result: ctor,
   };
 
-	// 返回的 type
+ // 返回的 type
   const lazyType: LazyComponent<T, Payload<T>> = {
     $$typeof: REACT_LAZY_TYPE,
     _payload: payload,

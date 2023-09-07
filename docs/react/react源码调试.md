@@ -1,6 +1,6 @@
 # react源码调试
 
-### 1.拉取`react`源码：
+### 1.拉取`react`源码
 
 ```shell
 git clone https://github.com/facebook/react.git
@@ -16,7 +16,7 @@ cd react-main
 yarn
 ```
 
-### 3.打包`react`、`scheduler`、`react-dom`三个包为`dev`环境可以使用的`cjs`包。
+### 3.打包`react`、`scheduler`、`react-dom`三个包为`dev`环境可以使用的`cjs`包
 
 ```shell
 # 执行打包命令
@@ -58,4 +58,3 @@ yarn start
 ### 8.在浏览器`source`目录中调试源码
 
 ![源码调试](./imgs/react-source-code-test.jpg)
-

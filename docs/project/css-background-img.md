@@ -1,13 +1,16 @@
 # rc-calendar 定制前进后退 icon 问题
 
 ## 需求背景
+
 在公司内部组件库当中需要使用到 `rc-calendar` 组件，并且需要定制日期前进后退按钮，当 `hover` 的时候 `icon` 会高亮。
 
 ![](https://imgs.qinguanghui.com/rc-calendar-icon.png)
 
 ## 问题
+
 `rc-calendar` 并未提供相应的参数用于直接更改`icon`，而只是提供了两个`a`标签。
 目前使用 `::after` 伪元素，配合 `background-image` 来显示 `base64` 格式的图标，代码如下：
+
 ``` scss
 @mixin arrow-left {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU3LjEgKDgzMDg4KSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5tZHBpL+WNleeureWktC3lt6Y8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZyBpZD0i5Y2V566t5aS0LeW3piIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBvbHlnb24gaWQ9IlBhdGgtMiIgZmlsbD0iIzY2NjY2NiIgZmlsbC1ydWxlPSJub256ZXJvIiBwb2ludHM9IjguODk3MjMzMTcgOS45OTk3OTUwNiAxMi40OTk5OCA2LjIzMDkzMjggMTEuODAxNDIzMyA1LjUgNy41IDkuOTk5NzUzMyAxMS44MDE0MDM0IDE0LjUgMTIuNSAxMy43NjkxMDkiPjwvcG9seWdvbj4KICAgIDwvZz4KPC9zdmc+');
@@ -20,9 +23,11 @@
   }
 }
 ```
+
 但是这种实现方式无法满足新的需求：`hover`时图标如何高亮？（切换颜色）
 
 ## 方案1: mask 属性
+
 [参考链接](https://www.zhangxinxu.com/wordpress/2022/01/css-background-image-color/)
 
 `mask` 属性允许使用者通过遮罩或者裁切特定区域的图片的方式来隐藏一个元素的部分或者全部可见区域。可以将 `图标` 作为遮罩，然后隐藏图标外的其他内容，只显示图标内部的内容。这样的话，我们只需要切换元素的背景颜色就能达到`视觉`上切换`图标颜色`的目的了，代码如下：
@@ -52,18 +57,23 @@ $img-arrow-left: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAqCAYAAADB
   }
 }
 ```
+
 但是 `mask` 的[兼容性](https://caniuse.com/?search=mask)似乎不太好，因此只好再寻找其他方案。
 
 ## 方案2：字体图标
+
 [自定义字体图标](https://www.zhihu.com/question/22022905)
 
 通过自定义字体图标，在伪元素`::after`的`content`属性中设置字体图标对应的字符来显示图标。
 
 ### 生成字体库图标
+
 首先生成字体图标，可以通过 [icomoon](https://icomoon.io/app/#/select/font)等网站进行生成。
 
 ### 引入字体库图标
+
 将生成的 `fonts` 文件导入到项目当中，并引用对应的`css`文件，这里是 `icomoon.css` 文件。
+
 ``` css
 @font-face {
   font-family: 'icomoon';
@@ -101,6 +111,7 @@ $img-arrow-left: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAqCAYAAADB
 ```
 
 如果发现无法正常使用，需要在 `webpack.config.js` 中配置相应的 `loader` 对字体进行解析，配置如下：
+
 ``` javascript
 {
   test: /\.(png|svg|eot|woff|woff2|ttf)$/,
@@ -114,7 +125,9 @@ $img-arrow-left: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAqCAYAAADB
 ```
 
 ### 使用图标
+
 代码如下：
+
 ``` scss
 $icomoon-font-family: 'icomoon' !default;
 // icomoon.css 中定义的图标字符
@@ -142,8 +155,8 @@ $icomoon-arrow-down: '\e900' !default;
 }
 ```
 
-
 ## 方案3：背景图片
+
 字体图标虽然能完成效果，但是在组件库中都是使用 `svg` 来渲染图标，并且引入 `font` 后还需要处理 `font` 引入相关的逻辑。因此采用第三种方案，背景图片的方式。[参考地址](https://www.zhangxinxu.com/wordpress/2018/08/css-svg-background-image-base64-encode/)
 
 回到问题当中，可以使用背景图片来设置图片，但是无法切换颜色，那么我们需要寻找方案来解决切换颜色。既然是 `svg` 图片，那么可以通过 `fill` 属性动态设置颜色。如下所示:
@@ -158,10 +171,12 @@ $arrow-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
 但是这里又存在一个问题，部分浏览器上无法识别 `#000` 等 `#` 号开头的颜色，需要经过转移后才能识别，但是在我们的色板中都是 `hex` 类型的颜色。这个时候就需要将其进行转义，最好是能将 `#` 号去除掉。
 
 查看 `sass` 文档，我们发现它有 `string` 相关的方法，如下：
+
 ```scss
 @use 'sass:string';
 @debug string.slice('xxx', 1);
 ```
+
 但是在 `scss` 中却没有这个方法，无法将 `#` 号去除掉，因此我们需要另想他法。
 
 既然浏览器无法识别 背景图片 `svg` 中的 `#` 号，那么它能否识别 `rgb` 呢？测试发现是可行的。那么我们需要将 `hex` 转换为 `rgb` 形式。第一想法是直接使用 `rgb` 函数，但是测试后发现没用，使用 `rgba` 函数，发现在 `a` 为 `1` 时同样不适用，如：
@@ -223,9 +238,3 @@ $svg-double-arrow-down-hover: double-arrow-down($qtc-color-primary) !default;
   }
 }
 ```
-
-
-
-
-
-

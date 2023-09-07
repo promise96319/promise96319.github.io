@@ -119,7 +119,7 @@ export function B() {
 // 整理后的代码大致如下：
 __webpack_require__.e("src_moduleB_js")
   .then(__webpack_require__.bind(__webpack_require__,"./src/moduleB.js"))
-	.then((res) => {console.log(res)}));
+ .then((res) => {console.log(res)}));
 ```
 
 接下来看下代码的具体执行过程。

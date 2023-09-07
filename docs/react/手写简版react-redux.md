@@ -114,12 +114,12 @@ export const connect = (
 ```javascript
 // 原始
 {
-	add: (id) => { type: 'add', payload: id }
+ add: (id) => { type: 'add', payload: id }
 }
   
 // 转换后
 {
-	add: (id) => dispatch({ type: 'add', payload: id })
+ add: (id) => dispatch({ type: 'add', payload: id })
 }
 ```
 

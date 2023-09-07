@@ -13,7 +13,7 @@ this.hooks.make.callAsync(compilation, err => {})
 ```javascript
 compiler.hooks.make.tapAsync("EntryPlugin", (compilation, callback) => {
   const { entry, options, context } = this;
-	// 创建 EntryDependency
+ // 创建 EntryDependency
   const dep = EntryPlugin.createDependency(entry, options);
   // 添加 entry 入口
   compilation.addEntry(context, dep, options, err => {

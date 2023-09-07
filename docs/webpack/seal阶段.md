@@ -28,7 +28,7 @@ webpack 会根据模块依赖图的内容组织分包 —— Chunk 对象，默�
 for (const [chunkGroup, modules] of inputEntrypointsAndModules) {
   /** @type {ChunkGroupInfo} */
   const chunkGroupInfo = {
-    // ...	
+    // ... 
   };
 
   const chunk = chunkGroup.getEntrypointChunk();
@@ -155,7 +155,7 @@ asyncLib.eachLimit(
 );
 
 _codeGenerationModule() {
-	// 其他代码省略
+ // 其他代码省略
   result = module.codeGeneration({
     chunkGraph,
     moduleGraph,
@@ -196,9 +196,9 @@ generate(module, generateContext) {
   // 2. 复制一份代码
   const source = new ReplaceSource(originalSource);
   const initFragments = [];
-	// 3. 处理代码
+ // 3. 处理代码
   this.sourceModule(module, initFragments, source, generateContext);
-	// 4. 返回拼接代码
+ // 4. 返回拼接代码
   return InitFragment.addToSource(source, initFragments, generateContext);
 }
 ```
@@ -280,12 +280,12 @@ template.apply(dependency, source, templateContext);
 
 ```javascript
 HarmonyImportSideEffectDependency.Template = class HarmonyImportSideEffectDependencyTemplate extends (
-	HarmonyImportDependency.Template
+ HarmonyImportDependency.Template
 ) {
-	apply(dependency, source, templateContext) {
-		const { moduleGraph, concatenationScope } = templateContext;
-		super.apply(dependency, source, templateContext);
-	}
+ apply(dependency, source, templateContext) {
+  const { moduleGraph, concatenationScope } = templateContext;
+  super.apply(dependency, source, templateContext);
+ }
 };
 ```
 

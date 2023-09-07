@@ -9,6 +9,7 @@
 ## 优化
 
 ## 实战
+
 - 4.0 OS 平台
   - 原理
     - `platform` 作为平台，加载其他所有的 app，并显示。
@@ -19,7 +20,5 @@
   - 功能如何共享？
     - git submodule => shared
     - shared => node_modules { singleton, eager }
-
-
 
 ## 参考

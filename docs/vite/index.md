@@ -1,23 +1,27 @@
 # vite
 
 ## vite
-- vite 和 webpack 对比 https://juejin.cn/post/6860107020419530760
+
+- vite 和 webpack 对比 <https://juejin.cn/post/6860107020419530760>
 
 ## esbuild
+
 ### 介绍
-- 文档 https://esbuild.github.io/
-- vite esbuild https://juejin.cn/post/7043777969051058183
-- 使用 https://juejin.cn/post/6883862821289852936
+
+- 文档 <https://esbuild.github.io/>
+- vite esbuild <https://juejin.cn/post/7043777969051058183>
+- 使用 <https://juejin.cn/post/6883862821289852936>
 
 ### 为什么快
-- https://www.imgeek.org/article/825357668
 
+- <https://www.imgeek.org/article/825357668>
 
 ### esm
-- https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules
 
+- <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules>
 
 ### 依赖
+
 - [picocolors](https://www.npmjs.com/package/picocolors)
   - 作用：打印信息
   - 优点：无依赖，比 `chalk` 体积小，速度快
@@ -27,8 +31,8 @@
 - [connect](https://www.npmjs.com/package/connect)
   - 作用：给 `http server` 添加中间件的插件。
 
-
 ### 流程
+
 - 本地服务
   - 启动 httpserver
     - 使用中间件

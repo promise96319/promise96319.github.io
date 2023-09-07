@@ -19,7 +19,7 @@ nextChildren = renderWithHooks(
 ReactCurrentDispatcher.current =
   current === null || current.memoizedState === null
   ? HooksDispatcherOnMount
-	: HooksDispatcherOnUpdate;
+ : HooksDispatcherOnUpdate;
 let children = Component(props, secondArg);
 ReactCurrentDispatcher.current = ContextOnlyDispatcher;
 ```
@@ -382,12 +382,14 @@ hook.memoizedState = pushEffect(hookFlags, create, destroy, nextDeps);
 ### mount 阶段
 
 `useLayoutEffect`的`mount`阶段与`useEffect`几乎一致，主要的区别有两点：
+
 - `fiber`的`flags`为`Update | LayoutStatic`。
 - `effect`的`tag`为`HasEffect | Layout`。
 
 ### rerender和update阶段
 
 与`useEffect`一致，主要的区别在于：
+
 - `fiber`的`flags`为`UpdateEffect`。
 - `effect`的`tag`为`HasEffect | Layout`。
 
@@ -547,7 +549,7 @@ function startTransition(setPending, callback) {
   try {
     // 添加一个 update，requestUpdateLane的结果为 transition lane
     setPending(false);
-		// 执行 startTransition 的回调
+  // 执行 startTransition 的回调
     callback();
   } finally {
     setCurrentUpdatePriority(previousPriority);

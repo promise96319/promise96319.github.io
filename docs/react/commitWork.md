@@ -140,7 +140,7 @@ function commitPassiveUnmountInsideDeletedTreeOnFiber(
     case FunctionComponent:
     case ForwardRef:
     case SimpleMemoComponent: {
-			// 执行卸载方法
+   // 执行卸载方法
       commitHookEffectListUnmount(
         HookPassive,
         current,
@@ -195,7 +195,7 @@ function detachFiberAfterEffects(fiber: Fiber) {
   }
   fiber.stateNode = null;
 
-	// ...
+ // ...
 }
 ```
 
@@ -323,7 +323,7 @@ let remainingLanes = mergeLanes(finishedWork.lanes, finishedWork.childLanes);
 markRootFinished(root, remainingLanes);
 
 if (root === workInProgressRoot) {
-	// 重置
+ // 重置
   workInProgressRoot = null;
   workInProgress = null;
   workInProgressRootRenderLanes = NoLanes;

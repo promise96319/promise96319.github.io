@@ -23,7 +23,7 @@ export function initializeUpdateQueue<State>(fiber: Fiber): void {
     firstBaseUpdate: null,
     // 记录最后一个更新，与优先级相关
     lastBaseUpdate: null,
-  	// 存放更新的具体内容
+   // 存放更新的具体内容
     shared: {
       // 一个或多个更新形成的循环链表
       pending: null,
@@ -66,6 +66,7 @@ export function createUpdate(eventTime: number, lane: Lane): Update<*> {
   return update;
 }
 ```
+
 `createUpdate`主要作用是创建一个更新。
 
 ### enqueueUpdate
@@ -160,7 +161,7 @@ newState = getStateFromUpdate(...)
 if (effects === null) {
   queue.effects = [update];
 } else {
-	effects.push(update);
+ effects.push(update);
 }
 ```
 

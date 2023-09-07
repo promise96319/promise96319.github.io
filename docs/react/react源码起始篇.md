@@ -351,7 +351,7 @@ function ensureRootIsScheduled(root: FiberRoot, currentTime: number) {
 
   // 5. 获取 nextLanes 中的最高优先级
   const newCallbackPriority = getHighestPriorityLane(nextLanes);
-	// 当前执行任务的优先级
+ // 当前执行任务的优先级
   const existingCallbackPriority = root.callbackPriority;
   // 如果与当前优先级没有变化，那么直接返回。
   // 这就是为什么能实现批量更新的原理：

@@ -132,4 +132,3 @@ export class Space extends React.Component<SpaceProps> {
   }
 }
 ```
-

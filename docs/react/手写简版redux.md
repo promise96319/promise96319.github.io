@@ -6,7 +6,7 @@
 
 1. `createStore`接收的第一个参数是`reducer`，需要返回`getState`，`dispatch`，`subscribe`等方法。
 2. `getState`返回的是当前的状态，可以用一个变量保存该状态：`currentState`。
-3.  `reducer`接收`state`和`action`作为参数，可以通过`action`匹配不同的方法改变`state`，最终返回新的`state`。
+3. `reducer`接收`state`和`action`作为参数，可以通过`action`匹配不同的方法改变`state`，最终返回新的`state`。
 4. `dispatch`的参数`action`，作为执行`reducer`的参数，并将`reducer`返回的新的`state`更改为当前`state`。
 5. `subscribe`用于收集回调函数，在`currentState`改变时触发。
 

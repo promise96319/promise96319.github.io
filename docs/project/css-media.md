@@ -4,6 +4,7 @@
 - 方案二：`window.matchMedia` 媒体查询，在 `js`中使用
   - 比较灵活
   - 相较于监听窗口变化，性能更好
+
 ```javascript
 window.matchMedia('(max-width: 600px)').addListener(function(e) {
   // 当窗口宽度变化经过 600px 时，执行该回调。
@@ -13,5 +14,3 @@ window.matchMedia('(max-width: 600px)').addListener(function(e) {
 ```
 
 案例见：[antd responsiveObserve](https://github.com/ant-design/ant-design/blob/master/components/_util/responsiveObserve.ts)
-
-

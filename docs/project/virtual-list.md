@@ -1,11 +1,15 @@
 # 虚拟滚动
 
 ## 需求
+
 组件库里的`tree`和`select`等组件由于展示的数据量过大，导致界面卡顿，需要通过虚拟滚动来解决这个问题，并且需要支持行高度非等高的情况。
 
 ## 思路
+
 ### 实际渲染内容计算
+
 首次渲染时，由于不知道每一行的高度，此时可以通过给定一个最小高度 `minItemHeight` 来计算需要渲染的内容。因为根据最小高度计算出来的结果最终渲染出来的内容高度肯定是大于视口高度的。如：
+
 ``` ts
 // 应该渲染的数目
 const count = viewportHeight / minItemHeight
@@ -15,6 +19,7 @@ count * 每行的实际高度 > viewportHeight
 ```
 
 实际的计算结果如下：
+
 ``` ts
 calculateChildrenRange: () => {
   start: number; // 起始索引
@@ -69,9 +74,10 @@ calculateChildrenRange: () => {
 };
 ```
 
-
 ### 偏移量计算
+
 由于行高未知，那么滚动后实际渲染内容的向上偏移距离也就未知。此时可以通过记录每一行的实际高度来计算偏移量。每次内容区域渲染完成时，获取实际的高度并记录下来，这样在滚动后偏移量就能通过记录的实际高度来计算了：
+
 ``` ts
 // 收集的高度
 private itemHeights: Map<string | number, number> = new Map();
@@ -94,14 +100,17 @@ renderList = (start: number, end: number) => {
 ```
 
 ## 效果
+
 ![动态行高虚拟列表](./assets/virtual-list.gif)
 
 ## 问题
 
 ### `tree` 组件使用虚拟滚动时，收起展开怎么实现动画效果？
+
 由于是虚拟滚动，每次展开时会自动计算需要显示的内容数目。如果按照原有的实现，在展开收起时，更新数据，重新计算显示内容，是不会有展开收起动画的。
 
 通过参考[rc-tree](https://github.dev/react-component/tree)，总结了一下实现动画的思路：
+
 - 展开收起时记录展开收起的子节点数据 `rangeNodes`（用于后续做动画），上一次的渲染数据 `prevData`，这次更新的数据 `data`。
   - 其中 `rangeNodes` 需要计算最小动画的范围，因为展开的子节点有可能数据量也非常大，可以通过 `height/itemHeight` 计算应该展示动画的节点数。
 - 如果是展开时，此时为新增数据：
@@ -118,12 +127,13 @@ renderList = (start: number, end: number) => {
 - `done` 阶段：为初始状态，表示无动画或者动画完成。当数据更新时，会计算变更的数据。如果是展开，会进入到 `show` 阶段。如果是收起，会进入到 `prepareHide` 阶段。
 - `show` 阶段：根据计算的动画数据，做展开动画。动画结束后，回到 `done` 阶段。
 - `prepareHide` 阶段：准备收起的阶段。由于 `rc-motion` 渲染节点时，需要 `visible` 从 `true` 到 `false` 的一个转变才能做动画，即先展开后隐藏。展开时不需要动画效果。展开完成后通过 `onAppearEnd` 进入到 `hide` 阶段。
-- `hide` 阶段：将 `visible` 置为 `false`，动画完成后回到 `done` 阶段。 
+- `hide` 阶段：将 `visible` 置为 `false`，动画完成后回到 `done` 阶段。
 
 实现效果：
 ![虚拟滚动可展开动画](./assets/virtual-list-expand.gif)
 
 核心逻辑实现：
+
 ```ts
 updateTransitionData() {
   const { status, data, prevData, expandInfo } = this.state;
@@ -256,15 +266,8 @@ renderMotionTreeNode = (node: TreeNodeData) => {
 
 ```
 
-
-
 ### 滚动到某一行
 
-
-
-
 ## 其他
+
 - [CSS overflow-anchor属性与滚动锚定](https://www.zhangxinxu.com/wordpress/2020/08/css-overflow-anchor/)
-
-
-

@@ -154,7 +154,7 @@ return placeSingleChild(
     currentFirstChild,
     newChild,
     lanes,
-	),
+ ),
 );
        
 ```
@@ -196,6 +196,7 @@ function shouldConstruct(Component: Function) {
   return !!(prototype && prototype.isReactComponent);
 }
 ```
+
 如果`shouldConstruct(type)`为`true`，说明`isReactComponent`存在。但是`isReactComponent`在哪里定义的呢？我们在写类组件的时候通常会写`extends Component`，在`ReactBaseClass.new.js`文件中找到`Component`的定义：
 
 ```javascript
@@ -217,7 +218,7 @@ Component.prototype.isReactComponent = {};
 
 ```javascript
 else if (typeof type === 'string') {
-	fiberTag = HostComponent;
+ fiberTag = HostComponent;
 } 
 ```
 
@@ -227,24 +228,24 @@ else if (typeof type === 'string') {
 
 ```javascript
 if (typeof type === 'object' && type !== null) {
-	switch (type.$$typeof) {
-		case REACT_PROVIDER_TYPE:
-			fiberTag = ContextProvider;
-			break getTag;
-		case REACT_CONTEXT_TYPE:
-			fiberTag = ContextConsumer;
+ switch (type.$$typeof) {
+  case REACT_PROVIDER_TYPE:
+   fiberTag = ContextProvider;
+   break getTag;
+  case REACT_CONTEXT_TYPE:
+   fiberTag = ContextConsumer;
       break getTag;
     case REACT_FORWARD_REF_TYPE:
       fiberTag = ForwardRef;
-			break getTag;
-		case REACT_MEMO_TYPE:
-			fiberTag = MemoComponent;
-			break getTag;
-		case REACT_LAZY_TYPE:
-			fiberTag = LazyComponent;
-			resolvedType = null;
-			break getTag;
-	}
+   break getTag;
+  case REACT_MEMO_TYPE:
+   fiberTag = MemoComponent;
+   break getTag;
+  case REACT_LAZY_TYPE:
+   fiberTag = LazyComponent;
+   resolvedType = null;
+   break getTag;
+ }
 }
 ```
 
@@ -266,13 +267,13 @@ fiber.type = resolvedType;
 
 ```javascript
 if (isArray(newChild)) {
-	// diff 算法
-	return reconcileChildrenArray(
-		returnFiber,
-		currentFirstChild,
-		newChild,
-		lanes,
-	);
+ // diff 算法
+ return reconcileChildrenArray(
+  returnFiber,
+  currentFirstChild,
+  newChild,
+  lanes,
+ );
 }
 ```
 

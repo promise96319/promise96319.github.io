@@ -1,6 +1,7 @@
 # record
 
 ## 依赖
+
 - picocolors：打印信息，比 chalk 体积小，速度快。
 - execa： 执行命令，比 child_process 更好用。
 - fast-glob: 用于匹配文件，比 glob 更快。

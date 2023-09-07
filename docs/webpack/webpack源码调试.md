@@ -48,6 +48,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 ![img](./imgs/inspect/chrome-inspect-02.jpg)
 
 ## vscode调试
+
 如果想在`vscode`中调试，手写需要按`chrome`调试的方法完整操作一遍。然后在`vscode`中下载`chrome`调试插件：`Debugger for Chrome`。下载完成后点击插件提供的运行按钮，选择`node`环境。在`.vscode/`目录下会生成一个`launch.json`文件，将文件替换成一下内容：
 
 ```javascript
@@ -71,13 +72,13 @@ For help, see: https://nodejs.org/en/docs/inspector
 ![img](./imgs/inspect/chrome-vscode-debugger.png)
 
 ## 小技巧
+
 ::: tip 调试文档
-debug: https://webpack.docschina.org/contribute/debugging/
-setup: https://github.com/webpack/webpack/blob/main/_SETUP.md
+debug: <https://webpack.docschina.org/contribute/debugging/>
+setup: <https://github.com/webpack/webpack/blob/main/_SETUP.md>
 :::
 
 - `webpack/examples/` 目录下有各种功能的 `demo`，通过 `yarn & yarn link & yarn link webpack` 建立软连接，然后再 `/examples/xxxx` 目录下运行 `webpack` 即可测试相关功能。
-
 
 ## 参考文章
 

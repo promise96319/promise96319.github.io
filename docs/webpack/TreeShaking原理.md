@@ -398,33 +398,33 @@ setResolvedModule(originModule, dependency, module) {
 
 ```javascript
 HarmonyExportSpecifierDependency.Template = class HarmonyExportSpecifierDependencyTemplate extends (
-	NullDependency.Template
+ NullDependency.Template
 ) {
-	apply(
-		dependency,
-		source,
-		{ module, moduleGraph, initFragments, runtime, concatenationScope }
-	) {
-		const dep = /** @type {HarmonyExportSpecifierDependency} */ (dependency);
+ apply(
+  dependency,
+  source,
+  { module, moduleGraph, initFragments, runtime, concatenationScope }
+ ) {
+  const dep = /** @type {HarmonyExportSpecifierDependency} */ (dependency);
 
-		const used = moduleGraph
-			.getExportsInfo(module)
-			.getUsedName(dep.name, runtime);
-		if (!used) {
-			const set = new Set();
-			set.add(dep.name || "namespace");
-			initFragments.push(
-				new HarmonyExportInitFragment(module.exportsArgument, undefined, set)
-			);
-			return;
-		}
+  const used = moduleGraph
+   .getExportsInfo(module)
+   .getUsedName(dep.name, runtime);
+  if (!used) {
+   const set = new Set();
+   set.add(dep.name || "namespace");
+   initFragments.push(
+    new HarmonyExportInitFragment(module.exportsArgument, undefined, set)
+   );
+   return;
+  }
 
-		const map = new Map();
-		map.set(used, `/* binding */ ${dep.id}`);
-		initFragments.push(
-			new HarmonyExportInitFragment(module.exportsArgument, map, undefined)
-		);
-	}
+  const map = new Map();
+  map.set(used, `/* binding */ ${dep.id}`);
+  initFragments.push(
+   new HarmonyExportInitFragment(module.exportsArgument, map, undefined)
+  );
+ }
 };
 ```
 
