@@ -1,1 +1,0 @@
-import{_ as s,o,c as n,a}from"./app.5a1d1f50.js";const E=JSON.parse('{"title":"Draw.io 主题配置","description":"","frontmatter":{},"headers":[],"relativePath":"config/draw-io.md","lastUpdated":1693935732000}'),l={name:"config/draw-io.md"},p=a("",2),D=[p];function t(e,F,c,r,y,B){return o(),n("div",null,D)}const q=s(l,[["render",t]]);export{E as __pageData,q as default};
