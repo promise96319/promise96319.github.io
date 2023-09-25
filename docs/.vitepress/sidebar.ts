@@ -320,14 +320,14 @@ const project = [
   {
     text: '@qt/design',
     items: [
-      { link: '/project/css-background-img', text: 'css-background-img' },
-      { link: '/project/drawer', text: 'drawer' },
-      { link: '/project/space', text: 'space' },
-      { link: '/project/css-media', text: 'css-media' },
-      { link: '/project/prefix-cls', text: '组件库前缀' },
-      { link: '/project/virtual-list', text: '虚拟滚动' },
+      { link: '/project/prefix-cls', text: '组件库样式覆盖问题' },
+      { link: '/project/css-background-img', text: 'CSS 背景图片设置颜色' },
+      { link: '/project/css-media', text: '媒体查询' },
       { link: '/project/auto-import', text: '自动引入' },
       { link: '/project/ellipsis-text', text: '省略文本' },
+      { link: '/project/virtual-list', text: '虚拟滚动' },
+      { link: '/project/drawer', text: '抽屉嵌套位移' },
+      { link: '/project/space', text: '间距' },
     ],
   },
   {

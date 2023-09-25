@@ -1,8 +1,7 @@
-import { defineConfig } from 'vitepress'
 import { navbar } from './navbar'
 import { sidebar } from './sidebar'
 
-export default defineConfig({
+export default {
   title: 'promise96319',
   description: '前端开发',
   lang: 'zh-CN',
@@ -42,4 +41,4 @@ export default defineConfig({
       indexName: 'qinguanghui',
     },
   },
-})
+}

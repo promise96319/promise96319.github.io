@@ -4,7 +4,7 @@
 
 在公司内部组件库当中需要使用到 `rc-calendar` 组件，并且需要定制日期前进后退按钮，当 `hover` 的时候 `icon` 会高亮。
 
-![](https://imgs.qinguanghui.com/rc-calendar-icon.png)
+![rc-calendar](https://imgs.qinguanghui.com/rc-calendar-icon.png)
 
 ## 问题
 
@@ -159,7 +159,7 @@ $icomoon-arrow-down: '\e900' !default;
 
 字体图标虽然能完成效果，但是在组件库中都是使用 `svg` 来渲染图标，并且引入 `font` 后还需要处理 `font` 引入相关的逻辑。因此采用第三种方案，背景图片的方式。[参考地址](https://www.zhangxinxu.com/wordpress/2018/08/css-svg-background-image-base64-encode/)
 
-回到问题当中，可以使用背景图片来设置图片，但是无法切换颜色，那么我们需要寻找方案来解决切换颜色。既然是 `svg` 图片，那么可以通过 `fill` 属性动态设置颜色。如下所示:
+回到问题：可以使用背景图片来设置图片，但是无法切换颜色，那么我们需要寻找方案来解决切换颜色。既然是 `svg` 图片，那么可以通过 `fill` 属性动态设置颜色。如下所示:
 
 ```scss
 $color: red;

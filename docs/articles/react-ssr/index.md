@@ -87,3 +87,11 @@ astro 采取的是选择式渲染，能标明哪些内容是动态获取的。
 ## 其他
 
 - [Fresh](https://juejin.cn/post/7134495255075749901?searchId=20230901172405E8FD2F4922260E0586F3)
+
+- Next
+  - 缺点
+    - [开发环境非常慢，耗内存](https://github.com/vercel/next.js/issues/48748)
+- Astro
+- Remix
+- SvelteKit
+- Nuxt
