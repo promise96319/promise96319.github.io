@@ -18,7 +18,7 @@ const { Layout } = DefaultTheme
 <style>
 .footer {
   padding: 32px;
-  color: #4e6e8e;
+  color: rgba(60, 60, 67, .78);
   font-weight: 400;
   border-top: 1px solid var(--vp-c-divider-light);
 }

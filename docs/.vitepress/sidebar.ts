@@ -53,6 +53,7 @@ const vue = [
 const react = [
   {
     text: '原理',
+    collapsed: false,
     items: [
       { text: 'react源码调试环境构建', link: '/react/react源码调试-next' },
       { text: 'react源码调试', link: '/react/react源码调试' },
@@ -76,6 +77,7 @@ const react = [
   },
   {
     text: '知识点',
+    collapsed: false,
     items: [
       { text: '不同版本React事件机制', link: '/react/note/event-change' },
     ],
@@ -86,6 +88,7 @@ const react = [
 const webpack = [
   {
     text: '理论',
+    collapsed: false,
     items: [
       { text: '指南', link: '/webpack/guide' },
     ],
@@ -93,6 +96,7 @@ const webpack = [
   {
     text: '原理',
     link: '/webpack/index',
+    collapsed: false,
     items: [
       { text: 'webpack源码调试', link: '/webpack/webpack源码调试' },
       { text: '流程开始', link: '/webpack/流程开始' },
@@ -117,6 +121,7 @@ const webpack = [
 
 const rollup = [
   {
+    collapsed: false,
     text: '原理',
     items: [
       { text: '源码调试', link: '/rollup/源码调试' },
@@ -160,6 +165,7 @@ const babel = [
 const js = [
   {
     text: 'ES6',
+    collapsed: false,
     items: [
       { text: '事件循环机制', link: '/javascript/事件循环机制' },
       { text: '浏览器一帧里做了什么', link: '/javascript/../react/浏览器一帧里做了什么' },
@@ -203,6 +209,7 @@ const typescript = [
 const algorithms = [
   {
     text: '算法',
+    collapsed: false,
     items: [
       { text: '动态规划', link: '/algorithms/动态规划' },
       { text: '回溯法', link: '/algorithms/回溯法' },
@@ -221,6 +228,7 @@ const algorithms = [
 const dataStructure = [
   {
     text: '数据结构',
+    collapsed: false,
     items: [
       { link: '/data-structures/树状数组', text: '树状数组' },
       { link: '/data-structures/线段树', text: '线段树' },
@@ -318,7 +326,9 @@ const config = [
 const project = [
   {
     text: '@qt/design',
+    collapsed: false,
     items: [
+      { link: '/project/react-runtime', text: '组件库 Playground' },
       { link: '/project/prefix-cls', text: '组件库样式覆盖问题' },
       { link: '/project/css-background-img', text: 'CSS 背景图片设置颜色' },
       { link: '/project/css-media', text: '媒体查询' },

@@ -31,8 +31,8 @@ devDependencies:
     specifier: ^4.9.5
     version: registry.npmmirror.com/typescript@4.9.5
   vitepress:
-    specifier: 1.0.0-rc.15
-    version: registry.npmmirror.com/vitepress@1.0.0-rc.15(@algolia/client-search@4.20.0)(@types/node@18.14.1)(search-insights@2.8.2)
+    specifier: 1.0.0-rc.20
+    version: registry.npmmirror.com/vitepress@1.0.0-rc.20(@algolia/client-search@4.20.0)(@types/node@18.14.1)(search-insights@2.8.2)
   vitest:
     specifier: ^0.28.5
     version: registry.npmmirror.com/vitest@0.28.5
@@ -1274,12 +1274,33 @@ packages:
     version: 0.0.29
     dev: true
 
+  registry.npmmirror.com/@types/linkify-it@3.0.3:
+    resolution: {integrity: sha512-pTjcqY9E4nOI55Wgpz7eiI8+LzdYnw3qxXCfHyBDdPbYvbyLgWLJGh8EdPvqawwMK1Uo1794AUkkR38Fr0g+2g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/linkify-it/-/linkify-it-3.0.3.tgz}
+    name: '@types/linkify-it'
+    version: 3.0.3
+    dev: true
+
+  registry.npmmirror.com/@types/markdown-it@13.0.1:
+    resolution: {integrity: sha512-SUEb8Frsxs3D5Gg9xek6i6EG6XQ5s+O+ZdQzIPESZVZw3Pv3CPQfjCJBI+RgqZd1IBeu18S0Rn600qpPnEK37w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/markdown-it/-/markdown-it-13.0.1.tgz}
+    name: '@types/markdown-it'
+    version: 13.0.1
+    dependencies:
+      '@types/linkify-it': registry.npmmirror.com/@types/linkify-it@3.0.3
+      '@types/mdurl': registry.npmmirror.com/@types/mdurl@1.0.2
+    dev: true
+
   registry.npmmirror.com/@types/mdast@3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/mdast/-/mdast-3.0.10.tgz}
     name: '@types/mdast'
     version: 3.0.10
     dependencies:
       '@types/unist': registry.npmmirror.com/@types/unist@2.0.6
+    dev: true
+
+  registry.npmmirror.com/@types/mdurl@1.0.2:
+    resolution: {integrity: sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/mdurl/-/mdurl-1.0.2.tgz}
+    name: '@types/mdurl'
+    version: 1.0.2
     dev: true
 
   registry.npmmirror.com/@types/minimist@1.2.2:
@@ -5459,20 +5480,24 @@ packages:
       fsevents: registry.npmmirror.com/fsevents@2.3.3
     dev: true
 
-  registry.npmmirror.com/vitepress@1.0.0-rc.15(@algolia/client-search@4.20.0)(@types/node@18.14.1)(search-insights@2.8.2):
-    resolution: {integrity: sha512-5criiHoEibkT/du7t6wQ2xQVsuTNuirQZbMAi0M9Hp0YzJoJvEX68Ej9p2PtNC84bYb/CxAh5QkMtMutk03lHw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vitepress/-/vitepress-1.0.0-rc.15.tgz}
-    id: registry.npmmirror.com/vitepress/1.0.0-rc.15
+  registry.npmmirror.com/vitepress@1.0.0-rc.20(@algolia/client-search@4.20.0)(@types/node@18.14.1)(search-insights@2.8.2):
+    resolution: {integrity: sha512-CykMUJ8JLxLcGWek0ew3wln4RYbsOd1+0YzXITTpajggpynm2S331TNkJVOkHrMRc6GYe3y4pS40GfgcW0ZwAw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vitepress/-/vitepress-1.0.0-rc.20.tgz}
+    id: registry.npmmirror.com/vitepress/1.0.0-rc.20
     name: vitepress
-    version: 1.0.0-rc.15
+    version: 1.0.0-rc.20
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4.3.2
+      postcss: ^8.4.30
     peerDependenciesMeta:
       markdown-it-mathjax3:
+        optional: true
+      postcss:
         optional: true
     dependencies:
       '@docsearch/css': registry.npmmirror.com/@docsearch/css@3.5.2
       '@docsearch/js': registry.npmmirror.com/@docsearch/js@3.5.2(@algolia/client-search@4.20.0)(search-insights@2.8.2)
+      '@types/markdown-it': registry.npmmirror.com/@types/markdown-it@13.0.1
       '@vue/devtools-api': registry.npmmirror.com/@vue/devtools-api@6.5.0
       '@vueuse/core': registry.npmmirror.com/@vueuse/core@10.4.1(vue@3.3.4)
       '@vueuse/integrations': registry.npmmirror.com/@vueuse/integrations@10.4.1(focus-trap@7.5.2)(vue@3.3.4)

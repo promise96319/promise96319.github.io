@@ -8,6 +8,10 @@ export default {
   head: [
     ['meta', { charset: 'utf-8' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no, minimal-ui' }],
+    ['meta', { name: 'theme-color', content: '#5f67ee' }],
+    ['meta', { name: 'og:type', content: 'website' }],
+    ['meta', { name: 'og:locale', content: 'zh' }],
+    ['meta', { name: 'og:site_name', content: '前端开发' }],
     // 百度统计
     ['script', {}, `
       var _hmt = _hmt || [];
@@ -21,10 +25,13 @@ export default {
   ],
   lastUpdated: true,
   cleanUrls: true,
+
   themeConfig: {
     logo: '/logo.png',
     nav: navbar,
     sidebar,
+
+    outline: [2, 3],
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/promise96319' },
