@@ -1,1 +1,0 @@
-import{_ as i,o as l,c as a,a as e}from"./app.5a1d1f50.js";const p=JSON.parse('{"title":"算法","description":"","frontmatter":{},"headers":[],"relativePath":"algorithms/index.md","lastUpdated":1694075415000}'),t={name:"algorithms/index.md"},r=e("",2),_=[r];function s(o,n,d,c,h,f){return l(),a("div",null,_)}const m=i(t,[["render",s]]);export{p as __pageData,m as default};

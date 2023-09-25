@@ -1,1 +1,0 @@
-import{_ as e,o as a,c as t,a as r}from"./app.5a1d1f50.js";const m=JSON.parse('{"title":"设计模式","description":"","frontmatter":{},"headers":[],"relativePath":"design-pattern/index.md","lastUpdated":1694075415000}'),n={name:"design-pattern/index.md"},i=r("",2),_=[i];function s(d,o,c,l,h,p){return a(),t("div",null,_)}const u=e(n,[["render",s]]);export{m as __pageData,u as default};
