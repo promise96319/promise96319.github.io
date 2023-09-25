@@ -37,15 +37,13 @@
 
 // 判断是单行省略还是多行省略
 const cssLineClamp = rows > 1; 
-// 判断是否省略
+// 判断是否产生了省略（可以通过 rc-resize-observer 监听宽度高度变化）
 const isEllipsis = cssLineClamp
    ? textEle.offsetHeight < textEle.scrollHeight
    : textEle.offsetWidth < textEle.scrollWidth;
 ```
 
 ### js 省略
-
-- 普通文本省略：
 
 - 文本尾随`展开`按钮省略：
 

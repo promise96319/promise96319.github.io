@@ -267,7 +267,6 @@ const leetcode = [
   {
     text: 'leetcode',
     items: [
-      { link: '/leetcode/leetcode', text: '汇总' },
       { link: '/leetcode/1-20', text: '1-20' },
       { link: '/leetcode/21-40', text: '21-40' },
     ],
