@@ -14,13 +14,15 @@ export default {
     ['meta', { name: 'og:site_name', content: '前端开发' }],
     // 百度统计
     ['script', {}, `
-      var _hmt = _hmt || [];
-      (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?41a9a03811977ee15c69366a880d1296";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-      })();
+      if (${process.env.NODE_ENV !== 'development'}) {
+        var _hmt = _hmt || [];
+        (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?41a9a03811977ee15c69366a880d1296";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+        })();
+      }
     `],
   ],
   lastUpdated: true,

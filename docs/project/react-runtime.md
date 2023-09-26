@@ -51,6 +51,24 @@ catch (error: any) {
 
 ```js
 // 打包结果
+'use strict'
+const _jsxFileName = ''
+
+Object.defineProperty(exports, '__esModule', { value: true })
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj } }
+
+const _design = require('@qt/design')
+const _react = require('react')
+const _react2 = _interopRequireDefault(_react)
+
+exports.default = class extends _react2.default.Component {
+  render() {
+    return (
+      _react2.default.createElement(_design.Button, { type: 'primary', __self: this, __source: { fileName: _jsxFileName, lineNumber: 6 } }, '按钮')
+    )
+  }
+}
 ```
 
 这里需要注意，打包参数 `['jsx', 'typescript', 'imports']` 表示会将 `jsx/typescript/imports` 语法进行转换，`imports` 表示会将 `import` 语法转换为 `require` 语法。这里我采取的是 `commonjs` 语法，当然也可以不进行转换，在浏览器运行时通过 `importmap` 来添加依赖。
