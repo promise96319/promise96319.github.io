@@ -337,12 +337,14 @@ const project = [
       { link: '/project/virtual-list', text: '虚拟滚动' },
       { link: '/project/drawer', text: '抽屉嵌套位移' },
       { link: '/project/space', text: '间距' },
+      { link: '/project/semi-design', text: 'Semi Design 架构' },
     ],
   },
   {
-    text: 'semi design',
+    text: 'OS 项目',
     items: [
-      { link: '/project/semi-design', text: 'semi-design' },
+      { link: '/project/infra/compatibility', text: '项目产物兼容性问题' },
+      { link: '/project/infra/sourcemap', text: 'Sourcemap 调试' },
     ],
   },
 ]

@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-function twoSum(nums: number[], target: number): number[] {
+export default function twoSum(nums: number[], target: number): number[] {
   const map: Record<number, number> = {}
   for (let i = 0; i < nums.length; i++) {
     const delta = target - nums[i]

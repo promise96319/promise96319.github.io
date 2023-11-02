@@ -1,3 +1,5 @@
+# plan
+
 ## 路线图
 
 - css
@@ -107,9 +109,3 @@
 - 算法
 - 数据结构
 - 设计模式
-
-| Tables      |      Are      |  Cool |
-|---------------|:-------------:|------:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      |   centered    |   $12 |
-| zebra stripes |   are neat    |    $1 |
