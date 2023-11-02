@@ -15,7 +15,7 @@
 
 ## Lanes
 
-`react-reconciler/src/ReactFiberLanes.new.js`文件中，定义了32位`Lane`。
+`react-reconciler/src/ReactFiberLanes.new.js`文件中，定义了31位`Lane`。
 
 ```javascript
 export const TotalLanes = 31;
