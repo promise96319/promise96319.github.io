@@ -2,13 +2,13 @@ name: Deploy blog
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 permissions:
   contents: read
   pages: write
   id-token: write
-  
+
 concurrency:
   group: pages
   cancel-in-progress: false
