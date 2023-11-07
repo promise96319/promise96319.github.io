@@ -20,14 +20,18 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: npm
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
       - name: Build with VitePress
         run: |
-          npm docs:build
+          pnpm docs:build
           touch docs/.vitepress/dist/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
