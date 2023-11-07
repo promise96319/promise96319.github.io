@@ -1,32 +1,48 @@
 name: Deploy blog
 
-on: 
+on:
   push:
-  pull_request:
-    branches: 
-      - master
+    branches: [master]
 
-jobs: 
-  build-and-deploy:
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout a new repository
+      - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Node environment
+        with:
+          fetch-depth: 0
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
-
-      - name: Install packages
-        run: npm i
-
-      - name: Build  site
-        run: npm run build
-
-      - name: Publish to github pages
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
+          node-version: 18
+          cache: pnpm
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build with VitePress
+        run: |
+          pnpm docs:build
+          touch docs/.vitepress/dist/.nojekyll
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          branch: gh-pages
-          folder: docs/.vitepress/dist
+          path: docs/.vitepress/dist
 
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
