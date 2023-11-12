@@ -3,6 +3,7 @@ const articles = [
     text: '文章',
     items: [
       { text: 'React 并发原理', link: '/articles/react-concurrency' },
+      { text: 'React Server Component', link: '/articles/react-server-component/index' },
     ],
   },
 ]
