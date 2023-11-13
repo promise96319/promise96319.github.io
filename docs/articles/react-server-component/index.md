@@ -1,6 +1,66 @@
-# RSC（todo）
+# React Server Component
 
-## 软件开发
+## 前言
+
+前阵子使用 Next.js 开发了组件库管理平台的前端模块，了解到一个比较新的概念 -- React Server Component（简称 RSC）。这个概念早在两年前 React 团队就提出来了，不过一直是处于试验中的状态，直到 Next.js v13 才被正式整合到实际生产应用环境当中。
+
+由于平时我们接触服务端渲染的机会有限，所以对这方面相关的知识可能就了解得比较少。我在 Next.js 的使用过程中也踩到了许多坑，其中主要的一个问题就是对 RSC 概念了解不是很透彻，这就导致写起代码来比较别扭。
+
+所以，后续我也看了一些相关的文章，借此机会分享一下自己对 RSC 的理解。同时，也希望大家能够借 RSC 这个概念了解一下 React 团队目前在做什么以及 React 的发展方向。毕竟，自 React18 发布之后，React 似乎和我们就断开连接了。
+
+## 为什么有 RSC？
+
+在了解 RSC 之前，我们应该问一下为什么会有这个概念？也就是说，现在的 React 渲染是有什么问题才会需要另一个概念来解决这个问题呢？这就要从前端渲染来讲了。
+
+首先，我们要先认识几个前端性能相关的概念：
+
+- Time to First Byte (TTFB): 第一个字节到达客户端的时间
+- First Contentful Paint (FCP): 首屏内容渲染完成的时间
+- Time to Interactive (TTI): 可交互的时间
+
+其中 FCP/TTI 是两个比较关键的指标，因为它能够直接影响到用户的访问页面的实际体验。
+
+接下来我们看一下几种渲染方式：
+
+### 服务端渲染（Server Side Rendering 简称 SSR）
+
+服务端渲染简称 SSR（Server Side Rendering），是指在服务端生成 HTML 页面。当用户请求页面时，服务端会根据请求的 URL，获取相应的数据，然后将数据和 HTML 模板结合，渲染出 HTML 页
+
+### 客户端渲染 (Client Side Rendering 简称 CSR)
+
+客户端渲染是指在浏览器端使用 JavaScript 渲染页面。我们平常开发的 SPA 应用就是典型的客户端渲染。当用户请求页面时，会返回类似以下的内容：
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+    <script src="/static/js/bundle.js"></script>
+  </body>
+</html>
+```
+
+其中，`bundle.js` 里面包含了所有的 React 代码，包括 React、其他第三方依赖，以及我们自己写的代码。当浏览器下载并解析完 `bundle.js` 后，React 开始工作，渲染出整个应用的 DOM 结构，然后挂载到空的 `#root` 节点上。
+
+![CSR](./assets/csr.png)
+
+这种方式的问题在于，它需要一定的时间来下载所有的 js 和完成所有的渲染工作。而在这个过程中，用户只能看到一个空白的白屏。随着应用功能的增加，`bundle.js` 的体积也会越来越大，导致用户等待的时间越来越长，十分影响用户的使用体验。
+
+那怎么解决这个问题呢？
+
+### 同构渲染（SSR + CSR）
+
+
+服务端渲染简称 SSR（Server Side Rendering），是指在服务端生成 HTML 页面。当用户请求页面时，服务端会根据请求的 URL，获取相应的数据，然后将数据和 HTML 模板结合，渲染出 HTML 页面，最后返回给客户端。客户端拿到 HTML 页面后，直接展示给用户。
+
+![SSR](./assets/ssr.png)
+
+## RSC 是什么，有什么优缺点？
+## RSC 如何实现的？
+## RSC 怎么使用？
+## 基于 RSC 还有那些特性？
+
+ ====================== todo =================
 
 ### 目标
 
@@ -28,26 +88,6 @@ function Article() {
 - First Contentful Paint (FCP): 首屏内容渲染完成的时间
 - Largest Contentful Paint (LCP): 最大内容渲染完成的时间
 - Time to Interactive (TTI): 可交互的时间
-
-## 浏览器渲染
-
-### 客户端渲染
-
-客户端渲染简称 CSR（Client Side Rendering），是指在浏览器端使用 JavaScript 渲染页面。我们平常开发的 SPA 应用就是典型的 CSR。当用户请求页面时，会返回类似以下内容：
-
-```html
-<!DOCTYPE html>
-<html>
-  <body>
-    <div id="root"></div>
-    <script src="/static/js/bundle.js"></script>
-  </body>
-</html>
-```
-
-`bundle.js` 里面包含了所有的 React 代码，包括 React、其他第三方依赖，以及我们自己写的代码。当浏览器下载并解析完 `bundle.js` 后，React 开始工作，渲染出整个应用的 DOM 结构，然后挂载到空的 `#root` 节点上。
-
-这种方式的问题在于，它需要一定的时间来完成所有的渲染工作。而在这个过程中，用户只能看到一个空白的白屏。随着应用功能的增加，`bundle.js` 的体积也会越来越大，导致用户等待的时间越来越长。
 
 ### 服务端渲染（with hydration）
 
