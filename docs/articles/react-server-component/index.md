@@ -8,9 +8,19 @@
 - Cheap maintenance
 - Fast performance
 
-### 问题
+### 数据请求时的问题
 
-- 瀑布式渲染
+``` ts
+// 一个三层请求的例子
+function Article() {
+  return <div>article</div>
+}
+```
+
+- 如果是是一层一层的请求，会造成瀑布流问题，用户体验不好。
+- 如果是一次性请求所有数据，然后一层一层向下传递数据，会让代码变得复杂，不利于代码的维护。
+
+理想的情况下是每个组件有自己的请求，并且不会造成瀑布流问题。
 
 ## 渲染指标
 
@@ -39,23 +49,32 @@
 
 这种方式的问题在于，它需要一定的时间来完成所有的渲染工作。而在这个过程中，用户只能看到一个空白的白屏。随着应用功能的增加，`bundle.js` 的体积也会越来越大，导致用户等待的时间越来越长。
 
-### 服务端渲染
+### 服务端渲染（with hydration）
 
 服务端渲染简称 SSR（Server Side Rendering），是指在服务端使用 JavaScript 渲染页面。当用户请求页面时，服务端会根据请求的 URL，获取相应的数据，然后将数据和 HTML 模板结合，渲染出 HTML 页面，最后返回给客户端。客户端拿到 HTML 页面后，直接展示给用户。
 
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root">
+       <!-- SSR generated code here -->
+    </div>
+    <script src="/static/js/client.js"></script>
+  </body>
+</html>
+```
 
+整体的流程是：客户端发送请求（client） => 服务端接受请求，生成首屏 html（server）=> 客户端接受 html，并进行 hydrate 操作（client）=> 客户端发送请求，获取数据（client）=> 客户端接受数据，进行渲染（client）
 
+### 不足的地方
 
-- 传统 ssr
-  - 优点
-  - 缺点
-- spa => csr
-  - 原理：
-    - react => ReactElement 相关js => root.render()
-    - 空 html + js => root.render()
-  - 优点
-  - 缺点
-- ssr/ssg/isr/ppr  + spa
+- ssr 只存在路由级别的请求，对于组件级别的请求，会由客户端再次发起请求，这样就会出现瀑布流的问题。
+- 所有的组件都会在客户端进行 hydrate 操作，即使是没有必要的一些组件，比如一些静态的组件，这样会导致客户端的 js 代码较大以及执行代码消耗的时间增加。
+
+### 比较
+
+- ssr/ssg/isr/ppr  + spa + pre rendering
   - 优点
   - 缺点
     - 还是需要加载所有的客户端代码
@@ -72,6 +91,7 @@
 ### 基本原理
 
 - renderToString => hydrate => navigate => fetchRSC => root.render
+- 发送请求(client) => 服务端接受请求，生成首屏 html（server）=> 客户端接受 html，并进行 hydrate 操作（client）=> 客户端发送请求，获取 rsc 组件（client）=> 客户端接受 rsc 组件，进行 root.render 操作（client）
 
 ## 优点
 
@@ -114,8 +134,6 @@
   - form
 
 ## Next.js 案例，有哪些不一样的体验，有哪些坑
-  
-## 其他渲染方式
 
 ## 其他人的看法
 
@@ -131,6 +149,7 @@
 - [How React server components work: an in-depth guide](https://www.plasmic.app/blog/how-react-server-components-work)
 - [Making Sense of React Server Components](https://www.joshwcomeau.com/react/server-components/)
 - [Demystifying React Server Components with NextJS 13 App Router](https://demystifying-rsc.vercel.app/)
+- [Everything I wish I knew before moving 50,000 lines of code to React Server Components](https://www.mux.com/blog/what-are-react-server-components)
 
 ### 流式渲染
 
@@ -141,7 +160,22 @@
 ### PPR
 
 - [Building towards a new default rendering model for web applications](https://vercel.com/blog/partial-prerendering-with-next-js-creating-a-new-default-rendering-model)
+- [The case of partial hydration (with Next and Preact)](https://medium.com/@luke_schmuke/how-we-achieved-the-best-web-performance-with-partial-hydration-20fab9c808d5)
 
 ### 性能指标
 
 - [Rendering on the Web](https://web.dev/articles/rendering-on-the-web)
+
+### 孤岛组件
+
+- [Rendering on the Web: Performance Implications of Application Architecture (Google I/O ’19)](https://www.youtube.com/watch?v=k-A2VfuUROg)
+- [Islands Architecture](https://jasonformat.com/islands-architecture/)
+- [Islands 架构原理和实践](https://juejin.cn/post/7155300194773860382)
+
+### Server actions
+
+- [use server](https://react.dev/reference/react/use-server)
+- [\<form>](https://react.dev/reference/react-dom/components/form)
+- [useFormState](https://react.dev/reference/react-dom/hooks/useFormState)
+- [useFormStatus](https://react.dev/reference/react-dom/hooks/useFormStatus)
+- [Can React Server Actions finally fix forms?](https://www.mux.com/blog/what-are-react-server-actions)
