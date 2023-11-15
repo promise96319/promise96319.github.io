@@ -148,7 +148,7 @@ React Server Component 是 React 团队提出的一个新的概念，它是一�
 
 ## RSC 的使用
 
-接下来，让我们看一下 RSC 怎么使用，这里以 Next.js 为例：
+接下来，让我们看一下 RSC 是怎么使用，这里以 Next.js 为例：
 
 ```tsx
 'use server'
@@ -161,87 +161,159 @@ export default async function RSC() {
 }
 ```
 
-首先，所有文件顶部以 use server 开头的文件都是 RSC。在 Next.js14 中，默认情况下所有组件都是 RSC，而 RCC 需要使用 use client 进行标识。
+首先，所有文件顶部以 use server 开头的文件都是 RSC。在 Next.js14 中，默认情况下所有组件都是 RSC，而 RCC 需要通过在文件顶部使用 use client 进行标识。当所有组件都标记完成后，就有了以下的 React 节点结构：
 
-其次，RSC 函数可以是异步的形式，并且可以直接访问服务端的任何内容。
+![compose](./assets/compose.png)
 
-需要注意的是，RSC 在服务端渲染的组件，那么它是无法访问客户端相关的 API 的。另外，就像我们在 SSR 里提到的，在服务端渲染的字符串是没有交互的，需要客户端 hydrate 才有交互。那么，对于 RSC 来讲它是没有 hooks，比如 useState/useEffect 都是不支持的。
+其次，RSC 函数可以是异步的形式，并且可以直接访问服务端的任何内容。那这里的 loading 和 error 状态如何处理呢？Next.js 通过特定的文件名配合 Suspense 来处理，比如 error.tsx 对应于请求处理出错的情况，而 loading.tsx 对应于请求中的状态。
+
+但是 RSC 也有一定的限制。由于 RSC 只在服务端渲染，那么它是无法访问客户端相关的 API 的。另外，就像我们在 SSR 里提到的，在服务端渲染的字符串是没有交互的，需要客户端 hydrate 才有交互。那么，对于 RSC 来讲它是没有 hooks，比如 useState/useEffect 都是不支持的。
+
+## RSC 的好处
+
+现在，我们对 RSC 有了初步的了解，再回到 SSR 中的两个问题，看一看 RSC 有什么好处。
+
+### No Client-Server Waterfalls
+
+还记得我们最开始数据请求和渲染的瀑布流问题吗？当将客户端组件改为 RSC 后，组件完全在服务端渲染，数据也是直接在服务端获取，避免了数据在客户端-服务端之间传输的耗时。
+
+另一方面，对于 RSC，由于我们已经将它们都标识出来了，并且它们都是静态的，那么我们可以通过并行的方式对所有 RSC 进行数据请求和渲染。在很大程度上解决了服务端-客户端间数据传输的瀑布流。
+
+使用 RSC 前：
+```jsx
+// 串行：客户端和服务端直接来回请求数据
+... => 渲染 Parent 组件 => 获取 Parent 组件数据 => 渲染 Child 组件 => 获取 Child 组件数据 => ...
+```
+
+使用 RSC 后：
+```jsx
+// 并行：将生成的结果一并回传给客户端
+...
+获取 Parent 组件数据 => 渲染 Parent 组件 
+获取 Child 组件数据  => 渲染 Child 组件
+获取 Child 组件数据  => 渲染 Child 组件
+...
+```
+
+对于用户而言，可以更快的看到地看到完整的网页内容。
+
+### Zero-Bundle-Size Components
+
+对于客户端组件而言，经常会面临第三方包体积过大的问题。比如下面这个例子：
+
+```tsx
+import marked from 'marked'; // 35.9K (11.2K gzipped)
+import sanitizeHtml from 'sanitize-html'; // 206K (63.3K gzipped)
+
+function NoteWithMarkdown({text}) {
+  const html = sanitizeHtml(marked(text));
+  return (/* render */);
+}
+```
+
+打包后，在客户端的 bundle.js 中会包含这些第三方包。但是对于 RSC 而言，所有的处理都是在服务端完成，传回给客户端的只是处理后的 html。而这些第三方包都不会在客户端加载，大大减少了客户端加载 js 的体积。这也是为什么 RSC 被称为 Zero-Bundle-Size Components。
+
+### Full Access to the Backend
+
+正如最开始的梗一样，RSC 拥有完整的服务端能力。
+
+### Automatic Code Splitting
+
+在客户端中，我们通常需要 React.lazy 来进行代码分割。在 RSC 中，每一个导入 Client Component 的地方都会被当做潜在的代码分割点。最终的结果是，RSC 让开发人员能够更加专注于编写应用程序代码，而优化操作交给框架去默认处理。
+
+### Avoiding the Abstraction Tax
+在 SSR 中我们有提到，某些静态的节点，不应该被 hydration。当我们使用 RSC 后，React 程序能够清晰地知道哪些节点应该被 hydration，而哪些不会被 hydration。因此，对于 RSC，不需要将其要进行 hydration 的代码以抽象语法的形式传给给客户端执行，减少了 js 的体积以及执行时间。
 
 
+### 小结
+再让我们对照一下网页渲染的流程：
+![rsc advantage](assets/rsc-advantage.png)
 
-### RSC 是怎么渲染的？
+RSC 主要是在减少客户端加载的 js 体积，同时减少 hydration，使得 FCP / TTI 更短。另一方面，RSC 将数据提前到服务端，并进行并行请求，缩短了网页完整渲染所需要的事件。
 
-### RSC 
-React Server/Client Component 并不是物理意义上的服务端和客户端，而是 React 自身对组件新的定义：
+## Next.js 中 RSC 是怎么渲染的？
+
+在了解 RSC 的一些优点后，接下来我们了解下 RSC 是怎么渲染的：
+
+在服务端：
+1. React 会将 Server Component 渲染成一种特殊的数据结构，叫做 React Server Component Payload (RSC Payload).
+  ![rsc payload](./assets/rsc-payload.png)
+2. Next.js 使用 RSC payload 和 客户端组件的 js 代码生成初始的 html 文件（SSR 服务端渲染）
+
+在客户端：
+1. 首先显示由 SSR 生成的静态 html。
+2. 使用 RSC Payload 协调 Server Component 和 Client Component 更新 DOM
+3. 对 Client Componet 进行 hydate 添加交互事件。
+
+> RSC Payload 是一种特殊的数据结构，用于 React 服务端和客户端间的传输。这种数据结构目前还处于未稳定的状态，没有相关官方文档对其进行说明。
+> RSC payload 的具体数据结构可以通过 [RSC DevTools](https://chrome.google.com/webstore/detail/rsc-devtools/jcejahepddjnppkhomnidalpnnnemomn) 插件预览。
+
+当页面跳转时，客户端会获取新页面对应的 RSC Payload，然后通过该新 Payload 进行渲染更新。这样的话，每个页面只需要加载当前页面的内容即可，不需要像 SSR 那样在客户端完全由 CSR 接管，从而带来的代价就是要加载所有的 js 代码。
+
+## 一些概念的澄清
+ 
+### RSC 和 SSR 的关系
+
+RSC 和 SSR 是互补的关系。RSC 是只在服务端渲染的组件，它传递给客户端的是一种特殊的数据结构，客户端再解析这种数据结构将其渲染成 HTML。所以，RSC 其实也是不利于 SEO 的。所以，我们可以利用 SSR 做首屏白屏优化，而 RSC 做后续的 hydration 和 页面调整更新等等。
+ 
+### 客户端组件只在客户端渲染吗？
+
+React Server/Client Component 不是物理意义上的服务端和客户端，而是 React 自身对组件新的定义：
 
 ![render position](assets/render-position.png)
 
+可以，看出客户端渲染，为了解决首屏白屏问题，也会在服务端进行渲染。
 
-
-### 比较
-
-- ssr/ssg/isr/ppr  + spa + pre rendering
-  - 优点
-  - 缺点
-    - 还是需要加载所有的客户端代码
-    - 瀑布流
-- ssr/ssg + spa + rsc
-  - 优点
-  - 缺点
-
-- next.js ppr(partial prerender)
-  - 优点、缺点
-
-## rsc 是什么，解决了什么问题
-
-### 基本原理
-
-- renderToString => hydrate => navigate => fetchRSC => root.render
-- 发送请求(client) => 服务端接受请求，生成首屏 html（server）=> 客户端接受 html，并进行 hydrate 操作（client）=> 客户端发送请求，获取 rsc 组件（client）=> 客户端接受 rsc 组件，进行 root.render 操作（client）
-
-## 优点
-
-### Zero-Bundle-Size 组件
-
-- 有完全的服务端能力，离数据源比较近，减少请求时间
-- 0 bundled js，第三包不会打包进来，减小包体积，减少传输时间
-- 自动代码分割，根据 client/server/suspense 自动分割
-- 没有瀑布流，不用等待上层组件
-- 减小抽象语法带来的传输消耗，比如以前传输 React.createElement(FunctionComponent)，现在已经打包成 html/rsc 了，体积会减小。
-- 同一语言，同一框架。
-
-- 一些概念
-  - client component/ server component 不是物理上的 client/server，而是 react 组件内部自己定义的。
-  - 以前的组件都是 client component，包括 ssr 渲染的组件，这些组件最终都是会在客户端再次渲染一遍。
-  - rsc 组件是新定义的组件，该部分组件其实主要处理的就是没有交互的内容。
-  - rsc 是打包后以特定的格式返回到客户端，客户端只需要组合响应的 html 更新即可。
-  - rsc 格式实际上是类似于 ReactElement 的一种变体，所以 rsc 其实也是不利于 seo 的。因此 rsc 可以与 ssr 进行配合。ssr 负责首次渲染，rsc 负责静态内容渲染更新。
-
-## 怎么解决的，部分实现原理
-
-- jsx => babel => React.createElement => ReactElement => html
-
-## React api 介绍
+## React API 预览
 
 - 指令
-  - use server
-  - use client
-  
-- hooks
-  - use
-  - useOptimistic
-  - useFormState
-  - useFormStatus
-
-- api
-  - cache
+  - use server：用作标识服务端组件和 server action
+  - use client：用于标识客户端组件
 
 - 组件
-  - form
+  - form：定制 action 函数，让其能够支持函数，与 server action 整合
 
-## Next.js 案例，有哪些不一样的体验，有哪些坑
+- api
+  - cache：为 RSC 缓存请求数据
 
-## 其他人的看法
+- hooks
+  - use：用于发送请求，配合 Suspense 使用。也能用于 Context 的获取。
+  - useOptimistic：乐观更新 UI，类似于 swr，能够在异步操作未完成前假设该操作已成功。
+  - useFormState：配合 server action，用于获取 Form 的 state。
+  - useFormStatus：配合 server action，用于获取 Form 的状态
+
+
+## 对新 API 的一些看法
+
+- React 本身
+  - 内部引入了"指令"，需要通过 Webpack 或其他打包工具支持，使用时需要外部整合。感觉 React 将更倾向于作为基础库而非开箱即用的框架，供其他上层框架进行封装。
+
+- 开发体验
+  - 开发上手难度增加了许多，需要熟悉 Next.js 的各种特性。
+  - 对于 RCC 较多的场景，RSC 和 RCC 的区分心智负担较大，时常需要考虑如何去组织组件之间的关系。
+  - 目前还不是很成熟，从 Next.js 2w issue 可见其存在的问题，实际开发时也同样有所体会。
+
+- 代码维护性
+  - 采用服务端和客户端一体的方式是否更易维护？
+
+## 扩展阅读
+### 流式渲染
+
+- [New Suspense SSR Architecture in React 18](https://github.com/reactwg/react-18/discussions/37)
+- [React Streaming SSR 原理解析](https://juejin.cn/post/7165699863416406029)
+- [浅析React 18 Streaming SSR（流式服务端渲染）](https://juejin.cn/post/7064759195710521381)
+
+### PPR
+
+- [Building towards a new default rendering model for web applications](https://vercel.com/blog/partial-prerendering-with-next-js-creating-a-new-default-rendering-model)
+- [The case of partial hydration (with Next and Preact)](https://medium.com/@luke_schmuke/how-we-achieved-the-best-web-performance-with-partial-hydration-20fab9c808d5)
+
+### 孤岛组件
+
+- [Rendering on the Web: Performance Implications of Application Architecture (Google I/O ’19)](https://www.youtube.com/watch?v=k-A2VfuUROg)
+- [Islands Architecture](https://jasonformat.com/islands-architecture/)
+- [Islands 架构原理和实践](https://juejin.cn/post/7155300194773860382)
+
 
 ## 参考内容
 
@@ -249,6 +321,10 @@ React Server/Client Component 并不是物理意义上的服务端和客户端�
 
 - [官方答：在React18中请求数据的正确姿势（其他框架也适用](https://www.51cto.com/article/713024.html)
 - [What are good alternatives to data fetching in Effects?](https://react.dev/reference/react/useEffect#what-are-good-alternatives-to-data-fetching-in-effects)
+
+### 性能指标
+
+- [Rendering on the Web](https://web.dev/articles/rendering-on-the-web)
 
 ### RSC
 
@@ -263,26 +339,7 @@ React Server/Client Component 并不是物理意义上的服务端和客户端�
 - [Everything I wish I knew before moving 50,000 lines of code to React Server Components](https://www.mux.com/blog/what-are-react-server-components)
 - [React Server Component 从理念到原理](https://juejin.cn/post/7244452476190752829)
 
-### 流式渲染
 
-- [New Suspense SSR Architecture in React 18](https://github.com/reactwg/react-18/discussions/37)
-- [React Streaming SSR 原理解析](https://juejin.cn/post/7165699863416406029)
-- [浅析React 18 Streaming SSR（流式服务端渲染）](https://juejin.cn/post/7064759195710521381)
-
-### PPR
-
-- [Building towards a new default rendering model for web applications](https://vercel.com/blog/partial-prerendering-with-next-js-creating-a-new-default-rendering-model)
-- [The case of partial hydration (with Next and Preact)](https://medium.com/@luke_schmuke/how-we-achieved-the-best-web-performance-with-partial-hydration-20fab9c808d5)
-
-### 性能指标
-
-- [Rendering on the Web](https://web.dev/articles/rendering-on-the-web)
-
-### 孤岛组件
-
-- [Rendering on the Web: Performance Implications of Application Architecture (Google I/O ’19)](https://www.youtube.com/watch?v=k-A2VfuUROg)
-- [Islands Architecture](https://jasonformat.com/islands-architecture/)
-- [Islands 架构原理和实践](https://juejin.cn/post/7155300194773860382)
 
 ### Server actions
 
