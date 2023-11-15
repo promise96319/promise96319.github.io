@@ -44,19 +44,36 @@
 
 ![CSR](./assets/csr.png)
 
-这种方式的问题在于，它需要一定的时间来下载所有的 js 和完成所有的渲染工作。而在这个过程中，用户只能看到一个空白的白屏。随着应用功能的增加，`bundle.js` 的体积也会越来越大，导致用户等待的时间越来越长，十分影响用户的使用体验。
+整个过程渲染的过程如图所示，这里就存在两个问题：
 
-那怎么解决这个问题呢？
+问题一：需要一定的时间来下载所有的 js 并完成所有的渲染工作。而在这个过程中，用户只能看到一个空白的白屏。随着应用功能的增加，`bundle.js` 的体积也会越来越大，导致用户等待的时间越来越长，十分影响用户的使用体验。
 
-### 服务端渲染配合客户端激活（SSR with hydration）
+问题二：客户端渲染的数据通常都在 componentDidMount 的生命周期中发起的，这种方式很容易造成 [network waterfalls](https://react.dev/reference/react/useEffect#what-are-good-alternatives-to-data-fetching-in-effects)，比如：
+
+```jsx
+<Parent>
+  <Child>
+    <GrandChild />
+  </Child>
+</Parent>
+
+// 渲染流程为
+... => 渲染 Parent 组件 => 获取 Parent 组件数据 => 渲染 Child 组件 => 获取 Child 组件数据 => ...
+```
+
+整个过程是串行的，如果父组件的数据请求时间很长，那么子组件的渲染就会被阻塞，导致页面完全渲染出来的时间边长。如果想要将数据改为并行的，那么就需要将 Child / GrandChild / ... 的数据请求提取到最上层的 Parent 组件中，这样又会导致代码的维护成本增加。
+
+那么如何解决这两个问题呢？
+
+### 服务端渲染SSR（Server Side Rendering
+
+> 本文的服务端渲染主要指带有 hydration 的服务端渲染，即 SSR + hydration，区别于传统意义的服务端渲染。
 
 服务端渲染简称 SSR（Server Side Rendering），是指在服务端生成 HTML 页面。当用户请求页面时，服务端会根据请求的 URL，获取相应的数据，然后将数据和 HTML 模板结合，渲染出 HTML 页面，最后返回给客户端。客户端拿到 HTML 页面后，直接展示给用户。
 
 ![SSR](./assets/ssr.png)
 
 ## RSC 是什么，有什么优缺点？
-
-
 
 ## RSC 如何实现的？
 
@@ -182,6 +199,11 @@ function Article() {
 ## 其他人的看法
 
 ## 参考内容
+
+### 数据请求问题
+
+- [官方答：在React18中请求数据的正确姿势（其他框架也适用](https://www.51cto.com/article/713024.html)
+- [What are good alternatives to data fetching in Effects?](https://react.dev/reference/react/useEffect#what-are-good-alternatives-to-data-fetching-in-effects)
 
 ### RSC
 
