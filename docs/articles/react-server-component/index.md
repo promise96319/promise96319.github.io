@@ -9,17 +9,15 @@
   <img src="./assets/server-action.png"  alt="server-action" />
 </div>
 
-如果大家没有接触 Next.js 的话，可能比较难看懂这个梗。Next.js 里面集成了许多 React 的最新特性，其中就包含上面这张图提出的类似特性 -- server action。
+如果大家还没有接触过 Next.js，那么可能对这个梗不太熟悉。Next.js 集成了许多 React 的最新特性，比如这张图所指的特性 -- server action。这些特性都与 React Server Components（RSC）这个概念紧密相关，因此，本文将以 RSC 为主线来探讨这些特性。
 
-其实 RSC 这个概念早在两年前 React 团队就提出来了，不过一直是处于试验中的状态。比如，我们现在可以看到在 React 官网上，有许多带有试验图标的 API，这些 API 都是和 RSC 这个概念相关的，这也是为什么文本以 RSC 为主要内容。
+实际上，RSC 这个概念早在两年前就由 React 团队提出，但一直处于实验阶段。在 React 官网上，我们可以找到许多带有实验标识的 API。然而，我们目前还不能直接使用这些特性，而需要借助其他框架，例如 Next.js。Next.js v14 几乎完全支持这些新特性，而且它还是 React 官方推荐的框架之一。
 
-但是，目前我们还无法直接使用这些特性，而是需要借助到其他框架，比如 Next.js。Next.js v14 版本基本上完全支持这些新特性，而且 Next.js 也是 React 官方推荐的框架。
-
-由于平时我们接触服务端渲染的机会有限，相信大家对 React 的这些新内容还比较陌生。正好前阵子我用 Next.js 开发了组件库管理平台，也踩了许多坑，了解了相关的知识。所以，希望能够通过 RSC 这个概念帮助大家了解到 React 的新特性。同时，也帮助大家理解最开始的那张图的梗。
+由于平时我们接触服务端渲染的机会有限，相信大家对 React 的这些新内容还比较陌生。最近我用 Next.js 开发了组件库管理平台，也踩了许多坑，也学到了很多相关知识。所以，希望通过学习 RSC 来帮助大家更好地理解 React 的新特性。同时，也帮助大家理解最开始的那张图的梗。
 
 ## 为什么有 RSC？
 
-在了解 RSC 之前，我们应该问一下为什么会有这个概念？也就是说，现在的 React 团队现在是遇到了什么问题才会需要另一个概念来解决这个问题呢？这就要从前端渲染来讲了。
+在了解 RSC 之前，我们应该问一下为什么会有这个概念？也就是说，现在的 React 团队现在是遇到了什么问题才会需要另一个概念来解决这个问题呢？这就要从前端渲染来讲起了。
 
 首先，我们要先认识几个前端性能相关的概念：
 
@@ -27,9 +25,9 @@
 - First Contentful Paint (FCP): 首屏内容渲染完成的时间
 - Time to Interactive (TTI): 可交互的时间
 
-其中 FCP/TTI 是两个比较关键的指标，因为它能够直接影响到用户的访问页面的实际体验。
+其中 FCP/TTI 是两个比较关键的指标，FCP 对应于首屏白屏的时间，TTI 对于于用户可交互的时间，它们能够直接影响到用户的访问页面的实际体验。
 
-接下来我们看一下几种渲染方式：
+接下来我们看一下常见的网页渲染方式：
 
 ### 客户端渲染
 
@@ -46,7 +44,7 @@
 </html>
 ```
 
-其中，`bundle.js` 里面包含了所有的 React 代码，包括 React、其他第三方依赖，以及我们自己写的代码。当浏览器下载并解析完 `bundle.js` 后，React 开始工作，渲染出整个应用的 DOM 结构，然后挂载到空的 `#root` 节点上。
+其中，bundle.js 里面包含了所有的 React 代码，包括 React、其他第三方依赖，以及我们自己写的代码。当浏览器下载并解析完 bundle.js 后，React 开始工作，渲染出整个应用的 DOM 结构，然后挂载到空的 #root 节点上。
 
 ![CSR](./assets/csr.png)
 
@@ -189,12 +187,14 @@ export default async function RSC() {
 另一方面，对于 RSC，由于我们已经将它们都标识出来了，并且它们都是静态的，那么我们可以通过并行的方式对所有 RSC 进行数据请求和渲染。在很大程度上解决了服务端-客户端间数据传输的瀑布流。
 
 使用 RSC 前：
+
 ```jsx
 // 串行：客户端和服务端直接来回请求数据
 ... => 渲染 Parent 组件 => 获取 Parent 组件数据 => 渲染 Child 组件 => 获取 Child 组件数据 => ...
 ```
 
 使用 RSC 后：
+
 ```jsx
 // 并行：将生成的结果一并回传给客户端
 ...
@@ -231,10 +231,11 @@ function NoteWithMarkdown({text}) {
 在客户端中，我们通常需要 React.lazy 来进行代码分割。在 RSC 中，每一个导入 Client Component 的地方都会被当做潜在的代码分割点。最终的结果是，RSC 让开发人员能够更加专注于编写应用程序代码，而优化操作交给框架去默认处理。
 
 ### Avoiding the Abstraction Tax
+
 在 SSR 中我们有提到，某些静态的节点，不应该被 hydration。当我们使用 RSC 后，React 程序能够清晰地知道哪些节点应该被 hydration，而哪些不会被 hydration。因此，对于 RSC，不需要将其要进行 hydration 的代码以抽象语法的形式传给给客户端执行，减少了 js 的体积以及执行时间。
 
-
 ### 小结
+
 再让我们对照一下网页渲染的流程：
 ![rsc advantage](assets/rsc-advantage.png)
 
@@ -245,11 +246,13 @@ RSC 主要是在减少客户端加载的 js 体积，同时减少 hydration，�
 在了解 RSC 的一些优点后，接下来我们了解下 RSC 是怎么渲染的：
 
 在服务端：
+
 1. React 会将 Server Component 渲染成一种特殊的数据结构，叫做 React Server Component Payload (RSC Payload).
   ![rsc payload](./assets/rsc-payload.png)
 2. Next.js 使用 RSC payload 和 客户端组件的 js 代码生成初始的 html 文件（SSR 服务端渲染）
 
 在客户端：
+
 1. 首先显示由 SSR 生成的静态 html。
 2. 使用 RSC Payload 协调 Server Component 和 Client Component 更新 DOM
 3. 对 Client Componet 进行 hydate 添加交互事件。
@@ -260,11 +263,11 @@ RSC 主要是在减少客户端加载的 js 体积，同时减少 hydration，�
 当页面跳转时，客户端会获取新页面对应的 RSC Payload，然后通过该新 Payload 进行渲染更新。这样的话，每个页面只需要加载当前页面的内容即可，不需要像 SSR 那样在客户端完全由 CSR 接管，从而带来的代价就是要加载所有的 js 代码。
 
 ## 一些概念的澄清
- 
+
 ### RSC 和 SSR 的关系
 
 RSC 和 SSR 是互补的关系。RSC 是只在服务端渲染的组件，它传递给客户端的是一种特殊的数据结构，客户端再解析这种数据结构将其渲染成 HTML。所以，RSC 其实也是不利于 SEO 的。所以，我们可以利用 SSR 做首屏白屏优化，而 RSC 做后续的 hydration 和 页面调整更新等等。
- 
+
 ### 客户端组件只在客户端渲染吗？
 
 React Server/Client Component 不是物理意义上的服务端和客户端，而是 React 自身对组件新的定义：
@@ -291,7 +294,6 @@ React Server/Client Component 不是物理意义上的服务端和客户端，�
   - useFormState：配合 server action，用于获取 Form 的 state。
   - useFormStatus：配合 server action，用于获取 Form 的状态
 
-
 ## 对新 API 的一些看法
 
 - React 本身
@@ -306,6 +308,7 @@ React Server/Client Component 不是物理意义上的服务端和客户端，�
   - 采用服务端和客户端一体的方式是否更易维护？
 
 ## 扩展阅读
+
 ### 流式渲染
 
 - [New Suspense SSR Architecture in React 18](https://github.com/reactwg/react-18/discussions/37)
@@ -322,7 +325,6 @@ React Server/Client Component 不是物理意义上的服务端和客户端，�
 - [Rendering on the Web: Performance Implications of Application Architecture (Google I/O ’19)](https://www.youtube.com/watch?v=k-A2VfuUROg)
 - [Islands Architecture](https://jasonformat.com/islands-architecture/)
 - [Islands 架构原理和实践](https://juejin.cn/post/7155300194773860382)
-
 
 ## 参考内容
 
@@ -347,8 +349,6 @@ React Server/Client Component 不是物理意义上的服务端和客户端，�
 - [Demystifying React Server Components with NextJS 13 App Router](https://demystifying-rsc.vercel.app/)
 - [Everything I wish I knew before moving 50,000 lines of code to React Server Components](https://www.mux.com/blog/what-are-react-server-components)
 - [React Server Component 从理念到原理](https://juejin.cn/post/7244452476190752829)
-
-
 
 ### Server actions
 
