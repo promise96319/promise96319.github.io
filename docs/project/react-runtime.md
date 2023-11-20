@@ -10,7 +10,7 @@
 
 以 `Button` 示例代码为例：
 
-```tsx
+```jsx
 import { Button } from '@qt/design'
 import React from 'react'
 
@@ -25,7 +25,7 @@ export default () => {
 
 这里就需要一个打包工具，我们使用 [sucrase](https://github.com/alangpierce/sucrase) 这个库，该库相较于 `webpack` 等打包工具，省去了需要 `不必要` 的打包过程，因此该库的体积更小，打包速度更快。
 
-```tsx
+```jsx
 import { transform } from 'sucrase'
 
 const code = `
@@ -56,7 +56,9 @@ const _jsxFileName = ''
 
 Object.defineProperty(exports, '__esModule', { value: true })
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj } }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj }
+}
 
 const _design = require('@qt/design')
 const _react = require('react')
@@ -107,6 +109,7 @@ const __modules__ = {
 ```js
 try {
   const req = name => __modules__[name]
+  // eslint-disable-next-line no-eval
   const Component = eval(`
     (function (require, exports) {
       ${compiledCode}

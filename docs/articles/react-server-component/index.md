@@ -70,7 +70,7 @@
 
 整个请求数据的过程是串行的：
 
-```jsx
+```text
 ... => 渲染 Parent 组件 => 获取 Parent 组件数据 => 渲染 Child 组件 => 获取 Child 组件数据 => ...
 ```
 
@@ -163,7 +163,7 @@ React Server Component 是 React 团队提出的一个新的概念，它是一�
 
 接下来，让我们看一下 RSC 是怎么使用，这里以 Next.js 为例：
 
-```tsx
+```jsx
 'use server'
 
 import db from 'db'
@@ -194,14 +194,14 @@ export default async function RSC() {
 
 使用 RSC 前：
 
-```jsx
+```text
 // 串行：客户端和服务端直接来回请求数据
 ... => 渲染 Parent 组件 => 获取 Parent 组件数据 => 渲染 Child 组件 => 获取 Child 组件数据 => ...
 ```
 
 使用 RSC 后：
 
-```jsx
+```text
 // 并行：将生成的结果一并回传给客户端
 ...
 获取 Parent 组件数据 => 渲染 Parent 组件 
@@ -216,13 +216,13 @@ export default async function RSC() {
 
 对于客户端组件而言，经常会面临第三方包体积过大的问题。比如下面这个例子：
 
-```tsx
-import marked from 'marked'; // 35.9K (11.2K gzipped)
-import sanitizeHtml from 'sanitize-html'; // 206K (63.3K gzipped)
+```jsx
+import marked from 'marked' // 35.9K (11.2K gzipped)
+import sanitizeHtml from 'sanitize-html' // 206K (63.3K gzipped)
 
-function NoteWithMarkdown({text}) {
-  const html = sanitizeHtml(marked(text));
-  return (/* render */);
+function NoteWithMarkdown({ text }) {
+  const html = sanitizeHtml(marked(text))
+  return html
 }
 ```
 

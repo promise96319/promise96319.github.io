@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "jsx": "preserve",
     "lib": ["esnext"],
     "rootDir": "docs",
     "module": "esnext",

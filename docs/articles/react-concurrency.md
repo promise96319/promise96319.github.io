@@ -156,19 +156,19 @@
 
 - 浏览器第一帧：
 
-  - - 记录更新开始时间`startTime`。
+    - - 记录更新开始时间`startTime`。
 
-  - - 首先计算`App`节点，计算完成时，发现更新未超过`5ms`，继续更新下一个节点。
+    - - 首先计算`App`节点，计算完成时，发现更新未超过`5ms`，继续更新下一个节点。
   - 计算`div`节点，计算完成时，发现更新超过了`5ms`，那么不会进行更新，而是开启一个宏任务。
 
 - 浏览器第二帧：
 
-  - - **上一帧最后更新的是div节点**，找到下一个节点`hello`，计算该节点，发现更新未超过`5ms`，继续更新下一个节点。
+    - - **上一帧最后更新的是div节点**，找到下一个节点`hello`，计算该节点，发现更新未超过`5ms`，继续更新下一个节点。
   - 计算`span`节点，发现更新超过了`5ms`，那么不会进行更新，而是开启一个宏任务。
 
 - 浏览器第三帧：
 
-  - - **上一帧最后更新的是span节点**，找到下一个节点`world`，计算该节点，更新完成。
+    - - **上一帧最后更新的是span节点**，找到下一个节点`world`，计算该节点，更新完成。
 
 ![image-20221017222521303](react-concurrency.assets/image-20221017222521303.png)
 
@@ -416,6 +416,7 @@ export function createUpdate(eventTime: number, lane: Lane): Update<*> {
 function List({ pageId }) {
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+
   useEffect(() => {
     setIsLoading(true)
     fetchData(pageId).then((data) => {
@@ -424,10 +425,10 @@ function List({ pageId }) {
     })
   }, [])
 
-  f (isLoading)
+  if (isLoading)
+    return <Spinner />
 
-  return <Spinner />
-  ta[pageId].map(item => <li>{item}</li>)
+  return data[pageId].map(item => <li>{item}</li>)
 }
 ```
 
@@ -436,16 +437,16 @@ function List({ pageId }) {
 1. 存储了两套数据`isLoading/data`和两种渲染结果，并且代码比较冗余，不利于开发维护。如果用`Suspense`，可以直接读取数据而不关心加载状态，如：
 
 ```jsx
-const wrappedData = unstable_createResource(pageId => fepageIdpageId))
+const wrappedData = unstable_createResource(pageId => fetchData(pageId))
 
 function List({ pageId }) {
   const data = wrappedData.read(pageId)
 
-  return dataageId].map(item => <li>{item}</li>)
+  return data[pageId].map(item => <li>{item}</li>)
 }
 
-// 在需要使用 List 组的地方包裹一层  Suspense 即可自动控制加载抓昂太
-  <Suspense fallb  ack={<div>Loading...</div>}>
+// 在需要使用 List 组件的地方包裹一层  Suspense 即可自动控制加载抓昂太
+  <Suspense fallback={<div>Loading...</div>}>
     <List />
   </Suspense>
 ```
@@ -480,27 +481,30 @@ function List({ pageId }) {
 
 下面我们看另外一个实际的`Suspense`使用案例，了解下`Suspense`如何实现的：
 
-```tsx
+```jsx
 import React, { Suspense } from 'react'
 import { unstable_createResource } from 'react-cache'
 import { request } from './utils/api'
 
 const data = unstable_createResource(data => request(data))
 
-function Asfunction AsyncComponent () {
+function AsyncComponent() {
   const res = data.read(10000)
   return (
     <ul>
-      {new Array(res).fill(0).map((_, i) => (
+      {Array.from({ length: res }).fill(0).map((_, i) => (
         <li key={i}>{i}</li>
       ))}
     </ul>
   )
-}pefunction SuspenseComp () {
-  return <Suspense fallback={<div>Loading...</div>}>
-    <AsyncComponent />
-  </Suspense>
-} )
+}
+
+function SuspenseComp() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AsyncComponent />
+    </Suspense>
+  )
 }
 
 export default SuspenseComp
@@ -510,19 +514,18 @@ export default SuspenseComp
 
 ```jsx
 // 抛出错误
-unstable_createResource(promise) {
+function unstable_createResource(promise) {
   // 数据没加载完成，抛出 promise
-  if (promise.status === pending) {
+  if (promise.status === pending)
     throw promise
-  }
+
   // 数据加载完成，返回加载完的结果
-  if (promise.status === fulfilled) {
+  if (promise.status === fulfilled)
     return promise.result
-  }
 }
 
 // Suspense 捕捉错误，捕捉到抛出的 promise，并添加更新
-promise.then(() => { 
+promise.then(() => {
   renderAgain()
 })
 ```
@@ -542,10 +545,12 @@ startTransition requires you to have access to the place where state is being *s
 那么这两个`hook`在实际中有什么作用呢？我们看一个实际例子：
 
 ```jsx
-import ReactuseDeferredValue, useStatetate } from 'reacfunction Defer () {
+import React, { useDeferredValue, useState } from 'react'
+
+function Defer() {
   const [searchValue, setSearchValue] = useState(100)
   const deferredSearchValue = useDeferredValue(searchValue)
-  
+
   return (
     <>
       <input
@@ -555,8 +560,8 @@ import ReactuseDeferredValue, useStatetate } from 'reacfunction Defer () {
           setSearchValue(Number(e.target.value) || 0)
         }}
       />
-      
-      {new Array(deferredSearchValue).fill(0).map((_, idx) => (
+
+      {Array.from({ length: deferredSearchValue }).fill(0).map((_, idx) => (
         <li key={idx}>{idx}</li>
       ))}
       {/* {new Array(searchValue).fill(0).map((_, idx) => (
@@ -564,7 +569,9 @@ import ReactuseDeferredValue, useStatetate } from 'reacfunction Defer () {
       ))} */}
     </>
   )
-}t default Defer
+}
+
+export default Defer
 ```
 
 在`input`内容改变时，会根据输入内容去渲染一个比较耗时的列表。
@@ -577,12 +584,13 @@ import ReactuseDeferredValue, useStatetate } from 'reacfunction Defer () {
 首先看一下防抖，比如触发`onChange`事件时，通过`setTimeout`设置`100ms`的延迟：
 
 ```jsx
-onChange={(value) => {
+<input onChange={(value) => {
   clearTimeout(timer)
   timer = setTimeout(() => {
     setSearchValue(value)
   }, 100)
 }}
+/>
 ```
 
 虽然这已经很好的解决了频繁触发渲染的问题，但是还是会存在一些小问题。比如列表渲染非常快时，远远小于`100ms`，但是却需要等待到`100ms`后才会开始执行更新。当然，我们也可以尝试节流来解决频繁渲染问题，但是防抖节流却都无法解决更新耗时过长的问题。比如列表渲染需要耗时`1s`，那么在这`1s`内用户依旧无法去交互。
@@ -619,12 +627,11 @@ function updateStoreInstance<T>(
   nextSnapshot: T,
   getSnapshot: () => T,
 ) {
-  
-  ...
-  
+  // ...
+
   if (checkIfSnapshotChanged(inst)) {
     // Force a re-render.
-    forceStoreRerender(fiber);
+    forceStoreRerender(fiber)
   }
 }
 ```
