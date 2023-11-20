@@ -27,7 +27,6 @@ export default {
     `],
   ],
   lastUpdated: true,
-  cleanUrls: true,
 
   themeConfig: {
     logo: '/logo.png',

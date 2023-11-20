@@ -1,3 +1,5 @@
+import { scanLeetcode } from "./utils/leetcode"
+
 const articles = [
   {
     text: '文章',
@@ -276,6 +278,7 @@ const leetcode = [
   {
     text: 'leetcode',
     items: [
+      ...scanLeetcode(),
       { link: '/leetcode/1-20', text: '1-20' },
       { link: '/leetcode/21-40', text: '21-40' },
     ],
