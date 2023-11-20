@@ -3,34 +3,34 @@
 ## plugin
 babel 提供了插件机制允许我们修改 AST。插件一般存在两种形式：函数形式和对象形式，函数形式返回的也是对象，这里主要以函数形式为例：
 ```js
- export default function(babel, options, dirname) {
-   return {
-     inherits: parentPlugin,
-     manipulateOptions(options, parserOptions) {},
-     pre(file) {},
-     visitor: {},
-     post(file) {}
-   };
- }
+export default function (babel, options, dirname) {
+  return {
+    inherits: parentPlugin,
+    manipulateOptions(options, parserOptions) {},
+    pre(file) {},
+    visitor: {},
+    post(file) {}
+  }
+}
 ```
 其中 visitor 就是遍历 AST 时，对 AST 节点的访问，在这里可以做一些节点的修改。比如以 const 转换为 var 为例：
 ```js
 // 插件
- module.exports = (babel) => {
-   return {
-     visitor: {
-       VariableDeclaration(path) {
-         if (path.node.kind === 'const')
-           path.node.kind = 'var'
-       },
-     },
-   }
- }
- ​
- // 源码
- const a = 1;
- // 生成代码
- var a = 1;
+module.exports = (babel) => {
+  return {
+    visitor: {
+      VariableDeclaration(path) {
+        if (path.node.kind === 'const')
+          path.node.kind = 'var'
+      },
+    },
+  }
+}
+
+// 源码
+const a = 1
+// 生成代码
+var a = 1
  ```
 
  通过上面的例子可以看出 babel 可以通过插件，对代码进行各种各样的转换，因此我们需要使用新语法时只需要增加新语法的转换插件即可，比如装饰器 @babel/plugin-proposal-decorators，可选链 @babel/plugin-proposal-optional-chaining 等等。

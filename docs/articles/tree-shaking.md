@@ -4,11 +4,11 @@
 ## 背景
 ``` js
 // common.js
-export const a = 'a'
-export const b = 'b' // 无用代码
+// 无用代码
 
 // index.js
-import { a } from './common.js'
+import { a } from './common.js' export const a = 'a'
+export const b = 'b'
 console.log(a)
 ```
 

@@ -29,7 +29,7 @@
 
 ```js
 // 实际代码
-const str = 'aaabbb'.replaceAll('a', 'b') 
+const str = 'aaabbb'.replaceAll('a', 'b')
 ```
 
 ## 问题原因
@@ -79,13 +79,13 @@ injectGlobalImport(url) {
 当 isScript 为 true 时，使用的是 cjs，否则使用 es 语法。继续查找：
 ```js
 // isScript 参数
-programPath.node.sourceType === "script"
+programPath.node.sourceType === 'script'
 ```
 isScript 与 sourceType 相关，查找 babel 文档 sourceType，默认情况下 sourceType 为 module，因此默认情况下注入的是 es 模块语法。证实了之前的猜想，因为 tsconfig.json 的 module 设置为了 commonjs 将代码转为 cjs 格式。在 babel-loader 中添加 es 模块的 corejs 代码，从而导致打包后的产物运行报错。
 
 如何解决这个问题呢？答案是另外一个参数：modules。modules 表示是否允许将 es 模块语法转换为 cjs，为 false 时表示不将 es 语法转换为 cjs 语法，默认值为 auto。
 ```js
-shouldTransformESM: modules !== "auto" || !api.caller?.(supportsStaticESM)
+shouldTransformESM: modules !== 'auto' || !api.caller?.(supportsStaticESM)
 ```
 [babel-loader 默认会设置 supportsStaticESM: true](https://github.com/babel/babel-loader/blob/main/src/injectCaller.js#L16)，也就以为着不会将 es 模块语法转换为 cjs 模块语法，导致最终打包后的产物运行报错。
 

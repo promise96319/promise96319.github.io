@@ -55,9 +55,15 @@
 问题二：客户端渲染的数据通常都在 componentDidMount 的生命周期中发起的，这种方式很容易造成 [network waterfalls](https://react.dev/reference/react/useEffect#what-are-good-alternatives-to-data-fetching-in-effects)，比如：
 
 ```jsx
-<Parent> // useEffect 里发送请求
-  <Child> // useEffect 里发送请求
-    <GrandChild /> // useEffect 里发送请求
+<Parent>
+  {' '}
+  // useEffect 里发送请求
+  <Child>
+    {' '}
+    // useEffect 里发送请求
+    <GrandChild />
+    {' '}
+    // useEffect 里发送请求
   </Child>
 </Parent>
 ```

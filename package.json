@@ -1,5 +1,6 @@
 {
   "name": "blog",
+  "type": "module",
   "version": "2.0.0",
   "description": "frontend-blog",
   "license": "MIT",
@@ -11,19 +12,19 @@
     "generate": "jiti scripts/generate.ts",
     "lint": "eslint --fix --ext .md ."
   },
+  "dependencies": {
+    "vue": "^3.3.8"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^2.0.0",
-    "@commitlint/cli": "^17.5.0",
-    "@commitlint/config-conventional": "^17.4.4",
-    "@types/node": "^18.14.1",
-    "eslint": "^8.34.0",
+    "@commitlint/cli": "^17.8.1",
+    "@commitlint/config-conventional": "^17.8.1",
+    "@types/node": "^18.18.10",
+    "eslint": "^8.54.0",
     "husky": "^8.0.3",
-    "jiti": "^1.17.1",
+    "jiti": "^1.21.0",
     "typescript": "^4.9.5",
     "vitepress": "1.0.0-rc.20",
     "vitest": "^0.28.5"
-  },
-  "dependencies": {
-    "vue": "^3.3.4"
   }
 }

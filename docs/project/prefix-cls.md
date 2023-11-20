@@ -109,8 +109,12 @@
 当需要覆盖样式时，比如覆盖 `App` 的 `card` 时，渲染的结果如下：
 
 ```jsx
-<div class="qtc-card app"> // 对于 app 内的类名都会附加 app 类名空间
-  <div class="qtc-card widget"> // 对于 widget 内的类名都会附加 app 类名空间
+<div class="qtc-card app">
+  {' '}
+  // 对于 app 内的类名都会附加 app 类名空间
+  <div class="qtc-card widget">
+    {' '}
+    // 对于 widget 内的类名都会附加 app 类名空间
   </div>
 </div>
 ```

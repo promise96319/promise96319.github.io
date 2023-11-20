@@ -1,4 +1,5 @@
-declare module "*.vue" {
-  import vue from 'vue'
+declare module '*.vue' {
+  import * as vue from 'vue'
+
   export default vue
 }

@@ -5,7 +5,5 @@
  */
 
 // @lc code=start
-function isValid(s: string): boolean {
 
-}
 // @lc code=end

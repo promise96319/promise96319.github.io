@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
+export function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
   const totalNums = nums1.length + nums2.length
   if (totalNums === 0)
     return 0
@@ -29,7 +29,7 @@ function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
       return (cur + min) / 2
     }
 
-    if (nextNum1 !== undefined && nextNum1 < (nextNum2 === undefined ? Infinity : nextNum2)) {
+    if (nextNum1 !== undefined && nextNum1 < (nextNum2 === undefined ? Number.POSITIVE_INFINITY : nextNum2)) {
       i++
       cur = nextNum1
     }

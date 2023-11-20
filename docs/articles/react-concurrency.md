@@ -416,7 +416,6 @@ export function createUpdate(eventTime: number, lane: Lane): Update<*> {
 function List({ pageId }) {
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  
   useEffect(() => {
     setIsLoading(true)
     fetchData(pageId).then((data) => {
@@ -424,12 +423,11 @@ function List({ pageId }) {
       setIsLoading(false)
     })
   }, [])
-  
-  if (isLoading) {
-    return <Spinner />
-  }
-  
-  return data[pageId].map(item => <li>{item}</li>)
+
+  f (isLoading)
+
+  return <Spinner />
+  ta[pageId].map(item => <li>{item}</li>)
 }
 ```
 
@@ -438,19 +436,18 @@ function List({ pageId }) {
 1. 存储了两套数据`isLoading/data`和两种渲染结果，并且代码比较冗余，不利于开发维护。如果用`Suspense`，可以直接读取数据而不关心加载状态，如：
 
 ```jsx
-const wrappedData = unstable_createResource((pageId) => fetchData(pageId))
+const wrappedData = unstable_createResource(pageId => fepageIdpageId))
 
 function List({ pageId }) {
   const data = wrappedData.read(pageId)
-  
-  return data[pageId].map(item => <li>{item}</li>)
+
+  return dataageId].map(item => <li>{item}</li>)
 }
 
-
-// 在需要使用 List 组件的地方包裹一层  Suspense 即可自动控制加载抓昂太
-<Suspense fallback={<div>Loading...</div>}>
-  <List />
-</Suspense>
+// 在需要使用 List 组的地方包裹一层  Suspense 即可自动控制加载抓昂太
+  <Suspense fallb  ack={<div>Loading...</div>}>
+    <List />
+  </Suspense>
 ```
 
 可以看出使用`Suspense`后代码变得简洁清晰易懂，对于开发效率和代码维护性都有很大的提升。
@@ -490,7 +487,7 @@ import { request } from './utils/api'
 
 const data = unstable_createResource(data => request(data))
 
-const AsyncComponent = () => {
+function Asfunction AsyncComponent () {
   const res = data.read(10000)
   return (
     <ul>
@@ -499,13 +496,12 @@ const AsyncComponent = () => {
       ))}
     </ul>
   )
-}
-
-const SuspenseComp = () => (
-  <Suspense fallback={<div>Loading...</div>}>
+}pefunction SuspenseComp () {
+  return <Suspense fallback={<div>Loading...</div>}>
     <AsyncComponent />
   </Suspense>
-)
+} )
+}
 
 export default SuspenseComp
 ```
@@ -546,9 +542,7 @@ startTransition requires you to have access to the place where state is being *s
 那么这两个`hook`在实际中有什么作用呢？我们看一个实际例子：
 
 ```jsx
-import React, { useState, useDeferredValue } from 'react'
-
-const Defer = () => {
+import ReactuseDeferredValue, useStatetate } from 'reacfunction Defer () {
   const [searchValue, setSearchValue] = useState(100)
   const deferredSearchValue = useDeferredValue(searchValue)
   
@@ -570,9 +564,7 @@ const Defer = () => {
       ))} */}
     </>
   )
-}
-
-export default Defer
+}t default Defer
 ```
 
 在`input`内容改变时，会根据输入内容去渲染一个比较耗时的列表。

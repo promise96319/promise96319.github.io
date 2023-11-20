@@ -34,13 +34,12 @@
 省略时的回调可以通过省略节点来进行计算：
 
 ```jsx
-
 // 判断是单行省略还是多行省略
-const cssLineClamp = rows > 1; 
+const cssLineClamp = rows > 1
 // 判断是否产生了省略（可以通过 rc-resize-observer 监听宽度高度变化）
 const isEllipsis = cssLineClamp
-   ? textEle.offsetHeight < textEle.scrollHeight
-   : textEle.offsetWidth < textEle.scrollWidth;
+  ? textEle.offsetHeight < textEle.scrollHeight
+  : textEle.offsetWidth < textEle.scrollWidth
 ```
 
 ### js 省略

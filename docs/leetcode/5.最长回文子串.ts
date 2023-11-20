@@ -5,7 +5,5 @@
  */
 
 // @lc code=start
-function longestPalindrome(s: string): string {
 
-}
 // @lc code=end

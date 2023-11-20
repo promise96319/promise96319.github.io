@@ -1,5 +1,6 @@
-import { join, resolve } from 'path'
-import { readdir, writeFile } from 'fs/promises'
+import { join, resolve } from 'node:path'
+import { readdir, writeFile } from 'node:fs/promises'
+import process from 'node:process'
 
 // dir 相对根路径
 export async function generteMarkdownFromTs(dir: string, title: string, mdName: string) {

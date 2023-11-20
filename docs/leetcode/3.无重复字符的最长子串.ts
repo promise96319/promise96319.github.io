@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-function lengthOfLongestSubstring(s: string): number {
+export function lengthOfLongestSubstring(s: string): number {
   if (s.length <= 1)
     return s.length
 
