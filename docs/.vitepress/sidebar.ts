@@ -114,6 +114,7 @@ const webpack = [
       { text: 'vue-loader实现', link: '/webpack/vue-loader实现' },
       { text: '热更新实现原理', link: '/webpack/热更新实现原理' },
       { text: 'Tapable', link: '/webpack/Tapable' },
+      { text: 'Runtime', link: '/webpack/runtime' },
       { text: 'webpack优化', link: '/webpack/webpack优化' },
       { text: 'webpack官方文档', link: '/webpack/webpack官方文档' },
     ],
