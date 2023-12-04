@@ -2,7 +2,7 @@
   "name": "blog",
   "type": "module",
   "version": "2.0.0",
-  "description": "frontend-blog",
+  "description": "promise96319's blog",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,6 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
-    "taze": "^0.13.0",
     "vue": "^3.3.9"
   },
   "devDependencies": {

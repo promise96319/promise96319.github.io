@@ -12,7 +12,7 @@ type Partial<T> = {
 
 ## Required
 
-将属性变为必选。`-` 号表示去除 `?` 或者 `readonly` 这类关键字。默认为 `+` 号。
+将属性变为必选。通过 `-` 移除修饰符 `?`。默认为 `+` 号。
 
 ```typescript
 type Required<T> = { 
@@ -25,6 +25,16 @@ type Required<T> = {
 ```typescript
 type Readonly<T> = { 
   readonly [P in keyof T]: T[P] 
+};
+```
+
+## Writeable
+
+同理，使用 `-` 移除 `readonly` 修饰符。
+
+```typescript
+type Writeable<T> = { 
+  -readonly [P in keyof T]: T[P] 
 };
 ```
 
@@ -48,7 +58,7 @@ type Exclude<T, U> = T extends U ? never : T;
 
 ## Extract
 
-选取，求交集
+选取、取出。
 
 ```typescript
 type Extract<T, K> = T extends K ? T : never;
@@ -119,15 +129,15 @@ type InstanceType<T extends abstract new (...args: any) => any> = T extends abst
 type Uppercase<S extends string> = intrinsic;
 // 全部小写
 type Lowercase<S extends string> = intrinsic;
-// 第一个字母大写
+// 首字母大写
 type Capitalize<S extends string> = intrinsic;
-// 第一个字母小写
+// 首字母小写
 type Uncapitalize<S extends string> = intrinsic;
 ```
 
-## 类型判断
-
 ## Equals
+
+类型判断
 
 ```typescript
 type Equals<X, Y> =
@@ -135,7 +145,3 @@ type Equals<X, Y> =
   (<T>() => T extends Y ? 1 : 2) ? true : false;
 ```
 
-## Module
-
-- 只有使用了 `import/export` 语法的才会视为 `module`
-- 模块解析方式：`Classic` 和 `Node`，`tsconfig.json` 里的 `moduleResolution, baseUrl, paths, rootDirs` 会影响解析结果。
