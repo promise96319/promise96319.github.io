@@ -164,7 +164,7 @@ __webpack_require__.f.j = (chunkId, promises) => {
       promises.push(installedChunkData[2])
     }
     else {
-      if (chunkId != 'webpack_container_remote_mfe-c_Component2') {
+      if (chunkId !== 'webpack_container_remote_mfe-c_Component2') {
         const promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]))
         promises.push(installedChunkData[2] = promise)
 
