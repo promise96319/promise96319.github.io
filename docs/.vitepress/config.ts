@@ -1,8 +1,15 @@
 import process from 'node:process'
-import { navbar } from './navbar'
-import { sidebar } from './sidebar'
 import { defineConfig } from 'vitepress'
 import UnoCss from 'unocss/vite'
+import {
+  presetAttributify,
+  presetIcons,
+  presetTypography,
+  presetUno,
+  presetWebFonts,
+} from 'unocss'
+import { sidebar } from './sidebar'
+import { navbar } from './navbar'
 
 export default defineConfig({
   title: 'promise96319',
@@ -56,10 +63,24 @@ export default defineConfig({
 
     footer: {
       message: '<a href="https://beian.miit.gov.cn/" target="__blank" style="color: rgba(60, 60, 67, .78)">鄂ICP备20002086号-1</a>',
-    }
+    },
   },
 
   vite: {
-    plugins: [UnoCss()]
-  }
+    plugins: [UnoCss({
+      presets: [
+        presetUno(),
+        presetIcons(),
+        presetAttributify(),
+        presetWebFonts({
+          provider: 'bunny',
+          fonts: {
+            sans: 'DM Sans',
+            mono: 'DM Mono',
+          },
+        }),
+        presetTypography(),
+      ],
+    })],
+  },
 })

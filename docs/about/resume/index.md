@@ -15,7 +15,7 @@ head:
 ---
 
 <script setup>
-import Main from './resume.vue'
+import Main from './Resume.vue'
 </script>
 
 <Main />
