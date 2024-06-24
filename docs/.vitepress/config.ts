@@ -1,13 +1,23 @@
 import process from 'node:process'
-import { navbar } from './navbar'
+import { defineConfig } from 'vitepress'
+import UnoCss from 'unocss/vite'
+import {
+  presetAttributify,
+  presetIcons,
+  presetTypography,
+  presetUno,
+  presetWebFonts,
+} from 'unocss'
 import { sidebar } from './sidebar'
+import { navbar } from './navbar'
 
-export default {
+export default defineConfig({
   title: 'promise96319',
   description: '前端开发',
   lang: 'zh-CN',
   head: [
     ['meta', { charset: 'utf-8' }],
+    ['meta', { name: 'keywords', content: '前端、Javascript、ES6、Typescript、React、Vue、Webpack、Vite、Babel' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no, minimal-ui' }],
     ['meta', { name: 'theme-color', content: '#5f67ee' }],
     ['meta', { name: 'og:type', content: 'website' }],
@@ -50,5 +60,27 @@ export default {
       apiKey: '3ff6e86abc1d6b6def15d19bca7c8067',
       indexName: 'qinguanghui',
     },
+
+    footer: {
+      message: '<a href="https://beian.miit.gov.cn/" target="__blank" style="color: rgba(60, 60, 67, .78)">鄂ICP备20002086号-1</a>',
+    },
   },
-}
+
+  vite: {
+    plugins: [UnoCss({
+      presets: [
+        presetUno(),
+        presetIcons(),
+        presetAttributify(),
+        presetWebFonts({
+          provider: 'bunny',
+          fonts: {
+            sans: 'DM Sans',
+            mono: 'DM Mono',
+          },
+        }),
+        presetTypography(),
+      ],
+    })],
+  },
+})

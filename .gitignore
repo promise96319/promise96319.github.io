@@ -9,5 +9,4 @@ docs/面试
 *.log
 .history
 .DS_Store
-.vscode
 test

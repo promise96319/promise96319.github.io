@@ -11,6 +11,7 @@ export default antfu({
     'docs/vue/**',
     'docs/leetcode/**',
   ],
+  vue: true,
   markdown: true,
   jsx: true,
 })
