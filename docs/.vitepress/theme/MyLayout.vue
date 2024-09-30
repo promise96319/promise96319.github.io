@@ -6,13 +6,13 @@ const { Layout } = DefaultTheme
 
 <template>
   <Layout>
-    <template #layout-bottom>
+    <!-- <template #layout-bottom>
       <div class="footer" align="center">
         <a href="https://beian.miit.gov.cn/">
           鄂ICP备20002086号-1
         </a>
       </div>
-    </template>
+    </template> -->
   </Layout>
 </template>
 

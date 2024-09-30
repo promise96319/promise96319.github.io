@@ -2,7 +2,7 @@
 
 ## 前言
 
-前段时间在看到一个关于 Next.js 的梗，大家看下能不能看懂这个梗~
+前段时间在朋友圈看到一个关于 Next.js 有意思的梗：
 
 <div style="display: flex; height: 400px;">
   <img src="./assets/server-action-comment.png"  alt="server-action-comment"  style="margin-right: 20px"/>

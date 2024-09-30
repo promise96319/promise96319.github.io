@@ -2,7 +2,7 @@ const articles = [
   {
     text: '文章',
     items: [
-      { text: 'React 并发原理', link: '/articles/react-concurrency' },
+      { text: 'React Concurrency', link: '/articles/react-concurrency/index' },
       { text: 'React Server Component', link: '/articles/react-server-component/index' },
     ],
   },
@@ -13,6 +13,16 @@ const ai = [
     text: 'AI',
     items: [
       { text: 'ChatGPT Register', link: '/ai/chatgpt-register' },
+    ],
+  },
+]
+
+const electron = [
+  {
+    text: 'Electron',
+    items: [
+      { text: '窗口机制', link: '/electron/window' },
+      { text: '通信机制', link: '/electron/ipc' },
     ],
   },
 ]
@@ -114,6 +124,7 @@ const webpack = [
       { text: 'vue-loader实现', link: '/webpack/vue-loader实现' },
       { text: '热更新实现原理', link: '/webpack/热更新实现原理' },
       { text: 'Tapable', link: '/webpack/Tapable' },
+      { text: 'Runtime', link: '/webpack/runtime' },
       { text: 'webpack优化', link: '/webpack/webpack优化' },
       { text: 'webpack官方文档', link: '/webpack/webpack官方文档' },
     ],
@@ -353,6 +364,7 @@ const project = [
 export const sidebar = {
   '/articles/': articles,
   '/ai/': ai,
+  '/electron/': electron,
   '/vue/': vue,
   '/vue3/': vue3,
   '/react/': react,

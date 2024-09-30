@@ -1,4 +1,5 @@
 node_modules
+
 dist
 cache
 docs/.vuepress/dist
@@ -9,5 +10,4 @@ docs/面试
 *.log
 .history
 .DS_Store
-.vscode
 test
