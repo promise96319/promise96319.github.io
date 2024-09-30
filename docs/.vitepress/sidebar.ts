@@ -17,6 +17,16 @@ const ai = [
   },
 ]
 
+const electron = [
+  {
+    text: 'Electron',
+    items: [
+      { text: '窗口机制', link: '/electron/window' },
+      { text: '通信机制', link: '/electron/ipc' },
+    ],
+  },
+]
+
 // 框架系列
 const vue3 = [
   {
@@ -354,6 +364,7 @@ const project = [
 export const sidebar = {
   '/articles/': articles,
   '/ai/': ai,
+  '/electron/': electron,
   '/vue/': vue,
   '/vue3/': vue3,
   '/react/': react,
