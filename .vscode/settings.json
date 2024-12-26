@@ -35,5 +35,8 @@
     "json",
     "jsonc",
     "yaml"
-  ]
+  ],
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": "file:///Users/qinguanghui/Desktop/markdown/vuepress/.github/workflows/deploy.yml"
+  }
 }

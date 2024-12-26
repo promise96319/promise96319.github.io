@@ -7,12 +7,8 @@ export const navbar = [
   //   text: 'AI',
   //   link: '/ai/index',
   // },
-   {
-    text: 'Electron',
-    link: '/electron/index',
-  },
   {
-    text: '框架系列',
+    text: '框架源码',
     items: [
       { text: 'Vue v2 源码', link: '/vue/' },
       { text: 'Vue v3 源码', link: '/vue3/' },
@@ -20,13 +16,21 @@ export const navbar = [
     ],
   },
   {
-    text: '基建系列',
+    text: '基建',
     items: [
       { text: 'Webpack 系列', link: '/webpack/' },
       { text: 'Rollup 系列', link: '/rollup/' },
       { text: 'Vite 系列', link: '/vite/' },
       { text: 'Babel 系列', link: '/babel/' },
     ],
+  },
+  {
+    text: '微前端',
+    link: '/micro-frontend/index',
+  },
+  {
+    text: 'Electron',
+    link: '/electron/index',
   },
   {
     text: 'JS 系列',
