@@ -6,3 +6,4 @@
 - React.useMemo
 - React.useCallback
 - React 怎么自动缓存
+- React Compiler

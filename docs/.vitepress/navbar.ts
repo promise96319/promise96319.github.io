@@ -8,6 +8,10 @@ export const navbar = [
   //   link: '/ai/index',
   // },
   {
+    text: 'Electron',
+    link: '/electron/index',
+  },
+  {
     text: 'web3',
     link: '/web3/index',
   },

@@ -8,3 +8,6 @@
 - Node.js / Nest.js
 - GraphQL / Prisma / Mongo
 - Docker / Nginx
+
+## Steps
+
