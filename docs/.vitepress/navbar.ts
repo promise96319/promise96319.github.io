@@ -3,9 +3,13 @@ export const navbar = [
     text: '文章',
     link: '/articles/index',
   },
+  // {
+  //   text: 'AI',
+  //   link: '/ai/index',
+  // },
   {
-    text: 'AI',
-    link: '/ai/index',
+    text: 'web3',
+    link: '/web3/index',
   },
   {
     text: '框架系列',
