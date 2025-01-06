@@ -15,7 +15,8 @@
 ## 组件库
 
 ## 关于 hooks
-- 
+
+-
 
 ## 组件库管理平台
 
@@ -52,3 +53,15 @@
 ## 区块链入门（选）=> web3
 
 ## ?
+
+## 开源
+
+- react-repl
+- micro-frontend
+  - js/css 隔离
+  - 路由共享
+  - dom 问题
+  - 依赖共享
+  - 预加载
+- sass-inject-loader
+- react-data-testid
