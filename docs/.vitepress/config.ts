@@ -37,7 +37,6 @@ export default defineConfig({
     `],
   ],
   lastUpdated: true,
-  cleanUrls: true,
 
   themeConfig: {
     logo: '/logo.png',

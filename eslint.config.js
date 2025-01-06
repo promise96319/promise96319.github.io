@@ -9,7 +9,7 @@ export default antfu({
 
     // TODO: 暂时禁用 markdown 里的一些问题
     'docs/vue/**',
-    'docs/leetcode/**',
+    // 'docs/leetcode/',
   ],
   vue: true,
   markdown: true,

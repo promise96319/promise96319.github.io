@@ -22,7 +22,7 @@ hero:
 
 # navbar: false
 features:
-  - title: 框架系列
+  - title: 框架源码
     details: 学习前端框架源码：Vue、React、Svelte 等。
   - title: 基建系列
     details: 学习前端基础构建工具： Webpack、Rollup、Vite、Esbuild、Babel 等。

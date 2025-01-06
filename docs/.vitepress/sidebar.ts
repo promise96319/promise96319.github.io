@@ -1,3 +1,5 @@
+import { scanLeetcode } from "./utils/leetcode"
+
 const articles = [
   {
     text: '文章',
@@ -17,6 +19,7 @@ const ai = [
   },
 ]
 
+// Electron
 const electron = [
   {
     text: 'Electron',
@@ -27,7 +30,17 @@ const electron = [
   },
 ]
 
-// 框架系列
+// 微前端
+const microFrontend = [
+  {
+    text: '微前端',
+    items: [
+      { text: '背景', link: '/micro-frontend/background' },
+    ],
+  },
+]
+
+// 框架源码
 const vue3 = [
   {
     text: 'Vue3原理',
@@ -287,6 +300,7 @@ const leetcode = [
   {
     text: 'leetcode',
     items: [
+      ...scanLeetcode(),
       { link: '/leetcode/1-20', text: '1-20' },
       { link: '/leetcode/21-40', text: '21-40' },
     ],
@@ -365,6 +379,7 @@ export const sidebar = {
   '/articles/': articles,
   '/ai/': ai,
   '/electron/': electron,
+  '/micro-frontend/': microFrontend,
   '/vue/': vue,
   '/vue3/': vue3,
   '/react/': react,
