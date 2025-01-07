@@ -33,6 +33,22 @@ export const navbar = [
     ],
   },
   {
+    text: '项目',
+    items: [
+      { text: '微前端', link: '/micro-frontend/' },
+      { text: 'Electron', link: '/electron/' },
+      { text: '组件库', link: '/component/' },
+    ],
+  },
+  // {
+  //   text: '微前端',
+  //   link: '/micro-frontend/index',
+  // },
+  // {
+  //   text: 'Electron',
+  //   link: '/electron/index',
+  // },
+  {
     text: 'JS 系列',
     items: [
       { text: 'ES6', link: '/javascript/' },

@@ -14,8 +14,6 @@ document.body.addEventListener('click', xxx)  // 原生事件
 
 在 `React17`/18 时，执行顺序为 `div => body => document`
 
-# 不同版本React事件触发顺序不一致问题
-
 ## 原因
 
 `React 16` 事件委托到 `document` 上，`react 17+` 委托到 `rootNode` 上：
@@ -26,15 +24,11 @@ document.body.addEventListener('click', xxx)  // 原生事件
 
 在 17+ 的情况下，先冒泡到 `rootNode`，触发合成事件，再冒泡到 `body => document` 。
 
-# 不同版本React事件触发顺序不一致问题
-
 ## React 为什么要将事件从 document 改为 rootNode？
 
 如果存在多个版本的 `React` 组件嵌套时，如果冒泡到 `document`，可能存在一个版本的组件 `e.stopPropagation()` 影响到另外一个版本组件（其他的事件行为可能也会被影响）。
 
 如果改为 `rootNode`，不同版本的 `react` 组件间事件就不会相互影响。
-
-# 不同版本React事件触发顺序不一致问题
 
 ## 为什么需要合成事件？
 

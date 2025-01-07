@@ -2,7 +2,8 @@ node_modules
 
 dist
 cache
-
+docs/.vuepress/dist
+docs/.vuepress/cache
 docs/test
 docs/面试
 
