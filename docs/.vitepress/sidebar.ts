@@ -6,6 +6,7 @@ const articles = [
     items: [
       { text: 'React Concurrency', link: '/articles/react-concurrency/index' },
       { text: 'React Server Component', link: '/articles/react-server-component/index' },
+      { text: '浏览器一帧里做了什么', link: '/react/浏览器一帧里做了什么' },
     ],
   },
 ]
@@ -192,6 +193,7 @@ const babel = [
     text: '入门',
     collapse: false,
     items: [
+      { text: '思维导图', link: '/babel/xmind' },
       { text: '概览', link: '/babel/guide/overview' },
       { text: '插件开发', link: '/babel/guide/plugin' },
     ],
@@ -213,7 +215,6 @@ const js = [
     collapsed: false,
     items: [
       { text: '事件循环机制', link: '/javascript/事件循环机制' },
-      { text: '浏览器一帧里做了什么', link: '/javascript/../react/浏览器一帧里做了什么' },
       { text: '手写Promise', link: '/javascript/手写Promise' },
       { text: 'co库', link: '/javascript/co库' },
       { text: 'js继承', link: '/javascript/js继承' },

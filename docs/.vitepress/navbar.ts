@@ -7,6 +7,14 @@ export const navbar = [
   //   text: 'AI',
   //   link: '/ai/index',
   // },
+  // {
+  //   text: 'Electron',
+  //   link: '/electron/index',
+  // },
+  // {
+  //   text: 'web3',
+  //   link: '/web3/index',
+  // },
   {
     text: '框架源码',
     items: [
@@ -16,7 +24,7 @@ export const navbar = [
     ],
   },
   {
-    text: '基建',
+    text: '构建工具',
     items: [
       { text: 'Webpack 系列', link: '/webpack/' },
       { text: 'Rollup 系列', link: '/rollup/' },
