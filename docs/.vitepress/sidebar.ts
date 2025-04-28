@@ -38,6 +38,26 @@ const microFrontend = [
       { text: '背景', link: '/micro-frontend/background' },
     ],
   },
+  {
+    text: '沙箱问题',
+    items: [
+      { text: 'MutationObserver 报错', link: '/micro-frontend/problem/sandbox/mutation-observer' },
+      { text: 'React compositionend 事件未触发', link: '/micro-frontend/problem/sandbox/compositionend' },
+      { text: '图片路径问题', link: '/micro-frontend/problem/sandbox/image-path' },
+    ],
+  },
+  {
+    text: 'Shadow DOM 问题',
+    items: [
+      { text: 'iframe 报错', link: '/micro-frontend/problem/shadow-dom/iframe' },
+    ],
+  },
+  {
+    text: '其他问题',
+    items: [
+      { text: 'App 嵌套运行报错', link: '/micro-frontend/problem/other/app-nest' },
+    ],
+  },
 ]
 
 // 框架源码
