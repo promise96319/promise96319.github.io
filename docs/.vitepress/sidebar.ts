@@ -45,18 +45,32 @@ const microFrontend = [
       { text: 'MutationObserver 报错', link: '/micro-frontend/problem/sandbox/mutation-observer' },
       { text: 'React compositionend 事件未触发', link: '/micro-frontend/problem/sandbox/compositionend' },
       { text: '图片路径问题', link: '/micro-frontend/problem/sandbox/image-path' },
+      { text: 'svg-sprite-loader 节点挂载错误', link: '/micro-frontend/problem/sandbox/svg-sprite-loader' },
+      { text: 'UiEvent view 指向代理 window 报错', link: '/micro-frontend/problem/sandbox/ui-event' },
+
     ],
   },
   {
     text: 'Shadow DOM 问题',
     items: [
-      { text: 'iframe 报错', link: '/micro-frontend/problem/shadow-dom/iframe' },
+      { text: '事件冒泡 e.target 错误问题', link: '/micro-frontend/problem/shadow-dom/e-target' },
+      { text: 'react-beautiful-dnd 拖拽无效', link: '/micro-frontend/problem/shadow-dom/react-beautiful-dnd' },
+      { text: 'scroll-into-view-if-needed 滚动失效', link: '/micro-frontend/problem/shadow-dom/scroll-into-view-if-needed' },
+      { text: '测试使用 querySelector 无法获取 shadowDOM 内部元素', link: '/micro-frontend/problem/shadow-dom/query-selector' },
+      { text: 'html2canvas 截屏层级错误', link: '/micro-frontend/problem/shadow-dom/html2canvas' },
+
     ],
   },
   {
     text: '其他问题',
     items: [
       { text: 'App 嵌套运行报错', link: '/micro-frontend/problem/other/app-nest' },
+      { text: 'sourcemap 失效问题', link: '/micro-frontend/problem/other/sourcemap' },
+      { text: '开发环境下卡顿问题', link: '/micro-frontend/problem/other/performance' },
+      { text: 'css 背景图片路径错误', link: '/micro-frontend/problem/other/image-path' },
+      { text: 'widget 偶现白屏问题', link: '/micro-frontend/problem/other/widget-whitescreen' },
+      { text: '多个 widget 同时加载时卡顿', link: '/micro-frontend/problem/other/widget-crash' },
+
     ],
   },
 ]
