@@ -36,7 +36,8 @@ const microFrontend = [
   {
     text: '微前端',
     items: [
-      { text: '背景', link: '/micro-frontend/background' },
+      { text: '项目背景', link: '/micro-frontend/introduction/background' },
+      { text: '微前端优势', link: '/micro-frontend/introduction/advantage' },
     ],
   },
   {
@@ -64,6 +65,7 @@ const microFrontend = [
   {
     text: '其他问题',
     items: [
+      { text: '内存泄露问题', link: '/micro-frontend/problem/other/memory' },
       { text: 'App 嵌套运行报错', link: '/micro-frontend/problem/other/app-nest' },
       { text: 'sourcemap 失效问题', link: '/micro-frontend/problem/other/sourcemap' },
       { text: '开发环境下卡顿问题', link: '/micro-frontend/problem/other/performance' },
