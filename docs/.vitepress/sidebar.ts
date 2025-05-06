@@ -6,6 +6,7 @@ const articles = [
     items: [
       { text: 'React Concurrency', link: '/articles/react-concurrency/index' },
       { text: 'React Server Component', link: '/articles/react-server-component/index' },
+      { text: '浏览器一帧里做了什么', link: '/react/浏览器一帧里做了什么' },
     ],
   },
 ]
@@ -35,7 +36,43 @@ const microFrontend = [
   {
     text: '微前端',
     items: [
-      { text: '背景', link: '/micro-frontend/background' },
+      { text: '项目背景', link: '/micro-frontend/introduction/background' },
+      { text: '微前端优势', link: '/micro-frontend/introduction/advantage' },
+    ],
+  },
+  {
+    text: '沙箱问题',
+    items: [
+      { text: 'MutationObserver 报错', link: '/micro-frontend/problem/sandbox/mutation-observer' },
+      { text: 'React compositionend 事件未触发', link: '/micro-frontend/problem/sandbox/compositionend' },
+      { text: '图片路径问题', link: '/micro-frontend/problem/sandbox/image-path' },
+      { text: 'svg-sprite-loader 节点挂载错误', link: '/micro-frontend/problem/sandbox/svg-sprite-loader' },
+      { text: 'UiEvent view 指向代理 window 报错', link: '/micro-frontend/problem/sandbox/ui-event' },
+
+    ],
+  },
+  {
+    text: 'Shadow DOM 问题',
+    items: [
+      { text: '事件冒泡 e.target 错误问题', link: '/micro-frontend/problem/shadow-dom/e-target' },
+      { text: 'react-beautiful-dnd 拖拽无效', link: '/micro-frontend/problem/shadow-dom/react-beautiful-dnd' },
+      { text: 'scroll-into-view-if-needed 滚动失效', link: '/micro-frontend/problem/shadow-dom/scroll-into-view-if-needed' },
+      { text: '测试使用 querySelector 无法获取 shadowDOM 内部元素', link: '/micro-frontend/problem/shadow-dom/query-selector' },
+      { text: 'html2canvas 截屏层级错误', link: '/micro-frontend/problem/shadow-dom/html2canvas' },
+
+    ],
+  },
+  {
+    text: '其他问题',
+    items: [
+      { text: '内存泄露问题', link: '/micro-frontend/problem/other/memory' },
+      { text: 'App 嵌套运行报错', link: '/micro-frontend/problem/other/app-nest' },
+      { text: 'sourcemap 失效问题', link: '/micro-frontend/problem/other/sourcemap' },
+      { text: '开发环境下卡顿问题', link: '/micro-frontend/problem/other/performance' },
+      { text: 'css 背景图片路径错误', link: '/micro-frontend/problem/other/image-path' },
+      { text: 'widget 偶现白屏问题', link: '/micro-frontend/problem/other/widget-whitescreen' },
+      { text: '多个 widget 同时加载时卡顿', link: '/micro-frontend/problem/other/widget-crash' },
+
     ],
   },
 ]
@@ -172,6 +209,7 @@ const babel = [
     text: '入门',
     collapse: false,
     items: [
+      { text: '思维导图', link: '/babel/xmind' },
       { text: '概览', link: '/babel/guide/overview' },
       { text: '插件开发', link: '/babel/guide/plugin' },
     ],
@@ -193,7 +231,6 @@ const js = [
     collapsed: false,
     items: [
       { text: '事件循环机制', link: '/javascript/事件循环机制' },
-      { text: '浏览器一帧里做了什么', link: '/javascript/../react/浏览器一帧里做了什么' },
       { text: '手写Promise', link: '/javascript/手写Promise' },
       { text: 'co库', link: '/javascript/co库' },
       { text: 'js继承', link: '/javascript/js继承' },

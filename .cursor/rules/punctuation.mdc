@@ -1,0 +1,27 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+在编写文档时，请遵循以下标点符号使用规则：
+1. 中文语句使用全角标点符号（，。！？；：、）
+2. 英文语句使用半角标点符号（,.;:!?）
+3. 省略号使用全角省略号（⋯⋯），占两个汉字空间
+4. 引用使用全角双引号（" "）
+5. 补充说明使用全角圆括号（）
+
+示例：
+✅ 正确示例：
+- 这是一个中文句子，使用了全角标点。
+- This is an English sentence, using half-width punctuation.
+- 他说："这是一个引用。"
+- 这是一个补充说明（使用全角括号）。
+
+❌ 错误示例：
+- 这是一个中文句子,使用了半角标点.
+- This is an English sentence，using full-width punctuation。
+- 他说:"这是一个引用."
+- 这是一个补充说明(使用半角括号).
+
+@punctuation-pattern.json
+

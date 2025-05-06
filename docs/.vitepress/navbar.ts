@@ -7,6 +7,14 @@ export const navbar = [
   //   text: 'AI',
   //   link: '/ai/index',
   // },
+  // {
+  //   text: 'Electron',
+  //   link: '/electron/index',
+  // },
+  // {
+  //   text: 'web3',
+  //   link: '/web3/index',
+  // },
   {
     text: '框架源码',
     items: [
@@ -16,7 +24,7 @@ export const navbar = [
     ],
   },
   {
-    text: '基建',
+    text: '构建工具',
     items: [
       { text: 'Webpack 系列', link: '/webpack/' },
       { text: 'Rollup 系列', link: '/rollup/' },
@@ -25,13 +33,21 @@ export const navbar = [
     ],
   },
   {
-    text: '微前端',
-    link: '/micro-frontend/index',
+    text: '项目',
+    items: [
+      { text: '微前端', link: '/micro-frontend/' },
+      { text: 'Electron', link: '/electron/' },
+      { text: '组件库', link: '/component/' },
+    ],
   },
-  {
-    text: 'Electron',
-    link: '/electron/index',
-  },
+  // {
+  //   text: '微前端',
+  //   link: '/micro-frontend/index',
+  // },
+  // {
+  //   text: 'Electron',
+  //   link: '/electron/index',
+  // },
   {
     text: 'JS 系列',
     items: [

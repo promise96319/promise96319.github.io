@@ -12,7 +12,7 @@ import { sidebar } from './sidebar'
 import { navbar } from './navbar'
 
 export default defineConfig({
-  title: 'promise96319',
+  title: '秦光辉',
   description: '前端开发',
   lang: 'zh-CN',
   head: [
