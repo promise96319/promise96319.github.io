@@ -77,6 +77,35 @@ const microFrontend = [
   },
 ]
 
+// 组件库
+const component = [
+  {
+    text: '组件库搭建',
+    collapsed: false,
+    items: [
+      { link: '/component/react-runtime', text: '组件库 Playground' },
+      { link: '/component/prefix-cls', text: '组件库样式覆盖问题' },
+      { link: '/component/css-background-img', text: 'CSS 背景图片设置颜色' },
+      { link: '/component/css-media', text: '媒体查询' },
+      { link: '/component/auto-import', text: '自动引入' },
+      { link: '/component/ellipsis-text', text: '省略文本' },
+      { link: '/component/virtual-list', text: '虚拟滚动' },
+      { link: '/component/drawer', text: '抽屉嵌套位移' },
+      { link: '/component/space', text: '间距' },
+      { link: '/component/semi-design', text: 'Semi Design 架构' },
+    ],
+  },
+ {
+   text: '组件库问题',
+ },
+ {
+  text: '组件库配套',
+  items:[]
+ },{
+  text:'其他知识点'
+ }
+]
+
 // 框架源码
 const vue3 = [
   {
@@ -388,7 +417,7 @@ const config = [
 
 const project = [
   {
-    text: '@qt/design',
+    text: '组件库',
     collapsed: false,
     items: [
       { link: '/project/react-runtime', text: '组件库 Playground' },
@@ -417,6 +446,7 @@ export const sidebar = {
   '/ai/': ai,
   '/electron/': electron,
   '/micro-frontend/': microFrontend,
+  '/component/': component,
   '/vue/': vue,
   '/vue3/': vue3,
   '/react/': react,
@@ -436,5 +466,4 @@ export const sidebar = {
   '/resources/': resources,
   '/tools/': tools,
   '/config/': config,
-  '/project/': project,
 }

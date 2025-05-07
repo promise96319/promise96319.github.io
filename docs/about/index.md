@@ -6,31 +6,33 @@
 - **出生年月**：1994.09
 - **教育背景**：西安交通大学 本科学历
 - **所学专业**：能源与动力工程
-- **工作经验**：5年前端开发（2年 Vue / 3年 React）
+- **工作经验**：6年前端开发（2年 Vue / 4年 React）
 - **技术博客**：[https://www.qinguanghui.com/](https://www.qinguanghui.com/vue/)
 - **邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱**：<1248975357@qq.com>
 - **电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话**：13125142026
 
 ## 个人优势
 
-- 熟悉 Vue/React，熟悉实现原理，具备实战经验。[Vue源码笔记](https://www.qinguanghui.com/vue/)、[React源码笔记](https://www.qinguanghui.com/react/)
-- 熟悉基础构建工具，如 Webpack/Rollup/Vite 等。[Webpack源码笔记](https://www.qinguanghui.com/webpack/)
-- 熟悉 Next.js、Nest.js，具备实战经验。
-- 熟悉组件库开发，具备较强的组件抽象能力以及解决问题的能力。
+- 熟悉 Vue、React 实现原理，具备丰富实战经验。[Vue源码笔记](https://www.qinguanghui.com/vue/)、[React源码笔记](https://www.qinguanghui.com/react/)
+- 熟悉组件库开发，具备较强的组件抽象能力以及解决问题能力。[组件库项目总结](https://www.qinguanghui.com/component/)
+- 熟悉微前端架构实现原理，具备微前端改造迁移经验。[微前端项目总结](https://www.qinguanghui.com/micro-frontend/)
+
+- 熟悉基础构建工具 Webpack，了解 Rollup、Vite 等。[Webpack源码笔记](https://www.qinguanghui.com/webpack/)
+- 了解 Next.js、Nest.js，有服务端渲染、服务端开发经验。
 
 ## 工作经历
 
-### 青藤云安全（2021年12月 ~ 至今） 基础架构组 - 前端开发
+### 青藤云安全（2021年12月 ~ 至今） 基础架构前端开发
 
 - 负责前端基础库开发与维护。
 - 负责微前端架构开发与迁移。
 
-### 北京思拓合众科技有限公司（2020年7月 ~ 2021年9月） 高级前端开发 -> 代理主管
+### 北京思拓合众科技有限公司（2020年7月 ~ 2021年9月） 高级前端开发
 
 - 负责前端项目开发，包括运营工具网页后台、浏览器插件、新知魔方小程序、私信系统等。
 - 根据产品需求进行项目排期，协调产品、设计和开发人员，推进产品研发进度。
 
-### 上海有略科技有限公司（2018年6月 ~ 2019年4月）前端开发
+### 上海有略教育科技有限公司（2018年6月 ~ 2019年4月）前端开发
 
 - 独立负责微信小程序项目及其后台管理系统的搭建、开发、上线。
 - 负责公司移动端官网开发，维护多个前端项目。
@@ -65,6 +67,8 @@
 
 ### 自动化测试 id
 
+### Electron 应用开发
+
 ## 其他经验
 
 ### VS Code 插件
@@ -83,7 +87,7 @@
 
   ![插件演示](./assets/snippets.gif)
 
-### iOS App
+### iOS 应用开发
 
   **项目地址**：[github](https://github.com/promise96319/WarmDairy)
 
@@ -109,3 +113,10 @@
     padding-left: 40px;
   }
 </style>
+
+### 知乎浏览器插件
+- 
+
+### 小游戏开发
+- cocos creator
+

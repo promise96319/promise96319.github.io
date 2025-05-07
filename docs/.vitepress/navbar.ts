@@ -16,6 +16,14 @@ export const navbar = [
   //   link: '/web3/index',
   // },
   {
+    text: '项目',
+    items: [
+      { text: '组件库', link: '/component/' },
+      { text: '微前端', link: '/micro-frontend/' },
+      { text: 'Electron', link: '/electron/' },
+    ],
+  },
+  {
     text: '框架源码',
     items: [
       { text: 'Vue v2 源码', link: '/vue/' },
@@ -32,22 +40,6 @@ export const navbar = [
       { text: 'Babel 系列', link: '/babel/' },
     ],
   },
-  {
-    text: '项目',
-    items: [
-      { text: '微前端', link: '/micro-frontend/' },
-      { text: 'Electron', link: '/electron/' },
-      { text: '组件库', link: '/component/' },
-    ],
-  },
-  // {
-  //   text: '微前端',
-  //   link: '/micro-frontend/index',
-  // },
-  // {
-  //   text: 'Electron',
-  //   link: '/electron/index',
-  // },
   {
     text: 'JS 系列',
     items: [
