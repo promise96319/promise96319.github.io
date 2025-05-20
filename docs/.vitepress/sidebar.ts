@@ -208,6 +208,7 @@ const webpack = [
       { text: 'webpack官方文档', link: '/webpack/webpack官方文档' },
     ],
   },
+  ...vue3
 ]
 
 const rollup = [

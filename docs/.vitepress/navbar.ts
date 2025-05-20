@@ -27,7 +27,7 @@ export const navbar = [
     text: '框架源码',
     items: [
       { text: 'Vue v2 源码', link: '/vue/' },
-      { text: 'Vue v3 源码', link: '/vue3/' },
+      // { text: 'Vue v3 源码', link: '/vue3/' },
       { text: 'React v17 源码', link: '/react/' },
     ],
   },
@@ -35,13 +35,13 @@ export const navbar = [
     text: '构建工具',
     items: [
       { text: 'Webpack 系列', link: '/webpack/' },
-      { text: 'Rollup 系列', link: '/rollup/' },
-      { text: 'Vite 系列', link: '/vite/' },
+      // { text: 'Rollup 系列', link: '/rollup/' },
+      // { text: 'Vite 系列', link: '/vite/' },
       { text: 'Babel 系列', link: '/babel/' },
     ],
   },
   {
-    text: 'JS 系列',
+    text: 'JS',
     items: [
       { text: 'ES6', link: '/javascript/' },
       { text: 'Node', link: '/node/' },
@@ -49,7 +49,7 @@ export const navbar = [
     ],
   },
   {
-    text: '计算机基础',
+    text: '基础',
     items: [
       { text: '算法', link: '/algorithms/' },
       { text: '数据结构', link: '/data-structures/' },
@@ -59,12 +59,12 @@ export const navbar = [
     ],
   },
   {
-    text: '开发',
+    text: '其他',
     items: [
       { text: '工具', link: '/tools/' },
       { text: '配置', link: '/config/' },
       { text: '资料', link: '/resources/' },
-      { text: '项目', link: '/project/' },
+      // { text: '项目', link: '/project/' },
     ],
   },
   // {
