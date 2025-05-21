@@ -18,7 +18,7 @@ export const navbar = [
   {
     text: '项目',
     items: [
-      { text: '组件库', link: '/component/' },
+      { text: '组件库', link: '/component-lib/' },
       { text: '微前端', link: '/micro-frontend/' },
       { text: 'Electron', link: '/electron/' },
     ],

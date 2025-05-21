@@ -106,6 +106,40 @@ const component = [
  }
 ]
 
+const componentLib = [
+  {
+    text: '组件库规范',
+    items: [
+      { text: 'API 设计规范', link: '/component-lib/standard/api' },
+      { text: '版本更新规范', link: '/component-lib/standard/api' },
+      { text: '组件库与设计同步规范', link: '/component-lib/standard/api' },
+      { text: '组件库推进建设规范', link: '/component-lib/standard/cbb' },
+    ],
+  },
+  {
+    text: '组件库功能点',
+    items: [
+      { text: '主题定制', link: '/component-lib/feature/theme' },
+      { text: '样式前缀', link: '/component-lib/feature/prefix-cls' },
+      { text: '按需加载', link: '/component-lib/feature/demand-load' },
+    ],
+  },
+  {
+    text: '组件库文档',
+    items: [
+      { text: '组件库运行时', link: '/component-lib/docs/runtime' },
+      { text: 'React Server Component', link: '/component-lib/docs/rsc' },
+    ],
+  },
+  {
+    text: '其他尝试',
+    items: [
+      {
+        text: '自动引入',
+      }
+    ]
+  }
+]
 // 框架源码
 const vue3 = [
   {
@@ -448,6 +482,7 @@ export const sidebar = {
   '/electron/': electron,
   '/micro-frontend/': microFrontend,
   '/component/': component,
+  '/component-lib/': componentLib,
   '/vue/': vue,
   '/vue3/': vue3,
   '/react/': react,
