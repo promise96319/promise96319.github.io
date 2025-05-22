@@ -134,9 +134,9 @@ const componentLib = [
   {
     text: '其他尝试',
     items: [
-      {
-        text: '自动引入',
-      }
+      { text: '自动引入', link: '/component-lib/try/auto-import' },
+      { text: 'monorepo', link: '/component-lib/try/monorepo' },
+      { text: '测试 id', link: '/component-lib/try/test-id' },
     ]
   }
 ]
