@@ -18,26 +18,29 @@
 
 主要考虑功能的重叠程度和可重用性：
 
-- 如果功能上重叠程度较大，只是样式或少数行为上有所不同，采用类型区分更好。比如 Select 组件 list/group/tree，在功能上都是选中功能，逻辑几乎一致。
-- 如果每种类型的组件都是特定用于某个场景，且很少有内容进行复用，那么拆分成独立的组件可能更有效。比如 Input 和 InputTextarea 和 InputPassword，一个用于单行，一个用于多，一个用于密码，内部逻辑都用于特定场景，放在一起不大合适。
+- 如果功能上重叠程度较大，只是样式或少数行为上有所不同，采用类型区分更好。比如 `Select` 组件 list/group/tree，在功能上都是选中功能，逻辑几乎一致。
+
+- 如果每种类型的组件都是特定用于某个场景，且很少有内容进行复用，那么拆分成独立的组件可能更有效。比如 `Input` 和 `InputTextarea` 和 `InputPassword`，一个用于单行，一个用于多，一个用于密码，内部逻辑都用于特定场景，放在一起不大合适。
 
 ## 节点
 
-### 规则
+### 节点规则
 
-#### 名称
+#### 节点名称规则
 
 名称主要分为两种：
 
-- 当不需要传递参数时，使用普通节点渲染，如：header、footer 等
-- 当需要传递参数时，使用函数进行渲染，名称统一用 renderXxx 命名，如 renderHeader: (props) => React.ReactNode
+- 当不需要传递参数时，使用普通节点渲染，如：header、footer 等。
+
+- 当需要传递参数时，使用函数进行渲染，名称统一用 renderXxx 命名，如 renderHeader: (props) => React.ReactNode。
 
 注意：
 
-- 如果渲染的节点分为多种类型时，可采用对象表示，如 icons: { fileIcon, errorIcon, xxxx }，视具体情况而定，如 Steps 组件中自定义各种状态下的 icon
-- 如果是定制组件内部某元素中的节点，应带有相关节点前缀，如 renderPanelHeader
+- 如果渲染的节点分为多种类型时，可采用对象表示，如 icons: { fileIcon, errorIcon, xxxx }，视具体情况而定，如 Steps 组件中自定义各种状态下的 icon。
 
-#### 取值
+- 如果是定制组件内部某元素中的节点，应带有相关节点前缀，如 renderPanelHeader。
+
+#### 节点名称取值
 
 节点取值需要对 React.ReactNode 或 React.ReactElement 类型加以区分，不能笼统的定义为 React.ReactNode 类型。
 
@@ -81,13 +84,15 @@
 | image (废弃) | 图片 | - | 已废弃 |
 | renderXxx | 具体名称同上 | - | - |
 
-### 问题
+### 节点问题
 
 目前 trigger 有三种用途，应加以区分：
 
-1. ReactNode 类型：用于渲染触发节点，如 Dropdown 的 renderTrigger
-2. [hover, click, contextMenu] 类型：用于指定触发的方式，如 tooltip 的 trigger，统一更改为 triggerActions: []
-3. string 类型：用于指定子元素的触发方法，如 Form.item 的 trigger，统一更改为 changeEventName: 'onChange/onSelect/xxx'
+1. ReactNode 类型：用于渲染触发节点，如 Dropdown 的 renderTrigger。
+
+2. [hover, click, contextMenu] 类型：用于指定触发的方式，如 tooltip 的 trigger，统一更改为 triggerActions: []。
+
+3. string 类型：用于指定子元素的触发方法，如 Form.item 的 trigger，统一更改为 changeEventName: 'onChange/onSelect/xxx'。
 
 ## 数据
 
@@ -106,27 +111,29 @@
 | format | 数据的格式 | string | 通常用于时间日期的格式化，如 YYYY-MM-DD | - |
 | formatter | 数据格式化函数 | 如 () => string | 返回格式化后的数据 | 注意：format 表示的是数据的格式，而 formatter 表示的是格式化后的数据。两者的值是不同的含义 |
 
-### 问题
+### 数据问题
 
 #### 使用 options 还是 data?
 
 - options 用于表示可选项，其数据是可被选择的。而 data 只是单纯地表示原始数据，一般用于展示数据的组件。
+
 - 需要注意的是 options 标准数据结构是 label / value，label 用于表示可选项。而 data 的数据结构是不固定的。
 
 #### 使用 rowKey 还是 dataKey?
 
 使用 rowKey 更合适一些，rowKey 表示的每一行数据的 key。而 dataKey 字面意思指的是 data 的 key，但是 data 是数组，并没有 key。
 
-#### 是使用 selectedKeys 还是 selectedValues ?（table 数据没有 value ，但是 tree 里存在 value）
+#### 是使用 selectedKeys 还是 selectedValues?（table 数据没有 value，但是 tree 里存在 value）
 
 - selectedValues 侧重于表示选择了哪些具体的值或对象，主要在需要实际选定的项目值或对象的时候使用。
+
 - selectedKeys 侧重于选中的标识符，主要用于管理选项的选择状态。因此像 tree / table 等情况下使用 keys 更好。
 
-#### 基于上一个问题，为什么 Select 不用 keys 而使用 value ?
+#### 基于上一个问题，为什么 Select 不用 keys 而使用 value?
 
 对于一个组件来讲，能通过唯一值能表示该组件的用途时，应该由 value 来表示该值（部分特殊组件除外，如 checked），因此像 Select/TreeSelect 这些组件的选中值都使用 value 表示。
 
-但是像 Table/Tree 组件，向外暴露多个值的时候，value 无法准确描述该组件的用途，因此需要通过其他值来表示，如 selectedKeys/expandedKeys
+但是像 Table/Tree 组件，向外暴露多个值的时候，value 无法准确描述该组件的用途，因此需要通过其他值来表示，如 selectedKeys/expandedKeys。
 
 ## 样式
 
@@ -152,7 +159,7 @@
 | ellipsis（单独考虑） | 文本省略 | boolean \| number | - | singleLine 只表示了单行显示，但没表示是省略还是截断，所以采取 ellipsis + singleLine 更合适一些？ |
 | zIndex | 层级 | 组件内部节点层级通常以 1/2/3/.. 来设置。<br>组件本身层级：<br>$qtc-zindex-mask: 1000 !default;<br>$qtc-zindex-dialog: 1010 !default; // drawer, loader<br>$qtc-zindex-modal: 1020 !default; // modal<br>$qtc-zindex-popover: 1030 !default; //popover<br>$qtc-zindex-tooltip: 1040 !default; // tooltip, dropdown<br>$qtc-zindex-notification: 1050 !default; // notification<br>$qtc-zindex-message: 1050 !default; // message | 弹窗类组件应都提供 zIndex 属性 | - |
 
-### 问题
+### 样式问题
 
 #### 何时使用 style？何时将 css 抽出来作为具体的属性，如 width / height？
 
@@ -168,20 +175,23 @@
 
 ## 状态
 
-### 规则
+### 状态规则
 
-#### 名称
+#### 状态名称规则
 
 - 名称均使用形容词来表示。
+
 - 如果表示的是组件内部某个元素的状态，应以 element + status 表示，如 iconDisabled： boolean。
+
 - 如果需要动态计算内部元素的状态，同样以 element + status 形式表示，如 iconDisabled: (node) => boolean。
 
 注意：
 
 - 形容词的结尾不是都以 ed 结尾，需要根据实际的英文含义来定。如 "是否激活" 使用 active 而非 actived。
+
 - 形容词不需要加 is 等前缀开头。
 
-#### 取值
+#### 状态取值
 
 状态的取值均为 true \| false，默认值为 undefined。可根据组件的实际需要更改默认值，建议非必要情况下均为 false。
 
@@ -202,28 +212,30 @@
 | collapsed | 是否收起 | - | - |
 | expanded | 是否展开 | - | - |
 
-### 问题
+### 状态问题
 
 #### 何时使用 active，何时使用 selected？
 
 - selected 主要强调某一个元素自身被选中，如下拉选项中某项被选择。
+
 - active 不仅用于表示用户的选择，还可以用于表示元素正在被操作或处于聚焦状态。
   - 比如 Tabs 、Collapse，当某一项被激活时，相应的内容也会做相应的操作。
   - 比如 Cascader 组件，它被选中的 key 应叫做 selectedKeys，但是级联组件一层一层展开的路径应该叫做 activePaths。两者侧重点不同。
 
 ## 功能
 
-### 规则
+### 功能规则
 
-#### 名称
+#### 功能名称规则
 
 组件的某种能力以 propName + able 的形式进行命名，如 expandable、selectable。部分特殊单词除外，如 collapsible。
 
 allow + propName 的形式与 propName + able 的形式意思非常相近，侧重点稍有不同，目前统一使用 propName + able 的形式。比如 allowClear 改为 clearable。
 
-#### 取值
+#### 功能取值
 
 - 取值为 true \| false，默认为 undefined。
+
 - 取值 boolean \| object （待定）
   - 当某一个功能需要传递参数时，此时该属性可以用对象的形式传递参数，用于收敛参数。比如 selectable: boolean \| { selectedKeys: [], ... }
 
@@ -245,44 +257,50 @@ allow + propName 的形式与 propName + able 的形式意思非常相近，侧�
 | filterable | 可搜索过滤 |
 | scrollable | 可滚动 |
 
-### 问题
+### 功能问题
 
-#### 使用 clearable 还是 allowClear 还是 showClear ?
+#### 使用 clearable 还是 allowClear 还是 showClear?
 
-- clearable 更侧重于描述组件的一种能力或特性，它传达的是"此组件具备清除能力"。为了在形式上的统一，推荐都采用这种方式进行命名
+- clearable 更侧重于描述组件的一种能力或特性，它传达的是"此组件具备清除能力"。为了在形式上的统一，推荐都采用这种方式进行命名。
+
 - allowClear 更具有指令性质，暗示着这是一个权限或允许的设置，传达的是"此组件允许清除操作"。这种命名方式更强调了功能的允许或禁止，给人一种开关的感觉。
+
 - showXxx 只是单纯的控制某个节点的显示与隐藏，在这里用不是很合适。这里一是需要强调清除的能力，二是清除按钮也并非常显状态。
 
 ## 事件
 
-### 规则
+### 事件规则
 
-#### 名称
+#### 事件名称规则
 
 事件回调均以 before/on/after + 节点 + 事件名 的形式命名，如 onClick / onHeaderClick。
 
 注意：
 
 - 如果触发的事件是组件内部某个独立子元素触发，为避免歧义，应加上该节点名称，如 onOverlayClick。
+
 - 建议采用 before/after 的形式来定义事件，而不是使用过去时，如 onClosed，应为 afterClose。
 
-#### 取值
+#### 事件名称取值
 
 需要注意何时将事件对象 e 传递给外部：
 
 对于原生事件：
 
 - 在没有做其他处理的情况下，应将事件对象作为第一个参数传递给外部。如 onClick(e) / onScroll(e) 等。
+
 - 在内部做了处理的情况下，不需要再将事件对象传递给外部。比如 onDrop(startIndex, endIndex) 已经是处理完后的内容了，原则上已经是不需要关心事件对象。
 
 对于非原生事件：
 
 - 这类事件，一般都有明确的目的，比如对数据进行处理，此时不需要将事件对象传递给外部。如 onChange / onSelect 等。
+
 - 有些事件可能为了语义化，相当于是对原生事件进行了重命名，比如 onClear、onClose，此时应该将事件对象传给外部。
 
 总结：
 
 - 如果事件回调有处理数据等相关内容，并传出的话，不需要传递事件对象给外部。
+
 - 否则的话，通常会将事件对象作为第一个参数传出。
 
 ### 事件名称
@@ -299,23 +317,26 @@ allow + propName 的形式与 propName + able 的形式意思非常相近，侧�
 | onExpand/onCollapse | 展开/收起的回调 | - | - |
 | onPressEnter | 回车键的回调 | - | - |
 
-### 问题
+### 事件问题
 
 #### 何时使用 onChange，何时使用 onSelect？
 
 - onChange 表示数据发生改变的时候产生的回调，这里的数据应该是有效值，而非中间值，与 value 对应。
+
 - onSelect 表述数据某一项被选中时产生的回调，即使选中的值没有发生变化也会触发回调。
+
 - 通常来讲 onChange / onSelect 抛出的值均为该组件的最终取值。
   - 如 DatePicker，onChange/onSelect 不关心中间的变化过程，而只在乎用户确认的值。但是其内部组件比如 DatePickerPanel，其 onChange/onSelect 应只关心 panel 自身组件应当抛出的值，而不应该在意外部 DatePicker 的 change / select 与否。
 
-#### onOk / onConfirm / onSave ?
+#### onOk / onConfirm / onSave?
 
 - onSave 指保存操作，属于比较主观的操纵，通常组件内部不应该存在这类具体含义的操作，应使用 onOk/onConfirm 代替。
+
 - onOk / onConfirm 从含义上来讲比较接近，统一规范使用其中一种即可，组件库里推荐采用 onConfirm。
 
 ## 实例方法
 
-### 规则
+### 实例方法规则规则
 
 名称可以通过 get/is/has 来进行命名，如 getValue()、setValue()、isFocused()
 
@@ -336,6 +357,7 @@ allow + propName 的形式与 propName + able 的形式意思非常相近，侧�
 ### 注意
 
 - 当函数是作为组件属性 API 时，不需要加 is 前缀，比如 dateDisabled: (date) => boolean。
+
 - 当做属性时，通常也不会加 get 前缀，比如 rowKey: () => React.Key，而不是 getRowKey。
 
 ## 静态方法
@@ -360,9 +382,9 @@ allow + propName 的形式与 propName + able 的形式意思非常相近，侧�
 | info() | 信息提示 |
 | confirm() | 确认 |
 
-### 问题
+### 静态方法问题
 
-1. Modal.confirm / Drawer.open 返回的值最好是实例而非 close 方法，这样可以通过实例做一些其他的操作，如 update / destroy
+1. Modal.confirm / Drawer.open 返回的值最好是实例而非 close 方法，这样可以通过实例做一些其他的操作，如 update / destroy。
 
 2. 需要区分静态方法的挂载方式，有的是小写有的是大写，比如：
    - message.success/warning/...
@@ -441,14 +463,16 @@ allow + propName 的形式与 propName + able 的形式意思非常相近，侧�
 为什么会有这个区别？
 
 - Omit 会将剩余的属性都继承下来。如果原始组件增加属性会导致继承该组件的组件都增加这个属性，需要考虑手动 Omit 掉，心智负担较大。
+
 - 而 Pick 只取对应的属性，不会受后续新增的属性影响。
 
 原则：
 
 1. 目标属性数量：通常来讲，目标数量较少时采用 Pick，目标数量较多且只需排除少量属性时采用 Omit。
+
 2. 未来维护问题：类型继承时，需要考虑原型类型可能的未来变化。如果原始类型可能添加新属性，且这些属性默认应包含在新类型中，使用 Omit 可以避免未来的手动更新。反之，如果原始类型变化不想影响到继承的类型，应采用 Pick。
    - 比如， Select 继承 SelectBasePanel 的时候，由于 BasePanel 是 panel 通用属性，且后续属性的增加通常会加到 Select 中，此时采用 Omit 问题不大。
-   - 但是在 DatePicker 组件中，继承 DatePickerPanel 的时候，由于 panel 处理后续可能会增加一些内部属性处理逻辑以及一些属性的定义和 DatePicker 并不是相同的，采用 Omit
+   - 但是在 DatePicker 组件中，继承 DatePickerPanel 的时候，由于 panel 处理后续可能会增加一些内部属性处理逻辑以及一些属性的定义和 DatePicker 并不是相同的，采用 Omit。
 
 ### 组件内部的多个属性应该收敛成一个对象属性放到组件上？还是应该展开放到组件上？
 

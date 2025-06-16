@@ -1,5 +1,6 @@
 import process from 'node:process'
 import { defineConfig } from 'vitepress'
+import llmsTxt from 'vitepress-plugin-llms'
 import UnoCss from 'unocss/vite'
 import {
   presetAttributify,
@@ -66,20 +67,25 @@ export default defineConfig({
   },
 
   vite: {
-    plugins: [UnoCss({
-      presets: [
-        presetUno(),
-        presetIcons(),
-        presetAttributify(),
-        presetWebFonts({
-          provider: 'bunny',
-          fonts: {
-            sans: 'DM Sans',
-            mono: 'DM Mono',
-          },
-        }),
-        presetTypography(),
-      ],
-    })],
+    plugins: [
+      UnoCss({
+        presets: [
+          presetUno(),
+          presetIcons(),
+          presetAttributify(),
+          presetWebFonts({
+            provider: 'bunny',
+            fonts: {
+              sans: 'DM Sans',
+              mono: 'DM Mono',
+            },
+          }),
+          presetTypography(),
+        ],
+      }), 
+      // llmsTxt({
+      //   ignoreFiles: ['docs/leetcode/*']
+      // }) as any
+    ],
   },
 })

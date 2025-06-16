@@ -22,7 +22,8 @@
     "husky": "^8.0.3",
     "typescript": "^4.9.5",
     "unocss": "^0.58.0",
-    "vitepress": "1.2.0",
+    "vitepress": "1.6.3",
+    "vitepress-plugin-llms": "^1.3.4",
     "vitest": "^0.28.5"
   }
 }

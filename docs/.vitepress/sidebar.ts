@@ -110,9 +110,9 @@ const componentLib = [
   {
     text: '组件库规范',
     items: [
-      { text: 'API 设计规范', link: '/component-lib/standard/api' },
-      { text: '版本更新规范', link: '/component-lib/standard/api' },
-      { text: '组件库与设计同步规范', link: '/component-lib/standard/api' },
+      // { text: 'API 设计规范', link: '/component-lib/standard/api' },
+      // { text: '版本更新规范', link: '/component-lib/standard/api' },
+      // { text: '组件库与设计同步规范', link: '/component-lib/standard/api' },
       { text: '组件库推进建设规范', link: '/component-lib/standard/cbb' },
     ],
   },
@@ -494,7 +494,7 @@ export const sidebar = {
   '/typescript/': typescript,
   '/node/': node,
   '/algorithms/': algorithms,
-  '/leetcode/': leetcode,
+  // '/leetcode/': leetcode,
   '/data-structures/': dataStructure,
   '/design-pattern/': designPattern,
   '/trend/': trend,

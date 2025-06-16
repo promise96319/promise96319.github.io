@@ -55,7 +55,7 @@ export const navbar = [
       { text: '数据结构', link: '/data-structures/' },
       { text: '设计模式', link: '/design-pattern/' },
       { text: '网络', link: '/network/' },
-      { text: 'LeetCode', link: '/leetcode/' },
+      // { text: 'LeetCode', link: '/leetcode/' },
     ],
   },
   {
